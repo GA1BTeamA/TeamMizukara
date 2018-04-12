@@ -4,6 +4,9 @@
 
 #include "SceneMain.h"
 #include "Hero.h"
+#include "Tank.h"
+#include "Background.h"
+#include "BucketMeter.h"
 
 
 SceneMain::SceneMain()
@@ -12,6 +15,17 @@ SceneMain::SceneMain()
 	hero->m_priority = 90;
 	TaskSystem::InsertObj(hero);
 
+	CTank* tank = new CTank();
+	tank->m_priority = 80;
+	TaskSystem::InsertObj(tank);
+
+	CBackground* background = new CBackground();
+	background->m_priority = 10;
+	TaskSystem::InsertObj(background);
+
+	CBucketMeter* bucketmeter = new CBucketMeter();
+	bucketmeter->m_priority = 20;
+	TaskSystem::InsertObj(bucketmeter);
 }
 
 

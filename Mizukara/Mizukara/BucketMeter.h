@@ -6,27 +6,20 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-enum {
-	LEFT,
-	RIGHT,
+enum 
+{
+
 };
 
 //主人公クラス
-class CHero : public CObj
+class CBucketMeter : public CObj
 {
 public:
-	CHero();
-	~CHero();
+	CBucketMeter();
+	~CBucketMeter();
 	void Action();
 	void Draw();
 private:
 	float m_x; //位置
 	float m_y;
-	float m_vx;//移動ベクトル
-	float m_vy;
-	bool m_direc;//向き
-
-	bool m_down;//衝突確認用
-
-	HitBox* m_p_hit_box;//当たり判定
 };

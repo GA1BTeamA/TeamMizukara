@@ -51,13 +51,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//
 unsigned __stdcall TextureLoadSled(void *p)
 {
 	//イメージ読み込み
-	Draw::LoadImage(1, L"タンク　自ら.png");//1番目に"Texture.png"を読み込み
+	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
+	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
+	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
 	Draw::LoadImage(0, L"Images\\Player1.png");//0番目に"Player1.png"を読み込み
 	Draw::LoadImage(1, L"Images\\Player2.png");//1番目に"Player2.png"を読み込み
 	Draw::LoadImage(2, L"Images\\Player3.png");//2番目に"Player3.png"を読み込み
 	Draw::LoadImage(3, L"Images\\Player4.png");//3番目に"Player4.png"を読み込み
 	Draw::LoadImage(4, L"Images\\Player5.png");//4番目に"Player5.png"を読み込み
 	Draw::LoadImage(5, L"Images\\Player6.png");//5番目に"Player6.png"を読み込み
+	Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
