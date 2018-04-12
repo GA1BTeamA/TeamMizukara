@@ -121,15 +121,13 @@
     <ClCompile Include="GameEngine\DeviceCreate.cpp" />
     <ClCompile Include="GameEngine\Draw2DPolygon.cpp" />
     <ClCompile Include="GameEngine\FontTex.cpp" />
-    <ClCompile Include="GameEngine\Hero.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="GameEngine\Input.cpp" />
     <ClCompile Include="GameEngine\main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GameEngine\TaskSystem.cpp" />
     <ClCompile Include="GameEngine\WindowCreate.cpp" />
+    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="SceneMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -140,12 +138,10 @@
     <ClInclude Include="GameEngine\DeviceCreate.h" />
     <ClInclude Include="GameEngine\Draw2DPolygon.h" />
     <ClInclude Include="GameEngine\FontTex.h" />
-    <ClInclude Include="GameEngine\Hero.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="GameEngine\Input.h" />
     <ClInclude Include="GameEngine\TaskSystem.h" />
     <ClInclude Include="GameEngine\WindowCreate.h" />
+    <ClInclude Include="Hero.h" />
     <ClInclude Include="SceneMain.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
