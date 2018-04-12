@@ -1,10 +1,15 @@
 #pragma once
 //使用するヘッダ
-#include "Draw2DPolygon.h"
-#include "Input.h"
-#include "Audio.h"
-#include "TaskSystem.h"
-#include "Collision.h"
+#include "GameEngine\\Draw2DPolygon.h"
+#include "GameEngine\\Input.h"
+#include "GameEngine\\Audio.h"
+#include "GameEngine\\TaskSystem.h"
+#include "GameEngine\\Collision.h"
+
+enum {
+	LEFT,
+	RIGHT,
+};
 
 //主人公クラス
 class CHero : public CObj
@@ -19,6 +24,7 @@ private:
 	float m_y;
 	float m_vx;//移動ベクトル
 	float m_vy;
+	bool m_direc;//向き
 
 	HitBox* m_p_hit_box;//当たり判定
 };
