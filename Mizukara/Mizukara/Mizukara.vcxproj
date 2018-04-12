@@ -128,6 +128,9 @@
     <ClCompile Include="GameEngine\TaskSystem.cpp" />
     <ClCompile Include="GameEngine\WindowCreate.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="LineCollision.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="SceneMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>

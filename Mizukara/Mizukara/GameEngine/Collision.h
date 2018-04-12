@@ -73,3 +73,10 @@ private:
 	static list<shared_ptr<HitBox>>* m_hit_box_list;
 
 }Collision;
+
+class Point
+{
+public:
+	double x;
+	double y;
+};
