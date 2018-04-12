@@ -57,6 +57,14 @@ void CHero::Draw()
 	{
 		Draw::Draw2D(2, m_x, m_y);
 	}
+	else if (Input::KeyPush('X'))
+	{
+		Draw::Draw2D(4, m_x, m_y);
+	}
+	else if (Input::KeyPush('C'))
+	{
+		Draw::Draw2D(5, m_x, m_y);
+	}
 	else if (m_direc == RIGHT)
 	{
 		Draw::Draw2D(0, m_x, m_y);

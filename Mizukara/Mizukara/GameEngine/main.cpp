@@ -56,7 +56,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(1, L"Images\\Player2.png");//1番目に"Player2.png"を読み込み
 	Draw::LoadImage(2, L"Images\\Player3.png");//2番目に"Player3.png"を読み込み
 	Draw::LoadImage(3, L"Images\\Player4.png");//3番目に"Player4.png"を読み込み
-
+	Draw::LoadImage(4, L"Images\\Player5.png");//4番目に"Player5.png"を読み込み
+	Draw::LoadImage(5, L"Images\\Player6.png");//5番目に"Player6.png"を読み込み
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
