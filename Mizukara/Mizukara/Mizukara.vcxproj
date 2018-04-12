@@ -116,6 +116,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BucketMeter.cpp" />
     <ClCompile Include="GameEngine\Audio.cpp" />
     <ClCompile Include="GameEngine\Collision.cpp" />
     <ClCompile Include="GameEngine\DeviceCreate.cpp" />
@@ -131,8 +133,11 @@
     <ClCompile Include="SceneMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Tank.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="BucketMeter.h" />
     <ClInclude Include="GameEngine\Audio.h" />
     <ClInclude Include="GameEngine\Collision.h" />
     <ClInclude Include="GameEngine\DeviceCreate.h" />
@@ -145,6 +150,12 @@
     <ClInclude Include="SceneMain.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Tank.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="GameEngine\libogg_static.lib" />
+    <Library Include="GameEngine\libvorbisfile_static.lib" />
+    <Library Include="GameEngine\libvorbis_static.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
