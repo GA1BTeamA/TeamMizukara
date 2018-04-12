@@ -21,7 +21,8 @@
 #include "Collision.h"
 
 //デバッグ用オブジェクトヘッダ---------------
-#include "Hero.h"
+#include "..\Hero.h"
+
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -52,6 +53,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 {
 	//イメージ読み込み
 	Draw::LoadImage(0, L"Images\\Texture.png");//0番目に"Texture.png"を読み込み
+	Draw::LoadImage(1, L"タンク　自ら.png");//1番目に"Texture.png"を読み込み
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
