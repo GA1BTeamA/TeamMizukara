@@ -5,14 +5,10 @@
 #include "Hero.h"
 
 CHero::CHero()
+	:m_x(200),m_y(400)
+	,m_vx(0.0f),m_vy(0.0f)
+	, m_direc(RIGHT)
 {
-	//ランダムで初期値を決める
-	m_x = 200;
-	m_y = 400;
-	//初期移動方向
-	m_vx = 0.0f;
-	m_vy = 0.0f;
-
 	//HEROオブジェクトの各当たり判定の属性をバラバラにする
 	static int count = 0;
 	count++;
@@ -37,10 +33,12 @@ void CHero::Action()
 	if (Input::KeyPush(VK_LEFT))
 	{
 		m_x -= 5.0f;
+		m_direc = LEFT;
 	}
 	else if (Input::KeyPush(VK_RIGHT))
 	{
 		m_x += 5.0f;
+		m_direc = RIGHT;
 	}
 
 
@@ -51,5 +49,20 @@ void CHero::Action()
 void CHero::Draw()
 {
 	//描画
-	Draw::Draw2D(0, m_x, m_y);
+	if (Input::KeyPush(VK_LEFT))
+	{
+		Draw::Draw2D(3, m_x, m_y);
+	}
+	else if (Input::KeyPush(VK_RIGHT))
+	{
+		Draw::Draw2D(2, m_x, m_y);
+	}
+	else if (m_direc == RIGHT)
+	{
+		Draw::Draw2D(0, m_x, m_y);
+	}
+	else if (m_direc == LEFT)
+	{
+		Draw::Draw2D(1, m_x, m_y);
+	}
 }
