@@ -7,7 +7,7 @@
 CHero::CHero()
 	:m_x(200),m_y(400)
 	,m_vx(0.0f),m_vy(0.0f)
-	, m_direc(RIGHT)
+	, m_direc(RIGHT), m_down(false)
 {
 	//HEROオブジェクトの各当たり判定の属性をバラバラにする
 	static int count = 0;
@@ -41,6 +41,19 @@ void CHero::Action()
 		m_direc = RIGHT;
 	}
 
+	//spaceキー入力でジャンプ
+	if (Input::KeyPush(VK_SPACE) == true)
+	{
+		if (m_down == false)
+		{
+			m_vy = -20;
+		}
+	}
+
+	//自由落下運動
+	m_vy += 9.8 / (16.0f);
+
+	m_y += m_vy;
 
 	//当たり判定の位置更新
 	m_p_hit_box->SetPos(m_x, m_y);
@@ -64,6 +77,10 @@ void CHero::Draw()
 	else if (Input::KeyPush('C'))
 	{
 		Draw::Draw2D(5, m_x, m_y);
+	}
+	else if (Input::KeyPush(VK_SPACE))
+	{
+		Draw::Draw2D(6, m_x, m_y);
 	}
 	else if (m_direc == RIGHT)
 	{

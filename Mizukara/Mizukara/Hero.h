@@ -26,5 +26,7 @@ private:
 	float m_vy;
 	bool m_direc;//Œü‚«
 
+	bool m_down;//Õ“ËŠm”F—p
+
 	HitBox* m_p_hit_box;//“–‚½‚è”»’è
 };
