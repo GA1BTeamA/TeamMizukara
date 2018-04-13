@@ -135,3 +135,47 @@ bool CCollision::HitAB(float ax, float ay, float aw, float ah, float bx, float b
 	//衝突していない
 	return false;
 }
+
+//座標 p1,p2　を結ぶ線分と座標 p3,p4 を結ぶ線分が交差しているかを調べる
+//ただし、線分が重なっている場合(3点、4点が一直線上にある)、「交差している」、と判定する
+bool HitBox::IsLinecross(Point p1, Point p2, Point p3, Point p4)
+{
+//ラフチェック
+	//X座標によるチェック
+	if (p1.x <= p2.x)
+	{
+		if ((p1.x < p3.x && p1.x < p4.x) || (p2.x > p3.x && p2.x > p4.x))
+		{
+			return false;
+		}
+		else if ((p2.x < p3.x && p2.x < p4.x) || (p1.x > p3.x && p1.x > p4.x))
+		{
+			return false;
+		}
+	}
+
+	//Y座標によるチェック
+	if (p1.y >= p2.y)
+	{
+		if ((p1.y < p3.y && p1.y < p4.y) || (p2.y > p3.y&&p2.y > p4.y))
+		{
+			return false;
+		}
+		else if ((p2.y < p3.y && p2.y < p4.y) || (p1.y > p3.y && p1.y > p4.y))
+		{
+			return false;
+		}
+	}
+
+//ラフチェックではじかれなかった分をチェックする
+	if (((p1.x - p2.x)*(p3.y - p1.y) + (p1.y - p2.y)*(p1.x - p3.x))*
+		((p1.x - p2.x)*(p4.y - p1.y) + (p1.y - p2.y)*(p1.x - p4.x)) > 0)
+	{
+		return false;
+	}
+	if (((p3.x - p4.x)*(p1.y - p3.y) + (p3.y - p4.y)*(p3.x - p1.x))*
+		((p3.x - p4.x)*(p2.y - p3.y) + (p3.y - p4.y)*(p3.x - p2.x)) > 0)
+	{
+		return false;
+	}
+}

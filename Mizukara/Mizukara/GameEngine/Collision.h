@@ -7,6 +7,13 @@
 #include "TaskSystem.h"
 using namespace std;
 
+class Point
+{
+public:
+	double x;
+	double y;
+};
+
 //衝突オブジェクトクラス
 class HitBox
 {
@@ -33,6 +40,9 @@ public:
 	void SetElement(int element) { m_element = element; }				//属性セット
 	void SetInvisible(bool invisible) { m_ls_invisible = invisible; }	//無敵セット
 	HitBox** GetHitData() { return m_hit; }	//当たった相手のヒットボックス情報取得
+
+	bool IsLinecross(Point p1, Point p2, Point p3, Point p4);
+
 private:
 	//削除フラグ
 	bool ls_delete;
@@ -73,10 +83,3 @@ private:
 	static list<shared_ptr<HitBox>>* m_hit_box_list;
 
 }Collision;
-
-class Point
-{
-public:
-	double x;
-	double y;
-};
