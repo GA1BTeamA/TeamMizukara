@@ -21,6 +21,11 @@
 #include "Collision.h"
 
 //デバッグ用オブジェクトヘッダ---------------
+#include "..\Title.h"
+#include "..\Hero.h"
+#include "..\Tank.h"
+#include "..\Background.h"
+#include "..\BucketMeter.h"
 #include "..\SceneMain.h"
 
 //削除されていないメモリを出力にダンプする---
@@ -40,8 +45,17 @@
 #pragma comment(lib,"d3dCompiler.lib")
 
 //構造体-------------------
+/*enum Scene
+{
+	TITLE = 10,
+	TITLE_MAIN = 20,
+	GAME = 30,
+	GAME_MAIN=40,
+};*/
+
 //グローバル変数--------------
 bool g_ls_game_end = false;	//スレッド用ゲーム終了フラグ
+int g_SceneNumber = TITLE;//ゲーム画面フラグ
 
 //プロトタイプ宣言------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//ウィンドウプロジーシャー
@@ -54,6 +68,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
+	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
 	Draw::LoadImage(0, L"Images\\Player1.png");//0番目に"Player1.png"を読み込み
 	Draw::LoadImage(1, L"Images\\Player2.png");//1番目に"Player2.png"を読み込み
 	Draw::LoadImage(2, L"Images\\Player3.png");//2番目に"Player3.png"を読み込み
@@ -95,6 +110,57 @@ unsigned __stdcall GameMainSled(void *p)
 
 		TaskSystem::ListDraw();		//リスト内のドロー実行
 		Collision::DrawDebug();
+
+		CTitle* title;
+		CHero* hero;
+		CTank* tank;
+		CBackground* background;
+		CBucketMeter* bucketmeter;
+
+		switch (g_SceneNumber)
+		{
+		case TITLE://タイトル初期化
+			title = new CTitle();
+			title->m_priority = 100;
+			TaskSystem::InsertObj(title);
+			g_SceneNumber = TITLE_MAIN;
+			break;
+
+		case TITLE_MAIN://タイトル
+			break;
+
+		case GAME://ゲーム画面初期化
+
+		   /* hero = new CHero();
+			hero->m_priority = 90;
+			TaskSystem::InsertObj(hero);
+
+		    tank = new CTank();
+			tank->m_priority = 80;
+			TaskSystem::InsertObj(tank);*/
+
+			background = new CBackground();
+			background->m_priority = 10;
+			TaskSystem::InsertObj(background);
+
+			hero = new CHero();
+			hero->m_priority = 90;
+			TaskSystem::InsertObj(hero);
+
+			tank = new CTank();
+			tank->m_priority = 80;
+			TaskSystem::InsertObj(tank);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_priority = 20;
+			TaskSystem::InsertObj(bucketmeter);
+			g_SceneNumber = GAME_MAIN;
+			break;
+
+		case GAME_MAIN:
+			break;
+
+		}
 
 		//レンダリング終了
 		Dev::GetSwapChain()->Present(1, 0);//60FPSでバックバッファとプライマリバッファの交換

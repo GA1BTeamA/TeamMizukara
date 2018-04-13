@@ -6,15 +6,17 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//主人公クラス
-class CBucketMeter : public CObj
+//タンククラス
+class CTitle : public CObj
 {
 public:
-	CBucketMeter();
-	~CBucketMeter();
+	CTitle();
+	~CTitle();
 	void Action();
 	void Draw();
 private:
 	float m_x; //位置
 	float m_y;
+
+	bool key_flag;  //キーが押されているかチェック用
 };

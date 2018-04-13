@@ -3,6 +3,7 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "SceneMain.h"
+#include "Title.h"
 #include "Hero.h"
 #include "Tank.h"
 #include "Background.h"
@@ -12,7 +13,11 @@
 
 SceneMain::SceneMain()
 {
-	CHero* hero = new CHero();
+	/*CTitle* title = new CTitle();
+	title->m_priority = 100;
+	TaskSystem::InsertObj(title);*/
+	
+	/*CHero* hero = new CHero();
 	hero->m_priority = 90;
 	TaskSystem::InsertObj(hero);
 
@@ -26,11 +31,8 @@ SceneMain::SceneMain()
 
 	CBucketMeter* bucketmeter = new CBucketMeter();
 	bucketmeter->m_priority = 20;
-	TaskSystem::InsertObj(bucketmeter);
-
-	CObjGround* ground = new CObjGround();
-	ground->m_priority = 10;
-	TaskSystem::InsertObj(ground);
+	TaskSystem::InsertObj(bucketmeter);*/
+	
 }
 
 
