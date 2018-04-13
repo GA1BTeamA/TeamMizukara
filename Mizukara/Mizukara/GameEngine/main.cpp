@@ -140,7 +140,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	Draw::InitPolygonRender();//ポリゴン表示環境の初期化
 	TaskSystem::InitTaskSystem();//タスクシステム初期化
 	Font::InitFontTex();//フォント初期化
-	Collision::InitHitBox();//コリジョンの初期化
+	Collision::InitHitLine();//コリジョンの初期化
 	//リソース読み込み-------------
 	HANDLE handoru[2];
 	handoru[0] = (HANDLE)_beginthreadex(NULL, 0, TextureLoadSled, NULL, 0, NULL);//テクスチャ読み込み
@@ -176,7 +176,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	CloseHandle(game_handoru);//ハンドルを閉じる
 
 	//ゲームシステム破棄
-	Collision::DeleteHitBox();//コリジョンの破棄
+	Collision::DeleteHitLine();//コリジョンの破棄
 	Font::DeleteFontTex();//フォントの破棄
 	TaskSystem::DeleteTaskSystem();//タスクシステムの破棄
 	Draw::DeletePolygonRender();//ポリゴン表示環境の破棄

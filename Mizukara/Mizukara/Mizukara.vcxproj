@@ -133,6 +133,7 @@
     <ClCompile Include="LineCollision.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ObjGround.cpp" />
     <ClCompile Include="SceneMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -150,6 +151,7 @@
     <ClInclude Include="GameEngine\TaskSystem.h" />
     <ClInclude Include="GameEngine\WindowCreate.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="ObjGround.h" />
     <ClInclude Include="SceneMain.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>

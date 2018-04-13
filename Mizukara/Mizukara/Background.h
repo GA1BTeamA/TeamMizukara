@@ -6,7 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//タンククラス
+//背景クラス
 class CBackground : public CObj
 {
 public:

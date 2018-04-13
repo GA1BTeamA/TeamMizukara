@@ -7,6 +7,7 @@
 #include "Tank.h"
 #include "Background.h"
 #include "BucketMeter.h"
+#include "ObjGround.h"
 
 
 SceneMain::SceneMain()
@@ -26,6 +27,10 @@ SceneMain::SceneMain()
 	CBucketMeter* bucketmeter = new CBucketMeter();
 	bucketmeter->m_priority = 20;
 	TaskSystem::InsertObj(bucketmeter);
+
+	CObjGround* ground = new CObjGround();
+	ground->m_priority = 10;
+	TaskSystem::InsertObj(ground);
 }
 
 

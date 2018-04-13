@@ -5,66 +5,66 @@
 #include "Collision.h"
 #include "Draw2DPolygon.h"
 
-list<shared_ptr<HitBox>>* CCollision::m_hit_box_list;//リスト　HitBox用
+list<shared_ptr<HitLine>>* CCollision::m_hit_line_list;//リスト　HitLine用
 
 //デバッグ用の当たり判定描画
 void CCollision::DrawDebug()
 {
 	float c[4] = { 1.0f,0.0f,0.0f,0.3f };
-	//listのHitBoxを描画
-	for (auto ip = m_hit_box_list->begin(); ip != m_hit_box_list->end(); ip++)
+	//listのHitLineを描画
+	for (auto ip = m_hit_line_list->begin(); ip != m_hit_line_list->end(); ip++)
 	{
-		CDraw2DPolygon::Draw2DHitBox((*ip)->m_x, (*ip)->m_y, (*ip)->m_w, (*ip)->m_h, c);
+		//CDraw2DPolygon::Draw2DHitBox((*ip)->p1.x, (*ip)->p1.y, (*ip)->p2.x, (*ip)->p2.y, c);
 	}
 }
 
 //当たり判定を作成しリストに登録
-HitBox* CCollision::HitBoxInsert(CObj* p)
+HitLine* CCollision::HitLineInsert(CObj* p)
 {
-	//ヒットボックス作成
-	shared_ptr<HitBox>sp(new HitBox());
+	//ヒットライン作成
+	shared_ptr<HitLine>sp(new HitLine());
 
-	//ヒットボックスに情報を入れる(フレンドなので直接アクセスできる)
+	//ヒットラインに情報を入れる(フレンドなので直接アクセスできる)
 	sp->m_obj = p;		//この当たり判定を持つオブジェクトのアドレス(オブジェクトアドレスは引数pから引っ張ってくる)
-	sp->m_x = -999.0f;	//当たり判定のX位置
-	sp->m_y = -999.0f;	//当たり判定のY位置
-	sp->m_w = 64.0f;	//当たり判定の横幅
-	sp->m_h = 64.0f;	//当たり判定の縦幅
+	sp->p1.x = -999.0f;	//当たり判定のp1.x位置
+	sp->p1.y = -999.0f;	//当たり判定のp1.y位置
+	sp->p2.x = -999.0f;	//当たり判定のp2.x位置
+	sp->p2.y = -999.0f;	//当たり判定のp2.y位置
 	sp->m_ls_invisible = false;//当たり判定の無敵モードOFF
 	sp->m_element = 0;	//当たり判定の属性
 
 	//リストに登録
-	m_hit_box_list->push_back(sp);
+	m_hit_line_list->push_back(sp);
 
 	//spのフレッシュポインタを返す
 	return sp.get();
 }
 
 //初期化
-void CCollision::InitHitBox()
+void CCollision::InitHitLine()
 {
-	m_hit_box_list = new list<shared_ptr<HitBox>>;
-	m_hit_box_list->clear();
+	m_hit_line_list = new list<shared_ptr<HitLine>>;
+	m_hit_line_list->clear();
 }
 
 //破棄
-void CCollision::DeleteHitBox()
+void CCollision::DeleteHitLine()
 {
-	m_hit_box_list->clear();
-	delete m_hit_box_list;
+	m_hit_line_list->clear();
+	delete m_hit_line_list;
 }
 
 //list内の当たり判定全チェック開始
 void CCollision::CheckStart()
 {
 	//リスト内のls_deleteがtrueの要素を削除
-	auto i = m_hit_box_list->begin();
-	while (i != m_hit_box_list->end())
+	auto i = m_hit_line_list->begin();
+	while (i != m_hit_line_list->end())
 	{
 		if (i->get()->ls_delete == true)
 		{
 			//イテレータiの要素を削除
-			i = m_hit_box_list->erase(i);
+			i = m_hit_line_list->erase(i);
 		}
 		else
 		{
@@ -76,47 +76,48 @@ void CCollision::CheckStart()
 	int hit_count = 0;
 
 	//リスト内のヒットボックスで当たり判定を実施
-	for (auto ip_a=m_hit_box_list->begin();ip_a!=m_hit_box_list->end();ip_a++)		//Aヒットボックス
+	for (auto ip_1= m_hit_line_list->begin(); ip_1 != m_hit_line_list->end(); ip_1++)		//Aヒットボックス
 	{
 		//衝突回数の初期化
 		hit_count = 0;
 		//Aの情報の衝突情報の初期化
 		for (int i = 0; i < 10; i++)
 		{
-			(*ip_a)->m_hit[i] = nullptr;
+			(*ip_1)->m_hit[i] = nullptr;
 		}
 
 		//AのHitboxの当たり判定無視チェック
 		//無敵
-		if ((*ip_a)->m_ls_invisible)
+		if ((*ip_1)->m_ls_invisible)
 			continue;
 
-		for (auto ip_b=m_hit_box_list->begin();ip_b!=m_hit_box_list->end();ip_b++)	//Bヒットボックス
+		for (auto ip_2 = m_hit_line_list->begin(); ip_2 != m_hit_line_list->end(); ip_2++)	//Bヒットボックス
 		{
 			//BのHitboxの当たり判定無視チェック
 			//AとBが同じヒットボックス
-			if (ip_a == ip_b)
+			if (ip_1 == ip_2)
 				continue;
 
 			//無敵
-			if ((*ip_b)->m_ls_invisible)
+			if ((*ip_2)->m_ls_invisible)
+				continue;
+
+			//AとBのヒットボックスがおなじオブジェクト
+			if ((*ip_1)->m_obj == (*ip_2)->m_obj)
 				continue;
 
 			//AとBのヒットボックスが同属性
-			if ((*ip_a)->m_element == (*ip_b)->m_element)
+			if ((*ip_1)->m_element == (*ip_2)->m_element)
 				continue;
 
 			//当たり判定を実施
-			bool ls_hit = HitAB(
-							(*ip_a)->m_x, (*ip_a)->m_y, (*ip_a)->m_w, (*ip_a)->m_h,
-							(*ip_b)->m_x, (*ip_b)->m_y, (*ip_b)->m_w, (*ip_b)->m_h
-			);
+			bool ls_hit = IsLinecross((*ip_1)->p1, (*ip_1)->p2,(*ip_2)->p1, (*ip_2)->p2);
 			//衝突している場合
 			if (ls_hit == true)
 			{
 				//aのヒットボックスに当たっているbのアドレス与える
 				int buffer_count = hit_count % 10;				//m_hit[]をキューバッファとして扱う
-				(*ip_a)->m_hit[buffer_count] = ip_b->get();		//bのアドレス(フレッシュポインタ)を渡す
+				(*ip_1)->m_hit[buffer_count] = ip_2->get();		//bのアドレス(フレッシュポインタ)を渡す
 				hit_count++;
 			}
 		}
@@ -138,11 +139,11 @@ bool CCollision::HitAB(float ax, float ay, float aw, float ah, float bx, float b
 
 //座標 p1,p2　を結ぶ線分と座標 p3,p4 を結ぶ線分が交差しているかを調べる
 //ただし、線分が重なっている場合(3点、4点が一直線上にある)、「交差している」、と判定する
-bool HitBox::IsLinecross(Point p1, Point p2, Point p3, Point p4)
+bool CCollision::IsLinecross(Point p1, Point p2, Point p3, Point p4)
 {
 //ラフチェック
 	//X座標によるチェック
-	if (p1.x <= p2.x)
+	if (p1.x >= p2.x)
 	{
 		if ((p1.x < p3.x && p1.x < p4.x) || (p2.x > p3.x && p2.x > p4.x))
 		{
@@ -178,4 +179,5 @@ bool HitBox::IsLinecross(Point p1, Point p2, Point p3, Point p4)
 	{
 		return false;
 	}
+	return true;
 }

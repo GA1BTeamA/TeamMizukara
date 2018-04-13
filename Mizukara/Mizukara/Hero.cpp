@@ -4,22 +4,19 @@
 
 #include "Hero.h"
 
+//コンストラクタ
 CHero::CHero()
 	:m_x(200),m_y(310)
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false)
 {
-	//HEROオブジェクトの各当たり判定の属性をバラバラにする
-	static int count = 0;
-	count++;
-
-	//ヒットボックス作成()
-	m_p_hit_box = Collision::HitBoxInsert(this);
-	//作成したヒットボックスの値を設定
-	m_p_hit_box->SetPos(m_x, m_y);
-	m_p_hit_box->SetWH(60.0f, 100.0f);
-	m_p_hit_box->SetElement(count);		//属性をcountにする
-	m_p_hit_box->SetInvisible(false);	//無敵モード無効
+	//ヒットライン作成
+	m_p_hit_line = Collision::HitLineInsert(this);
+	//作成したヒットラインの値を設定
+	m_p_hit_line->SetPos1(m_x, m_y);
+	m_p_hit_line->SetPos2(m_x, m_y+100);
+	m_p_hit_line->SetElement(0);		//属性を0にする
+	m_p_hit_line->SetInvisible(false);	//無敵モード無効
 }
 
 CHero::~CHero()
@@ -29,6 +26,23 @@ CHero::~CHero()
 
 void CHero::Action()
 {
+	//デバッグ用
+	if (Input::KeyPush(VK_UP)) {
+		m_y -= 5.0f;
+
+	}
+	if (Input::KeyPush(VK_DOWN)) {
+		m_y += 5.0f;
+
+	}
+
+	//地面に当たったら、
+	if (m_p_hit_line->GetHitData()[0] != nullptr)
+	{
+		m_x = 0.0f;
+		m_y = 0.0f;
+	}
+
 	//削除実行
 	if (Input::KeyPush(VK_LEFT))
 	{
@@ -70,7 +84,8 @@ void CHero::Action()
 	m_y += m_vy;
 	*/
 	//当たり判定の位置更新
-	m_p_hit_box->SetPos(m_x, m_y);
+	m_p_hit_line->SetPos1(m_x, m_y);
+	m_p_hit_line->SetPos2(m_x, m_y+100);
 }
 
 void CHero::Draw()
@@ -104,4 +119,10 @@ void CHero::Draw()
 	{
 		Draw::Draw2D(1, m_x, m_y);
 	}
+
+	//if (m_p_hit_line->GetHitData()[0]!=nullptr)
+	//{
+	//	Draw::Draw2D(6, m_x, m_y);
+	//}
+
 }
