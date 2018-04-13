@@ -6,6 +6,16 @@
 
 using namespace std;
 
+enum Scene
+{
+	TITLE = 10,
+	TITLE_MAIN = 20,
+	GAME = 30,
+	GAME_MAIN = 40,
+};
+
+//int g_SceneNumber = TITLE;//ゲーム画面フラグ
+
 //オブジェクトクラス
 class CObj
 {
