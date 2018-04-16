@@ -26,6 +26,7 @@
 #include "..\Tank.h"
 #include "..\Background.h"
 #include "..\BucketMeter.h"
+#include "..\ObjGround.h"
 #include "..\SceneMain.h"
 
 //削除されていないメモリを出力にダンプする---
@@ -116,6 +117,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CTank* tank;
 		CBackground* background;
 		CBucketMeter* bucketmeter;
+		CObjGround* ground;
 
 		switch (g_SceneNumber)
 		{
@@ -154,6 +156,10 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_priority = 20;
 			TaskSystem::InsertObj(bucketmeter);
+
+			ground = new CObjGround();
+			ground->m_priority = 30;
+			TaskSystem::InsertObj(ground);
 			g_SceneNumber = GAME_MAIN;
 			break;
 
@@ -215,7 +221,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	CloseHandle(handoru[0]);//ハンドル[0]を閉じる
 	CloseHandle(handoru[1]);//ハンドル[1]を閉じる
 
-	Audio::StartLoopMusic();//バックミュージックスタート
+	//Audio::StartLoopMusic();//バックミュージックスタート
 
 
 	//デバッグ用オブジェクト作成

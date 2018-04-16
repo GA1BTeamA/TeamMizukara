@@ -12,7 +12,7 @@ CObjGround::CObjGround()
 	//作成したヒットボックスの値を設定
 	m_p_hit_line->SetPos1(m_x, m_y);
 	m_p_hit_line->SetPos2(m_x+800, m_y);
-	m_p_hit_line->SetElement(1);		//属性をcountにする
+	m_p_hit_line->SetElement(1);		//属性を1にする
 	m_p_hit_line->SetInvisible(false);	//無敵モード無効
 }
 
