@@ -28,6 +28,7 @@
 #include "..\BucketMeter.h"
 #include "..\ObjGround.h"
 #include "..\SceneMain.h"
+#include "..\WTM.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -70,7 +71,6 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
 	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
-	Draw::LoadImageW(15, L"Images\\description.png");//13番目に"OperationDescription.png"を読み込み
 	Draw::LoadImage(0, L"Images\\Player1.png");//0番目に"Player1.png"を読み込み
 	Draw::LoadImage(1, L"Images\\Player2.png");//1番目に"Player2.png"を読み込み
 	Draw::LoadImage(2, L"Images\\Player3.png");//2番目に"Player3.png"を読み込み
@@ -78,6 +78,13 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(4, L"Images\\Player5.png");//4番目に"Player5.png"を読み込み
 	Draw::LoadImage(5, L"Images\\Player6.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
+
+	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
+	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
+	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
+	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
+	Draw::LoadImage(14, L"Images\\muzusibuki.png");//14番目に"muzusibuki.pngを読み込み
+	Draw::LoadImage(16, L"Images\\WTM.png");//14番目に"muzusibuki.pngを読み込み
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
@@ -87,7 +94,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 unsigned __stdcall MusicLoadSled(void *p)
 {
 	//ミュージック情報取得
-	Audio::LoadBackMusic("Sounds\\Test.ogg");
+	//Audio::LoadBackMusic("Sounds\\Test.ogg");
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
@@ -119,6 +126,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CBackground* background;
 		CBucketMeter* bucketmeter;
 		CObjGround* ground;
+		CWTM* wtm;
 
 		switch (g_SceneNumber)
 		{
@@ -161,6 +169,11 @@ unsigned __stdcall GameMainSled(void *p)
 			ground = new CObjGround();
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
+
+			wtm = new CWTM();
+			wtm->m_priority = 70;
+			TaskSystem::InsertObj(wtm);
+
 			g_SceneNumber = GAME_MAIN;
 			break;
 
@@ -208,7 +221,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	//ゲーム各システム初期化----
 	CWindowCreate::NewWindow(800, 600, name, hInstance);//ウィンドウ作成
 	CDeviceCreate::InitDevice(CWindowCreate::GethWnd(), 800, 600);//DirectX Deviceの初期化
-	Audio::InitAudio();//オーディオ作成
+	//Audio::InitAudio();//オーディオ作成
 	Input::InitInput();//入力用のクラス初期化
 	Draw::InitPolygonRender();//ポリゴン表示環境の初期化
 	TaskSystem::InitTaskSystem();//タスクシステム初期化
@@ -254,7 +267,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	TaskSystem::DeleteTaskSystem();//タスクシステムの破棄
 	Draw::DeletePolygonRender();//ポリゴン表示環境の破棄
 	CDeviceCreate::ShutDown();//DirectXの環境破棄
-	Audio::DeleteAudio();//オーディオ環境の破棄
+	//Audio::DeleteAudio();//オーディオ環境の破棄
 
 	CoUninitialize();
 	//この時点で開放されていないメモリの情報の表示

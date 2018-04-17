@@ -14,6 +14,12 @@ enum Scene
 	GAME_MAIN = 40,
 };
 
+enum {
+	LEFT,
+	RIGHT,
+};
+
+
 //int g_SceneNumber = TITLE;//ゲーム画面フラグ
 
 //オブジェクトクラス
