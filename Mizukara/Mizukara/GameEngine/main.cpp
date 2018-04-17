@@ -28,6 +28,7 @@
 #include "..\BucketMeter.h"
 #include "..\ObjGround.h"
 #include "..\SceneMain.h"
+#include "..\WTM.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -66,11 +67,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//
 unsigned __stdcall TextureLoadSled(void *p)
 {
 	//イメージ読み込み
-	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
-	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
-	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
-	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
-	Draw::LoadImage(14, L"Images\\muzusibuki.png");//14番目に"muzusibuki.pngを読み込み
 	Draw::LoadImage(0, L"Images\\Player1.png");//0番目に"Player1.png"を読み込み
 	Draw::LoadImage(1, L"Images\\Player2.png");//1番目に"Player2.png"を読み込み
 	Draw::LoadImage(2, L"Images\\Player3.png");//2番目に"Player3.png"を読み込み
@@ -78,6 +74,13 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(4, L"Images\\Player5.png");//4番目に"Player5.png"を読み込み
 	Draw::LoadImage(5, L"Images\\Player6.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
+
+	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
+	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
+	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
+	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
+	Draw::LoadImage(14, L"Images\\muzusibuki.png");//14番目に"muzusibuki.pngを読み込み
+	Draw::LoadImage(16, L"Images\\WTM.png");//14番目に"muzusibuki.pngを読み込み
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
@@ -119,6 +122,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CBackground* background;
 		CBucketMeter* bucketmeter;
 		CObjGround* ground;
+		CWTM* wtm;
 
 		switch (g_SceneNumber)
 		{
@@ -161,6 +165,11 @@ unsigned __stdcall GameMainSled(void *p)
 			ground = new CObjGround();
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
+
+			wtm = new CWTM();
+			wtm->m_priority = 70;
+			TaskSystem::InsertObj(wtm);
+
 			g_SceneNumber = GAME_MAIN;
 			break;
 
