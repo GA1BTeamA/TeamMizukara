@@ -17,7 +17,9 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
-	bool m_cursor; //カーソル位置
+	unsigned int m_cursor; //カーソル位置
+	unsigned int m_BefCursor; //前のカーソル位置
+	bool m_IsDrawOpe;//操作説明描画
 
 	bool key_flag;  //キーが押されているかチェック用
 };
