@@ -17,6 +17,7 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
+	bool m_cursor; //カーソル位置
 
 	bool key_flag;  //キーが押されているかチェック用
 };

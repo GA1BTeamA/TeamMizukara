@@ -6,11 +6,6 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-enum {
-	LEFT,
-	RIGHT,
-};
-
 //ålŒöƒNƒ‰ƒX
 class CHero : public CObj
 {
