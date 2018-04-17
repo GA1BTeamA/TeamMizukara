@@ -5,7 +5,7 @@
 #include "ObjGround.h"
 
 CObjGround::CObjGround()
-	:m_x(0), m_y(415)
+	:m_x(0), m_y(405)
 {
 	//ヒットボックス作成()
 	m_p_hit_line = Collision::HitLineInsert(this);
@@ -28,5 +28,5 @@ void CObjGround::Action()
 
 void CObjGround::Draw()
 {
-	//Draw::Draw2D(12, m_x, m_y);
+	Draw::Draw2D(17, 0, 0);
 }

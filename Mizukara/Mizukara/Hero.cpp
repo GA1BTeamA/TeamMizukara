@@ -6,7 +6,7 @@
 
 //コンストラクタ
 CHero::CHero()
-	:m_x(200),m_y(310)
+	:m_x(200),m_y(300)
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false)
 {
@@ -41,6 +41,7 @@ void CHero::Action()
 	{
 		m_x = 0.0f;
 		m_y = 0.0f;
+		//m_vy = 0;
 	}
 
 	//削除実行
@@ -78,11 +79,11 @@ void CHero::Action()
 		}
 	}
 
-	/*//自由落下運動
-	m_vy += 9.8 / (16.0f);
+	////自由落下運動
+	//m_vy += 9.8 / (16.0f);
 
-	m_y += m_vy;
-	*/
+	//m_y += m_vy;
+	//
 	//当たり判定の位置更新
 	m_p_hit_line->SetPos1(m_x, m_y);
 	m_p_hit_line->SetPos2(m_x, m_y+100);
