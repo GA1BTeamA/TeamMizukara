@@ -5,8 +5,10 @@
 #include "Title.h"
 extern int g_SceneNumber;
 
+//コンストラクタ
 CTitle::CTitle()
 	:m_x(0), m_y(0)
+	,key_flag(false)
 {
 
 }
@@ -31,6 +33,20 @@ void CTitle::Action()
 	{
 		key_flag = true;
 	}
+
+	if (Input::KeyPush('S') == true)
+	{
+		if (key_flag)
+		{
+			is_delete = true;
+			key_flag = false;
+		}
+	}
+	else
+	{
+		key_flag = true;
+	}
+
 }
 
 void CTitle::Draw()
