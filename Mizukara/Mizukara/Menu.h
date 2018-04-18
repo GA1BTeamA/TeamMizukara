@@ -5,27 +5,25 @@
 #include "GameEngine\\Audio.h"
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
-#include "Menu.h"
 
-//主人公クラス
-class CHero : public CObj
+//タンククラス
+class CMenu : public CObj
 {
 public:
-	CHero();
-	~CHero();
+	CMenu();
+	~CMenu();
 	void Action();
 	void Draw();
+
 private:
 	float m_x; //位置
 	float m_y;
-	float m_vx;//移動ベクトル
-	float m_vy;
-	bool m_direc;//向き
-	bool m_IsMenu;//メニューを開いているか
+	unsigned int m_cursor; //カーソル位置
+	unsigned int m_BefCursor; //前のカーソル位置
 
-	bool m_down;//衝突確認用
+	bool m_IsContinue;//やり直し
+	bool m_IsRetire;//リタイア
+	bool m_IsRedo;//やり直し
 
-	HitLine* m_p_hit_line;//当たり判定
-
-	CMenu* menu;
+	bool key_flag;  //キーが押されているかチェック用
 };

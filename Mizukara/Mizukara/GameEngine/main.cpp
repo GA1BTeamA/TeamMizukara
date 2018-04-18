@@ -29,6 +29,7 @@
 #include "..\ObjGround.h"
 #include "..\SceneMain.h"
 #include "..\WTM.h"
+#include "..\Menu.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -58,6 +59,7 @@
 //グローバル変数--------------
 bool g_ls_game_end = false;	//スレッド用ゲーム終了フラグ
 int g_SceneNumber = TITLE;//ゲーム画面フラグ
+bool g_key_flag=true;
 
 //プロトタイプ宣言------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//ウィンドウプロジーシャー
@@ -80,7 +82,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
 	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
 	Draw::LoadImage(14, L"Images\\muzusibuki.png");//14番目に"muzusibuki.pngを読み込み
-	Draw::LoadImage(16, L"Images\\WTM.png");//14番目に"muzusibuki.pngを読み込み
+	Draw::LoadImage(15, L"Images\\Menu.png");//15番目に"Menu.pngを読み込み
+	Draw::LoadImage(16, L"Images\\WTM.png");//16番目に"WTM.pngを読み込み
 	Draw::LoadImage(17, L"Images\\description.png");//17番目に"description.pngを読み込み
 	Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -124,6 +127,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CBucketMeter* bucketmeter;
 		CObjGround* ground;
 		CWTM* wtm;
+		
 
 		switch (g_SceneNumber)
 		{

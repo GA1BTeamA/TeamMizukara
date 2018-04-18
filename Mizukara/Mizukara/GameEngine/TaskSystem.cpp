@@ -90,3 +90,15 @@ void CTaskSystem::ListDraw()
 	}
 }
 
+//オブジェクト情報取得
+CObj* CTaskSystem::GetObj(unsigned int n)
+{
+	for (auto itr = m_task_list->begin(); itr != m_task_list->end(); itr++)
+	{
+		if ((*itr)->GetName() == n)
+			return (*itr).get();
+	}
+
+	return NULL;
+}
+

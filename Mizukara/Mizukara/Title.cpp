@@ -76,7 +76,8 @@ void CTitle::Action()
 		}
 	}
 	//カーソル位置が下なら
-	else {
+	else 
+	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
 			if (key_flag)
@@ -95,7 +96,6 @@ void CTitle::Action()
 void CTitle::Draw()
 {
 	Draw::Draw2D(13, m_x, m_y);
-	
 
 	if (m_cursor == LEFT)
 	{
@@ -105,11 +105,13 @@ void CTitle::Draw()
 	{
 		Draw::Draw2D(14,450, 280);
 	}
-	else {
+	else 
+	{
 		Draw::Draw2D(14, 280, 440);
 	}
 
-	if (m_IsDrawOpe) {
+	if (m_IsDrawOpe) 
+	{
 		Draw::Draw2D(17, 0, 0);
 	}
 }

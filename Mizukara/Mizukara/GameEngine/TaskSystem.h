@@ -20,6 +20,11 @@ enum {
 	UNDER,
 };
 
+//オブジェクトの名前列挙
+enum {
+	PLAYER,
+	MENU,
+};
 
 //int g_SceneNumber = TITLE;//ゲーム画面フラグ
 
@@ -36,6 +41,9 @@ public:
 	virtual void Action() = 0;
 	virtual void Draw() = 0;
 
+	unsigned int GetName() { return m_name; };
+
+	unsigned int m_name;		//オブジェクトの名前
 	bool is_delete;				//削除フラグ
 	unsigned long m_priority;	//描画優先順位
 };
@@ -50,6 +58,7 @@ public:
 	static void InsertObj(CObj* obj);	//追加
 	static void ListAction();			//リスト内のアクション実行
 	static void ListDraw();				//リスト内のドロー実行
+	static CObj* GetObj(unsigned int n);
 
 	static void InitTaskSystem();	//初期化
 	static void DeleteTaskSystem();	//破棄
