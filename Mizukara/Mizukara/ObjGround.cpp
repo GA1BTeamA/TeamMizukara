@@ -5,7 +5,7 @@
 #include "ObjGround.h"
 
 CObjGround::CObjGround()
-	:m_x(0), m_y(405)
+	:m_x(0), m_y(400)
 {
 	//ヒットボックス作成()
 	m_p_hit_line = Collision::HitLineInsert(this);
@@ -14,6 +14,15 @@ CObjGround::CObjGround()
 	m_p_hit_line->SetPos2(m_x+800, m_y);
 	m_p_hit_line->SetElement(1);		//属性を1にする
 	m_p_hit_line->SetInvisible(false);	//無敵モード無効
+
+	//ヒットボックス作成()
+	m_p_hit_line = Collision::HitLineInsert(this);
+	//作成したヒットボックスの値を設定
+	m_p_hit_line->SetPos1(m_x+400, m_y);
+	m_p_hit_line->SetPos2(m_x + 800, m_y-100);
+	m_p_hit_line->SetElement(1);		//属性を1にする
+	m_p_hit_line->SetInvisible(false);	//無敵モード無効
+
 }
 
 CObjGround::~CObjGround()

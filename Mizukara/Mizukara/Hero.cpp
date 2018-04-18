@@ -37,12 +37,26 @@ void CHero::Action()
 	}
 
 	//地面に当たったら、
-	if (m_p_hit_line->GetHitData()[0] != nullptr)
+	for (int i = 0; i < 10; i++)
 	{
-		m_x = 0.0f;
-		m_y = 0.0f;
-		//m_vy = 0;
+		if (m_p_hit_line->GetHitData()[i] != nullptr)
+		{
+			if (m_p_hit_line->GetElement() == 0)
+			{
+				m_y = 300;
+				m_vy = 0;
+			}
+			else if (m_p_hit_line->GetElement() == 1)
+			{
+				//m_x -= 1.0f;
+			}
+		}
 	}
+
+	//if (m_p_hit_line->GetHitData()[1] != nullptr)
+	//{
+	//	m_x -= 1.0f;
+	//}
 
 	//削除実行
 	if (Input::KeyPush(VK_LEFT))
@@ -75,15 +89,15 @@ void CHero::Action()
 	{
 		if (m_down == false)
 		{
-			m_vy = -20;
+			m_vy = -5;
 		}
 	}
 
-	////自由落下運動
-	//m_vy += 9.8 / (16.0f);
+	//自由落下運動
+	m_vy += 9.8 / (16.0f);
 
-	//m_y += m_vy;
-	//
+	m_y += m_vy;
+
 	//当たり判定の位置更新
 	m_p_hit_line->SetPos1(m_x, m_y);
 	m_p_hit_line->SetPos2(m_x, m_y+100);
