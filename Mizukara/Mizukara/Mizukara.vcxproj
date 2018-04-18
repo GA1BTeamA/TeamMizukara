@@ -130,6 +130,7 @@
     <ClCompile Include="GameEngine\TaskSystem.cpp" />
     <ClCompile Include="GameEngine\WindowCreate.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="StageSelecto.cpp" />
     <ClCompile Include="WTM.cpp" />
     <ClCompile Include="ObjGround.cpp" />
     <ClCompile Include="SceneMain.cpp">
@@ -150,6 +151,7 @@
     <ClInclude Include="GameEngine\TaskSystem.h" />
     <ClInclude Include="GameEngine\WindowCreate.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="StageSelecto.h" />
     <ClInclude Include="WTM.h" />
     <ClInclude Include="ObjGround.h" />
     <ClInclude Include="SceneMain.h">
