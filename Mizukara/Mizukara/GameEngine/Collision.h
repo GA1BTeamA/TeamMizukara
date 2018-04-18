@@ -36,12 +36,13 @@ public:
 	}
 
 	void SetDelete(bool d) { ls_delete = d; }	//削除フラグセット
-	void SetPos1(float x, float y) { p1.x = x; p1.y = y; }					//位置セット
+	void SetPos1(float x, float y) { p1.x = x; p1.y = y; }				//位置セット
 	void SetPos2(float x, float y) { p2.x = x; p2.y = y; }
-	//void SetWH(float w, float h) { m_w = w; m_h = h; }					//　幅セット
+	//void SetWH(float w, float h) { m_w = w; m_h = h; }				//幅セット
 	void SetElement(int element) { m_element = element; }				//属性セット
 	void SetInvisible(bool invisible) { m_ls_invisible = invisible; }	//無敵セット
 	HitLine** GetHitData() { return m_hit; }	//当たった相手のヒットボックス情報取得
+	int GetElement() { return m_element; }  //属性取得用
 
 
 private:
