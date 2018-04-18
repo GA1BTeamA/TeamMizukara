@@ -12,6 +12,8 @@ enum Scene
 	TITLE_MAIN = 20,
 	GAME = 30,
 	GAME_MAIN = 40,
+	STAGESELECTO=50,
+	STAGESELECTO_MAIN,
 };
 
 enum {

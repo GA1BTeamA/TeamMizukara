@@ -22,6 +22,7 @@
 
 //デバッグ用オブジェクトヘッダ---------------
 #include "..\Title.h"
+#include "..\StageSelecto.h"
 #include "..\Hero.h"
 #include "..\Tank.h"
 #include "..\Background.h"
@@ -58,6 +59,7 @@
 //グローバル変数--------------
 bool g_ls_game_end = false;	//スレッド用ゲーム終了フラグ
 int g_SceneNumber = TITLE;//ゲーム画面フラグ
+bool g_key_flag = true;//キーフラグ
 
 //プロトタイプ宣言------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//ウィンドウプロジーシャー
@@ -80,9 +82,10 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
 	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
 	Draw::LoadImage(14, L"Images\\muzusibuki.png");//14番目に"muzusibuki.pngを読み込み
-	Draw::LoadImage(16, L"Images\\WTM.png");//14番目に"muzusibuki.pngを読み込み
+	Draw::LoadImage(16, L"Images\\WTM.png");//16番目に"muzusibuki.pngを読み込み
 	Draw::LoadImage(17, L"Images\\description.png");//17番目に"description.pngを読み込み
 	Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
+	Draw::LoadImage(19, L"Images\\StageSelecto.png");//19番目に"StageSelecto.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -118,6 +121,7 @@ unsigned __stdcall GameMainSled(void *p)
 		Collision::DrawDebug();
 
 		CTitle* title;
+		CStageSelecto* stageselecto;
 		CHero* hero;
 		CTank* tank;
 		CBackground* background;
@@ -135,6 +139,16 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case TITLE_MAIN://タイトル
+			break;
+
+		case STAGESELECTO://ステージセレクト初期化
+			stageselecto = new CStageSelecto();
+			stageselecto->m_priority = 110;
+			TaskSystem::InsertObj(stageselecto);
+			g_SceneNumber = STAGESELECTO_MAIN;
+			break;
+
+		case STAGESELECTO_MAIN://ステージセレクト
 			break;
 
 		case GAME://ゲーム画面初期化
