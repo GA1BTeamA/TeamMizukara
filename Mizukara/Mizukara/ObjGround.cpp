@@ -28,5 +28,5 @@ void CObjGround::Action()
 
 void CObjGround::Draw()
 {
-	Draw::Draw2D(17, 0, 0);
+	Draw::Draw2D(18, 0, 0);
 }
