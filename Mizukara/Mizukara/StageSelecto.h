@@ -7,11 +7,11 @@
 #include "GameEngine\\Collision.h"
 
 //タンククラス
-class CTitle : public CObj
+class CStageSelecto : public CObj
 {
 public:
-	CTitle();
-	~CTitle();
+	CStageSelecto();
+	~CStageSelecto();
 	void Action();
 	void Draw();
 private:
@@ -19,7 +19,6 @@ private:
 	float m_y;
 	unsigned int m_cursor; //カーソル位置
 	unsigned int m_BefCursor; //前のカーソル位置
-	bool m_IsDrawOpe;//操作説明描画
 	bool m_IsDrawStageSelecto;//ステージセレクト描画
 
 	bool key_flag;  //キーが押されているかチェック用

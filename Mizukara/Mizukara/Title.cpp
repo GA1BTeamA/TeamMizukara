@@ -4,6 +4,7 @@
 
 #include "Title.h"
 extern int g_SceneNumber;
+extern bool g_key_flag;
 
 //コンストラクタ
 CTitle::CTitle()
@@ -46,49 +47,55 @@ void CTitle::Action()
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
-			if (key_flag)
+			if (g_key_flag)
 			{
 				g_SceneNumber = GAME;
 				is_delete = true;
-				key_flag = false;
+				g_key_flag = false;
 			}
 		}
 		else
 		{
-			key_flag = true;
+			g_key_flag = true;
 		}
 	}
 	//カーソル位置が右なら
-	else if(m_cursor==RIGHT)
+	else if (m_cursor == RIGHT)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
-			if (key_flag)
+			if (g_key_flag)
 			{
-				g_SceneNumber = GAME;
+				g_SceneNumber = STAGESELECTO;
 				is_delete = true;
-				key_flag = false;
+				g_key_flag = false;
 			}
+			/*if (key_flag)
+			{
+				m_IsDrawStageSelecto = !(m_IsDrawStageSelecto);
+				key_flag = false;
+			}*/
 		}
 		else
 		{
-			key_flag = true;
+			g_key_flag = true;
 		}
+		
 	}
 	//カーソル位置が下なら
 	else 
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
-			if (key_flag)
+			if (g_key_flag)
 			{
 				m_IsDrawOpe = !(m_IsDrawOpe);
-				key_flag = false;
+				g_key_flag = false;
 			}
 		}
 		else
 		{
-			key_flag = true;
+			g_key_flag = true;
 		}
 	}
 }
@@ -114,4 +121,9 @@ void CTitle::Draw()
 	{
 		Draw::Draw2D(17, 0, 0);
 	}
+
+	/*if (m_IsDrawStageSelecto)
+	{
+		Draw::Draw2D(19, 0, 0);
+	}*/
 }
