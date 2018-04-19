@@ -102,3 +102,15 @@ CObj* CTaskSystem::GetObj(unsigned int n)
 	return NULL;
 }
 
+void CTaskSystem::TaskClear()
+{
+	//リストの先端から末端まで
+	auto BeginObj = m_task_list->begin();
+	for (auto ip = m_task_list->begin(); ip != m_task_list->end(); ip++)
+	{
+		//リスト内のオブジェクトが持つドローメソッドを実行
+		if(ip!=BeginObj)
+			ip->get()->is_delete=true;
+	}
+}
+
