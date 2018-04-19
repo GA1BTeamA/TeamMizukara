@@ -8,7 +8,7 @@ extern bool g_key_flag;
 
 //コンストラクタ
 CStageSelecto::CStageSelecto()
-	:m_x(0), m_y(0), m_cursor(LEFT), m_IsDrawStageSelecto(false)
+	:m_x(0), m_y(0), m_cursor(STAGE1), m_IsDrawStageSelecto(false)
 {
 
 }
@@ -23,37 +23,43 @@ void CStageSelecto::Action()
 	//左を押したら左に
 	if (Input::KeyPush(VK_LEFT) == true)
 	{
-		m_cursor = LEFT;
+		if (m_cursor > 0)
+		{
+			m_cursor--;
+		}
 	}
 	//右を押したら右に
 	else if (Input::KeyPush(VK_RIGHT) == true)
 	{
-		m_cursor = RIGHT;
+		if (m_cursor < 5)
+		{
+			m_cursor++;
+		}
 	}
 	//下を押したら下に
-	else if (Input::KeyPush(VK_DOWN) == true)
+	/*else if (Input::KeyPush(VK_DOWN) == true)
 	{
 		if (m_cursor != UNDER)
 			m_BefCursor = m_cursor;
 		m_cursor = UNDER;
 	}
 
-	else if (Input::KeyPush('K') == true)
+	else if (Input::KeyPush(VK_DOWN) == true)
 	{
 		m_BefCursor = m_cursor;
-		m_cursor = 'K';
+		m_cursor = UNDER_LEFT;
 	}
 
-	else if(Input::KeyPush('L') == true)
+	else if(Input::KeyPush(VK_DOWN) == true)
 	{
 		m_BefCursor = m_cursor;
-		m_cursor = 'L';
-	}
+		m_cursor = UNDER_RIGHT;
+	}*/
 
-	else if(Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
+	/*else if(Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
 	{
-		m_cursor = m_BefCursor;
-	}
+	    m_cursor = m_BefCursor;	
+	}*/
 
 	//カーソル位置が左なら
 	if (m_cursor == LEFT)
@@ -107,7 +113,7 @@ void CStageSelecto::Action()
 		}
 	}
 
-	else if (m_cursor == 'L')
+	else if (m_cursor == UNDER_RIGHT)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
@@ -124,7 +130,7 @@ void CStageSelecto::Action()
 		}
 	}
 
-	else if(m_cursor == 'K')
+	else if(m_cursor == UNDER_LEFT)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
@@ -158,10 +164,10 @@ void CStageSelecto::Draw()
 	else if (m_cursor == UNDER){
 		Draw::Draw2D(14, 280, 220);
 	}
-	else if (m_cursor == 'K') {
+	else if (m_cursor == UNDER_LEFT) {
 		Draw::Draw2D(14, 90, 340);
 	}
-	else if (m_cursor == 'L') {
+	else if (m_cursor == UNDER_RIGHT) {
 		Draw::Draw2D(14, 470, 340);
 	}
 
