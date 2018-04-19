@@ -14,9 +14,12 @@ public:
 	~CObjGround();
 	void Action();
 	void Draw();
+
+	int GetGY() { return m_gy; }  //m_gyŽæ“¾—p
+
 private:
-	float m_x; //ˆÊ’u
-	float m_y;
+	float m_gx; //ˆÊ’u
+	float m_gy;
 
 	HitLine* m_p_hit_line;//“–‚½‚è”»’è
 };

@@ -3,6 +3,7 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "Hero.h"
+#include "ObjGround.h"
 
 extern bool g_key_flag;
 
@@ -32,19 +33,23 @@ void CHero::Action()
 	//メニュー
 	if (Input::KeyPush('Q'))
 	{
-		if (g_key_flag) 
+		if (g_key_flag)
 		{
-			if (m_IsMenu == false) 
+			//メニューオブジェクトを生成
+			if (m_IsMenu == false)
 			{
 				menu = new CMenu();
 				menu->m_priority = 100;
 				TaskSystem::InsertObj(menu);
 				m_IsMenu = true;
 			}
-			else 
+			//メニューオブジェクトを破棄
+			else
 			{
+
+				//オブジェクト取得
 				CMenu* menu = (CMenu*)TaskSystem::GetObj(MENU);
-				if (menu != nullptr) 
+				if (menu != nullptr)
 				{
 					menu->is_delete = true;
 					m_IsMenu = false;
@@ -70,6 +75,8 @@ void CHero::Action()
 
 		}
 
+		CObjGround ground;
+
 		//地面に当たったら、
 		for (int i = 0; i < 10; i++)
 		{
@@ -77,6 +84,7 @@ void CHero::Action()
 			{
 				if (m_p_hit_line->GetElement() == 0)
 				{
+					//m_y = ground.GetGY() - 100;
 					m_y = 300;
 					m_vy = 0;
 				}
@@ -123,7 +131,7 @@ void CHero::Action()
 		{
 			if (m_down == false)
 			{
-				m_vy = -5;
+				m_vy = -8;
 			}
 		}
 

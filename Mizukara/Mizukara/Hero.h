@@ -15,6 +15,8 @@ public:
 	~CHero();
 	void Action();
 	void Draw();
+
+	void MenuDel() { m_IsMenu = false; }
 private:
 	float m_x; //ˆÊ’u
 	float m_y;

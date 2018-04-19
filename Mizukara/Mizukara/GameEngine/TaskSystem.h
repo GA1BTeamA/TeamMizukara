@@ -12,8 +12,10 @@ enum Scene
 	TITLE_MAIN = 20,
 	GAME = 30,
 	GAME_MAIN = 40,
-	STAGESELECTO=50,
+	STAGESELECTO = 50,
 	STAGESELECTO_MAIN,
+	STORY = 60,
+	STORY_MAIN = 70,
 };
 
 enum {
@@ -71,6 +73,7 @@ public:
 	static void ListAction();			//リスト内のアクション実行
 	static void ListDraw();				//リスト内のドロー実行
 	static CObj* GetObj(unsigned int n);
+	static void TaskClear();
 
 	static void InitTaskSystem();	//初期化
 	static void DeleteTaskSystem();	//破棄
