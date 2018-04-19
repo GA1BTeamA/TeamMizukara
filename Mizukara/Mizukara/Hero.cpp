@@ -140,7 +140,6 @@ void CHero::Action()
 		m_p_hit_line->SetPos1(m_x, m_y);
 		m_p_hit_line->SetPos2(m_x, m_y + 100);
 	}
-
 }
 
 void CHero::Draw()

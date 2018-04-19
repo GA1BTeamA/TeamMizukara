@@ -63,6 +63,7 @@ public:
 	static void ListAction();			//リスト内のアクション実行
 	static void ListDraw();				//リスト内のドロー実行
 	static CObj* GetObj(unsigned int n);
+	static void TaskClear();
 
 	static void InitTaskSystem();	//初期化
 	static void DeleteTaskSystem();	//破棄

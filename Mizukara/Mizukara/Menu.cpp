@@ -3,7 +3,10 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "Menu.h"
+#include "Hero.h"
+
 extern int g_SceneNumber;
+extern bool g_key_flag;
 
 //コンストラクタ
 CMenu::CMenu()
@@ -40,6 +43,61 @@ void CMenu::Action()
 	else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
 	{
 		m_cursor = m_BefCursor;
+	}
+
+	//カーソル位置が左なら(続ける)
+	if (m_cursor == LEFT)
+	{
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			if (g_key_flag)
+			{
+				//ヒーローオブジェクト情報取得
+				CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
+				if (hero != nullptr)
+				{
+					hero->MenuDel();
+					is_delete = true;
+				}
+			}
+		}
+		else
+		{
+			g_key_flag = true;
+		}
+	}
+	//カーソル位置が右(リタイア)ならタイトルへ
+	else if (m_cursor == RIGHT)
+	{
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			if (g_key_flag)
+			{
+				g_SceneNumber = TITLE;
+				TaskSystem::TaskClear();
+				g_key_flag = false;
+			}
+		}
+		else
+		{
+			g_key_flag = true;
+		}
+	}
+	//カーソル位置が下なら(やり直し)
+	else if (m_cursor == UNDER)
+	{
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			if (g_key_flag)
+			{
+				g_SceneNumber = GAME;
+				g_key_flag = false;
+			}
+		}
+		else
+		{
+			g_key_flag = true;
+		}
 	}
 }
 

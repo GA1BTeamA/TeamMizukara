@@ -21,7 +21,7 @@ private:
 	unsigned int m_cursor; //カーソル位置
 	unsigned int m_BefCursor; //前のカーソル位置
 
-	bool m_IsContinue;//やり直し
+	bool m_IsContinue;//続ける
 	bool m_IsRetire;//リタイア
 	bool m_IsRedo;//やり直し
 
