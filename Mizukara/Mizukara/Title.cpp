@@ -49,7 +49,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
-				g_SceneNumber = GAME;
+				g_SceneNumber = STORY;
 				is_delete = true;
 				g_key_flag = false;
 			}

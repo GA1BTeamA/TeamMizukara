@@ -35,6 +35,7 @@ void CHero::Action()
 	{
 		if (g_key_flag)
 		{
+			//メニューオブジェクトを生成
 			if (m_IsMenu == false)
 			{
 				menu = new CMenu();
@@ -42,8 +43,11 @@ void CHero::Action()
 				TaskSystem::InsertObj(menu);
 				m_IsMenu = true;
 			}
+			//メニューオブジェクトを破棄
 			else
 			{
+
+				//オブジェクト取得
 				CMenu* menu = (CMenu*)TaskSystem::GetObj(MENU);
 				if (menu != nullptr)
 				{
