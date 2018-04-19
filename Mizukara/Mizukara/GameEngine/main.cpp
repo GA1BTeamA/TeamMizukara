@@ -22,6 +22,7 @@
 
 //デバッグ用オブジェクトヘッダ---------------
 #include "..\Title.h"
+#include "..\ObjStory.h"
 #include "..\StageSelecto.h"
 #include "..\Hero.h"
 #include "..\Tank.h"
@@ -88,6 +89,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(17, L"Images\\description.png");//17番目に"description.pngを読み込み
 	Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
 	Draw::LoadImage(19, L"Images\\StageSelecto.png");//19番目に"StageSelecto.pngを読み込み
+	Draw::LoadImage(20, L"Images\\Story.png");//20番目に"Story.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -123,6 +125,7 @@ unsigned __stdcall GameMainSled(void *p)
 		Collision::DrawDebug();
 
 		CTitle* title;
+		CObjStory* story;
 		CStageSelecto* stageselecto;
 		CHero* hero;
 		CTank* tank;
@@ -142,6 +145,16 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case TITLE_MAIN://タイトル
+			break;
+
+		case STORY:
+			story = new CObjStory();
+			story->m_priority = 100;
+			TaskSystem::InsertObj(story);
+			g_SceneNumber = STORY_MAIN;
+			break;
+
+		case STORY_MAIN:
 			break;
 
 		case STAGESELECTO://ステージセレクト初期化
