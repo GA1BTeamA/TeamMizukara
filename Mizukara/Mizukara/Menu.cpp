@@ -91,6 +91,7 @@ void CMenu::Action()
 			if (g_key_flag)
 			{
 				g_SceneNumber = GAME;
+				TaskSystem::TaskClear();
 				g_key_flag = false;
 			}
 		}

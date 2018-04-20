@@ -22,6 +22,16 @@ enum {
 	LEFT,
 	RIGHT,
 	UNDER,
+	UNDER_LEFT,
+	UNDER_RIGHT,
+};
+
+enum {
+	STAGE1,
+	STAGE2,
+	STAGE3,
+	STAGE4,
+	STAGE5,
 };
 
 //オブジェクトの名前列挙
