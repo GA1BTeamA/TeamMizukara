@@ -33,7 +33,7 @@ void CHero::Action()
 	//メニュー
 	if (Input::KeyPush('Q'))
 	{
-		if (g_key_flag)
+		if (m_menu_key_flag)
 		{
 			//メニューオブジェクトを生成
 			if (m_IsMenu == false)
@@ -55,10 +55,10 @@ void CHero::Action()
 					m_IsMenu = false;
 				}
 			}
-			g_key_flag = false;
+			m_menu_key_flag = false;
 		}
 	}
-	else g_key_flag = true;
+	else m_menu_key_flag = true;
 
 	if (m_IsMenu == false)
 	{
@@ -75,7 +75,9 @@ void CHero::Action()
 
 		}
 
-		CObjGround ground;
+	//謎の生成--------------
+	//	CObjGround ground;
+	//----------------------
 
 		//地面に当たったら、
 		for (int i = 0; i < 10; i++)

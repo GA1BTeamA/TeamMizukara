@@ -24,6 +24,7 @@ private:
 	float m_vy;
 	bool m_direc;//向き
 	bool m_IsMenu;//メニューを開いているか
+	bool m_menu_key_flag;//メニュー用キーフラグ
 
 	bool m_down;//衝突確認用
 

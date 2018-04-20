@@ -16,12 +16,12 @@ CObjGround::CObjGround()
 	m_p_hit_line->SetInvisible(false);	//無敵モード無効
 
 	//ヒットボックス作成()
-	m_p_hit_line = Collision::HitLineInsert(this);
+/*	m_p_hit_line = Collision::HitLineInsert(this);
 	//作成したヒットボックスの値を設定
 	m_p_hit_line->SetPos1(m_gx+400, m_gy-200);
 	m_p_hit_line->SetPos2(m_gx + 800, m_gy-200);
 	m_p_hit_line->SetElement(1);		//属性を1にする
-	m_p_hit_line->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line->SetInvisible(false);	//無敵モード無効*/
 
 }
 
