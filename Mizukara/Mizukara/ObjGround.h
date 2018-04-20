@@ -21,5 +21,5 @@ private:
 	float m_gx; //ˆÊ’u
 	float m_gy;
 
-	HitLine* m_p_hit_line;//“–‚½‚è”»’è
+	HitLine* m_p_hit_line[5];//“–‚½‚è”»’è
 };

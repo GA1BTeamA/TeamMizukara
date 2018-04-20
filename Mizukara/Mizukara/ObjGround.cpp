@@ -7,21 +7,34 @@
 CObjGround::CObjGround()
 	:m_gx(0), m_gy(400)
 {
+	////ヒットボックス作成()
+	//for (int i = 0; i < 5; i++)
+	//{
+	//	m_p_hit_line[i] = Collision::HitLineInsert(this);
+	//}
 	//ヒットボックス作成()
-	m_p_hit_line = Collision::HitLineInsert(this);
+	m_p_hit_line[0] = Collision::HitLineInsert(this);
 	//作成したヒットボックスの値を設定
-	m_p_hit_line->SetPos1(m_gx, m_gy);
-	m_p_hit_line->SetPos2(m_gx+800, m_gy);
-	m_p_hit_line->SetElement(1);		//属性を1にする
-	m_p_hit_line->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line[0]->SetPos1(m_gx, m_gy);
+	m_p_hit_line[0]->SetPos2(m_gx+800, m_gy);
+	m_p_hit_line[0]->SetElement(1);		//属性を1にする
+	m_p_hit_line[0]->SetInvisible(false);	//無敵モード無効
 
 	//ヒットボックス作成()
-/*	m_p_hit_line = Collision::HitLineInsert(this);
+	m_p_hit_line[1] = Collision::HitLineInsert(this);
 	//作成したヒットボックスの値を設定
-	m_p_hit_line->SetPos1(m_gx+400, m_gy-200);
-	m_p_hit_line->SetPos2(m_gx + 800, m_gy-200);
-	m_p_hit_line->SetElement(1);		//属性を1にする
-	m_p_hit_line->SetInvisible(false);	//無敵モード無効*/
+	m_p_hit_line[1]->SetPos1(m_gx+700, m_gy-90);
+	m_p_hit_line[1]->SetPos2(m_gx + 800, m_gy-90);
+	m_p_hit_line[1]->SetElement(1);		//属性を1にする
+	m_p_hit_line[1]->SetInvisible(false);	//無敵モード無効
+
+	//ヒットボックス作成()
+	m_p_hit_line[2] = Collision::HitLineInsert(this);
+	//作成したヒットボックスの値を設定
+	m_p_hit_line[2]->SetPos1(m_gx + 700, m_gy - 90);
+	m_p_hit_line[2]->SetPos2(m_gx + 700, m_gy);
+	m_p_hit_line[2]->SetElement(1);		//属性を1にする
+	m_p_hit_line[2]->SetInvisible(false);	//無敵モード無効
 
 }
 

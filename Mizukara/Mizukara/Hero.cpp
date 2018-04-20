@@ -3,7 +3,6 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "Hero.h"
-#include "ObjGround.h"
 
 extern bool g_key_flag;
 
@@ -14,13 +13,23 @@ CHero::CHero()
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
 {
 	m_name = PLAYER;
+
 	//ヒットライン作成
-	m_p_hit_line = Collision::HitLineInsert(this);
+	m_p_hit_line[0] = Collision::HitLineInsert(this);
 	//作成したヒットラインの値を設定
-	m_p_hit_line->SetPos1(m_x, m_y);
-	m_p_hit_line->SetPos2(m_x, m_y+100);
-	m_p_hit_line->SetElement(0);		//属性を0にする
-	m_p_hit_line->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line[0]->SetPos1(m_x, m_y);
+	m_p_hit_line[0]->SetPos2(m_x, m_y+100);
+	m_p_hit_line[0]->SetElement(0);		//属性を0にする
+	m_p_hit_line[0]->SetInvisible(false);	//無敵モード無効
+
+	//ヒットライン作成
+	m_p_hit_line[1] = Collision::HitLineInsert(this);
+	//作成したヒットラインの値を設定
+	m_p_hit_line[1]->SetPos1(m_x+60, m_y);
+	m_p_hit_line[1]->SetPos2(m_x+60, m_y + 100);
+	m_p_hit_line[1]->SetElement(0);		//属性を0にする
+	m_p_hit_line[1]->SetInvisible(false);	//無敵モード無効
+
 }
 
 CHero::~CHero()
@@ -82,17 +91,18 @@ void CHero::Action()
 		//地面に当たったら、
 		for (int i = 0; i < 10; i++)
 		{
-			if (m_p_hit_line->GetHitData()[i] != nullptr)
+			if (m_p_hit_line[0]->GetHitData()[i] != nullptr|| m_p_hit_line[1]->GetHitData()[i] != nullptr)
 			{
-				if (m_p_hit_line->GetElement() == 0)
+				if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1||
+					m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
 				{
-					//m_y = ground.GetGY() - 100;
+					m_y = ground.GetGY() - 100;
 					m_y = 300;
 					m_vy = 0;
 				}
 				//else if (m_p_hit_line->GetElement() == 1)
 				//{
-				//	//m_x -= 1.0f;
+				//	m_x-=60
 				//}
 			}
 		}
@@ -143,8 +153,10 @@ void CHero::Action()
 		m_y += m_vy;
 
 		//当たり判定の位置更新
-		m_p_hit_line->SetPos1(m_x, m_y);
-		m_p_hit_line->SetPos2(m_x, m_y + 100);
+		m_p_hit_line[0]->SetPos1(m_x, m_y);
+		m_p_hit_line[0]->SetPos2(m_x, m_y + 100);
+		m_p_hit_line[1]->SetPos1(m_x + 60, m_y);
+		m_p_hit_line[1]->SetPos2(m_x + 60, m_y + 100);
 	}
 }
 

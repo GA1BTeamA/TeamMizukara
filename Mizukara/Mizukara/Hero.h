@@ -6,6 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 #include "Menu.h"
+#include "ObjGround.h"
 
 //主人公クラス
 class CHero : public CObj
@@ -28,7 +29,9 @@ private:
 
 	bool m_down;//衝突確認用
 
-	HitLine* m_p_hit_line;//当たり判定
+	HitLine* m_p_hit_line[4];//当たり判定
 
 	CMenu* menu;
+
+	CObjGround ground;
 };
