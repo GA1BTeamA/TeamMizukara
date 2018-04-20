@@ -17,4 +17,6 @@ public:
 private:
 	float m_x; //ˆÊ’u
 	float m_y;
+
+	HitLine* m_p_hit_line;//“–‚½‚è”»’è
 };
