@@ -20,22 +20,34 @@ CStageSelecto::~CStageSelecto()
 
 void CStageSelecto::Action()
 {
-	//左を押したら左に
-	if (Input::KeyPush(VK_LEFT) == true)
-	{
-		if (m_cursor > 0)
+
+		//左を押したら左に
+		if (Input::KeyPush(VK_LEFT) == true)
 		{
-			m_cursor--;
+			if (key_flag)
+			{
+
+				if (m_cursor > 0)
+				{
+					m_cursor--;
+					key_flag = false;
+				}
+			}
 		}
-	}
-	//右を押したら右に
-	else if (Input::KeyPush(VK_RIGHT) == true)
-	{
-		if (m_cursor < 5)
+		//右を押したら右に
+		else if (Input::KeyPush(VK_RIGHT) == true)
 		{
-			m_cursor++;
+			if (key_flag)
+			{
+				if (m_cursor < 4)
+				{
+					m_cursor++;
+					key_flag = false;
+				}
+			}
 		}
-	}
+		else key_flag = true;
+	
 	//下を押したら下に
 	/*else if (Input::KeyPush(VK_DOWN) == true)
 	{
