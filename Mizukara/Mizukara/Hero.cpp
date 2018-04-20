@@ -90,10 +90,10 @@ void CHero::Action()
 					m_y = 300;
 					m_vy = 0;
 				}
-				else if (m_p_hit_line->GetElement() == 1)
-				{
-					//m_x -= 1.0f;
-				}
+				//else if (m_p_hit_line->GetElement() == 1)
+				//{
+				//	//m_x -= 1.0f;
+				//}
 			}
 		}
 
