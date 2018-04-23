@@ -93,6 +93,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
 	Draw::LoadImage(19, L"Images\\StageSelecto.png");//19番目に"StageSelecto.pngを読み込み
 	Draw::LoadImage(20, L"Images\\Story.png");//20番目に"Story.pngを読み込み
+	Draw::LoadImage(21, L"Images\\icon.png");//21番目に"icon.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
