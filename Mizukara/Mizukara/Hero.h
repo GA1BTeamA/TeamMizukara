@@ -29,6 +29,8 @@ private:
 
 	bool m_down;//衝突確認用
 
+	int m_ani_time;//主人公アニメーション
+
 	HitLine* m_p_hit_line[4];//当たり判定
 
 	CMenu* menu;

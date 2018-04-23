@@ -71,10 +71,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//
 unsigned __stdcall TextureLoadSled(void *p)
 {
 	//ƒCƒ[ƒW“Ç‚İ‚İ
-	Draw::LoadImage(0, L"Images\\Player1.png");//0”Ô–Ú‚É"Player1.png"‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(1, L"Images\\Player2.png");//1”Ô–Ú‚É"Player2.png"‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(2, L"Images\\Player3.png");//2”Ô–Ú‚É"Player3.png"‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(3, L"Images\\Player4.png");//3”Ô–Ú‚É"Player4.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(0, L"Images\\BoyR.png");//0”Ô–Ú‚É"BoyR.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(1, L"Images\\BoyL.png");//1”Ô–Ú‚É"BoyL..png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(2, L"Images\\BoyRW1.png");//2”Ô–Ú‚É"BoyRW1.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(3, L"Images\\BoyLW1.png");//3”Ô–Ú‚É"BoyLW1.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(7, L"Images\\BoyRW2.png");//7”Ô–Ú‚É"BoyRW2.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(8, L"Images\\BoyLW2.png");//8”Ô–Ú‚É"BoyLW2.png"‚ğ“Ç‚İ‚İ
+	
 	Draw::LoadImage(4, L"Images\\Player5.png");//4”Ô–Ú‚É"Player5.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(5, L"Images\\Player6.png");//5”Ô–Ú‚É"Player6.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(6, L"Images\\Player8.png");//6”Ô–Ú‚É"Player8.png"‚ğ“Ç‚İ‚İ

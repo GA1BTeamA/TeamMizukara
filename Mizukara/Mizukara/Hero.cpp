@@ -10,7 +10,8 @@ extern bool g_key_flag;
 CHero::CHero()
 	:m_x(200),m_y(300)
 	,m_vx(0.0f),m_vy(0.0f)
-	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
+	, m_direc(RIGHT), m_down(false), m_IsMenu(false),
+	m_ani_time (0)
 {
 	m_name = PLAYER;
 
@@ -29,12 +30,12 @@ CHero::CHero()
 	m_p_hit_line[1]->SetPos2(m_x+60, m_y + 100);
 	m_p_hit_line[1]->SetElement(0);		//‘®«‚ð0‚É‚·‚é
 	m_p_hit_line[1]->SetInvisible(false);	//–³“Gƒ‚[ƒh–³Œø
+	
 
 }
 
 CHero::~CHero()
 {
-
 }
 
 void CHero::Action()
@@ -164,6 +165,21 @@ void CHero::Action()
 		m_p_hit_line[1]->SetPos1(m_x + 60, m_y);
 		m_p_hit_line[1]->SetPos2(m_x + 60, m_y + 100);
 	}
+
+	if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
+	{
+		m_ani_time++;
+		if (m_ani_time >= 24)
+		{
+			m_ani_time = 0;
+		}
+	}
+	else 
+    {
+		m_ani_time = 0;
+	}
+
+
 }
 
 void CHero::Draw()
@@ -173,22 +189,44 @@ void CHero::Draw()
 	{
 		if (m_direc == RIGHT)
 		{
-			Draw::Draw2D(0, m_x, m_y);
+				Draw::Draw2D(7, m_x, m_y);
 		}
 		else if (m_direc == LEFT)
 		{
-			Draw::Draw2D(1, m_x, m_y);
+				Draw::Draw2D(8, m_x, m_y);
 		}
 	}
 	else 
 	{
 		if (Input::KeyPush(VK_LEFT))
 		{
-			Draw::Draw2D(3, m_x, m_y);
+			if (m_ani_time <= 6) {
+				Draw::Draw2D(3, m_x, m_y);
+			}
+			else if (m_ani_time <= 12) {
+				Draw::Draw2D(1, m_x, m_y);
+			}
+			else if (m_ani_time <= 18) {
+				Draw::Draw2D(8, m_x, m_y);
+			}
+			else {
+				Draw::Draw2D(1, m_x, m_y);
+			}
 		}
 		else if (Input::KeyPush(VK_RIGHT))
 		{
-			Draw::Draw2D(2, m_x, m_y);
+			if (m_ani_time <= 6) {
+				Draw::Draw2D(2, m_x, m_y);
+			}
+			else if (m_ani_time <= 12) {
+				Draw::Draw2D(0, m_x, m_y);
+			}
+			else if (m_ani_time <= 18) {
+				Draw::Draw2D(7, m_x, m_y);
+			}
+			else {
+				Draw::Draw2D(0, m_x, m_y);
+			}
 		}
 		else if (Input::KeyPush('X'))
 		{
@@ -211,6 +249,14 @@ void CHero::Draw()
 			Draw::Draw2D(1, m_x, m_y);
 		}
 
+		/*if (RIGHT || LEFT) {
+			if (m_ani_time <= 6) {
+				Draw::Draw2D(7, m_x, m_y);
+			}
+			else {
+				Draw::Draw2D(8, m_x, m_y);
+			}
+		}*/
 		//if (m_p_hit_line->GetHitData()[0]!=nullptr)
 		//{
 		//	Draw::Draw2D(6, m_x, m_y);
