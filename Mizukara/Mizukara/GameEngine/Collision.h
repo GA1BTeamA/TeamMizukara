@@ -42,7 +42,7 @@ public:
 	void SetElement(int element) { m_element = element; }				//属性セット
 	void SetInvisible(bool invisible) { m_ls_invisible = invisible; }	//無敵セット
 	HitLine** GetHitData() { return m_hit; }	//当たった相手のヒットボックス情報取得
-	int GetElement() { return m_element; }  //属性取得用
+ 	int GetElement() { return m_element; }  //属性取得用
 
 
 private:
@@ -74,6 +74,7 @@ public:
 
 	static void InitHitLine();	//初期化
 	static void DeleteHitLine();	//破棄
+	static void ClearHitLine() { m_hit_line_list->clear(); }
 
 	static HitLine* HitLineInsert(CObj* p);	//当たり判定を作成しリストに登録
 	static void CheckStart();				//list内の当たり判定全チェック開始
