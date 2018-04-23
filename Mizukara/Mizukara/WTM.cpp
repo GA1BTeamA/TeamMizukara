@@ -28,7 +28,7 @@ void CWTM::Action()
 	{
 		if (m_p_hit_line->GetHitData()[i] != nullptr)
 		{
-			if (m_p_hit_line->GetHitData()[i]->GetElement()==0)
+			if (m_p_hit_line->GetHitData()[i]->GetElement() == 0)
 			{
 				g_SceneNumber = STORY;
 				TaskSystem::TaskClear();
@@ -36,8 +36,10 @@ void CWTM::Action()
 				break;
 			}
 
-	//	}
-	//}
+			//	}
+			//}
+		}
+	}
 }
 
 void CWTM::Draw()
