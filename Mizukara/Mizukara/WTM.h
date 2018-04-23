@@ -15,8 +15,11 @@ public:
 	void Action();
 	void Draw();
 private:
-	float m_x; //位置
+	float m_x; //WTMの位置
 	float m_y;
+
+	float im_x;//アイコンの位置
+	float im_y;
 
 	HitLine* m_p_hit_line;//当たり判定
 };
