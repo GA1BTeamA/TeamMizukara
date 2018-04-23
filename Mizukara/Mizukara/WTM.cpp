@@ -23,18 +23,18 @@ CWTM::~CWTM()
 
 void CWTM::Action()
 {
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_p_hit_line->GetHitData()[i] != nullptr)
-		{
-			if (m_p_hit_line->GetHitData()[i]->GetElement()==0)
-			{
-				g_SceneNumber = STORY;
-				is_delete = true;;
-			}
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	if (m_p_hit_line->GetHitData()[i] != nullptr)
+	//	{
+	//		if (m_p_hit_line->GetHitData()[i]->GetElement()==0)
+	//		{
+	//			g_SceneNumber = STORY;
+	//			is_delete = true;;
+	//		}
 
-		}
-	}
+	//	}
+	//}
 }
 
 void CWTM::Draw()

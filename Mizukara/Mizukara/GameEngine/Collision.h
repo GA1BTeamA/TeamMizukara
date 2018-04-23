@@ -44,7 +44,6 @@ public:
 	HitLine** GetHitData() { return m_hit; }	//当たった相手のヒットボックス情報取得
 	int GetElement() { return m_element; }  //属性取得用
 
-
 private:
 	//削除フラグ
 	bool ls_delete;
@@ -78,6 +77,14 @@ public:
 	static HitLine* HitLineInsert(CObj* p);	//当たり判定を作成しリストに登録
 	static void CheckStart();				//list内の当たり判定全チェック開始
 	static void DrawDebug();				//デバッグ用の当たり判定描画用
+
+	static float Dot(float ax, float ay, float bx, float by);  //内積
+	static float Cross(float ax, float ay, float bx, float by);  //外積
+	static bool LineCrossPoint(
+		float a1x, float a1y, float a2x, float a2y,
+		float b1x, float b1y, float b2x, float b2y,
+		float* out_px, float* out_py
+	);  //線と線の交差判定
 
 private:
 	//個々への当たり判定

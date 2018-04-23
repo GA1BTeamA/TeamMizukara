@@ -39,6 +39,12 @@ CHero::~CHero()
 
 void CHero::Action()
 {
+	////テスト
+	//float a, b;
+	//CCollision::LineCrossPoint(0, 0, 10, 10, 0, 5, 10, 5, &a, &b);
+	//int aa = 0;
+	//aa++;
+
 	//メニュー
 	if (Input::KeyPush('Q'))
 	{
