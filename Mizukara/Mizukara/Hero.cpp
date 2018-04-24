@@ -15,31 +15,35 @@ CHero::CHero()
 {
 	m_name = PLAYER;
 
-	//左ヒットライン作成
-	m_p_hit_line[0] = Collision::HitLineInsert(this);
+	//主人公ヒットライン作成(左)
+	m_p_hit_line_hero[0] = Collision::HitLineInsert(this);
 	//作成したヒットラインの値を設定
-	m_p_hit_line[0]->SetPos1(m_x, m_y);
-	m_p_hit_line[0]->SetPos2(m_x, m_y+100);
-	m_p_hit_line[0]->SetElement(0);		//属性を0にする
-	m_p_hit_line[0]->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
+	m_p_hit_line_hero[0]->SetPos2(m_x, m_y+100);
+	m_p_hit_line_hero[0]->SetElement(0);		//属性を0にする
+	m_p_hit_line_hero[0]->SetInvisible(false);	//無敵モード無効
 
-	//右ヒットライン作成
-	m_p_hit_line[1] = Collision::HitLineInsert(this);
+	//主人公ヒットライン作成(右)
+	m_p_hit_line_hero[1] = Collision::HitLineInsert(this);
 	//作成したヒットラインの値を設定
-	m_p_hit_line[1]->SetPos1(m_x+60, m_y);
-	m_p_hit_line[1]->SetPos2(m_x+60, m_y + 100);
-	m_p_hit_line[1]->SetElement(0);		//属性を0にする
-	m_p_hit_line[1]->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line_hero[1]->SetPos1(m_x+60, m_y);
+	m_p_hit_line_hero[1]->SetPos2(m_x+60, m_y + 100);
+	m_p_hit_line_hero[1]->SetElement(0);		//属性を0にする
+	m_p_hit_line_hero[1]->SetInvisible(false);	//無敵モード無効
 
 	//上ヒットライン作成
-	m_p_hit_line[2] = Collision::HitLineInsert(this);
+	m_p_hit_line_hero[2] = Collision::HitLineInsert(this);
 	//作成したヒットラインの値を設定
-	m_p_hit_line[2]->SetPos1(m_x, m_y);
-	m_p_hit_line[2]->SetPos2(m_x+60, m_y);
-	m_p_hit_line[2]->SetElement(0);		//属性を0にする
-	m_p_hit_line[2]->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line_hero[2]->SetPos1(m_x, m_y);
+	m_p_hit_line_hero[2]->SetPos2(m_x + 60, m_y);
+	m_p_hit_line_hero[2]->SetElement(0);		//属性を0にする
+	m_p_hit_line_hero[2]->SetInvisible(false);	//無敵モード無効
 	
-
+	//主人公コピーヒットライン作成(左)
+	m_p_hit_line_hero_copy[0] = m_p_hit_line_hero[0];
+	
+	//主人公コピーヒットライン作成(右)
+	m_p_hit_line_hero_copy[1] = m_p_hit_line_hero[1];
 }
 
 CHero::~CHero()
@@ -103,24 +107,25 @@ void CHero::Action()
 	//	CObjGround ground;
 	//----------------------
 
+
 		//地面に当たったら、
 		for (int i = 0; i < 10; i++)
 		{
 			//if (m_p_hit_line[0]->GetHitData()[i] != nullptr|| m_p_hit_line[1]->GetHitData()[i] != nullptr)
 			//{
-			if (m_p_hit_line[0]->GetHitData()[i] == nullptr)
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr)
 				continue;
 
-			if (m_p_hit_line[1]->GetHitData()[i] == nullptr)
+			if (m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
 				continue;
 
-			//if (m_p_hit_line[2]->GetHitData()[i] == nullptr)
-			//	continue;
-
-				if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1||
-					m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1||
+				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
+			{
+				CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+				if (ground != nullptr)
 				{
-					m_y = ground.GetGY() - 100;
+					m_y = ground->GetGY() - 100;
 					//m_y = 300;
 					m_vy = 0;
 					if (Input::KeyPush(VK_SPACE) == true)
@@ -176,12 +181,16 @@ void CHero::Action()
 		m_y += m_vy;
 
 		//当たり判定の位置更新
-		m_p_hit_line[0]->SetPos1(m_x, m_y);
-		m_p_hit_line[0]->SetPos2(m_x, m_y + 100);
-		m_p_hit_line[1]->SetPos1(m_x + 60, m_y);
-		m_p_hit_line[1]->SetPos2(m_x + 60, m_y + 100);
-		m_p_hit_line[2]->SetPos1(m_x, m_y);
-		m_p_hit_line[2]->SetPos2(m_x + 60, m_y);
+		m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
+		m_p_hit_line_hero[0]->SetPos2(m_x, m_y + 100);
+		m_p_hit_line_hero[1]->SetPos1(m_x + 60, m_y);
+		m_p_hit_line_hero[1]->SetPos2(m_x + 60, m_y + 100);
+		m_p_hit_line_hero[2]->SetPos1(m_x, m_y);
+		m_p_hit_line_hero[2]->SetPos2(m_x + 60, m_y);
+		m_p_hit_line_hero_copy[0]->SetPos1(m_x, m_y);
+		m_p_hit_line_hero_copy[0]->SetPos2(m_x, m_y + 100);
+		m_p_hit_line_hero_copy[1]->SetPos1(m_x + 60, m_y);
+		m_p_hit_line_hero_copy[1]->SetPos2(m_x + 60, m_y + 100);
 	}
 
 	//アニメーション
