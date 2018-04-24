@@ -31,9 +31,10 @@ private:
 
 	int m_ani_time;//主人公アニメーション
 
-	HitLine* m_p_hit_line[4];//当たり判定
+	HitLine* m_p_hit_line_hero[4];//当たり判定
+	HitLine* m_p_hit_line_hero_copy[4];//当たり判定(コピー)
 
 	CMenu* menu;
 
-	CObjGround ground;
+	//CObjGround ground;
 };

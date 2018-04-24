@@ -7,6 +7,8 @@
 CObjGround::CObjGround()
 	:m_gx(0), m_gy(400)
 {
+	m_name = GROUND;
+
 	//ヒットボックス作成()
 	m_p_hit_line[0] = Collision::HitLineInsert(this);
 	//作成したヒットボックスの値を設定

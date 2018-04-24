@@ -38,6 +38,7 @@ enum {
 enum {
 	PLAYER,
 	MENU,
+	GROUND,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO
