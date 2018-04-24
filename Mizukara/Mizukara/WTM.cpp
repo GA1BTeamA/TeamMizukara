@@ -24,27 +24,22 @@ CWTM::~CWTM()
 
 void CWTM::Action()
 {
+	
+}
+
+void CWTM::Draw()
+{
+	//WTMに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_p_hit_line->GetHitData()[i] != nullptr)
 		{
 			if (m_p_hit_line->GetHitData()[i]->GetElement() == 0)
 			{
-				g_SceneNumber = STORY;
-				TaskSystem::TaskClear();
-				Collision::ClearHitLine();
-				break;
+				Draw::Draw2D(21, im_x, im_y);
 			}
-
-			//	}
-			//}
 		}
 	}
-}
 
-void CWTM::Draw()
-{
 	Draw::Draw2D(16, m_x, m_y);
-
-	Draw::Draw2D(21, im_x, im_y);
 }

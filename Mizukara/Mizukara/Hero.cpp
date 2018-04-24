@@ -125,7 +125,7 @@ void CHero::Action()
 		//	m_x -= 1.0f;
 		//}
 
-		//削除実行
+		//左キーで移動
 		if (Input::KeyPush(VK_LEFT))
 		{
 			if (Input::KeyPush('V'))
@@ -138,6 +138,7 @@ void CHero::Action()
 			}
 			m_direc = LEFT;
 		}
+		//右キーで移動
 		else if (Input::KeyPush(VK_RIGHT))
 		{
 			if (Input::KeyPush('V'))
@@ -186,6 +187,7 @@ void CHero::Action()
 		m_p_hit_line[1]->SetPos2(m_x + 60, m_y + 100);
 	}
 
+	//アニメーション
 	if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
 	{
 		m_ani_time++;
@@ -250,11 +252,11 @@ void CHero::Draw()
 		}
 		else if (Input::KeyPush('X'))
 		{
-			Draw::Draw2D(4, m_x, m_y);
+			Draw::Draw2D(0, m_x, m_y);
 		}
 		else if (Input::KeyPush('C'))
 		{
-			Draw::Draw2D(5, m_x, m_y);
+			Draw::Draw2D(0, m_x, m_y);
 		}
 		/*else if (Input::KeyPush(VK_SPACE))
 		{

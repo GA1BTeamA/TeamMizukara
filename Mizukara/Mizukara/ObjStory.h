@@ -17,5 +17,6 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
+
 	unsigned int m_time;//ストーリー描画時間
 };

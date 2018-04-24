@@ -6,7 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//主人公クラス
+//バケツメータークラス
 class CBucketMeter : public CObj
 {
 public:

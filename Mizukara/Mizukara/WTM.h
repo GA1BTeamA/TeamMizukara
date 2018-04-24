@@ -6,7 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//背景クラス
+//WTMクラス
 class CWTM : public CObj
 {
 public:
