@@ -163,13 +163,27 @@ void CHero::Action()
 			m_direc = RIGHT;
 		}
 
-		//spaceキー入力でジャンプ
-		if (Input::KeyPush(VK_SPACE) == true)
+		//spaceキー入力でジャンプ(地面に触れている場合のみ)
+		for (int i = 0; i < 10; i++)
 		{
-			if (m_down == false)
+			if (m_p_hit_line[0]->GetHitData()[i] == nullptr)
+				continue;
+
+			if (m_p_hit_line[1]->GetHitData()[i] == nullptr)
+				continue;
+
+			if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1 ||
+				m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
 			{
-				m_vy = -8;
+				if (Input::KeyPush(VK_SPACE) == true)
+				{
+					if (m_down == false)
+					{
+						m_vy = -8;
+					}
+				}
 			}
+
 		}
 
 		//自由落下運動
