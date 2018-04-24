@@ -11,7 +11,7 @@ CWTM::CWTM()
 {
 	//ヒットラインの作成
 	m_p_hit_line = Collision::HitLineInsert(this);
-	m_p_hit_line->SetPos1(m_x-11, m_y+130);
+	m_p_hit_line->SetPos1(m_x-11, m_y);
 	m_p_hit_line->SetPos2(m_x+11, m_y+139);
 	m_p_hit_line->SetElement(2);		//属性を2にする
 	m_p_hit_line->SetInvisible(false);	//無敵モード無効

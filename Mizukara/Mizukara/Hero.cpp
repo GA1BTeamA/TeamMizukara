@@ -15,7 +15,7 @@ CHero::CHero()
 {
 	m_name = PLAYER;
 
-	//ヒットライン作成
+	//左ヒットライン作成
 	m_p_hit_line[0] = Collision::HitLineInsert(this);
 	//作成したヒットラインの値を設定
 	m_p_hit_line[0]->SetPos1(m_x, m_y);
@@ -23,13 +23,21 @@ CHero::CHero()
 	m_p_hit_line[0]->SetElement(0);		//属性を0にする
 	m_p_hit_line[0]->SetInvisible(false);	//無敵モード無効
 
-	//ヒットライン作成
+	//右ヒットライン作成
 	m_p_hit_line[1] = Collision::HitLineInsert(this);
 	//作成したヒットラインの値を設定
 	m_p_hit_line[1]->SetPos1(m_x+60, m_y);
 	m_p_hit_line[1]->SetPos2(m_x+60, m_y + 100);
 	m_p_hit_line[1]->SetElement(0);		//属性を0にする
 	m_p_hit_line[1]->SetInvisible(false);	//無敵モード無効
+
+	//上ヒットライン作成
+	m_p_hit_line[2] = Collision::HitLineInsert(this);
+	//作成したヒットラインの値を設定
+	m_p_hit_line[2]->SetPos1(m_x, m_y);
+	m_p_hit_line[2]->SetPos2(m_x+60, m_y);
+	m_p_hit_line[2]->SetElement(0);		//属性を0にする
+	m_p_hit_line[2]->SetInvisible(false);	//無敵モード無効
 	
 
 }
@@ -106,6 +114,9 @@ void CHero::Action()
 			if (m_p_hit_line[1]->GetHitData()[i] == nullptr)
 				continue;
 
+			//if (m_p_hit_line[2]->GetHitData()[i] == nullptr)
+			//	continue;
+
 				if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1||
 					m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
 				{
@@ -171,6 +182,8 @@ void CHero::Action()
 		m_p_hit_line[0]->SetPos2(m_x, m_y + 100);
 		m_p_hit_line[1]->SetPos1(m_x + 60, m_y);
 		m_p_hit_line[1]->SetPos2(m_x + 60, m_y + 100);
+		m_p_hit_line[2]->SetPos1(m_x, m_y);
+		m_p_hit_line[2]->SetPos2(m_x + 60, m_y);
 	}
 
 	//アニメーション

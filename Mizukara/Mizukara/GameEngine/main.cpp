@@ -80,7 +80,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	
 	//Draw::LoadImage(4, L"Images\\Player5.png");//4番目に"Player5.png"を読み込み
 	//Draw::LoadImage(5, L"Images\\Player6.png");//5番目に"Player6.png"を読み込み
-	Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
+	//Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
 
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
@@ -94,6 +94,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(19, L"Images\\StageSelecto.png");//19番目に"StageSelecto.pngを読み込み
 	Draw::LoadImage(20, L"Images\\Story.png");//20番目に"Story.pngを読み込み
 	Draw::LoadImage(21, L"Images\\icon.png");//21番目に"icon.pngを読み込み
+	Draw::LoadImage(22, L"Images\\Stage1.png");//22番目に"Stage1.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
