@@ -172,14 +172,14 @@ void CHero::Action()
 		//spaceキー入力でジャンプ(地面に触れている場合のみ)
 		for (int i = 0; i < 10; i++)
 		{
-			if (m_p_hit_line[0]->GetHitData()[i] == nullptr)
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr)
 				continue;
 
-			if (m_p_hit_line[1]->GetHitData()[i] == nullptr)
+			if (m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
 				continue;
 
-			if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1 ||
-				m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1 ||
+				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
 			{
 				if (Input::KeyPush(VK_SPACE) == true)
 				{
