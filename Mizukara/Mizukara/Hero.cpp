@@ -123,6 +123,13 @@ void CHero::Action()
 					m_y = ground.GetGY() - 100;
 					//m_y = 300;
 					m_vy = 0;
+					if (Input::KeyPush(VK_SPACE) == true)
+					{
+						if (m_down == false)
+						{
+							m_vy = -8;
+						}
+					}
 				}
 				//else if (m_p_hit_line->GetElement() == 1)
 				//{
@@ -161,29 +168,6 @@ void CHero::Action()
 				m_x += 5.0f;
 			}
 			m_direc = RIGHT;
-		}
-
-		//spaceキー入力でジャンプ(地面に触れている場合のみ)
-		for (int i = 0; i < 10; i++)
-		{
-			if (m_p_hit_line[0]->GetHitData()[i] == nullptr)
-				continue;
-
-			if (m_p_hit_line[1]->GetHitData()[i] == nullptr)
-				continue;
-
-			if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1 ||
-				m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
-			{
-				if (Input::KeyPush(VK_SPACE) == true)
-				{
-					if (m_down == false)
-					{
-						m_vy = -8;
-					}
-				}
-			}
-
 		}
 
 		//自由落下運動
