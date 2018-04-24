@@ -87,7 +87,7 @@ void CHero::Action()
 	if (m_IsMenu == false)
 	{
 		//デバッグ用
-		if (Input::KeyPush(VK_UP))
+		/*if (Input::KeyPush(VK_UP))
 		{
 			m_y -= 5.0f;
 
@@ -97,7 +97,7 @@ void CHero::Action()
 		{
 			m_y += 5.0f;
 
-		}
+		}*/
 
 	//謎の生成--------------
 	//	CObjGround ground;
