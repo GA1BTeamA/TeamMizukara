@@ -173,6 +173,7 @@ void CHero::Action()
 		m_p_hit_line[1]->SetPos2(m_x + 60, m_y + 100);
 	}
 
+	//アニメーション
 	if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
 	{
 		m_ani_time++;

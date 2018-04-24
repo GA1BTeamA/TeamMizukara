@@ -21,9 +21,12 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
+
 	float m_vx;//移動ベクトル
 	float m_vy;
+
 	bool m_direc;//向き
+
 	bool m_IsMenu;//メニューを開いているか
 	bool m_menu_key_flag;//メニュー用キーフラグ
 
