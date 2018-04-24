@@ -11,7 +11,6 @@ extern bool g_key_flag;
 //コンストラクタ
 CMenu::CMenu()
 	:m_x(20), m_y(20), m_cursor(LEFT)
-	, m_IsContinue(false), m_IsRetire(false), m_IsRedo(false)
 {
 	m_name = MENU;
 }

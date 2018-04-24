@@ -30,6 +30,14 @@ CHero::CHero()
 	m_p_hit_line_hero[1]->SetPos2(m_x+60, m_y + 100);
 	m_p_hit_line_hero[1]->SetElement(0);		//属性を0にする
 	m_p_hit_line_hero[1]->SetInvisible(false);	//無敵モード無効
+
+	//上ヒットライン作成
+	m_p_hit_line_hero[2] = Collision::HitLineInsert(this);
+	//作成したヒットラインの値を設定
+	m_p_hit_line_hero[2]->SetPos1(m_x, m_y);
+	m_p_hit_line_hero[2]->SetPos2(m_x + 60, m_y);
+	m_p_hit_line_hero[2]->SetElement(0);		//属性を0にする
+	m_p_hit_line_hero[2]->SetInvisible(false);	//無敵モード無効
 	
 	//主人公コピーヒットライン作成(左)
 	m_p_hit_line_hero_copy[0] = m_p_hit_line_hero[0];
@@ -134,7 +142,7 @@ void CHero::Action()
 		//	m_x -= 1.0f;
 		//}
 
-		//削除実行
+		//左キーで移動
 		if (Input::KeyPush(VK_LEFT))
 		{
 			if (Input::KeyPush('V'))
@@ -147,6 +155,7 @@ void CHero::Action()
 			}
 			m_direc = LEFT;
 		}
+		//右キーで移動
 		else if (Input::KeyPush(VK_RIGHT))
 		{
 			if (Input::KeyPush('V'))
@@ -160,13 +169,27 @@ void CHero::Action()
 			m_direc = RIGHT;
 		}
 
-		//spaceキー入力でジャンプ
-		if (Input::KeyPush(VK_SPACE) == true)
+		//spaceキー入力でジャンプ(地面に触れている場合のみ)
+		for (int i = 0; i < 10; i++)
 		{
-			if (m_down == false)
+			if (m_p_hit_line[0]->GetHitData()[i] == nullptr)
+				continue;
+
+			if (m_p_hit_line[1]->GetHitData()[i] == nullptr)
+				continue;
+
+			if (m_p_hit_line[0]->GetHitData()[i]->GetElement() == 1 ||
+				m_p_hit_line[1]->GetHitData()[i]->GetElement() == 1)
 			{
-				m_vy = -8;
+				if (Input::KeyPush(VK_SPACE) == true)
+				{
+					if (m_down == false)
+					{
+						m_vy = -8;
+					}
+				}
 			}
+
 		}
 
 		//自由落下運動
@@ -179,12 +202,15 @@ void CHero::Action()
 		m_p_hit_line_hero[0]->SetPos2(m_x, m_y + 100);
 		m_p_hit_line_hero[1]->SetPos1(m_x + 60, m_y);
 		m_p_hit_line_hero[1]->SetPos2(m_x + 60, m_y + 100);
+		m_p_hit_line_hero[2]->SetPos1(m_x, m_y);
+		m_p_hit_line_hero[2]->SetPos2(m_x + 60, m_y);
 		m_p_hit_line_hero_copy[0]->SetPos1(m_x, m_y);
 		m_p_hit_line_hero_copy[0]->SetPos2(m_x, m_y + 100);
 		m_p_hit_line_hero_copy[1]->SetPos1(m_x + 60, m_y);
 		m_p_hit_line_hero_copy[1]->SetPos2(m_x + 60, m_y + 100);
 	}
 
+	//アニメーション
 	if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
 	{
 		m_ani_time++;
@@ -249,16 +275,16 @@ void CHero::Draw()
 		}
 		else if (Input::KeyPush('X'))
 		{
-			Draw::Draw2D(4, m_x, m_y);
+			Draw::Draw2D(0, m_x, m_y);
 		}
 		else if (Input::KeyPush('C'))
 		{
-			Draw::Draw2D(5, m_x, m_y);
+			Draw::Draw2D(0, m_x, m_y);
 		}
-		else if (Input::KeyPush(VK_SPACE))
+		/*else if (Input::KeyPush(VK_SPACE))
 		{
 			Draw::Draw2D(6, m_x, m_y);
-		}
+		}*/
 		else if (m_direc == RIGHT)
 		{
 			Draw::Draw2D(0, m_x, m_y);

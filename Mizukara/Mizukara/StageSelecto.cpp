@@ -124,7 +124,7 @@ void CStageSelecto::Action()
 			g_key_flag = true;
 		}
 	}
-
+	//カーソル位置が右下なら
 	else if (m_cursor == UNDER_RIGHT)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
@@ -141,7 +141,7 @@ void CStageSelecto::Action()
 			g_key_flag = true;
 		}
 	}
-
+	//カーソル位置が左下なら
 	else if(m_cursor == UNDER_LEFT)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
