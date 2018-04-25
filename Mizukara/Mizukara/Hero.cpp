@@ -4,6 +4,7 @@
 
 #include "Hero.h"
 
+extern int g_SceneNumber;
 extern bool g_key_flag;
 
 //コンストラクタ
@@ -140,7 +141,13 @@ void CHero::Action()
 				//{
 				//	m_x-=60
 				//}
-			//}
+			}
+		}
+
+		if (m_x + 60 >= 800)
+		{
+			g_SceneNumber = RESULT;
+			//Draw::Draw2D(23, m_x, m_y);
 		}
 
 		//if (m_p_hit_line->GetHitData()[1] != nullptr)
