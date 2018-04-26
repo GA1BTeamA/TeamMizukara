@@ -147,7 +147,8 @@ void CHero::Action()
 		if (m_x + 60 >= 800)
 		{
 			g_SceneNumber = RESULT;
-			//Draw::Draw2D(23, m_x, m_y);
+			is_delete = true;
+			g_key_flag = false;
 		}
 
 		//if (m_p_hit_line->GetHitData()[1] != nullptr)

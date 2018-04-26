@@ -12,7 +12,7 @@ extern bool g_key_flag;
 CResult::CResult()
 	:m_x(0), m_y(0), m_cursor(LEFT)
 {
-	m_name = RESULT;
+	//m_name = RESULT;
 }
 
 CResult::~CResult()
