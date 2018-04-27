@@ -22,4 +22,6 @@ private:
 	float m_gy;
 
 	HitLine* m_p_hit_line[5];//当たり判定
+
+	float m_scroll;//左右スクロール用
 };
