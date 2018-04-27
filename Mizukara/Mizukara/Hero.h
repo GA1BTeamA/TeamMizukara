@@ -17,15 +17,22 @@ public:
 	void Action();
 	void Draw();
 
-	int GetX() { return m_x; }
+	int GetX() { return m_x; }//主人公位置取得用
 	int GetY() { return m_y; }
-	void SetX(int x) { x = m_x; }
-	void SetY(int y) { y = m_y; }
+	int GetVX() { return m_vx; }
+	int GetVY() { return m_vy; }
+
+	int GetMoveX() { return move_x; }
+
+	void SetX(int x) { m_x = x; }
+	void SetY(int y) { m_y = y; }
 
 	void MenuDel() { m_IsMenu = false; }
 private:
 	float m_x; //位置
 	float m_y;
+
+	float move_x;
 
 	float m_vx;//移動ベクトル
 	float m_vy;

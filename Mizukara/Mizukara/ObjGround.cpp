@@ -3,6 +3,7 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "ObjGround.h"
+#include "Hero.h"
 
 CObjGround::CObjGround()
 	:m_gx(0), m_gy(400), m_scroll(0.0f)
@@ -42,12 +43,37 @@ CObjGround::~CObjGround()
 
 void CObjGround::Action()
 {
+	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
+	float m_x = hero->GetX();
+	float m_y = hero->GetY();
 
+	/*if (hero != nullptr)
+	{
+		hero->is_delete = true;
+		//m_IsHero = false;
+	}*/
+
+	//m_scroll = -3.0f;//スクロール
+
+	//前方スクロールライン
+	if (m_x > 350)
+	{
+		hero->SetX(350);   //主人公が指定領域を超えないように
+		m_scroll -= hero->GetMoveX();  //主人公が本来動くべき値をm_scrollに加える
+	}
+
+	//後方スクロールライン
+	if (m_x < 200)
+	{
+		hero->SetX(200);
+		m_scroll += hero->GetMoveX();
+	}
+	
 }
 
 void CObjGround::Draw()
 {
-	m_scroll = -3.0f;//スクロール
 
-	Draw::Draw2D(22, 0, 0);
+
+	Draw::Draw2D(22, m_gx+m_scroll, 0);
 }

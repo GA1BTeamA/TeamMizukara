@@ -13,6 +13,7 @@ CHero::CHero()
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
 	,m_ani_time (0)
+	, move_x(5.0f)
 {
 	m_name = PLAYER;
 
@@ -166,7 +167,7 @@ void CHero::Action()
 			}
 			else
 			{
-				m_x -= 5.0f;
+				m_x -= move_x;
 			}
 			m_direc = LEFT;
 		}
@@ -179,7 +180,7 @@ void CHero::Action()
 			}
 			else
 			{
-				m_x += 5.0f;
+				m_x += move_x;
 			}
 			m_direc = RIGHT;
 		}
