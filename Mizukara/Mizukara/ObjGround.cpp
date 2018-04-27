@@ -5,7 +5,7 @@
 #include "ObjGround.h"
 
 CObjGround::CObjGround()
-	:m_gx(0), m_gy(400)
+	:m_gx(0), m_gy(400), m_scroll(0.0f)
 {
 	m_name = GROUND;
 
@@ -47,5 +47,7 @@ void CObjGround::Action()
 
 void CObjGround::Draw()
 {
-	//Draw::Draw2D(18, 0, 0);
+	m_scroll = -3.0f;//ÉXÉNÉçÅ[Éã
+
+	Draw::Draw2D(22, 0, 0);
 }
