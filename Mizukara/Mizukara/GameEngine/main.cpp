@@ -97,6 +97,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(21, L"Images\\icon.png");//21番目に"icon.pngを読み込み
 	Draw::LoadImage(22, L"Images\\Stage1.png");//22番目に"Stage1.pngを読み込み
 	Draw::LoadImage(23, L"Images\\Result.png");//23番目に"Result.pngを読み込み
+	Draw::LoadImage(24, L"Images\\Stage1B.png");//24番目にStage1B.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -199,21 +200,21 @@ unsigned __stdcall GameMainSled(void *p)
 			background->m_priority = 10;
 			TaskSystem::InsertObj(background);
 
-			hero = new CHero();
-			hero->m_priority = 90;
-			TaskSystem::InsertObj(hero);
-
 			tank = new CTank();
 			tank->m_priority = 80;
 			TaskSystem::InsertObj(tank);
 
-			bucketmeter = new CBucketMeter();
-			bucketmeter->m_priority = 20;
-			TaskSystem::InsertObj(bucketmeter);
-
 			ground = new CObjGround();
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
+
+			hero = new CHero();
+			hero->m_priority = 90;
+			TaskSystem::InsertObj(hero);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_priority = 20;
+			TaskSystem::InsertObj(bucketmeter);
 
 			wtm = new CWTM();
 			wtm->m_priority = 70;

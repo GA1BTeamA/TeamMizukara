@@ -22,9 +22,9 @@ void CBackground::Action()
 
 void CBackground::Draw()
 {
-	m_scroll = -10.0f;//スクロール
+	m_scroll = -3.0f;//スクロール
 
 	
 
-	//Draw::Draw2D(22, m_x, m_y);
+	Draw::Draw2D(24, m_x, m_y);
 }
