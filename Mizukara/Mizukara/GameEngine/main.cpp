@@ -83,7 +83,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	//Draw::LoadImage(5, L"Images\\Player6.png");//5”Ô–Ú‚É"Player6.png"‚ğ“Ç‚İ‚İ
 	//Draw::LoadImage(6, L"Images\\Player8.png");//6”Ô–Ú‚É"Player8.png"‚ğ“Ç‚İ‚İ
 
-	//Draw::LoadImage(10, L"Images\\Tank.png");//10”Ô–Ú‚É"Tank.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(10, L"Images\\Tank.png");//10”Ô–Ú‚É"Tank.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11”Ô–Ú‚É"BucketMeter.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(12, L"Images\\Background.png");//12”Ô–Ú‚É"Background.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(13, L"Images\\Title.png");//13”Ô–Ú‚É"Title.png‚ğ“Ç‚İ‚İ

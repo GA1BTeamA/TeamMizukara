@@ -17,6 +17,11 @@ public:
 	void Action();
 	void Draw();
 
+	int GetX() { return m_x; }
+	int GetY() { return m_y; }
+	void SetX(int x) { x = m_x; }
+	void SetY(int y) { y = m_y; }
+
 	void MenuDel() { m_IsMenu = false; }
 private:
 	float m_x; //ˆÊ’u
