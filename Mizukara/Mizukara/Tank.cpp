@@ -28,5 +28,5 @@ void CTank::Action()
 
 void CTank::Draw()
 {
-	Draw::Draw2D(10, m_x, m_y);
+	//Draw::Draw2D(10, m_x, m_y);
 }

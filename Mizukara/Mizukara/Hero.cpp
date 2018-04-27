@@ -144,12 +144,13 @@ void CHero::Action()
 			}
 		}
 
-		if (m_x + 60 >= 800)
-		{
-			g_SceneNumber = RESULT;
-			is_delete = true;
-			g_key_flag = false;
-		}
+		//ƒŠƒUƒ‹ƒg‰æ–Ê‚É‚¢‚­ˆ—
+		//if (m_x + 60 >= 800)
+		//{
+		//	g_SceneNumber = RESULT;
+		//	is_delete = true;
+		//	g_key_flag = false;
+		//}
 
 		//if (m_p_hit_line->GetHitData()[1] != nullptr)
 		//{

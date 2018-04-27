@@ -17,7 +17,7 @@ CObjGround::CObjGround()
 	m_p_hit_line[0]->SetElement(1);		//属性を1にする
 	m_p_hit_line[0]->SetInvisible(false);	//無敵モード無効
 
-	//ヒットボックス作成()
+	/*//ヒットボックス作成()
 	m_p_hit_line[1] = Collision::HitLineInsert(this);
 	//作成したヒットボックスの値を設定
 	m_p_hit_line[1]->SetPos1(m_gx+500, m_gy-90);
@@ -31,7 +31,7 @@ CObjGround::CObjGround()
 	//m_p_hit_line[2]->SetPos1(m_gx + 700, m_gy - 90);
 	//m_p_hit_line[2]->SetPos2(m_gx + 700, m_gy);
 	//m_p_hit_line[2]->SetElement(1);		//属性を1にする
-	//m_p_hit_line[2]->SetInvisible(false);	//無敵モード無効
+	//m_p_hit_line[2]->SetInvisible(false);	//無敵モード無効*/
 
 }
 
@@ -47,5 +47,5 @@ void CObjGround::Action()
 
 void CObjGround::Draw()
 {
-	Draw::Draw2D(18, 0, 0);
+	//Draw::Draw2D(18, 0, 0);
 }

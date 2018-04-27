@@ -22,5 +22,5 @@ void CBackground::Action()
 
 void CBackground::Draw()
 {
-	Draw::Draw2D(12, m_x, m_y);
+	Draw::Draw2D(22, m_x, m_y);
 }
