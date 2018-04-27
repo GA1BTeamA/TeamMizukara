@@ -11,8 +11,8 @@ extern bool g_key_flag;
 CHero::CHero()
 	:m_x(200),m_y(300)
 	,m_vx(0.0f),m_vy(0.0f)
-	, m_direc(RIGHT), m_down(false), m_IsMenu(false),
-	m_ani_time (0)
+	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
+	,m_ani_time (0)
 {
 	m_name = PLAYER;
 
