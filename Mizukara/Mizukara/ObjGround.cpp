@@ -60,6 +60,16 @@ void CObjGround::Action()
 	{
 		hero->SetX(350);   //主人公が指定領域を超えないように
 		m_scroll -= hero->GetMoveX();  //主人公が本来動くべき値をm_scrollに加える
+
+		if (Input::KeyPush('V')) //ダッシュ時
+		{
+			m_scroll -= hero->GetDashX();
+		}
+
+		//if (m_gx == 2700)
+		//{
+		//	m_scroll = 0.0f;
+		//}
 	}
 
 	//後方スクロールライン
@@ -67,6 +77,16 @@ void CObjGround::Action()
 	{
 		hero->SetX(200);
 		m_scroll += hero->GetMoveX();
+
+		if (Input::KeyPush('V')) //ダッシュ時
+		{
+			m_scroll += hero->GetDashX();
+		}
+
+		//if (m_gx == 0)
+		//{
+		//	m_scroll = 0.0f;
+		//}
 	}
 	
 }

@@ -23,6 +23,7 @@ public:
 	int GetVY() { return m_vy; }
 
 	int GetMoveX() { return move_x; }
+	int GetDashX() { return move_x; }
 
 	void SetX(int x) { m_x = x; }
 	void SetY(int y) { m_y = y; }
