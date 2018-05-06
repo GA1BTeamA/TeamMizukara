@@ -14,6 +14,7 @@ CHero::CHero()
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
 	,m_ani_time (0)
 	, move_x(5.0f)
+	, move_dash_x(7.5f)
 {
 	m_name = PLAYER;
 
@@ -158,12 +159,14 @@ void CHero::Action()
 		//	m_x -= 1.0f;
 		//}
 
+		CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
 		//左キーで移動
 		if (Input::KeyPush(VK_LEFT))
 		{
 			if (Input::KeyPush('V'))
 			{
-				m_x -= 7.5f;//Vキーでダッシュ
+				m_x -= move_dash_x;//Vキーでダッシュ
 			}
 			else
 			{
@@ -176,7 +179,7 @@ void CHero::Action()
 		{
 			if (Input::KeyPush('V'))
 			{
-				m_x += 7.5f;//Vキーでダッシュ
+				m_x += move_dash_x;//Vキーでダッシュ
 			}
 			else
 			{

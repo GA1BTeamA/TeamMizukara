@@ -23,7 +23,7 @@ public:
 	int GetVY() { return m_vy; }
 
 	int GetMoveX() { return move_x; }
-	int GetDashX() { return move_x; }
+	int GetDashX() { return move_dash_x; }
 
 	void SetX(int x) { m_x = x; }
 	void SetY(int y) { m_y = y; }
@@ -33,7 +33,8 @@ private:
 	float m_x; //位置
 	float m_y;
 
-	float move_x;
+	float move_x;  //歩く速度
+	float move_dash_x;  //歩く速度に加算すればダッシュ時の速度になる
 
 	float m_vx;//移動ベクトル
 	float m_vy;

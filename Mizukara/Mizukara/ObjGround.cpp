@@ -58,37 +58,48 @@ void CObjGround::Action()
 	//前方スクロールライン
 	if (m_x > 350)
 	{
-		hero->SetX(350);   //主人公が指定領域を超えないように
-		m_scroll -= hero->GetMoveX();  //主人公が本来動くべき値をm_scrollに加える
-
-		if (Input::KeyPush('V')) //ダッシュ時
+		//端っこ来たらステージ端見えないようにする
+		if (m_scroll == -1600)
 		{
-			m_scroll -= hero->GetDashX();
+			m_scroll = -1600.0f;
 		}
+		else
+		{
+			hero->SetX(350);   //主人公が指定領域を超えないように
 
-		//if (m_gx == 2700)
-		//{
-		//	m_scroll = 0.0f;
-		//}
+			if (Input::KeyPush('V')) //ダッシュしてる時のスクロール
+			{
+				m_scroll -= hero->GetDashX();   //主人公が本来動くべき値をm_scrollに加える
+			}
+			else  //歩いている時のスクロール
+			{
+				m_scroll -= hero->GetMoveX();  //主人公が本来動くべき値をm_scrollに加える
+			}
+		}
 	}
 
-	//後方スクロールライン
-	if (m_x < 200)
-	{
-		hero->SetX(200);
-		m_scroll += hero->GetMoveX();
-
-		if (Input::KeyPush('V')) //ダッシュ時
+		//後方スクロールライン
+		if (m_x < 200)
 		{
-			m_scroll += hero->GetDashX();
-		}
+			//端っこ来たらステージ端見えないようにする
+			if (m_scroll == 0)
+			{
+				m_scroll = 0.0f;
+			}
+			else
+			{
+				hero->SetX(200);   //主人公が指定領域を超えないように
 
-		//if (m_gx == 0)
-		//{
-		//	m_scroll = 0.0f;
-		//}
+				if (Input::KeyPush('V')) //ダッシュしてる時のスクロール
+				{
+					m_scroll += hero->GetDashX();   //主人公が本来動くべき値をm_scrollに加える
+				}
+				else  //歩いている時のスクロール
+				{
+					m_scroll += hero->GetMoveX();   //主人公が本来動くべき値をm_scrollに加える
+				}
+			}
 	}
-	
 }
 
 void CObjGround::Draw()

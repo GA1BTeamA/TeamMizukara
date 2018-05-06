@@ -16,6 +16,7 @@ public:
 	void Draw();
 
 	int GetGY() { return m_gy; }  //m_gyŽæ“¾—p
+	int GetScroll() { return m_scroll; }  //m_scrollŽæ“¾—p
 
 private:
 	float m_gx; //ˆÊ’u
