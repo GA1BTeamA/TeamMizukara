@@ -17,6 +17,7 @@ public:
 
 	int GetGY() { return m_gy; }  //m_gy取得用
 	int GetScroll() { return m_scroll; }  //m_scroll取得用
+	int GetGX() { return m_gx; }  //m_gy取得用
 
 private:
 	float m_gx; //位置

@@ -247,7 +247,7 @@ bool CCollision::LineCrossPoint(
 
 	//符号が同じ方向になっているかどうかをチェック
 	if (SGN(t1) == SGN(t2))
-		return false;  //交点無し
+ 		return false;  //交点無し
 
 	//射影を絶対値化
 	t1 = abs(t1);  t2 = abs(t2);

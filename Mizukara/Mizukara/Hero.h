@@ -32,6 +32,10 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
+	float m_copy_x; //位置(コピー)
+	float m_copy_y;
+
+	Point m_point_position[4];
 
 	float move_x;  //歩く速度
 	float move_dash_x;  //歩く速度に加算すればダッシュ時の速度になる
