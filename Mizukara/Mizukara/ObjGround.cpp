@@ -59,7 +59,7 @@ void CObjGround::Action()
 	if (m_x > 350)
 	{
 		//端っこ来たらステージ端見えないようにする
-		if (m_scroll == -1600)
+		if (m_scroll <= -1600)
 		{
 			m_scroll = -1600.0f;
 		}
@@ -82,7 +82,7 @@ void CObjGround::Action()
 		if (m_x < 200)
 		{
 			//端っこ来たらステージ端見えないようにする
-			if (m_scroll == 0)
+			if (m_scroll >= 0)
 			{
 				m_scroll = 0.0f;
 			}
@@ -93,6 +93,7 @@ void CObjGround::Action()
 				if (Input::KeyPush('V')) //ダッシュしてる時のスクロール
 				{
 					m_scroll += hero->GetDashX();   //主人公が本来動くべき値をm_scrollに加える
+		
 				}
 				else  //歩いている時のスクロール
 				{
