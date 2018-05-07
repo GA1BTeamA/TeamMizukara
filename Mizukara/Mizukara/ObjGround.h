@@ -16,11 +16,14 @@ public:
 	void Draw();
 
 	int GetGY() { return m_gy; }  //m_gy取得用
+	int GetScroll() { return m_scroll; }  //m_scroll取得用
 	int GetGX() { return m_gx; }  //m_gy取得用
 
 private:
 	float m_gx; //位置
 	float m_gy;
 
-	HitLine* m_p_hit_line[5];//当たり判定
+	HitLine* m_p_hit_line_ground[5];//当たり判定
+
+	float m_scroll;//左右スクロール用
 };

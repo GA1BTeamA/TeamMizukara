@@ -4,6 +4,7 @@
 
 #include "Hero.h"
 
+extern int g_SceneNumber;
 extern bool g_key_flag;
 
 //コンストラクタ
@@ -13,6 +14,8 @@ CHero::CHero()
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
 	,m_ani_time (0)
+	, move_x(5.0f)
+	, move_dash_x(7.5f)
 {
 	m_name = PLAYER;
 
@@ -275,22 +278,55 @@ void CHero::Action()
 	//------------------------------
 
 
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1||
+				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
+			{
+				CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+				if (ground != nullptr)
+				{
+					m_y = ground->GetGY() - 100;
+					//m_y = 300;
+					m_vy = 0;
+					if (Input::KeyPush(VK_SPACE) == true)
+					{
+						if (m_down == false)
+						{
+							m_vy = -8;
+						}
+					}
+				}
+				//else if (m_p_hit_line->GetElement() == 1)
+				//{
+				//	m_x-=60
+				//}
+			}
+		}
+
+		//リザルト画面にいく処理
+		//if (m_x + 60 >= 800)
+		//{
+		//	g_SceneNumber = RESULT;
+		//	is_delete = true;
+		//	g_key_flag = false;
+		//}
 
 		//if (m_p_hit_line->GetHitData()[1] != nullptr)
 		//{
 		//	m_x -= 1.0f;
 		//}
 
+		CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
 		//左キーで移動
 		if (Input::KeyPush(VK_LEFT))
 		{
 			if (Input::KeyPush('V'))
 			{
-				m_copy_x -= 7.5f;//Vキーでダッシュ
+				m_x -= move_dash_x;//Vキーでダッシュ
 			}
 			else
 			{
-				m_copy_x -= 5.0f;
+				m_x -= move_x;
 			}
 			m_direc = LEFT;
 		}
@@ -299,11 +335,11 @@ void CHero::Action()
 		{
 			if (Input::KeyPush('V'))
 			{
-				m_copy_x += 7.5f;//Vキーでダッシュ
+				m_x += move_dash_x;//Vキーでダッシュ
 			}
 			else
 			{
-				m_copy_x += 5.0f;
+				m_x += move_x;
 			}
 			m_direc = RIGHT;
 		}

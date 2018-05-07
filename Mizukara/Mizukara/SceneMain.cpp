@@ -5,6 +5,7 @@
 #include "SceneMain.h"
 #include "Title.h"
 #include "StageSelecto.h"
+#include "Result.h"
 #include "Hero.h"
 #include "Tank.h"
 #include "Background.h"

@@ -6,11 +6,11 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-class CMenu : public CObj
+class CResult : public CObj
 {
 public:
-	CMenu();
-	~CMenu();//使用するヘッダ
+	CResult();
+	~CResult();//使用するヘッダ
 	void Action();
 	void Draw();
 
