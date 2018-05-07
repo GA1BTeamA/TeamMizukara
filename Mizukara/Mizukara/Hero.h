@@ -21,6 +21,10 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
+	float m_copy_x; //位置(コピー)
+	float m_copy_y;
+
+	Point m_point_position[4];
 
 	float m_vx;//移動ベクトル
 	float m_vy;
