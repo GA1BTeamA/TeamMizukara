@@ -24,6 +24,7 @@
 #include "..\Title.h"
 #include "..\ObjStory.h"
 #include "..\StageSelecto.h"
+#include "..\Result.h"
 #include "..\Hero.h"
 #include "..\Tank.h"
 #include "..\Background.h"
@@ -88,13 +89,15 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
 	Draw::LoadImage(14, L"Images\\muzusibuki.png");//14番目に"muzusibuki.pngを読み込み
 	Draw::LoadImage(15, L"Images\\Menu.png");//15番目に"Menu.pngを読み込み
-	Draw::LoadImage(16, L"Images\\WTM.png");//16番目に"WTM.pngを読み込み
+	//Draw::LoadImage(16, L"Images\\WTM.png");//16番目に"WTM.pngを読み込み
 	Draw::LoadImage(17, L"Images\\description.png");//17番目に"description.pngを読み込み
-	Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
+	//Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
 	Draw::LoadImage(19, L"Images\\StageSelecto.png");//19番目に"StageSelecto.pngを読み込み
 	Draw::LoadImage(20, L"Images\\Story.png");//20番目に"Story.pngを読み込み
 	Draw::LoadImage(21, L"Images\\icon.png");//21番目に"icon.pngを読み込み
 	Draw::LoadImage(22, L"Images\\Stage1.png");//22番目に"Stage1.pngを読み込み
+	Draw::LoadImage(23, L"Images\\Result.png");//23番目に"Result.pngを読み込み
+	Draw::LoadImage(24, L"Images\\Stage1B.png");//24番目にStage1B.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -132,6 +135,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CTitle* title;
 		CObjStory* story;
 		CStageSelecto* stageselecto;
+		CResult* result;
 		CHero* hero;
 		CTank* tank;
 		CBackground* background;
@@ -172,6 +176,16 @@ unsigned __stdcall GameMainSled(void *p)
 		case STAGESELECTO_MAIN://ステージセレクト
 			break;
 
+		case RESULT://リザルト画面初期化
+			result = new CResult();
+			result->m_priority = 120;
+			TaskSystem::InsertObj(result);
+			g_SceneNumber = RESULT_MAIN;
+			break;
+
+		case RESULT_MAIN://リザルト画面
+			break;
+
 		case GAME://ゲーム画面初期化
 
 		   /* hero = new CHero();
@@ -186,21 +200,21 @@ unsigned __stdcall GameMainSled(void *p)
 			background->m_priority = 10;
 			TaskSystem::InsertObj(background);
 
-			hero = new CHero();
-			hero->m_priority = 90;
-			TaskSystem::InsertObj(hero);
-
 			tank = new CTank();
 			tank->m_priority = 80;
 			TaskSystem::InsertObj(tank);
 
-			bucketmeter = new CBucketMeter();
-			bucketmeter->m_priority = 20;
-			TaskSystem::InsertObj(bucketmeter);
-
 			ground = new CObjGround();
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
+
+			hero = new CHero();
+			hero->m_priority = 90;
+			TaskSystem::InsertObj(hero);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_priority = 20;
+			TaskSystem::InsertObj(bucketmeter);
 
 			wtm = new CWTM();
 			wtm->m_priority = 70;
