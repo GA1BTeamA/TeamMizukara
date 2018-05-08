@@ -274,7 +274,7 @@ void CHero::Action()
 		//------------------------------
 		for (int i = 0; i < 10; i++)
 		{
-			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr||
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr ||
 				m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
 				continue;
 
@@ -287,13 +287,13 @@ void CHero::Action()
 					m_y = ground->GetGY() - 100;
 					//m_y = 300;
 					m_vy = 0;
-					if (Input::KeyPush(VK_SPACE) == true)
+					/*if (Input::KeyPush(VK_SPACE) == true)
 					{
 						if (m_down == false)
 						{
 							m_vy = -8;
 						}
-					}
+					}*/
 				}
 				//else if (m_p_hit_line->GetElement() == 1)
 				//{
@@ -345,7 +345,8 @@ void CHero::Action()
 		}
 
 		//地面に当たってたらスペースキーでジャンプ
-		if (IsHitGround) {
+		if (IsHitGround)
+		{
 			if (Input::KeyPush(VK_SPACE) == true)
 			{
 				m_vy = -8.0f;
@@ -382,7 +383,6 @@ void CHero::Action()
 		{
 			m_ani_time = 0;
 		}
-
 
 	}
 	//コピーの位置更新
