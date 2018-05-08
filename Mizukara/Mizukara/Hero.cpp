@@ -140,7 +140,7 @@ void CHero::Action()
 				//{
 				//	m_x-=60
 				//}
-			//}
+			}
 		}
 
 		//if (m_p_hit_line->GetHitData()[1] != nullptr)
