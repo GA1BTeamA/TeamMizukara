@@ -390,6 +390,8 @@ void CHero::Action()
 	m_copy_y = m_y;
 }
 
+
+
 void CHero::Draw()
 {
 	//•`‰æ
