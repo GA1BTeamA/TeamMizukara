@@ -103,12 +103,12 @@ void CHero::Action()
 
 		}*/
 
-	//謎の生成--------------
-	//	CObjGround ground;
-	//----------------------
+		//謎の生成--------------
+		//	CObjGround ground;
+		//----------------------
 
 
-		//地面に当たったら、
+			//地面に当たったら、
 		for (int i = 0; i < 10; i++)
 		{
 			//if (m_p_hit_line[0]->GetHitData()[i] != nullptr|| m_p_hit_line[1]->GetHitData()[i] != nullptr)
@@ -119,7 +119,7 @@ void CHero::Action()
 			if (m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
 				continue;
 
-			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1||
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1 ||
 				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
 			{
 				CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
@@ -141,73 +141,74 @@ void CHero::Action()
 				//	m_x-=60
 				//}
 			//}
+			}
+
+			//if (m_p_hit_line->GetHitData()[1] != nullptr)
+			//{
+			//	m_x -= 1.0f;
+			//}
+
+			//左キーで移動
+			if (Input::KeyPush(VK_LEFT))
+			{
+				if (Input::KeyPush('V'))
+				{
+					m_x -= 7.5f;//Vキーでダッシュ
+				}
+				else
+				{
+					m_x -= 5.0f;
+				}
+				m_direc = LEFT;
+			}
+			//右キーで移動
+			else if (Input::KeyPush(VK_RIGHT))
+			{
+				if (Input::KeyPush('V'))
+				{
+					m_x += 7.5f;//Vキーでダッシュ
+				}
+				else
+				{
+					m_x += 5.0f;
+				}
+				m_direc = RIGHT;
+			}
+
+			//自由落下運動
+			m_vy += 9.8 / (16.0f);
+
+			m_y += m_vy;
+
+			//当たり判定の位置更新
+			m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
+			m_p_hit_line_hero[0]->SetPos2(m_x, m_y + 100);
+			m_p_hit_line_hero[1]->SetPos1(m_x + 60, m_y);
+			m_p_hit_line_hero[1]->SetPos2(m_x + 60, m_y + 100);
+			m_p_hit_line_hero[2]->SetPos1(m_x, m_y);
+			m_p_hit_line_hero[2]->SetPos2(m_x + 60, m_y);
+			m_p_hit_line_hero_copy[0]->SetPos1(m_x, m_y);
+			m_p_hit_line_hero_copy[0]->SetPos2(m_x, m_y + 100);
+			m_p_hit_line_hero_copy[1]->SetPos1(m_x + 60, m_y);
+			m_p_hit_line_hero_copy[1]->SetPos2(m_x + 60, m_y + 100);
 		}
 
-		//if (m_p_hit_line->GetHitData()[1] != nullptr)
-		//{
-		//	m_x -= 1.0f;
-		//}
-
-		//左キーで移動
-		if (Input::KeyPush(VK_LEFT))
+		//アニメーション
+		if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
 		{
-			if (Input::KeyPush('V'))
+			m_ani_time++;
+			if (m_ani_time >= 24)
 			{
-				m_x -= 7.5f;//Vキーでダッシュ
+				m_ani_time = 0;
 			}
-			else
-			{
-				m_x -= 5.0f;
-			}
-			m_direc = LEFT;
 		}
-		//右キーで移動
-		else if (Input::KeyPush(VK_RIGHT))
-		{
-			if (Input::KeyPush('V'))
-			{
-				m_x += 7.5f;//Vキーでダッシュ
-			}
-			else
-			{
-				m_x += 5.0f;
-			}
-			m_direc = RIGHT;
-		}
-
-		//自由落下運動
-		m_vy += 9.8 / (16.0f);
-
-		m_y += m_vy;
-
-		//当たり判定の位置更新
-		m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
-		m_p_hit_line_hero[0]->SetPos2(m_x, m_y + 100);
-		m_p_hit_line_hero[1]->SetPos1(m_x + 60, m_y);
-		m_p_hit_line_hero[1]->SetPos2(m_x + 60, m_y + 100);
-		m_p_hit_line_hero[2]->SetPos1(m_x, m_y);
-		m_p_hit_line_hero[2]->SetPos2(m_x + 60, m_y);
-		m_p_hit_line_hero_copy[0]->SetPos1(m_x, m_y);
-		m_p_hit_line_hero_copy[0]->SetPos2(m_x, m_y + 100);
-		m_p_hit_line_hero_copy[1]->SetPos1(m_x + 60, m_y);
-		m_p_hit_line_hero_copy[1]->SetPos2(m_x + 60, m_y + 100);
-	}
-
-	//アニメーション
-	if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
-	{
-		m_ani_time++;
-		if (m_ani_time >= 24)
+		else
 		{
 			m_ani_time = 0;
 		}
-	}
-	else 
-    {
-		m_ani_time = 0;
-	}
 
 
+	}
 }
 
 void CHero::Draw()
