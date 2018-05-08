@@ -16,6 +16,8 @@ enum Scene
 	STAGESELECTO_MAIN,
 	STORY = 60,
 	STORY_MAIN = 70,
+	RESULT=80,
+	RESULT_MAIN=90,
 };
 
 enum {

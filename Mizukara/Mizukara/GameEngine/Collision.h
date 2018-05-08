@@ -3,6 +3,7 @@
 #include <Windows.h>
 #include <memory>
 #include <list>
+#include <math.h>
 
 #include "TaskSystem.h"
 using namespace std;
@@ -28,7 +29,7 @@ public:
 	{
 		ls_delete = false;
 		p1.x = p1.y = p2.x = p2.y = -999.0f;
-		//m_w = m_h = 0.0f;
+		m_angle = -999.0f;
 		m_obj = nullptr;
 		m_element = -1;
 		for (int i = 0; i < 10; i++)
@@ -38,7 +39,12 @@ public:
 	void SetDelete(bool d) { ls_delete = d; }	//削除フラグセット
 	void SetPos1(float x, float y) { p1.x = x; p1.y = y; }				//位置セット
 	void SetPos2(float x, float y) { p2.x = x; p2.y = y; }
-	//void SetWH(float w, float h) { m_w = w; m_h = h; }				//幅セット
+	Point GetPoint1() { return p1; }									//点1ゲット
+	Point GetPoint2() { return p2; }									//点2ゲット
+	void SetPoint1(Point p) { p1 = p; }									//点1セット
+	void SetPoint2(Point p) { p2 = p; }									//点2セット
+	void SetAngle() { m_angle = atan2(p2.x - p1.x, p2.y - p1.y)*180.0f/3.14f; }		//角度セット
+	float GetAngle() { return m_angle; }								//角度ゲット
 	void SetElement(int element) { m_element = element; }				//属性セット
 	void SetInvisible(bool invisible) { m_ls_invisible = invisible; }	//無敵セット
 	HitLine** GetHitData() { return m_hit; }	//当たった相手のヒットボックス情報取得
@@ -50,9 +56,8 @@ private:
 	//位置
 	Point p1;
 	Point p2;
-	////幅
-	//float m_w;
-	//float m_h;
+	//角度
+	float m_angle;
 	//この衝突オブジェクトを持つオブジェクトのポインタ
 	CObj* m_obj;
 	//属性(同じ値同士では当たり判定を行わない)

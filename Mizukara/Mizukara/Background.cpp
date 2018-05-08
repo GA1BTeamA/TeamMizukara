@@ -5,7 +5,7 @@
 #include "Background.h"
 
 CBackground::CBackground()
-	:m_x(0), m_y(0)
+	:m_x(0), m_y(0), m_scroll(0.0f)
 {
 	
 }
@@ -22,5 +22,9 @@ void CBackground::Action()
 
 void CBackground::Draw()
 {
-	Draw::Draw2D(12, m_x, m_y);
+	m_scroll = -3.0f;//ÉXÉNÉçÅ[Éã
+
+	
+
+	Draw::Draw2D(24, m_x, m_y);
 }

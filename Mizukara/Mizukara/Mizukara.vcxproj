@@ -132,6 +132,7 @@
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ObjStory.cpp" />
+    <ClCompile Include="Result.cpp" />
     <ClCompile Include="StageSelecto.cpp" />
     <ClCompile Include="WTM.cpp" />
     <ClCompile Include="ObjGround.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ObjStory.h" />
+    <ClInclude Include="Result.h" />
     <ClInclude Include="StageSelecto.h" />
     <ClInclude Include="WTM.h" />
     <ClInclude Include="ObjGround.h" />

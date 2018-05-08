@@ -21,5 +21,5 @@ private:
 	float im_x;//アイコンの位置
 	float im_y;
 
-	HitLine* m_p_hit_line;//当たり判定
+	HitLine* m_p_hit_line_wtm;//当たり判定
 };
