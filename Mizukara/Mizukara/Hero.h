@@ -19,13 +19,14 @@ public:
 
 	int GetX() { return m_x; }//ålŒöˆÊ’uæ“¾—p
 	int GetY() { return m_y; }
+	//int GetCopyX() { return m_copy_x; }
 	int GetVX() { return m_vx; }
 	int GetVY() { return m_vy; }
 
 	int GetMoveX() { return move_x; }
 	int GetDashX() { return move_dash_x; }
 
-	void SetX(int x) { m_x = x; }
+	void SetX(int x) { m_copy_x = x; }
 	void SetY(int y) { m_y = y; }
 
 	void MenuDel() { m_IsMenu = false; }

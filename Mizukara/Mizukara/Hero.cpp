@@ -315,7 +315,7 @@ void CHero::Action()
 		//	m_x -= 1.0f;
 		//}
 
-		CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+		//CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 		//左キーで移動
 		if (Input::KeyPush(VK_LEFT))
@@ -346,7 +346,7 @@ void CHero::Action()
 
 		//地面に当たってたらスペースキーでジャンプ
 		if (IsHitGround) {
-			if (Input::KeyPush(VK_SPACE) == true)
+			if (Input::KeyPush(VK_SPACE))
 			{
 				m_vy = -8.0f;
 			}
