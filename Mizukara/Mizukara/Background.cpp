@@ -20,16 +20,16 @@ CBackground::~CBackground()
 void CBackground::Action()
 {
 	//m_scroll -= 5.0f;//ÉXÉNÉçÅ[Éã
-	m_x -= 5.0f;
+	m_x -= 0.1f;
 	if (m_x < -2400.f)
 	{
-		m_x = 3200.f;
+		m_x = 2390.f;
 	}
 
-	m_x2 -= 5.0f;
+	m_x2 -= 0.1f;
 	if (m_x2 < -2400.f)
 	{
-		m_x2 = 3200.f;
+		m_x2 = 2390.f;
 	}
 }
 

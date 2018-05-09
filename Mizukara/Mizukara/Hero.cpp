@@ -328,6 +328,10 @@ void CHero::Action()
 			{
 				m_x -= move_x;
 			}
+			if (m_x < 0.0f)//主人公が領域外を超えたら停止
+			{
+				m_x = 0.0f;
+			}
 			m_direc = LEFT;
 		}
 		//右キーで移動
@@ -340,6 +344,10 @@ void CHero::Action()
 			else
 			{
 				m_x += move_x;
+			}
+			if (m_x+60.0f > 800.0f)//主人公が領域外を超えたら停止
+			{
+				m_x = 800.0f - 60.0f;
 			}
 			m_direc = RIGHT;
 		}
