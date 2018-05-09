@@ -66,7 +66,7 @@ void CObjGround::Action()
 		else
 		{
 			hero->SetX(350);   //主人公が指定領域を超えないように
-
+			
 			if (Input::KeyPush('V')) //ダッシュしてる時のスクロール
 			{
 				m_scroll -= hero->GetDashX();   //主人公が本来動くべき値をm_scrollに加える

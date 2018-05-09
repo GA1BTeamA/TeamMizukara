@@ -17,6 +17,8 @@ public:
 private:
 	float m_x; //位置
 	float m_y;
+	float m_x2;
+	float m_y2;
 
 	float m_scroll;//左右スクロール用
 };
