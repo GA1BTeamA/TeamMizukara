@@ -278,7 +278,13 @@ void CHero::Action()
 				m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
 				continue;
 
-			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1 ||
+		for(int i=0;i<10;i++)
+		{
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr||
+				m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
+				continue;
+
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1||
 				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
 			{
 				CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
