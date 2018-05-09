@@ -18,8 +18,15 @@ private:
 	float m_x; //位置
 	float m_y;
 
+	float m_x1;//水位置
+	float m_y1;
+	float m_x2;
+	float m_y2;
+
 	float im_x;//アイコンの位置
 	float im_y;
+
+	float m_scroll;//左右スクロール用
 
 	HitLine* m_p_hit_line_tank;//当たり判定
 };

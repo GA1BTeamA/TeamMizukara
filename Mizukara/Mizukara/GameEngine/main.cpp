@@ -98,6 +98,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(22, L"Images\\Stage1.png");//22番目に"Stage1.pngを読み込み
 	Draw::LoadImage(23, L"Images\\Result.png");//23番目に"Result.pngを読み込み
 	Draw::LoadImage(24, L"Images\\Stage1B.png");//24番目にStage1B.pngを読み込み
+	Draw::LoadImage(25, L"Images\\Wave1.png");//25番目のWave1.pngを読み込み
+	Draw::LoadImage(26, L"Images\\Wave2.png");//26番目のWave2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }

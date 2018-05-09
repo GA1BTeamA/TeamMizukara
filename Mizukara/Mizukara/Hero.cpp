@@ -278,133 +278,133 @@ void CHero::Action()
 				m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
 				continue;
 
-		for(int i=0;i<10;i++)
-		{
-			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr||
-				m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
-				continue;
-
-			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1||
-				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
+			for (int i = 0; i < 10; i++)
 			{
-				CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
-				if (ground != nullptr)
+				if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr ||
+					m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
+					continue;
+
+				if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1 ||
+					m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
 				{
-					m_y = ground->GetGY() - 100;
-					//m_y = 300;
-					m_vy = 0;
-					/*if (Input::KeyPush(VK_SPACE) == true)
+					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+					if (ground != nullptr)
 					{
-						if (m_down == false)
+						m_y = ground->GetGY() - 100;
+						//m_y = 300;
+						m_vy = 0;
+						/*if (Input::KeyPush(VK_SPACE) == true)
 						{
-							m_vy = -8;
-						}
-					}*/
+							if (m_down == false)
+							{
+								m_vy = -8;
+							}
+						}*/
+					}
+					//else if (m_p_hit_line->GetElement() == 1)
+					//{
+					//	m_x-=60
+					//}
 				}
-				//else if (m_p_hit_line->GetElement() == 1)
-				//{
-				//	m_x-=60
-				//}
 			}
-		}
 
-		//リザルト画面にいく処理
-		//if (m_x + 60 >= 800)
-		//{
-		//	g_SceneNumber = RESULT;
-		//	is_delete = true;
-		//	g_key_flag = false;
-		//}
+			//リザルト画面にいく処理
+			//if (m_x + 60 >= 800)
+			//{
+			//	g_SceneNumber = RESULT;
+			//	is_delete = true;
+			//	g_key_flag = false;
+			//}
 
-		//if (m_p_hit_line->GetHitData()[1] != nullptr)
-		//{
-		//	m_x -= 1.0f;
-		//}
+			//if (m_p_hit_line->GetHitData()[1] != nullptr)
+			//{
+			//	m_x -= 1.0f;
+			//}
 
-		//CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+			//CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-		//左キーで移動
-		if (Input::KeyPush(VK_LEFT))
-		{
-			if (Input::KeyPush('V'))
+			//左キーで移動
+			if (Input::KeyPush(VK_LEFT))
 			{
-				m_x -= move_dash_x;//Vキーでダッシュ
+				if (Input::KeyPush('V'))
+				{
+					m_x -= move_dash_x;//Vキーでダッシュ
+				}
+				else
+				{
+					m_x -= move_x;
+				}
+				if (m_x < 0.0f)//主人公が領域外を超えたら停止
+				{
+					m_x = 0.0f;
+				}
+				m_direc = LEFT;
+			}
+			//右キーで移動
+			else if (Input::KeyPush(VK_RIGHT))
+			{
+				if (Input::KeyPush('V'))
+				{
+					m_x += move_dash_x;//Vキーでダッシュ
+				}
+				else
+				{
+					m_x += move_x;
+				}
+				if (m_x + 60.0f > 800.0f)//主人公が領域外を超えたら停止
+				{
+					m_x = 800.0f - 60.0f;
+				}
+				m_direc = RIGHT;
+			}
+
+			//地面に当たってたらスペースキーでジャンプ
+			if (IsHitGround)
+			{
+				if (Input::KeyPush(VK_SPACE) == true)
+				{
+					m_vy = -8.0f;
+				}
+			}
+
+			//自由落下運動
+			m_vy += 9.8 / (16.0f);
+
+			m_copy_y += m_vy;
+
+			m_p_hit_line_hero_copy[0]->SetPos1(m_copy_x, m_copy_y);
+			m_p_hit_line_hero_copy[0]->SetPos2(m_copy_x, m_copy_y + 100);
+			m_p_hit_line_hero_copy[1]->SetPos1(m_copy_x + 60, m_copy_y);
+			m_p_hit_line_hero_copy[1]->SetPos2(m_copy_x + 60, m_copy_y + 100);
+			m_p_hit_line_hero_copy[2]->SetPos1(m_copy_x, m_copy_y);
+			m_p_hit_line_hero_copy[2]->SetPos2(m_copy_x + 60, m_copy_y);
+			m_p_hit_line_hero_copy[3]->SetPos1(m_copy_x, m_copy_y + 100);
+			m_p_hit_line_hero_copy[3]->SetPos2(m_copy_x + 60, m_copy_y + 100);
+
+
+
+
+			//アニメーション
+			if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
+			{
+				m_ani_time++;
+				if (m_ani_time >= 24)
+				{
+					m_ani_time = 0;
+				}
 			}
 			else
-			{
-				m_x -= move_x;
-			}
-			if (m_x < 0.0f)//主人公が領域外を超えたら停止
-			{
-				m_x = 0.0f;
-			}
-			m_direc = LEFT;
-		}
-		//右キーで移動
-		else if (Input::KeyPush(VK_RIGHT))
-		{
-			if (Input::KeyPush('V'))
-			{
-				m_x += move_dash_x;//Vキーでダッシュ
-			}
-			else
-			{
-				m_x += move_x;
-			}
-			if (m_x+60.0f > 800.0f)//主人公が領域外を超えたら停止
-			{
-				m_x = 800.0f - 60.0f;
-			}
-			m_direc = RIGHT;
-		}
-
-		//地面に当たってたらスペースキーでジャンプ
-		if (IsHitGround)
-		{
-			if (Input::KeyPush(VK_SPACE) == true)
-			{
-				m_vy = -8.0f;
-			}
-		}
-
-		//自由落下運動
-		m_vy += 9.8 / (16.0f);
-
-		m_copy_y += m_vy;
-
-		m_p_hit_line_hero_copy[0]->SetPos1(m_copy_x, m_copy_y);
-		m_p_hit_line_hero_copy[0]->SetPos2(m_copy_x, m_copy_y + 100);
-		m_p_hit_line_hero_copy[1]->SetPos1(m_copy_x + 60, m_copy_y);
-		m_p_hit_line_hero_copy[1]->SetPos2(m_copy_x + 60, m_copy_y + 100);
-		m_p_hit_line_hero_copy[2]->SetPos1(m_copy_x, m_copy_y);
-		m_p_hit_line_hero_copy[2]->SetPos2(m_copy_x + 60, m_copy_y);
-		m_p_hit_line_hero_copy[3]->SetPos1(m_copy_x, m_copy_y + 100);
-		m_p_hit_line_hero_copy[3]->SetPos2(m_copy_x + 60, m_copy_y + 100);
-
-
-
-
-		//アニメーション
-		if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
-		{
-			m_ani_time++;
-			if (m_ani_time >= 24)
 			{
 				m_ani_time = 0;
 			}
-		}
-		else
-		{
-			m_ani_time = 0;
-		}
 
+		}
+		//コピーの位置更新
+		m_copy_x = m_x;
+		m_copy_y = m_y;
 	}
-	//コピーの位置更新
-	m_copy_x = m_x;
-	m_copy_y = m_y;
+
 }
-
-
 
 void CHero::Draw()
 {

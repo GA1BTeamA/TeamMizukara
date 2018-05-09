@@ -6,8 +6,8 @@
 extern int g_SceneNumber;
 
 CTank::CTank()
-	:m_x(0), m_y(169)
-	, im_x(3), im_y(130)
+	:m_x(0), m_y(169),m_x1(0),m_y1(250),m_x2(0),m_y2(250)
+	,m_scroll(0.0f), im_x(3), im_y(130)
 {
 
 	/*
@@ -29,12 +29,23 @@ CTank::~CTank()
 
 void CTank::Action()
 {
+	m_x1 -= 0.4f;
+	if (m_x1 < -700.f)
+	{
+		m_x1 = 0.0f;
+	}
+
+	m_x2 -= 0.2f;
+	if (m_x2 < -700.f)
+	{
+		m_x2 = 0.0f;
+	}
 
 }
 
 void CTank::Draw()
 {
-	//WTMに近づいたらアイコンを出す
+	//タンクに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_p_hit_line_tank->GetHitData()[i] != nullptr)
@@ -46,5 +57,7 @@ void CTank::Draw()
 		}
 	}
 
-	//Draw::Draw2D(10, m_x, m_y);
+
+		Draw::Draw2D(26, m_x1, m_y1);
+		Draw::Draw2D(25, m_x2, m_y2);
 }
