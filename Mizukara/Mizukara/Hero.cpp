@@ -213,10 +213,6 @@ void CHero::Action()
 		m_p_hit_line_hero[3]->SetPos1(m_x, m_y+100);
 		m_p_hit_line_hero[3]->SetPos2(m_x + 60, m_y+100);
 
-		//コピーの位置更新
-		m_copy_x = m_x;
-		m_copy_y = m_y;
-
 		//コピーの当たり判定の位置更新
 		m_p_hit_line_hero_copy[0]->SetPoint1(m_p_hit_line_hero[0]->GetPoint1());
 		m_p_hit_line_hero_copy[0]->SetPoint2(m_p_hit_line_hero[0]->GetPoint2());
@@ -277,6 +273,11 @@ void CHero::Action()
 	//	CObjGround ground;
 	//------------------------------
 
+		for(int i=0;i<10;i++)
+		{
+			if (m_p_hit_line_hero_copy[0]->GetHitData()[i] == nullptr||
+				m_p_hit_line_hero_copy[1]->GetHitData()[i] == nullptr)
+				continue;
 
 			if (m_p_hit_line_hero_copy[0]->GetHitData()[i]->GetElement() == 1||
 				m_p_hit_line_hero_copy[1]->GetHitData()[i]->GetElement() == 1)
@@ -385,7 +386,9 @@ void CHero::Action()
 		m_ani_time = 0;
 	}
 
-
+	//コピーの位置更新
+	m_copy_x = m_x;
+	m_copy_y = m_y;
 }
 
 void CHero::Draw()
