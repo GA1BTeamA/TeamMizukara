@@ -405,7 +405,7 @@ void CHero::Action()
 	}
 }
 
-
+}
 
 void CHero::Draw()
 {
