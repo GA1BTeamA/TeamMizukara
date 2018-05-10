@@ -403,7 +403,7 @@ void CHero::Action()
 		m_copy_x = m_x;
 		m_copy_y = m_y;
 	}
-
+}
 
 
 void CHero::Draw()

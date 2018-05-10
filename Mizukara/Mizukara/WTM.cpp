@@ -7,10 +7,10 @@
 extern int g_SceneNumber;
 
 CWTM::CWTM()
-	:m_x(1186), m_y(334)
+	:m_x(1186), m_y(134)
 	,im_x(1186), im_y(30)
 {
-	//ヒットラインの作成
+	//ヒットラインの作成(左)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);
 	m_p_hit_line_wtm->SetPos1(m_x, m_y);
 	m_p_hit_line_wtm->SetPos2(m_x, m_y+100);
@@ -25,12 +25,19 @@ CWTM::~CWTM()
 
 void CWTM::Action()
 {
+	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
+	//当たり判定位置の更新
+	m_p_hit_line_wtm->SetPos1(m_x+ground->GetScroll(), m_y);
+	m_p_hit_line_wtm->SetPos2(m_x+ground->GetScroll(), m_y + 100);
 }
 
 void CWTM::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
+	int a = 0;
+	a = m_x + ground->GetScroll();
 
 	//WTMに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
@@ -39,10 +46,10 @@ void CWTM::Draw()
 		{
 			if (m_p_hit_line_wtm->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
+				Draw::Draw2D(21, a, im_y);
 			}
 		}
 	}
 
-	Draw::Draw2D(16, m_x + ground->GetScroll(), m_y);
+	//Draw::Draw2D(21, a, m_y);
 }
