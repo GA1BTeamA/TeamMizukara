@@ -100,6 +100,18 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(24, L"Images\\Stage1B.png");//24番目にStage1B.pngを読み込み
 	Draw::LoadImage(25, L"Images\\Wave1.png");//25番目のWave1.pngを読み込み
 	Draw::LoadImage(26, L"Images\\Wave2.png");//26番目のWave2.pngを読み込み
+	Draw::LoadImage(27, L"Images\\Wave3.png");//27番目のWave3.pngを読み込み
+	Draw::LoadImage(28, L"Images\\Wave4.png");//28番目のWave4.pngを読み込み
+	Draw::LoadImage(29, L"Images\\Wave5.png");//29番目のWave5.pngを読み込み
+	Draw::LoadImage(30, L"Images\\Wave6.png");//30番目のWave6.pngを読み込み
+	Draw::LoadImage(31, L"Images\\Wave7.png");//31番目のWave7.pngを読み込み
+	Draw::LoadImage(32, L"Images\\Wave8.png");//32番目のWave8.pngを読み込み
+	Draw::LoadImage(33, L"Images\\Wave9.png");//33番目のWave9.pngを読み込み
+	Draw::LoadImage(34, L"Images\\Wave10.png");//34番目のWave10.pngを読み込み
+	Draw::LoadImage(35, L"Images\\Wave11.png");//35番目のWave11.pngを読み込み
+	Draw::LoadImage(36, L"Images\\Wave12.png");//36番目のWave12.pngを読み込み
+	Draw::LoadImage(37, L"Images\\Wave13.png");//37番目のWave13.pngを読み込み
+	Draw::LoadImage(38, L"Images\\Wave14.png");//38番目のWave14.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -198,6 +210,10 @@ unsigned __stdcall GameMainSled(void *p)
 			tank->m_priority = 80;
 			TaskSystem::InsertObj(tank);*/
 
+			/*tank = new CTank();
+			tank->m_priority = 80;
+			TaskSystem::InsertObj(tank);*/
+
 			background = new CBackground();
 			background->m_priority = 10;
 			TaskSystem::InsertObj(background);
@@ -205,6 +221,10 @@ unsigned __stdcall GameMainSled(void *p)
 			tank = new CTank();
 			tank->m_priority = 80;
 			TaskSystem::InsertObj(tank);
+
+			wtm = new CWTM();
+			wtm->m_priority = 70;
+			TaskSystem::InsertObj(wtm);
 
 			ground = new CObjGround();
 			ground->m_priority = 30;
@@ -218,9 +238,13 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_priority = 20;
 			TaskSystem::InsertObj(bucketmeter);
 
-			wtm = new CWTM();
+			/*tank = new CTank();
+			tank->m_priority = 80;
+			TaskSystem::InsertObj(tank);*/
+
+			/*wtm = new CWTM();
 			wtm->m_priority = 70;
-			TaskSystem::InsertObj(wtm);
+			TaskSystem::InsertObj(wtm);*/
 
 			g_SceneNumber = GAME_MAIN;
 			break;

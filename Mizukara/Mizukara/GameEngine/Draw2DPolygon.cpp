@@ -12,9 +12,9 @@ ID3D11Buffer*		Draw::m_pIndexBuffer;	//インデックスバッファ
 
 //テクスチャに必要なモノ
 ID3D11SamplerState*			Draw::m_pSampleLinear;	//テクスチャーサンプラー
-ID3D11ShaderResourceView*	Draw::m_pTexture[32];	//テクスチャリソース
-float	Draw::m_width[32];		//テクスチャの横幅
-float	Draw::m_height[32];		//テクスチャの縦幅
+ID3D11ShaderResourceView*	Draw::m_pTexture[96];	//テクスチャリソース
+float	Draw::m_width[96];		//テクスチャの横幅
+float	Draw::m_height[96];		//テクスチャの縦幅
 
 //イメージ情報読み込み
 void CDraw2DPolygon::LoadImage(int id, wchar_t* img_name)
@@ -248,7 +248,7 @@ void CDraw2DPolygon::Draw2D(int id,float x,float y,float sx,float sy,float r)
 HRESULT CDraw2DPolygon::InitPolygonRender()
 {
 	//テクスチャの配列の初期化
-	for (int i = 0; i < 32; i++)
+	for (int i = 0; i < 96; i++)
 	{
 		m_pTexture[i] = nullptr;
 	}
@@ -430,7 +430,7 @@ void CDraw2DPolygon::DeletePolygonRender()
 	//テクスチャ情報の破棄
 	SAFE_RELEASE(m_pSampleLinear);
 	
-	for (int i = 0; i < 32; i++)
+	for (int i = 0; i < 96; i++)
 		SAFE_RELEASE(m_pTexture[i]);
 
 	//GPU側で扱う用
