@@ -6,8 +6,9 @@
 extern int g_SceneNumber;
 
 CTank::CTank()
-	:m_x(0), m_y(169),m_x1(0),m_y1(250),m_x2(0),m_y2(250)
-	,m_scroll(0.0f), im_x(3), im_y(130)
+	:m_x(40), m_y(250),m_x1(12),m_y1(250),m_x3(12),m_y3(250),m_x4(12),m_y4(250),m_x5(12)
+	, m_y5(250), m_x6(12), m_y6(250), m_x7(12), m_y7(250), m_x8(12), m_y8(250)
+	,im_x(3), im_y(130),m_ani_time(0.0f)
 {
 
 	/*
@@ -29,17 +30,67 @@ CTank::~CTank()
 
 void CTank::Action()
 {
-	m_x1 -= 0.4f;
-	if (m_x1 < -700.f)
+	m_ani_time++;
+
+	if (m_ani_time > 2)
 	{
-		m_x1 = 0.0f;
+		Draw::Draw2D(26, m_x1, m_y1);
+	}
+	else if (m_ani_time > 4)
+	{
+		Draw::Draw2D(26, m_x2, m_y2);
+	}
+	else if (m_ani_time > 6)
+	{
+		Draw::Draw2D(26, m_x3, m_y3);
+	}
+	else if (m_ani_time > 8)
+	{
+		Draw::Draw2D(26, m_x4, m_y4);
+	}
+	else if (m_ani_time > 10)
+	{
+		Draw::Draw2D(26, m_x5, m_y5);
+	}
+	else if (m_ani_time > 12)
+	{
+		Draw::Draw2D(26, m_x6, m_y6);
+	}
+	else if (m_ani_time > 14)
+	{
+		Draw::Draw2D(26, m_x7, m_y7);
+	}
+	else if (m_ani_time > 16)
+	{
+		Draw::Draw2D(26, m_x8, m_y8);
+	}
+	else
+	{
+		m_ani_time = 0;
+	}
+	/*m_x1 -= 0.4f;
+	if (m_x1 < 0.0f)
+	{
+		m_x1 = 30.0f;
 	}
 
-	m_x2 -= 0.2f;
-	if (m_x2 < -700.f)
+	m_x2 -= 0.4f;
+	if (m_x2 < 0.0f)
 	{
-		m_x2 = 0.0f;
+		m_x2 = 30.0f;
 	}
+
+	m_x3 -= 0.2f;
+	if (m_x3 < 0.0f)
+	{
+		m_x3 = 30.0f;
+	}
+
+	m_x4 -= 0.2f;
+	if (m_x4 < 0.0f)
+	{
+		m_x4 = 30.0f;
+	}*/
 
 }
 
@@ -57,7 +108,8 @@ void CTank::Draw()
 		}
 	}
 
-
 		Draw::Draw2D(26, m_x1, m_y1);
-		Draw::Draw2D(25, m_x2, m_y2);
+		Draw::Draw2D(26, m_x2, m_y2);
+		Draw::Draw2D(25, m_x3, m_y3);
+		Draw::Draw2D(25, m_x4, m_y4);
 }

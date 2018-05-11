@@ -13,6 +13,8 @@ typedef class CDeviceCreate
 
 		static HRESULT APIENTRY InitDevice(HWND hWnd, int w, int h);	//デバイスの初期化
 		static void ShutDown();											//終了
+		//static void Init3DEnviroment();       //3D環境の構築
+		//static void Delete3DEnviroment();     //3D環境の破棄
 
 		static ID3D11Device*			GetDevice()			{ return m_pDevice; }
 		static ID3D11DeviceContext*		GetDeviceContext()	{ return m_pDeviceContext; }
@@ -35,4 +37,5 @@ typedef class CDeviceCreate
 		static IDXGIDevice1*			m_pDXGIDevice;			//DXGIデバイス
 		static D3D_FEATURE_LEVEL		m_FeatureLevel;			//D3D機能レベル
 
+		//static ID3D11DepthStencilView* m_pDSV; //D3D11 深度ステンシルビュー
 }Dev;
