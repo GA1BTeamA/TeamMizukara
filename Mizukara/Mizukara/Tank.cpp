@@ -3,12 +3,12 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "Tank.h"
+#include "ObjGround.h"
 extern int g_SceneNumber;
 
 CTank::CTank()
-	:m_x(40), m_y(250),m_x1(12),m_y1(250),m_x3(12),m_y3(250),m_x4(12),m_y4(250),m_x5(12)
-	, m_y5(250), m_x6(12), m_y6(250), m_x7(12), m_y7(250), m_x8(12), m_y8(250)
-	,im_x(3), im_y(130),m_ani_time(0.0f)
+	:m_x(40), m_y(250),m_x1(12),m_y1(250)
+	,im_x(3), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
 {
 
 	/*
@@ -30,44 +30,44 @@ CTank::~CTank()
 
 void CTank::Action()
 {
-	m_ani_time++;
+	/*m_ani_time++;
 
-	if (m_ani_time > 2)
+	if (m_ani_time < 2)
 	{
-		Draw::Draw2D(26, m_x1, m_y1);
+		Draw::Draw2D(25, m_x1, m_y1);
 	}
-	else if (m_ani_time > 4)
+	else if (m_ani_time < 4)
 	{
 		Draw::Draw2D(26, m_x2, m_y2);
 	}
-	else if (m_ani_time > 6)
+	else if (m_ani_time < 6)
 	{
-		Draw::Draw2D(26, m_x3, m_y3);
+		Draw::Draw2D(27, m_x3, m_y3);
 	}
-	else if (m_ani_time > 8)
+	else if (m_ani_time < 8)
 	{
-		Draw::Draw2D(26, m_x4, m_y4);
+		Draw::Draw2D(28, m_x4, m_y4);
 	}
-	else if (m_ani_time > 10)
+	else if (m_ani_time < 10)
 	{
-		Draw::Draw2D(26, m_x5, m_y5);
+		Draw::Draw2D(29, m_x5, m_y5);
 	}
-	else if (m_ani_time > 12)
+	else if (m_ani_time < 12)
 	{
-		Draw::Draw2D(26, m_x6, m_y6);
+		Draw::Draw2D(30, m_x6, m_y6);
 	}
-	else if (m_ani_time > 14)
+	else if (m_ani_time < 14)
 	{
-		Draw::Draw2D(26, m_x7, m_y7);
+		Draw::Draw2D(31, m_x7, m_y7);
 	}
-	else if (m_ani_time > 16)
+	/*else if (m_ani_time > 16)
 	{
-		Draw::Draw2D(26, m_x8, m_y8);
-	}
-	else
+		Draw::Draw2D(32, m_x8, m_y8);
+	}*/
+	/*else
 	{
 		m_ani_time = 0;
-	}
+	}*/
 	/*m_x1 -= 0.4f;
 	if (m_x1 < 0.0f)
 	{
@@ -108,8 +108,102 @@ void CTank::Draw()
 		}
 	}
 
-		Draw::Draw2D(26, m_x1, m_y1);
+	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
+
+	if (m_ani_time1 >= 69)
+	{
+		m_ani_time1 = 0;
+	}
+	else
+	{
+		m_ani_time1++;
+	}
+
+	
+    if (m_ani_time1 < 10)
+	{
+		Draw::Draw2D(35, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time1 < 20)
+	{
+		Draw::Draw2D(36, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time1 < 30)
+	{
+		Draw::Draw2D(37, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time1 < 40)
+	{
+		Draw::Draw2D(38, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time1 < 50)
+	{
+		Draw::Draw2D(32, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time1 < 60)
+	{
+		Draw::Draw2D(33, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time1 < 70)
+	{
+		Draw::Draw2D(34, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+
+
+	if (m_ani_time2 >= 34)
+	{
+		m_ani_time2 = 0;
+	}
+	else
+	{
+		m_ani_time2++;
+	}
+
+	if (m_ani_time2 < 5)
+	{
+		Draw::Draw2D(25, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time2 < 10)
+	{
+		Draw::Draw2D(26, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time2 < 15)
+	{
+		Draw::Draw2D(27, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time2 < 20)
+	{
+		Draw::Draw2D(28, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time2 < 25)
+	{
+		Draw::Draw2D(29, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time2 < 30)
+	{
+		Draw::Draw2D(30, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	else if (m_ani_time2 < 35)
+	{
+		Draw::Draw2D(31, m_x1 + ground->GetScroll(), m_y1, 1, 0.7);
+	}
+	/*else if (m_ani_time > 16)
+	{
+	Draw::Draw2D(32, m_x8, m_y8);
+	}*/
+	
+
+	/*Draw::Draw2D(25, m_x1, m_y1);
+	Draw::Draw2D(26, m_x2, m_y2);
+	Draw::Draw2D(27, m_x3, m_y3);
+	Draw::Draw2D(28, m_x4, m_y4);
+	Draw::Draw2D(29, m_x5, m_y5);
+	Draw::Draw2D(30, m_x6, m_y6);
+	Draw::Draw2D(31, m_x7, m_y7);*/
+
+		/*Draw::Draw2D(26, m_x1, m_y1);
 		Draw::Draw2D(26, m_x2, m_y2);
 		Draw::Draw2D(25, m_x3, m_y3);
-		Draw::Draw2D(25, m_x4, m_y4);
+		Draw::Draw2D(25, m_x4, m_y4);*/
 }
