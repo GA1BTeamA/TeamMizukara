@@ -269,6 +269,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	//ゲーム各システム初期化----
 	CWindowCreate::NewWindow(800, 600, name, hInstance);//ウィンドウ作成
 	CDeviceCreate::InitDevice(CWindowCreate::GethWnd(), 800, 600);//DirectX Deviceの初期化
+	//CDeviceCreate::Init3DEnviroment();//3D環境構築
 	//Audio::InitAudio();//オーディオ作成
 	Input::InitInput();//入力用のクラス初期化
 	Draw::InitPolygonRender();//ポリゴン表示環境の初期化
@@ -314,6 +315,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	Font::DeleteFontTex();//フォントの破棄
 	TaskSystem::DeleteTaskSystem();//タスクシステムの破棄
 	Draw::DeletePolygonRender();//ポリゴン表示環境の破棄
+	//CDeviceCreate::Delete3DEnviroment();//3D環境破棄
 	CDeviceCreate::ShutDown();//DirectXの環境破棄
 	//Audio::DeleteAudio();//オーディオ環境の破棄
 

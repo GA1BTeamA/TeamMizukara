@@ -17,6 +17,7 @@ IDXGIOutput**			CDeviceCreate::m_ppDXGIOutputArray;	//DXGI出力群
 UINT					CDeviceCreate::m_nDXGIOutputArraySize;	//DXGI出力群サイズ
 IDXGIDevice1*			CDeviceCreate::m_pDXGIDevice;			//DXGIデバイス
 D3D_FEATURE_LEVEL		CDeviceCreate::m_FeatureLevel;			//D3D機能レベル
+//ID3D11DepthStencilView* CDeviceCreate::m_pDSV;                  //D3D11深度ステンシルビュー
 
 //デバイスの初期化
 HRESULT APIENTRY CDeviceCreate::InitDevice(HWND hWnd, int w, int h)
