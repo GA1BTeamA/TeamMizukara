@@ -454,11 +454,26 @@ void CHero::Draw()
 		}
 		else if (Input::KeyPush('X'))
 		{
-			Draw::Draw2D(0, m_x, m_y);
+			Draw::Draw2D(5, m_x, m_y);
 		}
 		else if (Input::KeyPush('C'))
 		{
-			Draw::Draw2D(0, m_x, m_y);
+			for (int i = 0; i < 10; i++)
+			{
+				for (int j = 0; j < 4; j++)
+				{
+					//主人公の当たり判定が他の当たり判定にあたってなかったらスキップ
+					if (m_p_hit_line_hero_copy[j]->GetHitData()[i] == nullptr)
+						continue;
+
+					//主人公の当たり判定に当たってたのが地面なら
+					if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3||
+						m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+					{
+						Draw::Draw2D(4, m_x, m_y);
+					}
+				}
+			}
 		}
 		/*else if (Input::KeyPush(VK_SPACE))
 		{

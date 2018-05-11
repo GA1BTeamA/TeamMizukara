@@ -7,8 +7,8 @@
 extern int g_SceneNumber;
 
 CWTM::CWTM()
-	:m_x(1186), m_y(134)
-	,im_x(1186), im_y(30)
+	:m_x(1186), m_y(234)
+	,im_x(1166), im_y(30)
 {
 	//ヒットラインの作成(左)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);
@@ -36,9 +36,6 @@ void CWTM::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	int a = 0;
-	a = m_x + ground->GetScroll();
-
 	//WTMに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
@@ -46,7 +43,7 @@ void CWTM::Draw()
 		{
 			if (m_p_hit_line_wtm->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, a, im_y);
+				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
 			}
 		}
 	}
