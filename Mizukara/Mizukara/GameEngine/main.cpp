@@ -222,6 +222,10 @@ unsigned __stdcall GameMainSled(void *p)
 			tank->m_priority = 80;
 			TaskSystem::InsertObj(tank);
 
+			wtm = new CWTM();
+			wtm->m_priority = 70;
+			TaskSystem::InsertObj(wtm);
+
 			ground = new CObjGround();
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
@@ -238,9 +242,9 @@ unsigned __stdcall GameMainSled(void *p)
 			tank->m_priority = 80;
 			TaskSystem::InsertObj(tank);*/
 
-			wtm = new CWTM();
+			/*wtm = new CWTM();
 			wtm->m_priority = 70;
-			TaskSystem::InsertObj(wtm);
+			TaskSystem::InsertObj(wtm);*/
 
 			g_SceneNumber = GAME_MAIN;
 			break;

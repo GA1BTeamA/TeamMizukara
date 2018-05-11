@@ -7,7 +7,7 @@
 extern int g_SceneNumber;
 
 CWTM::CWTM()
-	:m_x(1186), m_y(234)
+	:m_x(1186), m_y(234),m_x1(1190),m_y1(150),m_ani_time1(0.0f),m_ani_time2(0.0f)
 	,im_x(1166), im_y(30)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
@@ -46,6 +46,84 @@ void CWTM::Draw()
 				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
 			}
 		}
+	}
+
+	if (m_ani_time1 >= 69)
+	{
+		m_ani_time1 = 0;
+	}
+	else
+	{
+		m_ani_time1++;
+	}
+
+
+	if (m_ani_time1 < 10)
+	{
+		Draw::Draw2D(35, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 20)
+	{
+		Draw::Draw2D(36, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 30)
+	{
+		Draw::Draw2D(37, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 40)
+	{
+		Draw::Draw2D(38, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 50)
+	{
+		Draw::Draw2D(32, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 60)
+	{
+		Draw::Draw2D(33, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 70)
+	{
+		Draw::Draw2D(34, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+
+
+	if (m_ani_time2 >= 34)
+	{
+		m_ani_time2 = 0;
+	}
+	else
+	{
+		m_ani_time2++;
+	}
+
+	if (m_ani_time2 < 5)
+	{
+		Draw::Draw2D(25, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 10)
+	{
+		Draw::Draw2D(26, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 15)
+	{
+		Draw::Draw2D(27, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 20)
+	{
+		Draw::Draw2D(28, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 25)
+	{
+		Draw::Draw2D(29, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 30)
+	{
+		Draw::Draw2D(30, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 35)
+	{
+		Draw::Draw2D(31, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
 
 	//Draw::Draw2D(21, a, m_y);

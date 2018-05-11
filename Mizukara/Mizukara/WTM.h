@@ -17,9 +17,16 @@ public:
 private:
 	float m_x; //WTMの位置
 	float m_y;
+	float m_x1;
+	float m_y1;
+	float m_x2;
+	float m_y2;
 
 	float im_x;//アイコンの位置
 	float im_y;
+
+	int m_ani_time1;
+	int m_ani_time2;
 
 	HitLine* m_p_hit_line_wtm;//当たり判定
 };
