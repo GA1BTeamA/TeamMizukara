@@ -17,7 +17,7 @@ public:
 	void Action();
 	void Draw();
 
-	int GetX() { return m_x; }//主人公位置取得用
+	int GetX() { return m_x; }//主人公位置取得用卍
 	int GetY() { return m_y; }
 	//int GetCopyX() { return m_copy_x; }
 	int GetVX() { return m_vx; }
@@ -31,7 +31,7 @@ public:
 
 	void MenuDel() { m_IsMenu = false; }
 private:
-	float m_x; //位置
+	float m_x; //位置卍
 	float m_y;
 	float m_copy_x; //位置(コピー)
 	float m_copy_y;
@@ -39,7 +39,7 @@ private:
 	Point m_point_position[4];
 
 	float move_x;  //歩く速度
-	float move_dash_x;  //歩く速度に加算すればダッシュ時の速度になる
+	float move_dash_x;  //歩く速度に加算すればダッシュ時の速度になる卍
 
 	float m_vx;//移動ベクトル
 	float m_vy;
@@ -52,6 +52,10 @@ private:
 	bool m_down;//衝突確認用
 
 	int m_ani_time;//主人公アニメーション
+
+	bool m_Buttom_Frag;  //ボタンフラグ
+	bool m_CKey_Frag;  //Cキー押されたかのフラグ卍
+	bool m_XKey_Frag;  //Xキー押されたかのフラグ卍
 
 	HitLine* m_p_hit_line_hero[4];//当たり判定
 	HitLine* m_p_hit_line_hero_copy[4];//当たり判定(コピー)

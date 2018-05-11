@@ -16,6 +16,8 @@ CHero::CHero()
 	,m_ani_time (0)
 	, move_x(5.0f)
 	, move_dash_x(7.5f)
+	, m_CKey_Frag(false)
+	, m_XKey_Frag(false)
 {
 	m_name = PLAYER;
 
@@ -367,6 +369,50 @@ void CHero::Action()
 				}
 			}
 
+			//Cキーが押されているかどうか
+			if (Input::KeyPush('C'))
+			{
+				for (int i = 0; i < 10; i++)
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						//主人公の当たり判定が他の当たり判定にあたってなかったらスキップ
+						if (m_p_hit_line_hero_copy[j]->GetHitData()[i] == nullptr)
+							continue;
+
+						//主人公の当たり判定に当たってたのがタンクorWTMなら卍
+						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+						{
+							m_CKey_Frag = true;
+						}
+					}
+				}
+			}
+			else m_CKey_Frag = false;
+
+			//Xキーが押されているかどうか
+			if (Input::KeyPush('X'))
+			{
+				for (int i = 0; i < 10; i++)
+				{
+					for (int j = 0; j < 4; j++)
+					{
+						//主人公の当たり判定が他の当たり判定にあたってなかったらスキップ
+						if (m_p_hit_line_hero_copy[j]->GetHitData()[i] == nullptr)
+							continue;
+
+						//主人公の当たり判定に当たってたのがタンクorWTMなら卍
+						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+						{
+							m_XKey_Frag = true;
+						}
+					}
+				}
+			}
+			else m_XKey_Frag = false;
+
 			//自由落下運動
 			m_vy += 9.8 / (16.0f);
 
@@ -452,41 +498,29 @@ void CHero::Draw()
 				Draw::Draw2D(0, m_x, m_y);
 			}
 		}
-		else if (Input::KeyPush('X'))
+		else if (m_XKey_Frag==true)
 		{
 			Draw::Draw2D(5, m_x, m_y);
 		}
-		else if (Input::KeyPush('C'))
+		else if (m_CKey_Frag==true)
 		{
-			for (int i = 0; i < 10; i++)
+			Draw::Draw2D(4, m_x, m_y);
+		}
+		else if (m_CKey_Frag == false)
+		{
+			if (m_direc == RIGHT)
 			{
-				for (int j = 0; j < 4; j++)
-				{
-					//主人公の当たり判定が他の当たり判定にあたってなかったらスキップ
-					if (m_p_hit_line_hero_copy[j]->GetHitData()[i] == nullptr)
-						continue;
-
-					//主人公の当たり判定に当たってたのが地面なら
-					if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3||
-						m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
-					{
-						Draw::Draw2D(4, m_x, m_y);
-					}
-				}
+				Draw::Draw2D(0, m_x, m_y);
+			}
+			else if (m_direc == LEFT)
+			{
+				Draw::Draw2D(1, m_x, m_y);
 			}
 		}
 		/*else if (Input::KeyPush(VK_SPACE))
 		{
 			Draw::Draw2D(6, m_x, m_y);
 		}*/
-		else if (m_direc == RIGHT)
-		{
-			Draw::Draw2D(0, m_x, m_y);
-		}
-		else if (m_direc == LEFT)
-		{
-			Draw::Draw2D(1, m_x, m_y);
-		}
 
 		/*if (RIGHT || LEFT) {
 			if (m_ani_time <= 6) {
