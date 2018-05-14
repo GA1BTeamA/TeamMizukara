@@ -8,6 +8,7 @@
 #include "Result.h"
 #include "Hero.h"
 #include "Tank.h"
+#include "Sprinkler.h"
 #include "Background.h"
 #include "BucketMeter.h"
 #include "ObjGround.h"

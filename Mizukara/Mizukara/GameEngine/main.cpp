@@ -33,6 +33,7 @@
 #include "..\SceneMain.h"
 #include "..\WTM.h"
 #include "..\Menu.h"
+#include "..\Sprinkler.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -156,6 +157,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CBucketMeter* bucketmeter;
 		CObjGround* ground;
 		CWTM* wtm;
+		CSPRI* spri;
 		
 
 		switch (g_SceneNumber)
@@ -225,6 +227,10 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm = new CWTM();
 			wtm->m_priority = 70;
 			TaskSystem::InsertObj(wtm);
+
+			spri = new CSPRI();
+			spri->m_priority = 60;
+			TaskSystem::InsertObj(spri);
 
 			ground = new CObjGround();
 			ground->m_priority = 30;
