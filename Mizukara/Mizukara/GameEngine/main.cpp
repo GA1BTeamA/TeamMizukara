@@ -113,6 +113,14 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(36, L"Images\\Wave12.png");//36番目のWave12.pngを読み込み
 	Draw::LoadImage(37, L"Images\\Wave13.png");//37番目のWave13.pngを読み込み
 	Draw::LoadImage(38, L"Images\\Wave14.png");//38番目のWave14.pngを読み込み
+	Draw::LoadImage(37, L"Images\\Wave15.png");//37番目のWave15.pngを読み込み
+	Draw::LoadImage(38, L"Images\\Wave16.png");//38番目のWave16.pngを読み込み
+	Draw::LoadImage(37, L"Images\\Wave17.png");//37番目のWave17.pngを読み込み
+	Draw::LoadImage(38, L"Images\\Wave18.png");//38番目のWave18.pngを読み込み
+	Draw::LoadImage(37, L"Images\\Wave19.png");//37番目のWave19.pngを読み込み
+	Draw::LoadImage(38, L"Images\\Wave20.png");//38番目のWave20.pngを読み込み
+	Draw::LoadImage(37, L"Images\\Wave21.png");//37番目のWave21.pngを読み込み
+	Draw::LoadImage(38, L"Images\\Wave22.png");//38番目のWave22.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
