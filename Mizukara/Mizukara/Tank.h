@@ -25,6 +25,9 @@ private:
 	float im_x;//アイコンの位置
 	float im_y;
 
+	float m_water_x;  //水の表示位置
+	float m_water_y;
+
 	int m_ani_time1;
 	int m_ani_time2;
 	//float m_scroll;//左右スクロール用

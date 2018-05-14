@@ -10,8 +10,9 @@ const float CTank::m_Wave_Shrinking = 0.7f;
 
 
 CTank::CTank()
-	:m_x(40), m_y(250),m_x1(12),m_y1(250)
+	:m_x(40), m_y(250),m_x1(11),m_y1(250)
 	,im_x(3), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
+	, m_water_x(11), m_water_y(270)
 {
 
 
@@ -53,7 +54,10 @@ void CTank::Draw()
 
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
+	//水表示
+	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y,2.95,3.65);
 
+	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
 	{
 		m_ani_time1 = 0;
@@ -63,7 +67,6 @@ void CTank::Draw()
 		m_ani_time1++;
 	}
 
-	//波アニメーション(後ろ)
     if (m_ani_time1 < 10)
 	{
 		Draw::Draw2D(36, m_x1 + ground->GetScroll(), m_y1, 1, m_Wave_Shrinking);
@@ -109,7 +112,7 @@ void CTank::Draw()
 		Draw::Draw2D(46, m_x1 + ground->GetScroll(), m_y1, 1, m_Wave_Shrinking);
 	}
 
-
+	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
 	{
 		m_ani_time2 = 0;
@@ -119,7 +122,6 @@ void CTank::Draw()
 		m_ani_time2++;
 	}
 
-	//波アニメーション(前)
 	if (m_ani_time2 < 5)
 	{
 		Draw::Draw2D(25, m_x1 + ground->GetScroll(), m_y1, 1, m_Wave_Shrinking);

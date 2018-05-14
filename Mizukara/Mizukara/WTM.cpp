@@ -48,6 +48,7 @@ void CWTM::Draw()
 		}
 	}
 
+	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
 	{
 		m_ani_time1 = 0;
@@ -57,7 +58,6 @@ void CWTM::Draw()
 		m_ani_time1++;
 	}
 
-	//波アニメーション(後ろ)
 	if (m_ani_time1 < 10)
 	{
 		Draw::Draw2D(36, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
@@ -103,7 +103,7 @@ void CWTM::Draw()
 		Draw::Draw2D(46, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
 
-
+	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
 	{
 		m_ani_time2 = 0;
@@ -113,7 +113,6 @@ void CWTM::Draw()
 		m_ani_time2++;
 	}
 
-	//波アニメーション(前)
 	if (m_ani_time2 < 5)
 	{
 		Draw::Draw2D(25, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
