@@ -48,7 +48,7 @@ void CWTM::Draw()
 		}
 	}
 
-	if (m_ani_time1 >= 69)
+	if (m_ani_time1 >= 109)
 	{
 		m_ani_time1 = 0;
 	}
@@ -57,38 +57,54 @@ void CWTM::Draw()
 		m_ani_time1++;
 	}
 
-
+	//波アニメーション(後ろ)
 	if (m_ani_time1 < 10)
-	{
-		Draw::Draw2D(35, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
-	}
-	else if (m_ani_time1 < 20)
 	{
 		Draw::Draw2D(36, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
-	else if (m_ani_time1 < 30)
+	else if (m_ani_time1 < 20)
 	{
 		Draw::Draw2D(37, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
-	else if (m_ani_time1 < 40)
+	else if (m_ani_time1 < 30)
 	{
 		Draw::Draw2D(38, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
+	else if (m_ani_time1 < 40)
+	{
+		Draw::Draw2D(39, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
 	else if (m_ani_time1 < 50)
 	{
-		Draw::Draw2D(32, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+		Draw::Draw2D(40, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
 	else if (m_ani_time1 < 60)
 	{
-		Draw::Draw2D(33, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+		Draw::Draw2D(41, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
 	else if (m_ani_time1 < 70)
 	{
-		Draw::Draw2D(34, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+		Draw::Draw2D(42, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 80)
+	{
+		Draw::Draw2D(43, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 90)
+	{
+		Draw::Draw2D(44, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 100)
+	{
+		Draw::Draw2D(45, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time1 < 110)
+	{
+		Draw::Draw2D(46, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
 
 
-	if (m_ani_time2 >= 34)
+	if (m_ani_time2 >= 54)
 	{
 		m_ani_time2 = 0;
 	}
@@ -97,6 +113,7 @@ void CWTM::Draw()
 		m_ani_time2++;
 	}
 
+	//波アニメーション(前)
 	if (m_ani_time2 < 5)
 	{
 		Draw::Draw2D(25, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
@@ -124,6 +141,22 @@ void CWTM::Draw()
 	else if (m_ani_time2 < 35)
 	{
 		Draw::Draw2D(31, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 40)
+	{
+		Draw::Draw2D(32, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 45)
+	{
+		Draw::Draw2D(33, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 50)
+	{
+		Draw::Draw2D(34, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+	else if (m_ani_time2 < 55)
+	{
+		Draw::Draw2D(35, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
 	}
 
 	//Draw::Draw2D(21, a, m_y);
