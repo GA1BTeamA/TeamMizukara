@@ -239,9 +239,9 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm->m_priority = 70;
 			TaskSystem::InsertObj(wtm);
 
-			spri = new CSPRI();
+			/*spri = new CSPRI();
 			spri->m_priority = 60;
-			TaskSystem::InsertObj(spri);
+			TaskSystem::InsertObj(spri);*/
 
 			ground = new CObjGround();
 			ground->m_priority = 30;
@@ -254,6 +254,10 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_priority = 20;
 			TaskSystem::InsertObj(bucketmeter);
+
+			spri = new CSPRI();
+			spri->m_priority = 60;
+			TaskSystem::InsertObj(spri);
 
 			/*tank = new CTank();
 			tank->m_priority = 80;
