@@ -18,21 +18,23 @@ private:
 	float m_x; //位置
 	float m_y;
 
-	float m_x1;//水位置
-	float m_y1;
+	float m_wave_x;//波の位置
+	float m_wave_y;
 	
-
 	float im_x;//アイコンの位置
 	float im_y;
 
-	float m_water_x;  //水の表示位置
+	float m_water_x;  //水の位置
 	float m_water_y;
 
-	int m_ani_time1;
-	int m_ani_time2;
-	//float m_scroll;//左右スクロール用
+	static const float m_water_amount;  //水の量変更用卍
+	static const float m_wave_amount;  //波の高さ変更用卍
+	float m_water_remaining;  //水の残量
 
-	//static const float m_Wave_Shrinking;
+	int m_ani_time1;//波アニメーション用
+	int m_ani_time2;
+
+	//float m_scroll;//左右スクロール用
 
 	HitLine* m_p_hit_line_tank;//当たり判定
 };
