@@ -10,8 +10,8 @@ const float CSPRI::m_WaveSize_x = 0.5f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_wave_x(2151), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
+	:m_x(2150), m_y(250), m_x1(2150), m_y1(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f)
+	, m_move(0),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
 {
 	//ヒットラインの作成(左)
 	m_p_hit_line_spri = Collision::HitLineInsert(this);
@@ -164,6 +164,47 @@ void CSPRI::Draw()
 	else if (m_ani_time2 < 55)
 	{
 		Draw::Draw2D(35, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+	}
+
+
+	//Sprinklerに近づいたら主人公アニメーションを出す
+	if (m_ani_time3 >= 29)
+	{
+		m_ani_time3 = 0;
+	}
+	else
+	{
+		m_ani_time3++;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
+		{
+			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
+			{
+				if (m_move >= 120)
+				{
+					Draw::Draw2D(0, m_x+70, m_y-10);
+				}
+				else
+				{
+					m_move++;
+				}
+				if (m_ani_time3 < 10)
+				{
+					Draw::Draw2D(2, m_x1 + ground->GetScroll()-50+m_move, m_y1-10, 1, 1);
+				}
+				else if (m_ani_time3 < 20)
+				{
+					Draw::Draw2D(7, m_x1 + ground->GetScroll()-50+m_move, m_y1-10, 1, 1);
+				}
+				else if (m_ani_time3 < 30)
+				{
+					Draw::Draw2D(0, m_x1 + ground->GetScroll()-50+m_move, m_y1-10, 1, 1);
+				}
+			}
+		}
 	}
 
 	//Draw::Draw2D(21, a, m_y);

@@ -14,6 +14,8 @@ public:
 	~CSPRI();
 	void Action();
 	void Draw();
+	//HitLine* GetHit_Line_Spri() { return m_p_hit_line_spri; }
+	//HitLine* m_p_hit_line_spri;//当たり判定
 private:
 	float m_x; //Sprinklerの位置
 	float m_y;
@@ -26,6 +28,9 @@ private:
 
 	int m_ani_time1;  //波のアニメーション用
 	int m_ani_time2;
+	int m_ani_time3;
+
+	int m_move;//アニメーション移動
 
 	float m_water_x;  //水の位置
 	float m_water_y;
