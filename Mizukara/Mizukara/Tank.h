@@ -32,7 +32,7 @@ private:
 	int m_ani_time2;
 	//float m_scroll;//左右スクロール用
 
-	static const float m_Wave_Shrinking;
+	//static const float m_Wave_Shrinking;
 
 	HitLine* m_p_hit_line_tank;//当たり判定
 };
