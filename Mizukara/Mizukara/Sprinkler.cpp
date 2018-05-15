@@ -10,7 +10,7 @@ const float CSPRI::m_WaveSize_x = 0.5f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_x1(2150), m_y1(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f)
+	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f)
 	, m_move(0),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
 {
 	//ヒットラインの作成(左)
@@ -38,18 +38,6 @@ void CSPRI::Action()
 void CSPRI::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
-
-	//Sprinklerに近づいたらアイコンを出す
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
-		{
-			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
-			{
-				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
-			}
-		}
-	}
 
 	//水表示
 	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
@@ -193,15 +181,15 @@ void CSPRI::Draw()
 				}
 				if (m_ani_time3 < 10)
 				{
-					Draw::Draw2D(2, m_x1 + ground->GetScroll()-50+m_move, m_y1-10, 1, 1);
+					Draw::Draw2D(2, m_wave_x + ground->GetScroll()-50+m_move, m_wave_y-10, 1, 1);
 				}
 				else if (m_ani_time3 < 20)
 				{
-					Draw::Draw2D(7, m_x1 + ground->GetScroll()-50+m_move, m_y1-10, 1, 1);
+					Draw::Draw2D(7, m_wave_x + ground->GetScroll()-50+m_move, m_wave_y -10, 1, 1);
 				}
 				else if (m_ani_time3 < 30)
 				{
-					Draw::Draw2D(0, m_x1 + ground->GetScroll()-50+m_move, m_y1-10, 1, 1);
+					Draw::Draw2D(0, m_wave_x + ground->GetScroll()-50+m_move, m_wave_y -10, 1, 1);
 				}
 			}
 		}
