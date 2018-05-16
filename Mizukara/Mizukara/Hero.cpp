@@ -455,10 +455,11 @@ void CHero::Action()
 					m_ani_time = 0;
 				}
 
+			}
+			//コピーの位置更新
+			m_copy_x = m_x;
+			m_copy_y = m_y;
 		}
-		//コピーの位置更新
-		m_copy_x = m_x;
-		m_copy_y = m_y;
 	}
 }
 

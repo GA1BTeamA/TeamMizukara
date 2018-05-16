@@ -123,6 +123,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(46, L"Images\\Wave22.png");//46番目のWave22.pngを読み込み
 	Draw::LoadImage(47, L"Images\\icon2.png");//47番目に"icon2.pngを読み込み
 	Draw::LoadImage(48, L"Images\\water.png");//48番目のwater.pngを読み込み
+	Draw::LoadImage(49, L"Images\\WhiteBack.png");//49番目のWhiteBack.pngを読み込み
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
@@ -245,7 +246,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri = new CSPRI();
 			spri->m_priority = 60;
-			TaskSystem::InsertObj(spri);*/
+			TaskSystem::InsertObj(spri);
 
 			hero = new CHero();
 			hero->m_priority = 90;
