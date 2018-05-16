@@ -174,39 +174,40 @@ void CSPRI::Draw()
 			{
 				if (m_move >= 120)
 				{
-					Draw::Draw2D(0, m_x+70, m_y-10);
+					Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
 				}
 				else
 				{
 					m_move++;
-				}
-				if (m_ani_time3 < 10)
-				{
-					Draw::Draw2D(2, m_wave_x + ground->GetScroll()-50+m_move, m_wave_y-10, 1, 1);
-				}
-				else if (m_ani_time3 < 20)
-				{
-					Draw::Draw2D(7, m_wave_x + ground->GetScroll()-50+m_move, m_wave_y -10, 1, 1);
-				}
-				else if (m_ani_time3 < 30)
-				{
-					Draw::Draw2D(0, m_wave_x + ground->GetScroll()-50+m_move, m_wave_y -10, 1, 1);
+
+					if (m_ani_time3 < 10)
+					{
+						Draw::Draw2D(2, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time3 < 20)
+					{
+						Draw::Draw2D(7, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time3 < 30)
+					{
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+					}
 				}
 			}
 		}
 	}
 
-	if (m_ani_time3 >= 29)
+	/*if (m_ani_time3 >= 29)
 	{
 		m_ani_time3 = 0;
 	}
 	else
 	{
 		m_ani_time3++;
-	}
+	}*/
 
 	//Sprinklerに近づいたらアイコンを出す
-	for (int i = 0; i < 10; i++)
+	/*for (int i = 0; i < 10; i++)
 	{
 		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
 		{
@@ -226,7 +227,7 @@ void CSPRI::Draw()
 				}
 			}
 		}
-	}
+	}*/
 
 	//Draw::Draw2D(21, a, m_y);
 }

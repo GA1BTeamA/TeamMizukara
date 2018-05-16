@@ -243,7 +243,7 @@ unsigned __stdcall GameMainSled(void *p)
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
 
-			spri = new CSPRI();
+			/*spri = new CSPRI();
 			spri->m_priority = 60;
 			TaskSystem::InsertObj(spri);*/
 
