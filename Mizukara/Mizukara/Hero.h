@@ -7,6 +7,7 @@
 #include "GameEngine\\Collision.h"
 #include "Menu.h"
 #include "ObjGround.h"
+#include "Sprinkler.h"
 
 //ålŒöƒNƒ‰ƒX
 class CHero : public CObj

@@ -14,6 +14,9 @@ public:
 	~CSPRI();
 	void Action();
 	void Draw();
+
+	HitLine* GetHitLineSpri() { return m_p_hit_line_spri; }
+
 private:
 	float m_x; //Sprinkler‚ÌˆÊ’u
 	float m_y;
@@ -25,6 +28,7 @@ private:
 
 	int m_ani_time1;
 	int m_ani_time2;
+	int m_ani_time3;
 
 	HitLine* m_p_hit_line_spri;//“–‚½‚è”»’è
 };

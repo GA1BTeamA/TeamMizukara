@@ -3,6 +3,7 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "Hero.h"
+#include "Sprinkler.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
@@ -448,6 +449,19 @@ void CHero::Action()
 		//コピーの位置更新
 		m_copy_x = m_x;
 		m_copy_y = m_y;
+
+		CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+
+		for (int i = 0; i < 10; i++)
+		{
+			if (spri->GetHitLineSpri()->GetHitData()[i] != nullptr)
+			{
+				if (spri->GetHitLineSpri()->GetHitData()[i]->GetElement() == 0)
+				{
+					is_delete = true;
+				}
+			}
+		}
 	}
 }
 

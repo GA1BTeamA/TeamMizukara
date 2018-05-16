@@ -4,10 +4,11 @@
 
 #include "Sprinkler.h"
 #include "ObjGround.h"
+#include "Hero.h"
 extern int g_SceneNumber;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_x1(2150), m_y1(230), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	:m_x(2150), m_y(250), m_x1(2152), m_y1(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f)
 	, im_x(2150), im_y(130)
 {
 	//ヒットラインの作成(左)
@@ -35,18 +36,6 @@ void CSPRI::Action()
 void CSPRI::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
-
-	//Sprinklerに近づいたらアイコンを出す
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
-		{
-			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
-			{
-				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
-			}
-		}
-	}
 
 	if (m_ani_time1 >= 69)
 	{
@@ -124,6 +113,38 @@ void CSPRI::Draw()
 	else if (m_ani_time2 < 35)
 	{
 		Draw::Draw2D(31, m_x1 + ground->GetScroll(), m_y1, 0.5, 0.4);
+	}
+
+	if (m_ani_time3 >= 29)
+	{
+		m_ani_time3 = 0;
+	}
+	else
+	{
+		m_ani_time3++;
+	}
+
+	//Sprinklerに近づいたらアイコンを出す
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
+		{
+			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
+			{	
+				if (m_ani_time3 < 10)
+				{
+					Draw::Draw2D(0, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
+				}
+				else if (m_ani_time3 < 20)
+				{
+					Draw::Draw2D(2, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
+				}
+				else if (m_ani_time3 < 30)
+				{
+					Draw::Draw2D(7, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
+				}
+			}
+		}
 	}
 
 	//Draw::Draw2D(21, a, m_y);
