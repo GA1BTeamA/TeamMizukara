@@ -215,19 +215,6 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME://ƒQ[ƒ€‰æ–Ê‰Šú‰»
-
-		   /* hero = new CHero();
-			hero->m_priority = 90;
-			TaskSystem::InsertObj(hero);
-
-		    tank = new CTank();
-			tank->m_priority = 80;
-			TaskSystem::InsertObj(tank);*/
-
-			/*tank = new CTank();
-			tank->m_priority = 80;
-			TaskSystem::InsertObj(tank);*/
-
 			background = new CBackground();
 			background->m_priority = 10;
 			TaskSystem::InsertObj(background);
@@ -244,10 +231,6 @@ unsigned __stdcall GameMainSled(void *p)
 			ground->m_priority = 30;
 			TaskSystem::InsertObj(ground);
 
-			/*spri = new CSPRI();
-			spri->m_priority = 60;
-			TaskSystem::InsertObj(spri);
-
 			hero = new CHero();
 			hero->m_priority = 90;
 			TaskSystem::InsertObj(hero);
@@ -259,14 +242,6 @@ unsigned __stdcall GameMainSled(void *p)
 			spri = new CSPRI();
 			spri->m_priority = 60;
 			TaskSystem::InsertObj(spri);
-
-			/*tank = new CTank();
-			tank->m_priority = 80;
-			TaskSystem::InsertObj(tank);*/
-
-			/*wtm = new CWTM();
-			wtm->m_priority = 70;
-			TaskSystem::InsertObj(wtm);*/
 
 			g_SceneNumber = GAME_MAIN;
 			break;
