@@ -31,6 +31,8 @@ public:
 	void SetY(int y) { m_y = y; }
 
 	void MenuDel() { m_IsMenu = false; }
+
+	//HitLine* m_p_hit_line_spri;//当たり判定
 private:
 	float m_x; //位置卍
 	float m_y;
@@ -53,6 +55,8 @@ private:
 	bool m_down;//衝突確認用
 
 	int m_ani_time;//主人公アニメーション
+
+	bool m_hero_delete_flag;  //主人公削除フラグ
 
 	bool m_Buttom_Frag;  //ボタンフラグ
 	bool m_CKey_Frag;  //Cキー押されたかのフラグ卍

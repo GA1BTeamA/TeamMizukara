@@ -113,14 +113,17 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(36, L"Images\\Wave12.png");//36番目のWave12.pngを読み込み
 	Draw::LoadImage(37, L"Images\\Wave13.png");//37番目のWave13.pngを読み込み
 	Draw::LoadImage(38, L"Images\\Wave14.png");//38番目のWave14.pngを読み込み
-	Draw::LoadImage(37, L"Images\\Wave15.png");//37番目のWave15.pngを読み込み
-	Draw::LoadImage(38, L"Images\\Wave16.png");//38番目のWave16.pngを読み込み
-	Draw::LoadImage(37, L"Images\\Wave17.png");//37番目のWave17.pngを読み込み
-	Draw::LoadImage(38, L"Images\\Wave18.png");//38番目のWave18.pngを読み込み
-	Draw::LoadImage(37, L"Images\\Wave19.png");//37番目のWave19.pngを読み込み
-	Draw::LoadImage(38, L"Images\\Wave20.png");//38番目のWave20.pngを読み込み
-	Draw::LoadImage(37, L"Images\\Wave21.png");//37番目のWave21.pngを読み込み
-	Draw::LoadImage(38, L"Images\\Wave22.png");//38番目のWave22.pngを読み込み
+	Draw::LoadImage(39, L"Images\\Wave15.png");//39番目のWave15.pngを読み込み
+	Draw::LoadImage(40, L"Images\\Wave16.png");//40番目のWave16.pngを読み込み
+	Draw::LoadImage(41, L"Images\\Wave17.png");//41番目のWave17.pngを読み込み
+	Draw::LoadImage(42, L"Images\\Wave18.png");//42番目のWave18.pngを読み込み
+	Draw::LoadImage(43, L"Images\\Wave19.png");//43番目のWave19.pngを読み込み
+	Draw::LoadImage(44, L"Images\\Wave20.png");//44番目のWave20.pngを読み込み
+	Draw::LoadImage(45, L"Images\\Wave21.png");//45番目のWave21.pngを読み込み
+	Draw::LoadImage(46, L"Images\\Wave22.png");//46番目のWave22.pngを読み込み
+	Draw::LoadImage(47, L"Images\\icon2.png");//47番目に"icon2.pngを読み込み
+	Draw::LoadImage(48, L"Images\\water.png");//48番目のwater.pngを読み込み
+	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -242,7 +245,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri = new CSPRI();
 			spri->m_priority = 60;
-			TaskSystem::InsertObj(spri);
+			TaskSystem::InsertObj(spri);*/
 
 			hero = new CHero();
 			hero->m_priority = 90;
@@ -251,6 +254,10 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_priority = 20;
 			TaskSystem::InsertObj(bucketmeter);
+
+			spri = new CSPRI();
+			spri->m_priority = 60;
+			TaskSystem::InsertObj(spri);
 
 			/*tank = new CTank();
 			tank->m_priority = 80;
