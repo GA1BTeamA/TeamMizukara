@@ -463,7 +463,6 @@ void CHero::Action()
 	}
 }
 
-
 void CHero::Draw()
 {
 	if (m_hero_delete_flag == false)

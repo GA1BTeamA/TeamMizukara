@@ -26,20 +26,22 @@ private:
 	float im_x;//アイコンの位置
 	float im_y;
 
-	float m_water_x;
-	float m_water_y;
-
 	float m_wave_x;
 	float m_wave_y;
 
-	float m_move;
-
-	static const float m_WaveSize_x;
-	static const float m_WaveSize_y;
+	float m_water_x;
+	float m_water_y;
 
 	int m_ani_time1;
 	int m_ani_time2;
 	int m_ani_time3;
+
+	int count;
+
+	static const float m_WaveSize_x;
+	static const float m_WaveSize_y;
+
+	int m_move;
 
 	HitLine* m_p_hit_line_spri;//当たり判定
 };
