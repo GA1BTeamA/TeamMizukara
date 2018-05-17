@@ -198,7 +198,7 @@ void CSPRI::Draw()
 							}
 							else if (m_move2 >= 11 && m_move2 < 20)
 							{
-								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 95 + m_move1, m_wave_y, -1, 1);
+								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y+2, -1, 1);
 							}
 							else
 							{

@@ -131,8 +131,7 @@ void CHero::Action()
 				}
 
 				//主人公の当たり判定に当たってたのが地面なら
-				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 1 ||
-					m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)//デバッグ用
+				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 1)
 				{
 					//主人公の当たり判定と地面の当たり判定が平行ならスキップ
 					if (m_p_hit_line_hero_copy[j]->GetAngle() == m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle())
