@@ -107,13 +107,13 @@ void CMenu::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 115, 330);
+		Draw::Draw2D(14, 115, 320);
 	}
 	else if (m_cursor == RIGHT)
 	{
-		Draw::Draw2D(14, 460, 330);
+		Draw::Draw2D(14, 460, 320);
 	}
 	else {
-		Draw::Draw2D(14, 285, 420);
+		Draw::Draw2D(14, 285, 405);
 	}
 }
