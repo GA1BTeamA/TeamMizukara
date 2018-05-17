@@ -11,7 +11,7 @@ const float CSPRI::m_WaveSize_x = 0.5f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f)
+	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f)
 	, m_move(0),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
@@ -174,7 +174,21 @@ void CSPRI::Draw()
 			{
 				if (m_move >= 120)
 				{
-					Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+					m_ani_time4++;
+
+				    if (m_ani_time4 < 200)
+					{
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time4>200 && m_ani_time4<300)
+					{
+						Draw::Draw2D(4, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time4 > 300)
+					{
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move, m_wave_y + 70, 1, 1);
+					}
 				}
 				else
 				{

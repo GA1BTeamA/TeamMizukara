@@ -32,9 +32,10 @@ private:
 	float m_water_x;
 	float m_water_y;
 
-	int m_ani_time1;
+	int m_ani_time1;//アニメーション
 	int m_ani_time2;
 	int m_ani_time3;
+	int m_ani_time4;
 
 	int count;
 
