@@ -42,7 +42,8 @@ private:
 	static const float m_WaveSize_x;
 	static const float m_WaveSize_y;
 
-	int m_move;
+	int m_move1;//主人公アニメーションの動き
+	int m_move2;//スプリンクラーから出る水
 
 	HitLine* m_p_hit_line_spri;//当たり判定
 };

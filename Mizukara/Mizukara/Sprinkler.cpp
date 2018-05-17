@@ -12,7 +12,7 @@ const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
 	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f)
-	, m_move(0),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
+	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
 	m_p_hit_line_spri = Collision::HitLineInsert(this);
@@ -172,39 +172,60 @@ void CSPRI::Draw()
 		{
 			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
 			{
-				if (m_move >= 120)
+				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
 
 				    if (m_ani_time4 < 200)
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
 					else if (m_ani_time4>200 && m_ani_time4<300)
 					{
-						Draw::Draw2D(4, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(4, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
 					else if (m_ani_time4 > 300)
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
-						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move, m_wave_y + 70, 1, 1);
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move1, m_wave_y + 70, 1, 1);
+
+						if (m_ani_time4 > 460)
+						{
+							m_move2++;
+							if (m_move2 <= 10)
+							{
+								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
+							}
+							else if (m_move2 >= 11 && m_move2 < 20)
+							{
+								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 95 + m_move1, m_wave_y, -1, 1);
+							}
+							else
+							{
+								m_move2 = 0;
+							}
+
+							
+						}
+						
 					}
+					
 				}
 				else
 				{
-					m_move++;
+					m_move1++;
 
 					if (m_ani_time3 < 10)
 					{
-						Draw::Draw2D(2, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(2, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
 					else if (m_ani_time3 < 20)
 					{
-						Draw::Draw2D(7, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(7, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
 					else if (m_ani_time3 < 30)
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
 				}
 			}
