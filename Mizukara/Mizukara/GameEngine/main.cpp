@@ -229,13 +229,13 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm->m_priority = 70;
 			TaskSystem::InsertObj(wtm);
 
-			ground = new CObjGround();
-			ground->m_priority = 30;
-			TaskSystem::InsertObj(ground);
-
 			hero = new CHero();
 			hero->m_priority = 90;
 			TaskSystem::InsertObj(hero);
+
+			ground = new CObjGround();
+			ground->m_priority = 30;
+			TaskSystem::InsertObj(ground);
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_priority = 20;

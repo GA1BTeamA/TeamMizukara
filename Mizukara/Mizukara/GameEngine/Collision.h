@@ -8,6 +8,13 @@
 #include "TaskSystem.h"
 using namespace std;
 
+enum HitDirec {
+	HIT_LEFT,
+	HIT_RIGHT,
+	HIT_TOP,
+	HIT_UNDER,
+};
+
 //座標
 class Point
 {
@@ -30,6 +37,7 @@ public:
 		ls_delete = false;
 		p1.x = p1.y = p2.x = p2.y = -999.0f;
 		m_angle = -999.0f;
+		m_4direc = 999;
 		m_obj = nullptr;
 		m_element = -1;
 		for (int i = 0; i < 10; i++)
@@ -45,10 +53,13 @@ public:
 	void SetPoint2(Point p) { p2 = p; }									//点2セット
 	void SetAngle() { m_angle = atan2(p2.x - p1.x, p2.y - p1.y)*180.0f/3.14f; }		//角度セット
 	float GetAngle() { return m_angle; }								//角度ゲット
+	void Set4direc(unsigned int d) { m_4direc = d; }					//オブジェクトに対する方向セット
+	unsigned int Get4direc() { return m_4direc; }						//オブジェクトに対する方向ゲット
 	void SetElement(int element) { m_element = element; }				//属性セット
 	void SetInvisible(bool invisible) { m_ls_invisible = invisible; }	//無敵セット
 	HitLine** GetHitData() { return m_hit; }	//当たった相手のヒットボックス情報取得
  	int GetElement() { return m_element; }  //属性取得用
+	CObj* GetObj() { return m_obj; }
 
 private:
 	//削除フラグ
@@ -58,6 +69,8 @@ private:
 	Point p2;
 	//角度
 	float m_angle;
+	//オブジェクトに対する当たり判定の位置
+	unsigned int m_4direc;
 	//この衝突オブジェクトを持つオブジェクトのポインタ
 	CObj* m_obj;
 	//属性(同じ値同士では当たり判定を行わない)
