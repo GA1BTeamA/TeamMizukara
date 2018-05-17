@@ -176,11 +176,11 @@ void CSPRI::Draw()
 				{
 					m_ani_time4++;
 
-				    if (m_ani_time4 < 200)
+					if (m_ani_time4 < 200)
 					{
 						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
-					else if (m_ani_time4>200 && m_ani_time4<300)
+					else if (m_ani_time4 > 200 && m_ani_time4 < 300)
 					{
 						Draw::Draw2D(4, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
@@ -205,11 +205,11 @@ void CSPRI::Draw()
 								m_move2 = 0;
 							}
 
-							
+
 						}
-						
+
 					}
-					
+
 				}
 				else
 				{
