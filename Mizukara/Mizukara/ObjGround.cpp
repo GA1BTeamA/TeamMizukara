@@ -16,11 +16,6 @@ CObjGround::CObjGround()
 	m_p_hit_line_ground[0]->SetPos2(m_scroll + 500, m_gy + 400);
 	m_p_hit_line_ground[0]->Set4direc(HIT_TOP);
 
-	//デバッグ用
-	m_p_hit_line_ground[0]->SetElement(2);		//属性を1にする
-	m_p_hit_line_ground[0]->SetInvisible(false);	//無敵モード無効
-	m_p_hit_line_ground[0]->SetAngle();
-
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[1] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground[1]->SetPos1(m_scroll + 500, m_gy + 350);
@@ -138,7 +133,7 @@ CObjGround::CObjGround()
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[20] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground[20]->SetPos1(m_scroll + 1337, m_gy + 400);
-	m_p_hit_line_ground[20]->SetPos2(m_scroll + 1900, m_gy + 400);
+	m_p_hit_line_ground[20]->SetPos2(m_scroll + 2400, m_gy + 400);
 	m_p_hit_line_ground[20]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
@@ -148,7 +143,7 @@ CObjGround::CObjGround()
 	m_p_hit_line_ground[21]->Set4direc(HIT_TOP);
 
 
-	for (int i = 1; i < 22; i++) {
+	for (int i = 0; i < 22; i++) {
 		m_p_hit_line_ground[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground[i]->SetAngle();
@@ -282,7 +277,7 @@ void CObjGround::Action()
 	m_p_hit_line_ground[19]->SetPos1(m_scroll + 1437, m_gy + 373);
 	m_p_hit_line_ground[19]->SetPos2(m_scroll + 1437, m_gy + 400);
 	m_p_hit_line_ground[20]->SetPos1(m_scroll + 1337, m_gy + 400);
-	m_p_hit_line_ground[20]->SetPos2(m_scroll + 1900, m_gy + 400);
+	m_p_hit_line_ground[20]->SetPos2(m_scroll + 2400, m_gy + 400);
 
 
 }

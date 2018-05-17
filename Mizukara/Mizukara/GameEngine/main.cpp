@@ -222,11 +222,11 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(background);
 
 			tank = new CTank();
-			tank->m_priority = 80;
+			tank->m_priority = 70;
 			TaskSystem::InsertObj(tank);
 
 			wtm = new CWTM();
-			wtm->m_priority = 70;
+			wtm->m_priority = 60;
 			TaskSystem::InsertObj(wtm);
 
 			hero = new CHero();
@@ -234,7 +234,7 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(hero);
 
 			ground = new CObjGround();
-			ground->m_priority = 30;
+			ground->m_priority = 80;
 			TaskSystem::InsertObj(ground);
 
 			bucketmeter = new CBucketMeter();
@@ -252,6 +252,8 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		}
+
+		TaskSystem::SortPriority();//描画順位変更
 
 		//レンダリング終了
 		Dev::GetSwapChain()->Present(1, 0);//60FPSでバックバッファとプライマリバッファの交換
