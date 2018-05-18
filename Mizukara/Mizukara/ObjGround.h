@@ -15,10 +15,10 @@ public:
 	void Action();
 	void Draw();
 
-	int GetGY() { return m_gy; }  //m_gy取得用
+	float GetGY() { return m_gy; }  //m_gy取得用
 	void AddScroll(float as) { m_scroll -= as; }	//スクロール値加算
-	int GetScroll() { return m_scroll; }  //m_scroll取得用
-	int GetGX() { return m_gx; }  //m_gy取得用
+	float GetScroll() { return m_scroll; }  //m_scroll取得用
+	float GetGX() { return m_gx; }  //m_gy取得用
 
 private:
 	float m_gx; //位置

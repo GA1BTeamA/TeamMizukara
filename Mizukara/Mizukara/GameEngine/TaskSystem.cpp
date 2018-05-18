@@ -19,8 +19,8 @@ void CTaskSystem::DeleteTaskSystem()
 	delete m_task_list;
 }
 
-//リスト内のオブジェクトをプライオリティ順にソート
-void CTaskSystem::SortPriority()
+//リスト内のオブジェクトをプライオリティ順にソート（アクション用）
+void CTaskSystem::SortActionPriority()
 {
 	//ソート比較クラス
 	class Pr
@@ -29,7 +29,29 @@ void CTaskSystem::SortPriority()
 		bool operator()(const shared_ptr<CObj> x, const shared_ptr<CObj> y)const
 		{
 			//比較する要素と内容を決める
-			return x.get()->m_priority < y.get()->m_priority;
+			return x.get()->m_ActionPriority < y.get()->m_ActionPriority;
+		}
+	}pr;
+
+	//要素が2以上無いとソートはエラーする
+	if (m_task_list->size() >= 2)
+	{
+		//リストを比較クラスを元にソート実行
+		m_task_list->sort(pr);
+	}
+}
+
+//リスト内のオブジェクトをプライオリティ順にソート（ドロー用）
+void CTaskSystem::SortDrawPriority()
+{
+	//ソート比較クラス
+	class Pr
+	{
+	public:
+		bool operator()(const shared_ptr<CObj> x, const shared_ptr<CObj> y)const
+		{
+			//比較する要素と内容を決める
+			return x.get()->m_DrawPriority < y.get()->m_DrawPriority;
 		}
 	}pr;
 

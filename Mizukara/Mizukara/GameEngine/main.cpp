@@ -147,6 +147,7 @@ unsigned __stdcall GameMainSled(void *p)
 	while (1)
 	{
 		//ゲームメイン
+		TaskSystem::SortActionPriority();//描画順位変更(アクション用)
 		TaskSystem::ListAction();	//リスト内のアクション実行
 									//衝突判定実行
 		Collision::CheckStart();
@@ -158,6 +159,7 @@ unsigned __stdcall GameMainSled(void *p)
 		Dev::GetDeviceContext()->RSSetState(Dev::GetRS());//ラスタライズをセット
 		//ここからレンダリング開始
 
+		TaskSystem::SortDrawPriority();//描画順位変更(ドロー用)
 		TaskSystem::ListDraw();		//リスト内のドロー実行
 		Collision::DrawDebug();
 
@@ -178,7 +180,8 @@ unsigned __stdcall GameMainSled(void *p)
 		{
 		case TITLE://タイトル初期化
 			title = new CTitle();
-			title->m_priority = 100;
+			title->m_ActionPriority = 0;
+			title->m_DrawPriority = 100;
 			TaskSystem::InsertObj(title);
 			g_SceneNumber = TITLE_MAIN;
 			break;
@@ -188,7 +191,8 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case STORY:
 			story = new CObjStory();
-			story->m_priority = 100;
+			story->m_ActionPriority = 0;
+			story->m_DrawPriority = 100;
 			TaskSystem::InsertObj(story);
 			g_SceneNumber = STORY_MAIN;
 			break;
@@ -198,7 +202,8 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case STAGESELECTO://ステージセレクト初期化
 			stageselecto = new CStageSelecto();
-			stageselecto->m_priority = 110;
+			stageselecto->m_ActionPriority = 10;
+			stageselecto->m_DrawPriority = 110;
 			TaskSystem::InsertObj(stageselecto);
 			g_SceneNumber = STAGESELECTO_MAIN;
 			break;
@@ -208,7 +213,8 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case RESULT://リザルト画面初期化
 			result = new CResult();
-			result->m_priority = 120;
+			result->m_ActionPriority = 120;
+			result->m_DrawPriority = 120;
 			TaskSystem::InsertObj(result);
 			g_SceneNumber = RESULT_MAIN;
 			break;
@@ -218,31 +224,38 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case GAME://ゲーム画面初期化
 			background = new CBackground();
-			background->m_priority = 10;
+			background->m_ActionPriority = 10;
+			background->m_DrawPriority = 10;
 			TaskSystem::InsertObj(background);
 
 			tank = new CTank();
-			tank->m_priority = 70;
+			tank->m_ActionPriority = 70;
+			tank->m_DrawPriority = 70;
 			TaskSystem::InsertObj(tank);
 
 			wtm = new CWTM();
-			wtm->m_priority = 60;
+			wtm->m_ActionPriority = 60;
+			wtm->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm);
 
 			hero = new CHero();
-			hero->m_priority = 90;
+			hero->m_ActionPriority = 80;
+			hero->m_DrawPriority = 90;
 			TaskSystem::InsertObj(hero);
 
 			ground = new CObjGround();
-			ground->m_priority = 80;
+			ground->m_ActionPriority = 90;
+			ground->m_DrawPriority = 80;
 			TaskSystem::InsertObj(ground);
 
 			bucketmeter = new CBucketMeter();
-			bucketmeter->m_priority = 20;
+			bucketmeter->m_ActionPriority = 20;
+			bucketmeter->m_DrawPriority = 20;
 			TaskSystem::InsertObj(bucketmeter);
 
 			spri = new CSPRI();
-			spri->m_priority = 60;
+			spri->m_ActionPriority = 60;
+			spri->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri);
 
 			g_SceneNumber = GAME_MAIN;
@@ -253,7 +266,6 @@ unsigned __stdcall GameMainSled(void *p)
 
 		}
 
-		TaskSystem::SortPriority();//描画順位変更
 
 		//レンダリング終了
 		Dev::GetSwapChain()->Present(1, 0);//60FPSでバックバッファとプライマリバッファの交換
@@ -314,10 +326,9 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 
 	//デバッグ用オブジェクト作成
 	SceneMain* scenemain = new SceneMain();
-	scenemain->m_priority = 0;
+	scenemain->m_ActionPriority = 0;
+	scenemain->m_DrawPriority = 0;
 	TaskSystem::InsertObj(scenemain);
-
-	TaskSystem::SortPriority();//描画順位変更
 
 	HANDLE game_handoru;
 	game_handoru = (HANDLE)_beginthreadex(NULL, 0, GameMainSled, NULL, 0, NULL);//ゲームメインスレッド実行

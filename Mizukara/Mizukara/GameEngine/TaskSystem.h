@@ -53,7 +53,7 @@ public:
 	CObj() 
 	{
 		is_delete = false;
-		m_priority = 0;
+		m_ActionPriority = m_DrawPriority = 0;
 	};
 	virtual ~CObj() {};
 	virtual void Action() = 0;
@@ -63,7 +63,8 @@ public:
 
 	unsigned int m_name;		//オブジェクトの名前
 	bool is_delete;				//削除フラグ
-	unsigned long m_priority;	//描画優先順位
+	unsigned long m_ActionPriority;	//描画優先順位
+	unsigned long m_DrawPriority;	//描画優先順位
 };
 
 //タスクシステム
@@ -82,7 +83,8 @@ public:
 	static void InitTaskSystem();	//初期化
 	static void DeleteTaskSystem();	//破棄
 
-	static void SortPriority();		//リスト内のオブジェクトをプライオリティ順にソート
+	static void SortActionPriority();		//リスト内のオブジェクトをプライオリティ順にソート（アクション用）
+	static void SortDrawPriority();		//リスト内のオブジェクトをプライオリティ順にソート（ドロー用）
 private:
 	//リスト　CObjを持つオブジェクトの要素を持つ
 	static list<shared_ptr<CObj>>* m_task_list;
