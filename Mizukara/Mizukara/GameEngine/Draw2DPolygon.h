@@ -9,6 +9,8 @@
 #define SAFE_DELETE_ARRAY(p){if(p){delete[](p);		(p)=nullptr;}	}
 #define SAFE_RELEASE(p)		{if(p){(p)->Release();	(p)=nullptr;}	}
 
+extern float Default_c[4];
+
 //2Dポリゴン表示で使用する構造体-------------------
 //頂点レイアウト構造体(頂点が持つ情報)
 struct POINT_LAYOUT
@@ -28,7 +30,6 @@ struct POLYGON_BUFFER
 	float texsize[4];//表示するイメージのサイズHW
 };
 
-
 typedef class CDraw2DPolygon
 {
 	public:
@@ -36,10 +37,13 @@ typedef class CDraw2DPolygon
 		~CDraw2DPolygon(){}
 
 		//描画機能　Draw2D群
-		static void Draw2D(int id,float x, float y)						{ Draw2D(id,x, y, 1.0f, 1.0f, 0.0f);}
-		static void Draw2D(int id, float x, float y,float r)			{ Draw2D(id,x, y, 1.0f, 1.0f,r);	 }
-		static void Draw2D(int id, float x, float y, float sx, float sy){ Draw2D(id,x, y, sx, sy, 0.0f);	 }
-		static void Draw2D(int id, float x,float y,float sx,float sy,float r);	//描画
+		static void Draw2D(int id,float x, float y)						{ Draw2D(id,x, y, 1.0f, 1.0f, 0.0f, Default_c);}
+		static void Draw2D(int id, float x, float y,float r)			{ Draw2D(id,x, y, 1.0f, 1.0f,r, Default_c);	 }
+		static void Draw2D(int id, float x, float y, float sx, float sy){ Draw2D(id,x, y, sx, sy, 0.0f, Default_c);	 }
+		static void Draw2D(int id, float x, float y, float sx, float sy, float r) { Draw2D(id, x, y, sx, sy, r, Default_c); }
+		static void Draw2D(int id, float x, float y,float rgba[4]) { Draw2D(id, x, y, 1.0f, 1.0f, 0.0f, rgba); }
+		static void Draw2D(int id, float x, float y, float sx, float sy,float rgba[4]) { Draw2D(id, x, y, sx, sy, 0.0f, rgba); }
+		static void Draw2D(int id, float x, float y, float sx, float sy, float r, float rgba[4]);	//描画
 
 		static void Draw2DChar(ID3D11ShaderResourceView* resurec_view, float x, float y, float s, float rgba[4]);//文字描画用
 		static void Draw2DHitBox(float x, float y, float w, float h, float rgba[4]);//デバック当たり判定描画用

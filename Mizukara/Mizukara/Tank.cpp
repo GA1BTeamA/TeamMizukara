@@ -4,11 +4,12 @@
 
 #include "Tank.h"
 #include "ObjGround.h"
+#include "BucketMeter.h"
 #include "Hero.h"
 extern int g_SceneNumber;
 
-const float CTank::m_water_amount = 0.01f;
-const float CTank::m_wave_amount = 0.3f;
+const float CTank::m_water_amount = 0.01f*0.04f;
+const float CTank::m_wave_amount = 0.3f*0.04f;
 
 CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
@@ -45,6 +46,15 @@ void CTank::Action()
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
 				{
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					if (bm->GetWaterRem() < 3.0f) {
+						m_water_remaining -= m_water_amount;
+						m_wave_y += m_wave_amount;
+
+						if (bm != nullptr) {
+							bm->PushX();
+						}
+					}
 					if (hero->GetDirec() == LEFT)
 					{
 						SetWater_Remaining(m_water_amount);
@@ -55,6 +65,15 @@ void CTank::Action()
 				//水をタンクに戻す
 				if (Input::KeyPush('C'))
 				{
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					if (bm->GetWaterRem() > 0.0f) {
+						m_water_remaining += m_water_amount;
+						m_wave_y -= m_wave_amount;
+
+						if (bm != nullptr) {
+							bm->PushC();
+						}
+					}
 					if (hero->GetDirec() == LEFT)
 					{
 						SetWater_Remaining(m_water_amount);

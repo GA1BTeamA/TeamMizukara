@@ -180,7 +180,7 @@ void CDraw2DPolygon::Draw2DChar(ID3D11ShaderResourceView* resurec_view, float x,
 }
 
 //描画
-void CDraw2DPolygon::Draw2D(int id,float x,float y,float sx,float sy,float r)
+void CDraw2DPolygon::Draw2D(int id,float x,float y,float sx,float sy,float r,float rgba[4])
 {
 	//頂点レイアウト
 	Dev::GetDeviceContext()->IASetInputLayout(m_pVertexLayout);
@@ -209,10 +209,10 @@ void CDraw2DPolygon::Draw2D(int id,float x,float y,float sx,float sy,float r)
 	if (SUCCEEDED(Dev::GetDeviceContext()->Map(m_pConstantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &pData)))
 	{
 		POLYGON_BUFFER data;
-		data.color[0] = 1.0f;
-		data.color[1] = 1.0f;
-		data.color[2] = 1.0f;
-		data.color[3] = 1.0f;
+		data.color[0] = rgba[0];
+		data.color[1] = rgba[1];
+		data.color[2] = rgba[2];
+		data.color[3] = rgba[3];
 
 		//位置情報
 		data.pos[0] = x;
