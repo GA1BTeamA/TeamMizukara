@@ -23,5 +23,6 @@ void CBucketMeter::Action()
 void CBucketMeter::Draw()
 {
 	//•`‰æ
+	Draw::Draw2D(49, m_x, m_y);
 	Draw::Draw2D(11, m_x, m_y);
 }

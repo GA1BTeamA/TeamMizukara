@@ -7,6 +7,7 @@
 #include "GameEngine\\Collision.h"
 #include "Menu.h"
 #include "ObjGround.h"
+#include "Sprinkler.h"
 
 //主人公クラス
 class CHero : public CObj
@@ -30,6 +31,8 @@ public:
 	void SetY(int y) { m_y = y; }
 
 	void MenuDel() { m_IsMenu = false; }
+
+	//HitLine* m_p_hit_line_spri;//当たり判定
 private:
 	float m_x; //位置卍
 	float m_y;
@@ -53,9 +56,13 @@ private:
 
 	int m_ani_time;//主人公アニメーション
 
+	bool m_hero_delete_flag;  //主人公削除フラグ
+
 	bool m_Buttom_Frag;  //ボタンフラグ
 	bool m_CKey_Frag;  //Cキー押されたかのフラグ卍
 	bool m_XKey_Frag;  //Xキー押されたかのフラグ卍
+
+	bool m_IsScroll;//スクロール中か
 
 	HitLine* m_p_hit_line_hero[4];//当たり判定
 	HitLine* m_p_hit_line_hero_copy[4];//当たり判定(コピー)

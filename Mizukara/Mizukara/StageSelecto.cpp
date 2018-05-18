@@ -167,20 +167,20 @@ void CStageSelecto::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 85, 80);
+		Draw::Draw2D(14, 85, 75);
 	}
 	else if (m_cursor == RIGHT)
 	{
-		Draw::Draw2D(14, 470, 80);
+		Draw::Draw2D(14, 470, 75);
 	}
 	else if (m_cursor == UNDER){
-		Draw::Draw2D(14, 280, 220);
+		Draw::Draw2D(14, 280, 210);
 	}
 	else if (m_cursor == UNDER_LEFT) {
-		Draw::Draw2D(14, 90, 340);
+		Draw::Draw2D(14, 90, 330);
 	}
 	else if (m_cursor == UNDER_RIGHT) {
-		Draw::Draw2D(14, 470, 340);
+		Draw::Draw2D(14, 470, 330);
 	}
 
 

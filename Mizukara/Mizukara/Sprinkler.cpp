@@ -2,59 +2,48 @@
 #define _SECURE_SCL (0)
 #define _HAS_ITERATOR_DEBUGGING (0)
 
-#include "WTM.h"
+#include "Sprinkler.h"
 #include "ObjGround.h"
+#include "Hero.h"
 extern int g_SceneNumber;
 
-const float CWTM::m_WaveSize_x = 0.5f;
-const float CWTM::m_WaveSize_y = 0.6f;
+const float CSPRI::m_WaveSize_x = 0.5f;
+const float CSPRI::m_WaveSize_y = 0.6f;
 
-CWTM::CWTM()
-	:m_x(1186), m_y(234), m_wave_x(1190), m_wave_y(150),m_ani_time1(0.0f),m_ani_time2(0.0f)
-	,im_x(1166), im_y(30), m_water_x(1186), m_water_y(162)
+CSPRI::CSPRI()
+	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f)
+	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
 {
 	//ヒットラインの作成(左)
-	m_p_hit_line_wtm = Collision::HitLineInsert(this);
-	m_p_hit_line_wtm->SetPos1(m_x, m_y);
-	m_p_hit_line_wtm->SetPos2(m_x, m_y+100);
-	m_p_hit_line_wtm->SetElement(2);		//属性を2にする
-	m_p_hit_line_wtm->SetInvisible(false);	//無敵モード無効
+	m_p_hit_line_spri = Collision::HitLineInsert(this);
+	m_p_hit_line_spri->SetPos1(m_x, m_y);
+	m_p_hit_line_spri->SetPos2(m_x, m_y + 100);
+	m_p_hit_line_spri->SetElement(4);		//属性を4にする
+	m_p_hit_line_spri->SetInvisible(false);	//無敵モード無効
 }
 
-CWTM::~CWTM()
+CSPRI::~CSPRI()
 {
 
 }
 
-void CWTM::Action()
+void CSPRI::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//当たり判定位置の更新
-	m_p_hit_line_wtm->SetPos1(m_x+ground->GetScroll(), m_y);
-	m_p_hit_line_wtm->SetPos2(m_x+ground->GetScroll(), m_y + 100);
+	m_p_hit_line_spri->SetPos1(m_x + ground->GetScroll(), m_y);
+	m_p_hit_line_spri->SetPos2(m_x + ground->GetScroll(), m_y + 100);
 }
 
-void CWTM::Draw()
+void CSPRI::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	//WTMに近づいたらアイコンを出す
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_p_hit_line_wtm->GetHitData()[i] != nullptr)
-		{
-			if (m_p_hit_line_wtm->GetHitData()[i]->GetElement() == 0)
-			{
-				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
-			}
-		}
-	}
-
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y,1.6,1.4);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
 
-	//波アニメーション(後ろ)
+	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
 	{
 		m_ani_time1 = 0;
@@ -110,7 +99,7 @@ void CWTM::Draw()
 		Draw::Draw2D(46, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 	}
 
-	//波アニメーション(前)
+	//波の表示(前)
 	if (m_ani_time2 >= 54)
 	{
 		m_ani_time2 = 0;
@@ -165,6 +154,115 @@ void CWTM::Draw()
 	{
 		Draw::Draw2D(35, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 	}
+
+
+	//Sprinklerに近づいたら主人公アニメーションを出す
+	if (m_ani_time3 >= 29)
+	{
+		m_ani_time3 = 0;
+	}
+	else
+	{
+		m_ani_time3++;
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
+		{
+			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
+			{
+				if (m_move1 >= 120)
+				{
+					m_ani_time4++;
+
+					if (m_ani_time4 < 200)
+					{
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time4 > 200 && m_ani_time4 < 300)
+					{
+						Draw::Draw2D(4, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time4 > 300)
+					{
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move1, m_wave_y + 70, 1, 1);
+
+						if (m_ani_time4 > 460)
+						{
+							m_move2++;
+							if (m_move2 <= 10)
+							{
+								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
+							}
+							else if (m_move2 >= 11 && m_move2 < 20)
+							{
+								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y+2, -1, 1);
+							}
+							else
+							{
+								m_move2 = 0;
+							}
+
+
+						}
+
+					}
+
+				}
+				else
+				{
+					m_move1++;
+
+					if (m_ani_time3 < 10)
+					{
+						Draw::Draw2D(2, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time3 < 20)
+					{
+						Draw::Draw2D(7, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+					}
+					else if (m_ani_time3 < 30)
+					{
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+					}
+				}
+			}
+		}
+	}
+
+	/*if (m_ani_time3 >= 29)
+	{
+		m_ani_time3 = 0;
+	}
+	else
+	{
+		m_ani_time3++;
+	}*/
+
+	//Sprinklerに近づいたらアイコンを出す
+	/*for (int i = 0; i < 10; i++)
+	{
+		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
+		{
+			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
+			{	
+				if (m_ani_time3 < 10)
+				{
+					Draw::Draw2D(0, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
+				}
+				else if (m_ani_time3 < 20)
+				{
+					Draw::Draw2D(2, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
+				}
+				else if (m_ani_time3 < 30)
+				{
+					Draw::Draw2D(7, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
+				}
+			}
+		}
+	}*/
 
 	//Draw::Draw2D(21, a, m_y);
 }
