@@ -4,10 +4,11 @@
 
 #include "Tank.h"
 #include "ObjGround.h"
+#include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float CTank::m_water_amount = 0.01f;
-const float CTank::m_wave_amount = 0.3f;
+const float CTank::m_water_amount = 0.01f*0.04f;
+const float CTank::m_wave_amount = 0.3f*0.04f;
 
 CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
@@ -44,14 +45,28 @@ void CTank::Action()
 			{
 				if (Input::KeyPush('X'))
 				{
-					m_water_remaining -= m_water_amount;
-					m_wave_y += m_wave_amount;
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					if (bm->GetWaterRem() < 3.0f) {
+						m_water_remaining -= m_water_amount;
+						m_wave_y += m_wave_amount;
+
+						if (bm != nullptr) {
+							bm->PushX();
+						}
+					}
 				}
 
 				if (Input::KeyPush('C'))
 				{
-					m_water_remaining += m_water_amount;
-					m_wave_y -= m_wave_amount;
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					if (bm->GetWaterRem() > 0.0f) {
+						m_water_remaining += m_water_amount;
+						m_wave_y -= m_wave_amount;
+
+						if (bm != nullptr) {
+							bm->PushC();
+						}
+					}
 				}
 			}
 		}

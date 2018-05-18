@@ -42,6 +42,7 @@ enum {
 	MENU,
 	GROUND,
 	SPRI,
+	BUCKETMETER,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO
