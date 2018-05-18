@@ -34,6 +34,7 @@
 #include "..\WTM.h"
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
+#include "..\ObjUpScaffold.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -64,6 +65,7 @@
 bool g_ls_game_end = false;	//スレッド用ゲーム終了フラグ
 int g_SceneNumber = TITLE;//ゲーム画面フラグ
 bool g_key_flag = true;//キーフラグ
+float Default_c[4] = { 1.0f,1.0f,1.0f,1.0f };//デフォルトカラー
 
 //プロトタイプ宣言------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//ウィンドウプロジーシャー
@@ -174,7 +176,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CObjGround* ground;
 		CWTM* wtm;
 		CSPRI* spri;
-		
+		ObjUpScaffold* upsc;
 
 		switch (g_SceneNumber)
 		{
@@ -249,14 +251,19 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(ground);
 
 			bucketmeter = new CBucketMeter();
-			bucketmeter->m_ActionPriority = 20;
-			bucketmeter->m_DrawPriority = 20;
+			bucketmeter->m_ActionPriority = 100;
+			bucketmeter->m_DrawPriority = 100;
 			TaskSystem::InsertObj(bucketmeter);
 
 			spri = new CSPRI();
 			spri->m_ActionPriority = 60;
 			spri->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri);
+
+			upsc = new ObjUpScaffold();
+			upsc->m_ActionPriority = 90;
+			upsc->m_DrawPriority = 80;
+			TaskSystem::InsertObj(upsc);
 
 			g_SceneNumber = GAME_MAIN;
 			break;

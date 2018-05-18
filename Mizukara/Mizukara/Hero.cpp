@@ -778,7 +778,7 @@ void CHero::Draw()
 			{
 				if (m_direc == RIGHT)
 				{
-					Draw::Draw2D(0, m_x, m_y);
+					Draw::Draw2D(0, m_x, m_y,1.0f,1.0f,0.0f);
 				}
 				else if (m_direc == LEFT)
 				{
