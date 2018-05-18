@@ -4,6 +4,7 @@
 
 #include "Tank.h"
 #include "ObjGround.h"
+#include "Hero.h"
 extern int g_SceneNumber;
 
 const float CTank::m_water_amount = 0.01f;
@@ -15,12 +16,8 @@ CTank::CTank()
 	, m_water_x(11), m_water_y(380)
 	, m_water_remaining(3.65f)
 {
+	m_name = TANK;
 
-
-	/*
-	m_p_hit_line->SetPos1(m_x-11, m_y);
-	m_p_hit_line->SetPos2(m_x+11, m_y+139);
-	*/
 	//ヒットラインの作成
 	m_p_hit_line_tank = Collision::HitLineInsert(this);
 	m_p_hit_line_tank->SetPos1(m_x + 110, m_y);
@@ -36,22 +33,33 @@ CTank::~CTank()
 
 void CTank::Action()
 {
+	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
+
+	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_p_hit_line_tank->GetHitData()[i] != nullptr)
 		{
 			if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
 			{
+				//タンクから水を汲む
 				if (Input::KeyPush('X'))
 				{
-					m_water_remaining -= m_water_amount;
-					m_wave_y += m_wave_amount;
+					if (hero->GetDirec() == LEFT)
+					{
+						SetWater_Remaining(m_water_amount);
+						SetWaveY(&m_wave_y,m_wave_amount);
+					}
 				}
 
+				//水をタンクに戻す
 				if (Input::KeyPush('C'))
 				{
-					m_water_remaining += m_water_amount;
-					m_wave_y -= m_wave_amount;
+					if (hero->GetDirec() == LEFT)
+					{
+						SetWater_Remaining(m_water_amount);
+						SetWaveY(&m_wave_y,m_wave_amount);
+					}
 				}
 			}
 		}
@@ -60,6 +68,8 @@ void CTank::Action()
 
 void CTank::Draw()
 {
+	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
+
 	//タンクに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
@@ -67,7 +77,10 @@ void CTank::Draw()
 		{
 			if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(47, im_x, im_y);
+				if (hero->GetDirec() == LEFT)
+				{
+					Draw::Draw2D(47, im_x, im_y);
+				}
 			}
 		}
 	}
@@ -94,7 +107,7 @@ void CTank::Draw()
 	}
 	else if (m_ani_time1 < 20)
 	{
-		Draw::Draw2D(37, m_wave_x + ground->GetScroll(), m_wave_y, 1, 1);
+Draw::Draw2D(37, m_wave_x + ground->GetScroll(), m_wave_y, 1, 1);
 	}
 	else if (m_ani_time1 < 30)
 	{
@@ -192,4 +205,30 @@ void CTank::Draw()
 	{
 	Draw::Draw2D(32, m_x8, m_y8);
 	}*/
+}
+
+//水の残量設定
+void CTank::SetWater_Remaining(float water_amount)
+{
+	if (Input::KeyPush('X'))
+	{
+		m_water_remaining -= water_amount;
+	}
+	else if(Input::KeyPush('C'))
+	{
+		m_water_remaining += water_amount;
+	}
+}
+
+//波の増減
+void CTank::SetWaveY(float* wave_y,float wave_amount)
+{
+	if (Input::KeyPush('X'))
+	{
+		*wave_y += wave_amount;
+	}
+	else if (Input::KeyPush('C'))
+	{
+		*wave_y -= wave_amount;
+	}
 }

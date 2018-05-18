@@ -31,6 +31,7 @@ public:
 	void SetY(int y) { m_y = y; }
 
 	void MenuDel() { m_IsMenu = false; }
+	bool GetDirec() { return m_direc; }
 
 	//HitLine* m_p_hit_line_spri;//“–‚½‚è”»’è
 private:
