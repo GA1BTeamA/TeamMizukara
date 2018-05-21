@@ -35,9 +35,6 @@ private:
 	float m_water_x;
 	float m_water_y;
 
-	float m_vx;//移動ベクトル
-	float m_vy;
-
 	int m_ani_time1;//アニメーション
 	int m_ani_time2;
 	int m_ani_time3;

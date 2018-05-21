@@ -10,7 +10,7 @@ const float ObjDownBlock_Tank::m_WaveSize_x = 0.5f;
 const float ObjDownBlock_Tank::m_WaveSize_y = 0.6f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank()
-	:m_x(1186), m_y(234), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	:m_x(676), m_y(150), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_x(1186), m_water_y(162)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
@@ -167,4 +167,9 @@ void ObjDownBlock_Tank::Draw()
 	}
 
 	//Draw::Draw2D(21, a, m_y);
+
+	Draw::Draw2D(56, m_x + 15 + ground->GetScroll(), m_y - 15, 1, 1);
+	Draw::Draw2D(58, m_x + 170 + ground->GetScroll(), m_y - 15, 1, 1);
+	Draw::Draw2D(59, m_x + 40 + ground->GetScroll(), m_y - 23, 1, 1);
+	Draw::Draw2D(57, m_x + 20 + ground->GetScroll(), m_y - 25, 1, 1);
 }

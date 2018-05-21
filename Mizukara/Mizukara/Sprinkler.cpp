@@ -11,7 +11,7 @@ const float CSPRI::m_WaveSize_x = 0.55f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f)
+	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
 	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
 {
 	//ヒットラインの作成(左)
@@ -35,11 +35,19 @@ void CSPRI::Action()
 	m_p_hit_line_spri->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_p_hit_line_spri->SetPos2(m_x + ground->GetScroll(), m_y + 100);
 
-	if (m_ani_time4 > 300 && m_sy==230)
+	//m_ani_time5++;
+	if (m_ani_time5 > 500 && m_ani_time5 <=510 && m_sy==230)
 	{
 		m_vy = -8.0f;
 	}
-
+	else if (m_ani_time5 > 600 && m_ani_time5 <= 610 && m_sy == 230)
+	{
+		m_vy = -8.0f;
+	}
+	else if (m_ani_time5 >= 571)
+	{
+		m_ani_time5 = 440;
+	}
 		m_vy += 9.8 / (16.0f);
 
 
@@ -187,7 +195,7 @@ void CSPRI::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					m_ani_time5++;
+					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
@@ -204,6 +212,7 @@ void CSPRI::Draw()
 
 						if (m_ani_time4 >= 460)
 						{
+							m_ani_time5++;
 							m_move2++;
 							if (m_move2 <= 10)//スプリンクラーから水が出る
 							{
@@ -219,50 +228,6 @@ void CSPRI::Draw()
 							}
 
 
-						}
-						if (m_ani_time5 > 900)
-						{
-							m_move3++;
-							if (m_move3 <= 10)
-							{
-							    m_vy -= 40.8 / (16.0f);
-								//m_y -= 1.5;
-							}
-							else if (m_move3 <= 30)
-							{
-								m_vy -= 38.8 / (16.0f);
-							}
-							else if (m_move3 <= 50)
-							{
-								m_vy += 35.8 / (16.0f);
-							}
-							/*else if (m_move3 <= 83)
-							{
-								m_vy -= 0.0 / (16.0f);
-							}*/
-							else if (m_move3 <= 70)
-							{
-								m_vy += 30.8 / (16.0f);
-							}
-							/*else if (m_move3 <= 114.5)
-							{
-								m_vy += 0.8 / (16.0f);
-							}*/
-							/*else if (m_move3 <= 115)
-							{
-								m_vy += 0.8 / (16.0f);
-							}*/
-							else if (m_move3 <= 300)
-							{
-								m_vy += 0.0 / (16.0f);
-							}
-							else 
-							{
-								m_move3 = 0.0f;
-							}
-								
-							
-							
 						}
 						
 

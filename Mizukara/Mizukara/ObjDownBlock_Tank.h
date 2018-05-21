@@ -15,7 +15,7 @@ public:
 	void Action();
 	void Draw();
 private:
-	float m_x; //ギミック1の位置
+	float m_x; //ギミック2の位置
 	float m_y;
 
 	float m_wave_x;  //波の位置
