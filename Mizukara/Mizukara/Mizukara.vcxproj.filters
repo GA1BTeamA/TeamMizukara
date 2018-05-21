@@ -25,6 +25,12 @@
     <Filter Include="ヘッダー ファイル\ギミック2（下がるブロック）">
       <UniqueIdentifier>{8dda7acc-2b2a-4083-ba35-17e0d9944250}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ギミック3（動かすブロック）">
+      <UniqueIdentifier>{cea70757-72ab-45ef-8119-baa5146c6991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック3（動かす足場）">
+      <UniqueIdentifier>{d3a638fb-cced-4e9a-9606-5046fa663354}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Collision.cpp">
@@ -105,6 +111,12 @@
     <ClCompile Include="ObjDownBlock_Tank.cpp">
       <Filter>ソース ファイル\ギミック2（下がるブロック）</Filter>
     </ClCompile>
+    <ClCompile Include="ObjMoveBlock.cpp">
+      <Filter>ソース ファイル\ギミック3（動かすブロック）</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMoveBlock_Tank.cpp">
+      <Filter>ソース ファイル\ギミック3（動かすブロック）</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -181,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="ObjDownBlock_Tank.h">
       <Filter>ヘッダー ファイル\ギミック2（下がるブロック）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMoveBlock.h">
+      <Filter>ヘッダー ファイル\ギミック3（動かす足場）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMoveBlock_Tank.h">
+      <Filter>ヘッダー ファイル\ギミック3（動かす足場）</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

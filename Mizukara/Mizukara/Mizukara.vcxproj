@@ -133,6 +133,8 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ObjDownBlock.cpp" />
     <ClCompile Include="ObjDownBlock_Tank.cpp" />
+    <ClCompile Include="ObjMoveBlock.cpp" />
+    <ClCompile Include="ObjMoveBlock_Tank.cpp" />
     <ClCompile Include="ObjStory.cpp" />
     <ClCompile Include="ObjUpScaffold.cpp" />
     <ClCompile Include="ObjUpScaffold_Tank.cpp" />
@@ -162,6 +164,8 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ObjDownBlock.h" />
     <ClInclude Include="ObjDownBlock_Tank.h" />
+    <ClInclude Include="ObjMoveBlock.h" />
+    <ClInclude Include="ObjMoveBlock_Tank.h" />
     <ClInclude Include="ObjStory.h" />
     <ClInclude Include="ObjUpScaffold.h" />
     <ClInclude Include="ObjUpScaffold_Tank.h" />

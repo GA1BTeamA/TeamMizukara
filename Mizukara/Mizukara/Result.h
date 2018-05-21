@@ -6,6 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
+//リザルトクラス
 class CResult : public CObj
 {
 public:

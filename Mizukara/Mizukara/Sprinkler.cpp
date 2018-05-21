@@ -7,7 +7,7 @@
 #include "Hero.h"
 extern int g_SceneNumber;
 
-const float CSPRI::m_WaveSize_x = 0.5f;
+const float CSPRI::m_WaveSize_x = 0.55f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()

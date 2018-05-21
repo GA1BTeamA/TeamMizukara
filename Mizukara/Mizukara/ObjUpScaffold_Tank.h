@@ -6,7 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//ギミック1のタンククラス
+//ギミック1タンククラス
 class ObjUpScaffold_Tank : public CObj
 {
 public:

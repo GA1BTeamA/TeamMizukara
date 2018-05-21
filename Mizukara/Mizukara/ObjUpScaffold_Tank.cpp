@@ -10,7 +10,7 @@ const float ObjUpScaffold_Tank::m_WaveSize_x = 0.5f;
 const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()
-	:m_x(1186), m_y(234), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	:m_x(295), m_y(249), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_x(1186), m_water_y(162), m_gx(490), m_gy(249)
 {
 	//ヒットラインの作成(左)
@@ -40,16 +40,16 @@ void ObjUpScaffold_Tank::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//WTMに近づいたらアイコンを出す
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	if (m_hit_line_UpScTank->GetHitData()[i] != nullptr)
-	//	{
-	//		if (m_p_hit_line_wtm->GetHitData()[i]->GetElement() == 0)
-	//		{
-	//			Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
-	//		}
-	//	}
-	//}
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_hit_line_UpScTank->GetHitData()[i] != nullptr)
+		{
+			if (m_hit_line_UpScTank->GetHitData()[i]->GetElement() == 0)
+			{
+				Draw::Draw2D(21, m_x + ground->GetScroll(), m_y);
+			}
+		}
+	}
 
 	//水表示
 	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
@@ -168,7 +168,7 @@ void ObjUpScaffold_Tank::Draw()
 
 	//Draw::Draw2D(21, a, m_y);
 
-	Draw::Draw2D(55, m_gx - 190 + ground->GetScroll(), m_gy);
+	Draw::Draw2D(55, m_gx - 189 + ground->GetScroll(), m_gy);
 	Draw::Draw2D(52, m_gx - 190 + ground->GetScroll(), m_gy - 19);
 	Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
 

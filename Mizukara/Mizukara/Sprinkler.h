@@ -6,7 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//WTMクラス
+//スプリンクラークラス
 class CSPRI : public CObj
 {
 public:
@@ -23,7 +23,7 @@ private:
 	float m_x1;
 	float m_y1;
 
-	float m_vy;
+	//float m_vy;
 	float m_sy;
 
 	float im_x;//アイコンの位置

@@ -6,23 +6,13 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//ギミック1(上がる足場)クラス
-class ObjUpScaffold :public CObj
+//ギミック3タンククラス
+class ObjMoveBlock_Tank :public CObj
 {
 public:
-	ObjUpScaffold();
-	~ObjUpScaffold();
-
+	ObjMoveBlock_Tank();
+	~ObjMoveBlock_Tank();
 	void Action();
 	void Draw();
-
-private:
-	float m_x;//位置
-	float m_y;
-
-	float m_gx;  //グラフィック位置
-	float m_gy;
-
-	HitLine* m_hit_line_UpSc[4];//当たり判定
 };
 

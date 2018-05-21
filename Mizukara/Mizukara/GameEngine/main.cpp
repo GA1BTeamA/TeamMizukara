@@ -37,6 +37,8 @@
 #include "..\ObjUpScaffold.h"
 #include "..\ObjUpScaffold_Tank.h"
 #include "..\ObjDownBlock.h"
+#include "..\ObjMoveBlock.h"
+#include "..\ObjMoveBlock_Tank.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -186,6 +188,8 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjUpScaffold* upsc;
 		ObjUpScaffold_Tank* upsct;
 		ObjDownBlock* dwbl;
+		ObjMoveBlock* mobl;
+		ObjMoveBlock_Tank* moblt;
 
 		switch (g_SceneNumber)
 		{
@@ -246,7 +250,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
-			hero->m_DrawPriority = 90;
+			hero->m_DrawPriority = 150;
 			TaskSystem::InsertObj(hero);
 
 			tank = new CTank();
@@ -261,7 +265,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 100;
-			bucketmeter->m_DrawPriority = 100;
+			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
 
 			spri = new CSPRI();
@@ -269,19 +273,29 @@ unsigned __stdcall GameMainSled(void *p)
 			spri->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri);
 
+			mobl = new ObjMoveBlock();
+			mobl->m_ActionPriority = 110;
+			mobl->m_DrawPriority = 110;
+			TaskSystem::InsertObj(mobl);
+
+			moblt = new ObjMoveBlock_Tank();
+			moblt->m_ActionPriority = 110;
+			moblt->m_DrawPriority = 110;
+			TaskSystem::InsertObj(moblt);
+
 			upsc = new ObjUpScaffold();
-			upsc->m_ActionPriority = 90;
-			upsc->m_DrawPriority = 80;
+			upsc->m_ActionPriority = 120;
+			upsc->m_DrawPriority = 120;
 			TaskSystem::InsertObj(upsc);
 
 			upsct = new ObjUpScaffold_Tank();
-			upsct->m_ActionPriority = 90;
-			upsct->m_DrawPriority = 80;
+			upsct->m_ActionPriority = 120;
+			upsct->m_DrawPriority = 120;
 			TaskSystem::InsertObj(upsct);
 
 			dwbl = new ObjDownBlock();
-			dwbl->m_ActionPriority = 90;
-			dwbl->m_DrawPriority = 80;
+			dwbl->m_ActionPriority = 130;
+			dwbl->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwbl);
 
 			g_SceneNumber = GAME_MAIN;

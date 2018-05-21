@@ -6,7 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//ギミック2の下がるブロッククラス
+//ギミック2(下がるブロック)クラス
 class ObjDownBlock :public CObj
 {
 public:

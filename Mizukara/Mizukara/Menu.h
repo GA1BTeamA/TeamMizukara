@@ -6,6 +6,7 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
+//メニュークラス
 class CMenu : public CObj
 {
 public:
