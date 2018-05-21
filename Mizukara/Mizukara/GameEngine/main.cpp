@@ -35,6 +35,7 @@
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
 #include "..\ObjUpScaffold.h"
+#include "..\ObjUpScaffold_Tank.h"
 #include "..\ObjDownBlock.h"
 
 //削除されていないメモリを出力にダンプする---
@@ -128,7 +129,12 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(48, L"Images\\water.png");//48番目のwater.pngを読み込み
 	Draw::LoadImage(49, L"Images\\WhiteBack.png");//49番目のWhiteBack.pngを読み込み
 	Draw::LoadImage(50, L"Images\\Hose.png");//50番目のHose.pngを読み込み
-	Draw::LoadImage(51, L"Images\\Mizu_karie.png");//51番目Mizu(karie)のを読み込み
+	Draw::LoadImage(51, L"Images\\Mizu_karie.png");//51番目Mizu(karie).pngのを読み込み
+	Draw::LoadImage(52, L"Images\\Gimmick1tank.png");//52番目Gimmick1tank.pngのを読み込み
+	Draw::LoadImage(53, L"Images\\Gimmick1scaffold.png");//54番目Gimmick1scaffold.pngのを読み込み
+	Draw::LoadImage(54, L"Images\\Gimmick1pulley.png");//55番目Gimmick1pulley.pngのを読み込み
+	Draw::LoadImage(55, L"Images\\Gimmick1Board.png");//56番目Gimmick1Board.pngのを読み込み
+
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
 	return 0;
@@ -178,6 +184,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM* wtm;
 		CSPRI* spri;
 		ObjUpScaffold* upsc;
+		ObjUpScaffold_Tank* upsct;
 		ObjDownBlock* dwbl;
 
 		switch (g_SceneNumber)
@@ -266,6 +273,11 @@ unsigned __stdcall GameMainSled(void *p)
 			upsc->m_ActionPriority = 90;
 			upsc->m_DrawPriority = 80;
 			TaskSystem::InsertObj(upsc);
+
+			upsct = new ObjUpScaffold_Tank();
+			upsct->m_ActionPriority = 90;
+			upsct->m_DrawPriority = 80;
+			TaskSystem::InsertObj(upsct);
 
 			dwbl = new ObjDownBlock();
 			dwbl->m_ActionPriority = 90;

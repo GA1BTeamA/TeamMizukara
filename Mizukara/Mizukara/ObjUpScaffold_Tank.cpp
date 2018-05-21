@@ -11,7 +11,7 @@ const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()
 	:m_x(1186), m_y(234), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(1186), m_water_y(162)
+	, m_water_x(1186), m_water_y(162), m_gx(490), m_gy(249)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
 	m_hit_line_UpScTank = Collision::HitLineInsert(this);
@@ -167,4 +167,9 @@ void ObjUpScaffold_Tank::Draw()
 	}
 
 	//Draw::Draw2D(21, a, m_y);
+
+	Draw::Draw2D(55, m_gx - 190 + ground->GetScroll(), m_gy);
+	Draw::Draw2D(52, m_gx - 190 + ground->GetScroll(), m_gy - 19);
+	Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
+
 }

@@ -20,6 +20,9 @@ private:
 	float m_x;//位置
 	float m_y;
 
+	float m_gx;  //グラフィック位置
+	float m_gy;
+
 	HitLine* m_hit_line_UpSc[4];//当たり判定
 };
 
