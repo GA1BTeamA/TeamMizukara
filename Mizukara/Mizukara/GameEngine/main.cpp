@@ -37,6 +37,7 @@
 #include "..\ObjUpScaffold.h"
 #include "..\ObjUpScaffold_Tank.h"
 #include "..\ObjDownBlock.h"
+#include "..\ObjDownBlock_Tank.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -131,9 +132,14 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(50, L"Images\\Hose.png");//50番目のHose.pngを読み込み
 	Draw::LoadImage(51, L"Images\\Mizu_karie.png");//51番目Mizu(karie).pngのを読み込み
 	Draw::LoadImage(52, L"Images\\Gimmick1tank.png");//52番目Gimmick1tank.pngのを読み込み
-	Draw::LoadImage(53, L"Images\\Gimmick1scaffold.png");//54番目Gimmick1scaffold.pngのを読み込み
-	Draw::LoadImage(54, L"Images\\Gimmick1pulley.png");//55番目Gimmick1pulley.pngのを読み込み
-	Draw::LoadImage(55, L"Images\\Gimmick1Board.png");//56番目Gimmick1Board.pngのを読み込み
+	Draw::LoadImage(53, L"Images\\Gimmick1scaffold.png");//53番目Gimmick1scaffold.pngのを読み込み
+	Draw::LoadImage(54, L"Images\\Gimmick1pulley.png");//54番目Gimmick1pulley.pngのを読み込み
+	Draw::LoadImage(55, L"Images\\Gimmick1Board.png");//55番目Gimmick1Board.pngのを読み込み
+	Draw::LoadImage(56, L"Images\\Gimmick2Bucket.png");//56番目Gimmick2Bucket.pngを読み込み
+	Draw::LoadImage(57, L"Images\\Gimmick2pulley.png");//57番目Gimmick2pulley.pngを読み込み
+	Draw::LoadImage(58, L"Images\\Gimmick2stand.png");//58番目Gimmick2stand.pngを読み込み
+	Draw::LoadImage(59, L"Images\\Gimmick2string.png");//59番目Gimmick2string.pngを読み込み
+
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -186,6 +192,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjUpScaffold* upsc;
 		ObjUpScaffold_Tank* upsct;
 		ObjDownBlock* dwbl;
+		ObjDownBlock_Tank* dwblt;
 
 		switch (g_SceneNumber)
 		{
@@ -283,6 +290,11 @@ unsigned __stdcall GameMainSled(void *p)
 			dwbl->m_ActionPriority = 90;
 			dwbl->m_DrawPriority = 80;
 			TaskSystem::InsertObj(dwbl);
+
+			dwblt = new ObjDownBlock_Tank();
+			dwblt->m_ActionPriority = 90;
+			dwblt->m_DrawPriority = 80;
+			TaskSystem::InsertObj(dwblt);
 
 			g_SceneNumber = GAME_MAIN;
 			break;
