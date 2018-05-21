@@ -12,7 +12,7 @@ const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
 	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f)
-	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
+	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
 {
 	//ヒットラインの作成(左)
 	m_p_hit_line_spri = Collision::HitLineInsert(this);
@@ -34,6 +34,18 @@ void CSPRI::Action()
 	//当たり判定位置の更新
 	m_p_hit_line_spri->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_p_hit_line_spri->SetPos2(m_x + ground->GetScroll(), m_y + 100);
+
+	if (m_ani_time4 > 300 && m_sy==230)
+	{
+		m_vy = -8.0f;
+	}
+
+		m_vy += 9.8 / (16.0f);
+
+
+		m_sy += m_vy;
+	if (m_sy > 230) { m_sy = 230; m_vy = 0.0f; }
+
 }
 
 void CSPRI::Draw()
@@ -186,7 +198,7 @@ void CSPRI::Draw()
 					}
 					else if (m_ani_time4 > 300)
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move1, m_wave_y + 70, 1, 1);
 
 						if (m_ani_time4 > 460)
