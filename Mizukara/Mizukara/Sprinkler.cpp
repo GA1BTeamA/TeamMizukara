@@ -11,8 +11,8 @@ const float CSPRI::m_WaveSize_x = 0.5f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f)
-	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
+	:m_x(2150), m_y(230), m_wave_x(2150), m_wave_y(230),m_vx(0.0f),m_vy(230.0f), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
+	, m_move1(0),m_move2(0.0f),m_move3(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242)
 {
 	//ヒットラインの作成(左)
 	m_p_hit_line_spri = Collision::HitLineInsert(this);
@@ -175,30 +175,31 @@ void CSPRI::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
+					m_ani_time5++;
 
-					if (m_ani_time4 < 200)
+					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
 						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
-					else if (m_ani_time4 > 200 && m_ani_time4 < 300)
+					else if (m_ani_time4 > 200 && m_ani_time4 < 300)//ホースをつなげる
 					{
 						Draw::Draw2D(4, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
 					}
-					else if (m_ani_time4 > 300)
+					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_vy - 10, 1, 1);
 						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move1, m_wave_y + 70, 1, 1);
 
-						if (m_ani_time4 > 460)
+						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
-							if (m_move2 <= 10)
+							if (m_move2 <= 10)//スプリンクラーから水が出る
 							{
 								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
 							}
 							else if (m_move2 >= 11 && m_move2 < 20)
 							{
-								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y+2, -1, 1);
+								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
 							}
 							else
 							{
@@ -207,10 +208,56 @@ void CSPRI::Draw()
 
 
 						}
+						if (m_ani_time5 > 900)
+						{
+							m_move3++;
+							if (m_move3 <= 10)
+							{
+							    m_vy -= 40.8 / (16.0f);
+								//m_y -= 1.5;
+							}
+							else if (m_move3 <= 30)
+							{
+								m_vy -= 38.8 / (16.0f);
+							}
+							else if (m_move3 <= 50)
+							{
+								m_vy += 35.8 / (16.0f);
+							}
+							/*else if (m_move3 <= 83)
+							{
+								m_vy -= 0.0 / (16.0f);
+							}*/
+							else if (m_move3 <= 70)
+							{
+								m_vy += 30.8 / (16.0f);
+							}
+							/*else if (m_move3 <= 114.5)
+							{
+								m_vy += 0.8 / (16.0f);
+							}*/
+							/*else if (m_move3 <= 115)
+							{
+								m_vy += 0.8 / (16.0f);
+							}*/
+							else if (m_move3 <= 300)
+							{
+								m_vy += 0.0 / (16.0f);
+							}
+							else 
+							{
+								m_move3 = 0.0f;
+							}
+								
+							
+							
+						}
+						
 
 					}
-
+					
 				}
+				
 				else
 				{
 					m_move1++;
