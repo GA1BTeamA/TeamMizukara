@@ -35,6 +35,7 @@
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
 #include "..\ObjUpScaffold.h"
+#include "..\ObjDownBlock.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -90,7 +91,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11”Ô–Ú‚É"BucketMeter.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(12, L"Images\\Background.png");//12”Ô–Ú‚É"Background.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(13, L"Images\\Title.png");//13”Ô–Ú‚É"Title.png‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(14, L"Images\\sibuki 1.png");//14”Ô–Ú‚É"sibuki.png‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(14, L"Images\\sibuki.png");//14”Ô–Ú‚É"sibuki.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(15, L"Images\\Menu.png");//15”Ô–Ú‚É"Menu.png‚ğ“Ç‚İ‚İ
 	//Draw::LoadImage(16, L"Images\\WTM.png");//16”Ô–Ú‚É"WTM.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(17, L"Images\\description.png");//17”Ô–Ú‚É"description.png‚ğ“Ç‚İ‚İ
@@ -177,6 +178,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM* wtm;
 		CSPRI* spri;
 		ObjUpScaffold* upsc;
+		ObjDownBlock* dwbl;
 
 		switch (g_SceneNumber)
 		{
@@ -264,6 +266,11 @@ unsigned __stdcall GameMainSled(void *p)
 			upsc->m_ActionPriority = 90;
 			upsc->m_DrawPriority = 80;
 			TaskSystem::InsertObj(upsc);
+
+			dwbl = new ObjDownBlock();
+			dwbl->m_ActionPriority = 90;
+			dwbl->m_DrawPriority = 80;
+			TaskSystem::InsertObj(dwbl);
 
 			g_SceneNumber = GAME_MAIN;
 			break;

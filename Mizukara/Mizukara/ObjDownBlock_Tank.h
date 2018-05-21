@@ -6,23 +6,20 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//WTMクラス
-class CWTM : public CObj
+//ギミック1のタンククラス
+class ObjDownBlock_Tank : public CObj
 {
 public:
-	CWTM();
-	~CWTM();
+	ObjDownBlock_Tank();
+	~ObjDownBlock_Tank();
 	void Action();
 	void Draw();
 private:
-	float m_x; //WTMの位置
+	float m_x; //ギミック1の位置
 	float m_y;
 
 	float m_wave_x;  //波の位置
 	float m_wave_y;
-
-	float im_x;//アイコンの位置
-	float im_y;
 
 	float m_water_x;  //水の位置
 	float m_water_y;
@@ -33,9 +30,5 @@ private:
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_y;
 
-	static const float m_water_amount;  //水の量変更用卍
-	static const float m_wave_amount;  //波の高さ変更用卍
-	//float m_water_remaining;  //水の残量
-
-	HitLine* m_p_hit_line_wtm;//当たり判定
+	HitLine* m_hit_line_DwBlTank;//当たり判定
 };
