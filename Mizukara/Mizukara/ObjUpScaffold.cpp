@@ -9,6 +9,7 @@
 
 ObjUpScaffold::ObjUpScaffold()
 	:m_x(500),m_y(350)
+	,m_gx(490),m_gy(249)
 {
 	//足場ヒットライン作成し、値を設定(左)
 	m_hit_line_UpSc[0] = Collision::HitLineInsert(this);
@@ -67,5 +68,5 @@ void ObjUpScaffold::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-
+	Draw::Draw2D(53, m_gx + ground->GetScroll(), m_gy);
 }
