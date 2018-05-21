@@ -91,7 +91,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11”Ô–Ú‚É"BucketMeter.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(12, L"Images\\Background.png");//12”Ô–Ú‚É"Background.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(13, L"Images\\Title.png");//13”Ô–Ú‚É"Title.png‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(14, L"Images\\sibuki 1.png");//14”Ô–Ú‚É"sibuki.png‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(14, L"Images\\sibuki.png");//14”Ô–Ú‚É"sibuki.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(15, L"Images\\Menu.png");//15”Ô–Ú‚É"Menu.png‚ğ“Ç‚İ‚İ
 	//Draw::LoadImage(16, L"Images\\WTM.png");//16”Ô–Ú‚É"WTM.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(17, L"Images\\description.png");//17”Ô–Ú‚É"description.png‚ğ“Ç‚İ‚İ
