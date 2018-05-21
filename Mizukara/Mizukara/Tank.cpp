@@ -15,7 +15,7 @@ CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
 	,im_x(33), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
 	, m_water_x(11), m_water_y(380)
-	, m_water_remaining(3.65f)
+	, m_water_remaining(3.65f), m_water_remaining2(100)
 {
 	m_name = TANK;
 
@@ -126,7 +126,7 @@ void CTank::Draw()
 	}
 	else if (m_ani_time1 < 20)
 	{
-Draw::Draw2D(37, m_wave_x + ground->GetScroll(), m_wave_y, 1, 1);
+		Draw::Draw2D(37, m_wave_x + ground->GetScroll(), m_wave_y, 1, 1);
 	}
 	else if (m_ani_time1 < 30)
 	{

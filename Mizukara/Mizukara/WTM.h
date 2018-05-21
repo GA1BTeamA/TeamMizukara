@@ -18,14 +18,14 @@ private:
 	float m_x; //WTMの位置
 	float m_y;
 
-	//float m_wave_x;  //波の位置
-	//float m_wave_y;
+	float m_wave_x;  //波の位置
+	float m_wave_y;
 
 	float im_x;//アイコンの位置
 	float im_y;
 
-	//float m_water_x;  //水の位置
-	//float m_water_y;
+	float m_water_x;  //水の位置
+	float m_water_y;
 
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
