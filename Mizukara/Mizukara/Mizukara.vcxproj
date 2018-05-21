@@ -131,8 +131,11 @@
     <ClCompile Include="GameEngine\WindowCreate.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="ObjDownBlock.cpp" />
+    <ClCompile Include="ObjDownBlock_Tank.cpp" />
     <ClCompile Include="ObjStory.cpp" />
     <ClCompile Include="ObjUpScaffold.cpp" />
+    <ClCompile Include="ObjUpScaffold_Tank.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Sprinkler.cpp" />
     <ClCompile Include="StageSelecto.cpp" />
@@ -157,8 +160,11 @@
     <ClInclude Include="GameEngine\WindowCreate.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="ObjDownBlock.h" />
+    <ClInclude Include="ObjDownBlock_Tank.h" />
     <ClInclude Include="ObjStory.h" />
     <ClInclude Include="ObjUpScaffold.h" />
+    <ClInclude Include="ObjUpScaffold_Tank.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Sprinkler.h" />
     <ClInclude Include="StageSelecto.h" />

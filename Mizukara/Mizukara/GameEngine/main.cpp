@@ -35,6 +35,7 @@
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
 #include "..\ObjUpScaffold.h"
+#include "..\ObjDownBlock.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -177,6 +178,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM* wtm;
 		CSPRI* spri;
 		ObjUpScaffold* upsc;
+		ObjDownBlock* dwbl;
 
 		switch (g_SceneNumber)
 		{
@@ -264,6 +266,11 @@ unsigned __stdcall GameMainSled(void *p)
 			upsc->m_ActionPriority = 90;
 			upsc->m_DrawPriority = 80;
 			TaskSystem::InsertObj(upsc);
+
+			dwbl = new ObjDownBlock();
+			dwbl->m_ActionPriority = 90;
+			dwbl->m_DrawPriority = 80;
+			TaskSystem::InsertObj(dwbl);
 
 			g_SceneNumber = GAME_MAIN;
 			break;
