@@ -725,19 +725,23 @@ void CHero::Draw()
 		//描画
 		if (m_IsMenu)
 		{
+			//メニュー開いてるとき
 			if (m_direc == RIGHT)
 			{
-				Draw::Draw2D(7, m_x, m_y);
+				//主人公左向き
+				Draw::Draw2D(0, m_x, m_y);
 			}
 			else if (m_direc == LEFT)
 			{
-				Draw::Draw2D(8, m_x, m_y);
+				//主人公右向き
+				Draw::Draw2D(1, m_x, m_y);
 			}
 		}
 		else
 		{
 			if (Input::KeyPush(VK_LEFT))
 			{
+				//左歩き
 				if (m_ani_time <= 6) {
 					Draw::Draw2D(3, m_x, m_y);
 				}
@@ -753,6 +757,7 @@ void CHero::Draw()
 			}
 			else if (Input::KeyPush(VK_RIGHT))
 			{
+				//右歩き
 				if (m_ani_time <= 6) {
 					Draw::Draw2D(2, m_x, m_y);
 				}
@@ -768,20 +773,24 @@ void CHero::Draw()
 			}
 			else if (m_XKey_Frag == true)
 			{
+				//水汲む
 				Draw::Draw2D(5, m_x, m_y);
 			}
 			else if (m_CKey_Frag == true)
 			{
+				//水戻す
 				Draw::Draw2D(4, m_x, m_y);
 			}
 			else if (m_CKey_Frag == false)
 			{
+				//左向き
 				if (m_direc == RIGHT)
 				{
 					Draw::Draw2D(0, m_x, m_y,1.0f,1.0f,0.0f);
 				}
 				else if (m_direc == LEFT)
 				{
+					//右向き
 					Draw::Draw2D(1, m_x, m_y);
 				}
 			}
@@ -789,19 +798,6 @@ void CHero::Draw()
 			{
 				Draw::Draw2D(6, m_x, m_y);
 			}*/
-
-			/*if (RIGHT || LEFT) {
-				if (m_ani_time <= 6) {
-					Draw::Draw2D(7, m_x, m_y);
-				}
-				else {
-					Draw::Draw2D(8, m_x, m_y);
-				}
-			}*/
-			//if (m_p_hit_line->GetHitData()[0]!=nullptr)
-			//{
-			//	Draw::Draw2D(6, m_x, m_y);
-			//}
 		}
 	}
 }

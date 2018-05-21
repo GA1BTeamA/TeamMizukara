@@ -232,20 +232,20 @@ unsigned __stdcall GameMainSled(void *p)
 			background->m_DrawPriority = 10;
 			TaskSystem::InsertObj(background);
 
-			tank = new CTank();
-			tank->m_ActionPriority = 70;
-			tank->m_DrawPriority = 70;
-			TaskSystem::InsertObj(tank);
-
 			wtm = new CWTM();
-			wtm->m_ActionPriority = 60;
+			wtm->m_ActionPriority = 70;
 			wtm->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm);
 
 			hero = new CHero();
-			hero->m_ActionPriority = 80;
+			hero->m_ActionPriority = 60;
 			hero->m_DrawPriority = 90;
 			TaskSystem::InsertObj(hero);
+
+			tank = new CTank();
+			tank->m_ActionPriority = 80;
+			tank->m_DrawPriority = 70;
+			TaskSystem::InsertObj(tank);
 
 			ground = new CObjGround();
 			ground->m_ActionPriority = 90;
