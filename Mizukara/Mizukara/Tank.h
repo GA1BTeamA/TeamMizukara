@@ -14,6 +14,17 @@ public:
 	~CTank();
 	void Action();
 	void Draw();
+
+	void SetWater_Remaining(float water_amount);  //水残量セット
+	void SetWaveY(float* wave_y,float wave_amount);  //波の位置セット
+	float GetWater_Remaining() { return m_water_remaining; }  //水残量取得
+	float* GetWaveY() { return &m_wave_y; }  //波の位置取得
+	float GetWaveX() { return m_wave_x; }
+	float GetWaterY() { return m_water_y; }  //水の位置取得
+	float GetWaterX() { return m_water_x; }
+	float GetWaterAmount() { return m_water_amount; }
+	float GetWaveAmount() { return m_wave_amount; }
+
 private:
 	float m_x; //位置
 	float m_y;
