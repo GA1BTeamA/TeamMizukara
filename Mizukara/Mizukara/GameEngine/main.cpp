@@ -141,7 +141,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(57, L"Images\\Gimmick2pulley.png");//57番目Gimmick2pulley.pngを読み込み
 	Draw::LoadImage(58, L"Images\\Gimmick2stand.png");//58番目Gimmick2stand.pngを読み込み
 	Draw::LoadImage(59, L"Images\\Gimmick2string.png");//59番目Gimmick2string.pngを読み込み
-
+	Draw::LoadImage(60, L"Images\\Gimmick3tank.png");//60番目Gimmick3tank.pngを読み込み
+	Draw::LoadImage(61, L"Images\\Gimmick3stand.png");//61番目Gimmick3stand.pngを読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -306,8 +307,8 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(dwbl);
 
 			dwblt = new ObjDownBlock_Tank();
-			dwblt->m_ActionPriority = 90;
-			dwblt->m_DrawPriority = 80;
+			dwblt->m_ActionPriority = 130;
+			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
 
 			g_SceneNumber = GAME_MAIN;

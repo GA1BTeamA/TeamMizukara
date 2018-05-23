@@ -18,6 +18,9 @@ private:
 	float m_x; //ギミック2の位置
 	float m_y;
 
+	float m_gx;//グラフィックの位置
+	float m_gy;//
+
 	float m_wave_x;  //波の位置
 	float m_wave_y;
 

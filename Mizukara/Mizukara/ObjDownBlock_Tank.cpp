@@ -10,7 +10,7 @@ const float ObjDownBlock_Tank::m_WaveSize_x = 0.5f;
 const float ObjDownBlock_Tank::m_WaveSize_y = 0.6f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank()
-	:m_x(676), m_y(150), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_x(1186), m_water_y(162)
 {
 	//ヒットラインの作成(左)
@@ -40,16 +40,16 @@ void ObjDownBlock_Tank::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//WTMに近づいたらアイコンを出す
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	if (m_hit_line_UpScTank->GetHitData()[i] != nullptr)
-	//	{
-	//		if (m_p_hit_line_wtm->GetHitData()[i]->GetElement() == 0)
-	//		{
-	//			Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
-	//		}
-	//	}
-	//}
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_hit_line_DwBlTank->GetHitData()[i] != nullptr)
+		{
+			if (m_hit_line_DwBlTank->GetHitData()[i]->GetElement() == 0)
+		    {
+				Draw::Draw2D(21, m_x + 20 + ground->GetScroll(), m_y);
+			}
+		}
+	}
 
 	//水表示
 	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
@@ -168,8 +168,7 @@ void ObjDownBlock_Tank::Draw()
 
 	//Draw::Draw2D(21, a, m_y);
 
-	Draw::Draw2D(56, m_x + 15 + ground->GetScroll(), m_y - 15, 1, 1);
-	Draw::Draw2D(58, m_x + 170 + ground->GetScroll(), m_y - 15, 1, 1);
-	Draw::Draw2D(59, m_x + 40 + ground->GetScroll(), m_y - 23, 1, 1);
-	Draw::Draw2D(57, m_x + 20 + ground->GetScroll(), m_y - 25, 1, 1);
+	Draw::Draw2D(56, m_gx + ground->GetScroll(), m_gy, 1, 1);
+	Draw::Draw2D(59, m_gx + 25 + ground->GetScroll(), m_gy - 23, 1, 1);
+	Draw::Draw2D(57, m_gx + 5 + ground->GetScroll(), m_gy - 25, 1, 1);
 }

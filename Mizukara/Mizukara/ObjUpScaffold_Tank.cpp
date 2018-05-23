@@ -46,7 +46,7 @@ void ObjUpScaffold_Tank::Draw()
 		{
 			if (m_hit_line_UpScTank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, m_x + ground->GetScroll(), m_y);
+				Draw::Draw2D(21, m_x + 20 + ground->GetScroll(), m_y + 15);
 			}
 		}
 	}

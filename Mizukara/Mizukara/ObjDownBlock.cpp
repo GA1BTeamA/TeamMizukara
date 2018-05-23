@@ -8,7 +8,7 @@
 
 
 ObjDownBlock::ObjDownBlock()
-	:m_x(840), m_y(280)
+	:m_x(840), m_y(280),m_gx(846),m_gy(135)
 {
 	//足場ヒットライン作成し、値を設定(左)
 	m_hit_line_DwBl[0] = Collision::HitLineInsert(this);
@@ -67,5 +67,5 @@ void ObjDownBlock::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-
+	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy, 1, 1);
 }

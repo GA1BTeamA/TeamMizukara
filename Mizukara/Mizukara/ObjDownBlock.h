@@ -20,5 +20,8 @@ private:
 	float m_x;//位置
 	float m_y;
 
+	float m_gx;//グラフィックの位置
+	float m_gy;
+
 	HitLine* m_hit_line_DwBl[4];//当たり判定
 };
