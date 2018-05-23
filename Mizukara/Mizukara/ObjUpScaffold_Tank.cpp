@@ -3,15 +3,18 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "ObjUpScaffold_Tank.h"
+#include "ObjUpScaffold.h"
 #include "ObjGround.h"
+#include "Hero.h"
+#include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjUpScaffold_Tank::m_WaveSize_x = 0.5f;
+const float ObjUpScaffold_Tank::m_WaveSize_x = 0.36f;
 const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()
-	:m_x(295), m_y(249), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(1186), m_water_y(162), m_gx(490), m_gy(249)
+	:m_x(295), m_y(249), m_wave_x(300), m_wave_y(340), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	, m_water_x(300), m_water_y(350), m_gx(490), m_gy(249), m_water_remaining(0.0f), m_moveY(249)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_UpScTank = Collision::HitLineInsert(this);
@@ -29,6 +32,76 @@ ObjUpScaffold_Tank::~ObjUpScaffold_Tank()
 void ObjUpScaffold_Tank::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
+	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
+
+	//タンクから水を汲む＆戻す
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_hit_line_UpScTank->GetHitData()[i] != nullptr)
+		{
+			//自分の当たり判定の中に主人公の当たり判定があったら
+			if (m_hit_line_UpScTank->GetHitData()[i]->GetElement() == 0)
+			{
+				//タンクから水を汲む
+				if (Input::KeyPush('X'))
+				{
+					//足場オブジェクト取得
+					ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
+					m_moveY -= 0.2f;
+					us->AddY(0.2f);
+
+					//バケツメーターオブジェクト取得
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが満タンじゃなかったら
+					if (bm->GetWaterRem() < 3.0f) {
+
+						if (bm != nullptr) {
+							//バケツメーターにセット
+							bm->PushX();
+						}
+
+						//主人公の向きが左のときだけ汲める
+						if (hero->GetDirec() == LEFT)
+						{
+							//　　　　　　　　　（バケツ満タン/75フレーム）
+							m_water_remaining -= 0.02666;
+						}
+					}
+				}
+				//水をタンクに戻す
+				if (Input::KeyPush('C'))
+				{
+					//足場オブジェクト取得
+					ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
+					m_moveY += 0.2f;
+					us->AddY(-0.2f);
+
+					//バケツメーターオブジェクト取得
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが空じゃなかったら
+					if (bm->GetWaterRem() > 0.0f) {
+						//		m_water_remaining += m_water_amount;
+						//		m_wave_y -= m_wave_amount;
+
+						if (bm != nullptr) {
+							//バケツメーターにセット
+							bm->PushC();
+						}
+
+						//主人公の向きが左のときだけ汲める
+						if (hero->GetDirec() == LEFT)
+						{
+							//　　　　　　　　　（バケツ満タン/75フレーム）
+							m_water_remaining += 0.02666;
+						}
+					}
+				}
+				break;
+			}
+		}
+	}
+
 
 	//当たり判定位置の更新
 	m_hit_line_UpScTank->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -52,7 +125,7 @@ void ObjUpScaffold_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.05, 1.24);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -168,7 +241,7 @@ void ObjUpScaffold_Tank::Draw()
 
 	//Draw::Draw2D(21, a, m_y);
 
-	Draw::Draw2D(55, m_gx - 189 + ground->GetScroll(), m_gy);
+	Draw::Draw2D(55, m_gx - 189 + ground->GetScroll(), m_moveY);
 	Draw::Draw2D(52, m_gx - 190 + ground->GetScroll(), m_gy - 19);
 	Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
 
