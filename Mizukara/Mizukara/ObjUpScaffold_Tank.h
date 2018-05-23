@@ -37,5 +37,8 @@ private:
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_y;
 
+	float m_RopeSizeBoard;//蓋の方のロープの長さ
+	float m_RopeSizeScaffold;//足場の方のロープの長さ
+
 	HitLine* m_hit_line_UpScTank;//当たり判定
 };

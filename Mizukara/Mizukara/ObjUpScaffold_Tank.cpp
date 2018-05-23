@@ -5,7 +5,6 @@
 #include "ObjUpScaffold_Tank.h"
 #include "ObjUpScaffold.h"
 #include "ObjGround.h"
-#include "Hero.h"
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
@@ -14,7 +13,8 @@ const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()
 	:m_x(295), m_y(249), m_wave_x(300), m_wave_y(340), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(300), m_water_y(350), m_gx(490), m_gy(249), m_water_remaining(0.0f), m_moveY(249)
+	, m_water_x(300), m_water_y(350), m_gx(490), m_gy(249), m_water_remaining(0.0f), m_moveY(350)
+	, m_RopeSizeBoard(0.3f), m_RopeSizeScaffold(0.27)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_UpScTank = Collision::HitLineInsert(this);
@@ -33,8 +33,6 @@ void ObjUpScaffold_Tank::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
-
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
 	{
@@ -46,24 +44,26 @@ void ObjUpScaffold_Tank::Action()
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
 				{
-					//足場オブジェクト取得
-					ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
-					m_moveY -= 0.2f;
-					us->AddY(0.2f);
 
 					//バケツメーターオブジェクト取得
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 					//バケツが満タンじゃなかったら
 					if (bm->GetWaterRem() < 3.0f) {
+						//残量がなかったら汲めない
+						if (m_water_remaining > 0.0f) {
+							//足場オブジェクト取得
+							ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
+							m_moveY -= 0.2f;
+							us->AddY(0.2f);
 
-						if (bm != nullptr) {
-							//バケツメーターにセット
-							bm->PushX();
-						}
+							m_RopeSizeBoard -= 0.0006f;
+							m_RopeSizeScaffold += 0.0006f;
 
-						//主人公の向きが左のときだけ汲める
-						if (hero->GetDirec() == LEFT)
-						{
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushX();
+							}
+
 							//　　　　　　　　　（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
 						}
@@ -72,26 +72,26 @@ void ObjUpScaffold_Tank::Action()
 				//水をタンクに戻す
 				if (Input::KeyPush('C'))
 				{
-					//足場オブジェクト取得
-					ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
-					m_moveY += 0.2f;
-					us->AddY(-0.2f);
 
 					//バケツメーターオブジェクト取得
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 					//バケツが空じゃなかったら
 					if (bm->GetWaterRem() > 0.0f) {
-						//		m_water_remaining += m_water_amount;
-						//		m_wave_y -= m_wave_amount;
+						//満タンだったら入れれない
+						if (m_water_remaining < 6.0f) {
+							//足場オブジェクト取得
+							ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
+							m_moveY += 0.2f;
+							us->AddY(-0.2f);
 
-						if (bm != nullptr) {
-							//バケツメーターにセット
-							bm->PushC();
-						}
+							m_RopeSizeBoard += 0.0006f;
+							m_RopeSizeScaffold -= 0.0006f;
 
-						//主人公の向きが左のときだけ汲める
-						if (hero->GetDirec() == LEFT)
-						{
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushC();
+							}
+
 							//　　　　　　　　　（バケツ満タン/75フレーム）
 							m_water_remaining += 0.02666;
 						}
@@ -240,9 +240,13 @@ void ObjUpScaffold_Tank::Draw()
 	}
 
 	//Draw::Draw2D(21, a, m_y);
+	Draw::Draw2D(62, m_gx - 176 + ground->GetScroll(), m_gy,1, m_RopeSizeBoard);
+	Draw::Draw2D(62, m_gx+50 + ground->GetScroll(), m_gy,1, m_RopeSizeScaffold);
 
 	Draw::Draw2D(55, m_gx - 189 + ground->GetScroll(), m_moveY);
 	Draw::Draw2D(52, m_gx - 190 + ground->GetScroll(), m_gy - 19);
 	Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
+
+
 
 }

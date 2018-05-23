@@ -143,6 +143,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(59, L"Images\\Gimmick2string.png");//59番目Gimmick2string.pngを読み込み
 	Draw::LoadImage(60, L"Images\\Gimmick3tank.png");//60番目Gimmick3tank.pngを読み込み
 	Draw::LoadImage(61, L"Images\\Gimmick3stand.png");//61番目Gimmick3stand.pngを読み込み
+	Draw::LoadImage(62, L"Images\\rope.png");//61番目Gimmick3stand.pngを読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
