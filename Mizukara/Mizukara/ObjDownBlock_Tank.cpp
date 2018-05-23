@@ -10,8 +10,8 @@ const float ObjDownBlock_Tank::m_WaveSize_x = 0.5f;
 const float ObjDownBlock_Tank::m_WaveSize_y = 0.6f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank()
-	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(1190), m_wave_y(150), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(1186), m_water_y(162)
+	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(1190), m_wave_y(150+1000), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	, m_water_x(1186), m_water_y(162+1000)
 {
 	//ÉqÉbÉgÉâÉCÉìÇÃçÏê¨(ç∂)
 	m_hit_line_DwBlTank = Collision::HitLineInsert(this);

@@ -286,20 +286,20 @@ unsigned __stdcall GameMainSled(void *p)
 			mobl->m_DrawPriority = 110;
 			TaskSystem::InsertObj(mobl);
 
-			//moblt = new ObjMoveBlock_Tank();
-			//moblt->m_ActionPriority = 110;
-			//moblt->m_DrawPriority = 110;
-			//TaskSystem::InsertObj(moblt);
+			moblt = new ObjMoveBlock_Tank();
+			moblt->m_ActionPriority = 110;
+			moblt->m_DrawPriority = 110;
+			TaskSystem::InsertObj(moblt);
 
 			upsc = new ObjUpScaffold();
 			upsc->m_ActionPriority = 120;
 			upsc->m_DrawPriority = 120;
 			TaskSystem::InsertObj(upsc);
 
-			//upsct = new ObjUpScaffold_Tank();
-			//upsct->m_ActionPriority = 120;
-			//upsct->m_DrawPriority = 120;
-			//TaskSystem::InsertObj(upsct);
+			upsct = new ObjUpScaffold_Tank();
+			upsct->m_ActionPriority = 120;
+			upsct->m_DrawPriority = 120;
+			TaskSystem::InsertObj(upsct);
 
 			dwbl = new ObjDownBlock();
 			dwbl->m_ActionPriority = 130;

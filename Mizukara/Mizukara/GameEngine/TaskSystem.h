@@ -44,6 +44,7 @@ enum {
 	SPRI,
 	BUCKETMETER,
 	TANK,
+	UPSCAFFOLD,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO
