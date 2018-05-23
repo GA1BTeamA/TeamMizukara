@@ -35,7 +35,7 @@ private:
 
 	static const float m_water_amount;  //水の量変更用卍
 	static const float m_wave_amount;  //波の高さ変更用卍
-	//float m_water_remaining;  //水の残量
+	float m_water_remaining;  //水の残量
 
 	HitLine* m_p_hit_line_wtm;//当たり判定
 };

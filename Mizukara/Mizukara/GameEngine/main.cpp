@@ -285,30 +285,30 @@ unsigned __stdcall GameMainSled(void *p)
 			mobl->m_DrawPriority = 110;
 			TaskSystem::InsertObj(mobl);
 
-			moblt = new ObjMoveBlock_Tank();
-			moblt->m_ActionPriority = 110;
-			moblt->m_DrawPriority = 110;
-			TaskSystem::InsertObj(moblt);
+			//moblt = new ObjMoveBlock_Tank();
+			//moblt->m_ActionPriority = 110;
+			//moblt->m_DrawPriority = 110;
+			//TaskSystem::InsertObj(moblt);
 
 			upsc = new ObjUpScaffold();
 			upsc->m_ActionPriority = 120;
 			upsc->m_DrawPriority = 120;
 			TaskSystem::InsertObj(upsc);
 
-			upsct = new ObjUpScaffold_Tank();
-			upsct->m_ActionPriority = 120;
-			upsct->m_DrawPriority = 120;
-			TaskSystem::InsertObj(upsct);
+			//upsct = new ObjUpScaffold_Tank();
+			//upsct->m_ActionPriority = 120;
+			//upsct->m_DrawPriority = 120;
+			//TaskSystem::InsertObj(upsct);
 
 			dwbl = new ObjDownBlock();
 			dwbl->m_ActionPriority = 130;
 			dwbl->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwbl);
 
-			dwblt = new ObjDownBlock_Tank();
-			dwblt->m_ActionPriority = 90;
-			dwblt->m_DrawPriority = 80;
-			TaskSystem::InsertObj(dwblt);
+			//dwblt = new ObjDownBlock_Tank();
+			//dwblt->m_ActionPriority = 90;
+			//dwblt->m_DrawPriority = 80;
+			//TaskSystem::InsertObj(dwblt);
 
 			g_SceneNumber = GAME_MAIN;
 			break;

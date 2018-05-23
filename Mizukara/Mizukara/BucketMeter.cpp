@@ -5,8 +5,8 @@
 #include "BucketMeter.h"
 #include "ObjGround.h"
 
-const float CBucketMeter::m_BM_water_amount = 0.01f;
-const float CBucketMeter::m_BM_wave_amount = 0.3f;
+const float CBucketMeter::m_BM_water_amount = 0.04f;
+const float CBucketMeter::m_BM_wave_amount = 1.2f;
 
 CBucketMeter::CBucketMeter()
 	:m_x(600), m_y(430)

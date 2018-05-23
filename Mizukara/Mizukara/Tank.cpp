@@ -8,14 +8,11 @@
 #include "Hero.h"
 extern int g_SceneNumber;
 
-const float CTank::m_water_amount = 0.01f*0.04f;
-const float CTank::m_wave_amount = 0.3f*0.04f;
-
 CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
 	,im_x(33), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
 	, m_water_x(11), m_water_y(380)
-	, m_water_remaining(3.65f), m_water_remaining2(100)
+	, m_water_remaining2(100)
 {
 	m_name = TANK;
 
@@ -41,48 +38,61 @@ void CTank::Action()
 	{
 		if (m_p_hit_line_tank->GetHitData()[i] != nullptr)
 		{
+			//自分の当たり判定の中に主人公の当たり判定があったら
 			if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
 			{
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
 				{
+					//バケツメーターオブジェクト取得
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが満タンじゃなかったら
 					if (bm->GetWaterRem() < 3.0f) {
-						m_water_remaining -= m_water_amount;
-						m_wave_y += m_wave_amount;
 
 						if (bm != nullptr) {
+							//バケツメーターにセット
 							bm->PushX();
 						}
-					}
-					if (hero->GetDirec() == LEFT)
-					{
-						SetWater_Remaining(m_water_amount);
-						SetWaveY(&m_wave_y,m_wave_amount);
+
+						//主人公の向きが左のときだけ汲める
+						if (hero->GetDirec() == LEFT)
+						{
+							//　　　　　　　　　（バケツ満タン/75フレーム）
+							m_water_remaining2 -= 0.02666;
+						}
 					}
 				}
-
 				//水をタンクに戻す
 				if (Input::KeyPush('C'))
 				{
+					//バケツメーターオブジェクト取得
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが空じゃなかったら
 					if (bm->GetWaterRem() > 0.0f) {
-						m_water_remaining += m_water_amount;
-						m_wave_y -= m_wave_amount;
+						//		m_water_remaining += m_water_amount;
+						//		m_wave_y -= m_wave_amount;
 
 						if (bm != nullptr) {
+							//バケツメーターにセット
 							bm->PushC();
 						}
-					}
-					if (hero->GetDirec() == LEFT)
-					{
-						SetWater_Remaining(m_water_amount);
-						SetWaveY(&m_wave_y,m_wave_amount);
+
+						//主人公の向きが左のときだけ汲める
+						if (hero->GetDirec() == LEFT)
+						{
+							//　　　　　　　　　（バケツ満タン/75フレーム）
+							m_water_remaining2 += 0.02666;
+						}
 					}
 				}
+				break;
 			}
 		}
 	}
+	//波の位置設定
+	//　　　　満タン位置+タンクの高さ*（満タン-残量）/100
+	m_wave_y = 250 + 110 * (100 - m_water_remaining2)*0.01;
+
 }
 
 void CTank::Draw()
@@ -107,7 +117,7 @@ void CTank::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y,2.95, -m_water_remaining);
+	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y,2.95, -(3.65*m_water_remaining2 *0.01));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -224,19 +234,6 @@ void CTank::Draw()
 	{
 	Draw::Draw2D(32, m_x8, m_y8);
 	}*/
-}
-
-//水の残量設定
-void CTank::SetWater_Remaining(float water_amount)
-{
-	if (Input::KeyPush('X'))
-	{
-		m_water_remaining -= water_amount;
-	}
-	else if(Input::KeyPush('C'))
-	{
-		m_water_remaining += water_amount;
-	}
 }
 
 //波の増減
