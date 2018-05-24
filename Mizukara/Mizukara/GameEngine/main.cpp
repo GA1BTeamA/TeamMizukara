@@ -64,6 +64,7 @@ bool g_ls_game_end = false;	//スレッド用ゲーム終了フラグ
 int g_SceneNumber = TITLE;//ゲーム画面フラグ
 bool g_key_flag = true;//キーフラグ
 float Default_c[4] = { 1.0f,1.0f,1.0f,1.0f };//デフォルトカラー
+bool g_clearlist = false;
 
 //プロトタイプ宣言------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//ウィンドウプロジーシャー
@@ -163,7 +164,8 @@ unsigned __stdcall GameMainSled(void *p)
 		//ゲームメイン
 		TaskSystem::SortActionPriority();//描画順位変更(アクション用)
 		TaskSystem::ListAction();	//リスト内のアクション実行
-									//衝突判定実行
+
+		//衝突判定実行
 		Collision::CheckStart();
 
 		//レンダリングターゲットセットとレンダリング画面クリア
@@ -176,6 +178,12 @@ unsigned __stdcall GameMainSled(void *p)
 		TaskSystem::SortDrawPriority();//描画順位変更(ドロー用)
 		TaskSystem::ListDraw();		//リスト内のドロー実行
 		Collision::DrawDebug();
+
+		if (g_clearlist) {
+			CCollision::ClearHitLine();
+			TaskSystem::TaskClear();
+		}
+		g_clearlist = false;
 
 		CTitle* title;
 		CObjStory* story;

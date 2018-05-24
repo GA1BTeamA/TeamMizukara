@@ -13,111 +13,112 @@ CObjGround::CObjGround()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[0] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 400);
-	m_p_hit_line_ground[0]->SetPos2(m_scroll + 600, m_gy + 400);
 	m_p_hit_line_ground[0]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[1] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[1]->SetPos1(m_scroll + 600, m_gy + 320);
-	m_p_hit_line_ground[1]->SetPos2(m_scroll + 600, m_gy + 400);
 	m_p_hit_line_ground[1]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[2] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[2]->SetPos1(m_scroll + 600, m_gy + 320);
-	m_p_hit_line_ground[2]->SetPos2(m_scroll + 850, m_gy + 320);
 	m_p_hit_line_ground[2]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[3] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[3]->SetPos1(m_scroll + 850, m_gy + 320);
-	m_p_hit_line_ground[3]->SetPos2(m_scroll + 850, m_gy + 280);
 	m_p_hit_line_ground[3]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[4] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[4]->SetPos1(m_scroll + 900, m_gy + 240);
-	m_p_hit_line_ground[4]->SetPos2(m_scroll + 1700, m_gy + 240);
 	m_p_hit_line_ground[4]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[5] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[5]->SetPos1(m_scroll + 1307, m_gy + 264);
-	m_p_hit_line_ground[5]->SetPos2(m_scroll + 1307, m_gy + 237);
 	m_p_hit_line_ground[5]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[6] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[6]->SetPos1(m_scroll + 1207, m_gy + 264);
-	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1333, m_gy + 264);
 	m_p_hit_line_ground[6]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[7] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1333, m_gy + 291);
-	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1333, m_gy + 264);
 	m_p_hit_line_ground[7]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[8] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1233, m_gy + 291);
-	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1359, m_gy + 291);
 	m_p_hit_line_ground[8]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[9] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1359, m_gy + 318);
-	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1359, m_gy + 291);
 	m_p_hit_line_ground[9]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[10] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1259, m_gy + 318);
-	m_p_hit_line_ground[10]->SetPos2(m_scroll + 1385, m_gy + 318);
 	m_p_hit_line_ground[10]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[11] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[11]->SetPos1(m_scroll + 1385, m_gy + 318);
-	m_p_hit_line_ground[11]->SetPos2(m_scroll + 1385, m_gy + 346);
 	m_p_hit_line_ground[11]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[12] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[12]->SetPos1(m_scroll + 1285, m_gy + 346);
-	m_p_hit_line_ground[12]->SetPos2(m_scroll + 1411, m_gy + 346);
 	m_p_hit_line_ground[12]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[13] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[13]->SetPos1(m_scroll + 1411, m_gy + 346);
-	m_p_hit_line_ground[13]->SetPos2(m_scroll + 1411, m_gy + 373);
 	m_p_hit_line_ground[13]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[14] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[14]->SetPos1(m_scroll + 1311, m_gy + 373);
-	m_p_hit_line_ground[14]->SetPos2(m_scroll + 1437, m_gy + 373);
 	m_p_hit_line_ground[14]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[15] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[15]->SetPos1(m_scroll + 1437, m_gy + 373);
-	m_p_hit_line_ground[15]->SetPos2(m_scroll + 1437, m_gy + 400);
 	m_p_hit_line_ground[15]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[16] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[16]->SetPos1(m_scroll + 1337, m_gy + 400);
-	m_p_hit_line_ground[16]->SetPos2(m_scroll + 2400, m_gy + 400);
 	m_p_hit_line_ground[16]->Set4direc(HIT_TOP);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[17] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground[17]->Set4direc(HIT_TOP);
+
+	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 400);
+	m_p_hit_line_ground[0]->SetPos2(m_scroll + 600, m_gy + 400);
+	m_p_hit_line_ground[1]->SetPos1(m_scroll + 600, m_gy + 320);
+	m_p_hit_line_ground[1]->SetPos2(m_scroll + 600, m_gy + 400);
+	m_p_hit_line_ground[2]->SetPos1(m_scroll + 600, m_gy + 320);
+	m_p_hit_line_ground[2]->SetPos2(m_scroll + 900, m_gy + 320);
+	m_p_hit_line_ground[3]->SetPos1(m_scroll + 900, m_gy + 320);
+	m_p_hit_line_ground[3]->SetPos2(m_scroll + 900, m_gy + 237);
+	m_p_hit_line_ground[4]->SetPos1(m_scroll + 900, m_gy + 237);
+	m_p_hit_line_ground[4]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
+	m_p_hit_line_ground[5]->SetPos1(m_scroll + 1307 - 10, m_gy + 264);
+	m_p_hit_line_ground[5]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
+	m_p_hit_line_ground[6]->SetPos1(m_scroll + 1207 - 10, m_gy + 264);
+	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
+	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1333 - 10, m_gy + 291);
+	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
+	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1233 - 10, m_gy + 291);
+	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
+	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1359 - 10, m_gy + 318);
+	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
+	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1259 - 10, m_gy + 318);
+	m_p_hit_line_ground[10]->SetPos2(m_scroll + 1385 - 10, m_gy + 318);
+	m_p_hit_line_ground[11]->SetPos1(m_scroll + 1385 - 10, m_gy + 318);
+	m_p_hit_line_ground[11]->SetPos2(m_scroll + 1385 - 10, m_gy + 346);
+	m_p_hit_line_ground[12]->SetPos1(m_scroll + 1285 - 10, m_gy + 346);
+	m_p_hit_line_ground[12]->SetPos2(m_scroll + 1411 - 10, m_gy + 346);
+	m_p_hit_line_ground[13]->SetPos1(m_scroll + 1411 - 10, m_gy + 346);
+	m_p_hit_line_ground[13]->SetPos2(m_scroll + 1411 - 10, m_gy + 373);
+	m_p_hit_line_ground[14]->SetPos1(m_scroll + 1311 - 10, m_gy + 373);
+	m_p_hit_line_ground[14]->SetPos2(m_scroll + 1437 - 10, m_gy + 373);
+	m_p_hit_line_ground[15]->SetPos1(m_scroll + 1437 - 10, m_gy + 373);
+	m_p_hit_line_ground[15]->SetPos2(m_scroll + 1437 - 10, m_gy + 400);
+	m_p_hit_line_ground[16]->SetPos1(m_scroll + 1337 - 10, m_gy + 400);
+	m_p_hit_line_ground[16]->SetPos2(m_scroll + 2400, m_gy + 400);
 	//m_p_hit_line_ground[17]->SetPos1(m_scroll + 900, m_gy + 240);
 	//m_p_hit_line_ground[17]->SetPos2(m_scroll + 1700, m_gy + 240);
-	m_p_hit_line_ground[17]->Set4direc(HIT_TOP);
 
 
 	for (int i = 0; i < 18; i++) {
@@ -221,31 +222,22 @@ void CObjGround::Action()
 	//位置更新
 	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 400);
 	m_p_hit_line_ground[0]->SetPos2(m_scroll + 600, m_gy + 400);
-
 	m_p_hit_line_ground[1]->SetPos1(m_scroll + 600, m_gy + 320);
 	m_p_hit_line_ground[1]->SetPos2(m_scroll + 600, m_gy + 400);
-
 	m_p_hit_line_ground[2]->SetPos1(m_scroll + 600, m_gy + 320);
 	m_p_hit_line_ground[2]->SetPos2(m_scroll + 900, m_gy + 320);
-
 	m_p_hit_line_ground[3]->SetPos1(m_scroll + 900, m_gy + 320);
 	m_p_hit_line_ground[3]->SetPos2(m_scroll + 900, m_gy + 237);
-
 	m_p_hit_line_ground[4]->SetPos1(m_scroll + 900, m_gy + 237);
 	m_p_hit_line_ground[4]->SetPos2(m_scroll + 1307-10, m_gy + 237);
-
 	m_p_hit_line_ground[5]->SetPos1(m_scroll + 1307-10, m_gy + 264);
 	m_p_hit_line_ground[5]->SetPos2(m_scroll + 1307-10, m_gy + 237);
-
 	m_p_hit_line_ground[6]->SetPos1(m_scroll + 1207-10, m_gy + 264);
 	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1333-10, m_gy + 264);
-
 	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1333-10, m_gy + 291);
 	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1333-10, m_gy + 264);
-
 	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1233-10, m_gy + 291);
 	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1359-10, m_gy + 291);
-
 	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1359-10, m_gy + 318);
 	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1359-10, m_gy + 291);
 	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1259-10, m_gy + 318);

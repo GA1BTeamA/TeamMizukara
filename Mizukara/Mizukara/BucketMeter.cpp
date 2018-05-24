@@ -9,12 +9,12 @@ extern int g_SceneNumber;
 extern bool g_key_flag;
 
 const float CBucketMeter::m_BM_water_amount = 0.04f;
-const float CBucketMeter::m_BM_wave_amount = 1.2f;
+const float CBucketMeter::m_BM_wave_amount = 1.6f;
 
 CBucketMeter::CBucketMeter()
 	:m_x(600), m_y(430)
-	, m_wave_x(605), m_wave_y(546)
-	, m_water_x(605), m_water_y(585)
+	, m_wave_x(605), m_wave_y(580)
+	, m_water_x(605), m_water_y(582)
 	, m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_remaining(0.0f)
 {
@@ -62,7 +62,7 @@ void CBucketMeter::Draw()
 	Draw::Draw2D(49, m_x, m_y);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x, m_water_y, 6.3, -m_water_remaining);
+	Draw::Draw2D(48, m_water_x, m_water_y, 6.3, -(m_water_remaining-(3.7f- m_water_remaining)*0.35));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

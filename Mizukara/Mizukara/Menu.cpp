@@ -7,6 +7,7 @@
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
+extern bool g_clearlist;
 
 //コンストラクタ
 CMenu::CMenu()
@@ -73,7 +74,7 @@ void CMenu::Action()
 			if (g_key_flag)
 			{
 				g_SceneNumber = TITLE;
-				TaskSystem::TaskClear();
+				g_clearlist = true;
 				g_key_flag = false;
 			}
 		}
@@ -90,7 +91,7 @@ void CMenu::Action()
 			if (g_key_flag)
 			{
 				g_SceneNumber = GAME;
-				TaskSystem::TaskClear();
+				g_clearlist = true;
 				g_key_flag = false;
 			}
 		}

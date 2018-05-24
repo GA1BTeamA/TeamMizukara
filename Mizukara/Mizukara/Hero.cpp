@@ -506,7 +506,7 @@ void CHero::Action()
 				{
 					menu = new CMenu();
 					menu->m_ActionPriority = 100;
-					menu->m_DrawPriority = 100;
+					menu->m_DrawPriority = 900;
 					TaskSystem::InsertObj(menu);
 					m_IsMenu = true;
 				}
