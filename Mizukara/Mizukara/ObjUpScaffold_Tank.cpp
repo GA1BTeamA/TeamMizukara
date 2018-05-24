@@ -112,7 +112,7 @@ void ObjUpScaffold_Tank::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	//WTMに近づいたらアイコンを出す
+	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_hit_line_UpScTank->GetHitData()[i] != nullptr)
@@ -240,11 +240,17 @@ void ObjUpScaffold_Tank::Draw()
 	}
 
 	//Draw::Draw2D(21, a, m_y);
+
+	//タンク側 板のロープ表示
 	Draw::Draw2D(62, m_gx - 176 + ground->GetScroll(), m_gy,1, m_RopeSizeBoard);
+	//足場のロープ表示
 	Draw::Draw2D(62, m_gx+50 + ground->GetScroll(), m_gy,1, m_RopeSizeScaffold);
 
+	//板表示
 	Draw::Draw2D(55, m_gx - 189 + ground->GetScroll(), m_moveY);
+	//横ロープ表示
 	Draw::Draw2D(52, m_gx - 190 + ground->GetScroll(), m_gy - 19);
+	//滑車表示
 	Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
 
 

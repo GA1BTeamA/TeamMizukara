@@ -45,6 +45,7 @@ enum {
 	BUCKETMETER,
 	TANK,
 	UPSCAFFOLD,
+	DOWNBLOCK,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO
