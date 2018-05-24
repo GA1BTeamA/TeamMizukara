@@ -28,11 +28,11 @@ CBucketMeter::~CBucketMeter()
 
 void CBucketMeter::Action()
 {
-	//リザルト画面になったら破棄
-	if (g_SceneNumber == RESULT)
-	{
-		is_delete = true;
-	}
+	////リザルト画面になったら破棄
+	//if (g_SceneNumber == RESULT)
+	//{
+	//	is_delete = true;
+	//}
 
 	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
 

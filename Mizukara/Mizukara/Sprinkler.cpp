@@ -5,8 +5,11 @@
 #include "Sprinkler.h"
 #include "ObjGround.h"
 #include "Hero.h"
+#include "Tank.h"
+#include "BucketMeter.h"
 extern int g_SceneNumber;
 extern bool g_key_flag;
+extern bool g_clearlist;
 
 const float CSPRI::m_WaveSize_x = 0.55f;
 const float CSPRI::m_WaveSize_y = 0.6f;
@@ -16,7 +19,8 @@ CSPRI::CSPRI()
 	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
 	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), 
 	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
-	,m_CrearCnt(false)
+	,m_CrearCnt(false), m_Flower(false),m_TankRemaining(0)
+	, m_fx(734), m_fy(250)
 {
 	m_name = SPRI;
 
@@ -36,12 +40,7 @@ CSPRI::~CSPRI()
 void CSPRI::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
-
-	//リザルト画面になったら破棄
-	if (g_SceneNumber == RESULT)
-	{
-		is_delete = true;
-	}
+	CTank* tank = (CTank*)TaskSystem::GetObj(TANK);
 
 	//当たり判定位置の更新
 	m_p_hit_line_spri->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -57,13 +56,49 @@ void CSPRI::Action()
 			if (g_key_flag)
 			{
 				g_SceneNumber = RESULT;
-				is_delete = true;
+				g_clearlist = true;
 				g_key_flag = false;
 			}
 		}
 		else
 		{
 			g_key_flag = true;
+		}
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
+		{
+			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
+			{
+				//タンクの水をスプリンクラーから出す
+				if (m_ani_time4 >= 460)
+				{
+					//CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//if (bm != nullptr) {
+					//	if (bm->GetWaterRem() < 3.0f) {
+							//bm->PushX();
+							/*tank->SetWater_Remaining(-0.02666);*/
+					tank->SetWater_Remaining(-0.3f);
+					m_TankRemaining += 0.3f;
+					//	}
+					//}
+				}
+
+				////水をタンクに戻す
+				//if (Input::KeyPush('C'))
+				//{
+				//	CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+				//	if (bm != nullptr) {
+				//		if (bm->GetWaterRem() > 0.0f) {
+				//			bm->PushC();
+				//			tank->SetWater_Remaining(0.02666);
+				//		}
+				//	}
+				//}
+				break;
+			}
 		}
 	}
 
@@ -92,6 +127,7 @@ void CSPRI::Action()
 void CSPRI::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	CTank* tank = (CTank*)TaskSystem::GetObj(TANK);
 
 	//クリア画面表示
 	if (m_CrearCnt == true)
@@ -253,17 +289,21 @@ void CSPRI::Draw()
 						{
 							m_ani_time5++;
 							m_move2++;
-							if (m_move2 <= 10)//スプリンクラーから水が出る
+
+							if (tank->GetWater_Remaining() >= 0)
 							{
-								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
-							}
-							else if (m_move2 >= 11 && m_move2 < 20)
-							{
-								Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
-							}
-							else
-							{
-								m_move2 = 0;
+								if (m_move2 <= 10)//スプリンクラーから水が出る
+								{
+									Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
+								}
+								else if (m_move2 >= 11 && m_move2 < 20)
+								{
+									Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
+								}
+								else
+								{
+									m_move2 = 0;
+								}
 							}
 						}
 					}
@@ -288,6 +328,28 @@ void CSPRI::Draw()
 				}
 			}
 		}
+	}
+
+	//花表示
+	if (m_TankRemaining >= 30)
+	{
+		Draw::Draw2D(65, m_fx, m_fy);
+	}
+	else if (m_TankRemaining >= 50)
+	{
+		Draw::Draw2D(66, m_fx, m_fy);
+	}
+	else if (m_TankRemaining >= 70)
+	{
+		Draw::Draw2D(67, m_fx, m_fy);
+	}
+	else if (m_TankRemaining >= 80)
+	{
+		Draw::Draw2D(68, m_fx, m_fy);
+	}
+	else if (m_TankRemaining >=10)
+	{
+		Draw::Draw2D(64, m_fx, m_fy);
 	}
 
 	/*if (m_ani_time3 >= 29)

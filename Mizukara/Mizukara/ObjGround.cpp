@@ -136,11 +136,11 @@ CObjGround::~CObjGround()
 
 void CObjGround::Action()
 {
-	//ƒŠƒUƒ‹ƒg‰æ–Ê‚É‚È‚Á‚½‚ç”jŠü
-	if (g_SceneNumber == RESULT)
-	{
-		is_delete = true;
-	}
+	////ƒŠƒUƒ‹ƒg‰æ–Ê‚É‚È‚Á‚½‚ç”jŠü
+	//if (g_SceneNumber == RESULT)
+	//{
+	//	is_delete = true;
+	//}
 
 	/*CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 	float m_x = hero->GetX();

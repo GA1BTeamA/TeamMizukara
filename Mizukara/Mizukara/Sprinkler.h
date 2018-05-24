@@ -36,6 +36,9 @@ private:
 	float m_water_x;
 	float m_water_y;
 
+	float m_fx;  //花の位置
+	float m_fy;
+
 	int m_ani_time1;//アニメーション
 	int m_ani_time2;
 	int m_ani_time3;
@@ -43,8 +46,10 @@ private:
 	int m_ani_time5;
 
 	int count;
-
 	bool m_CrearCnt;  //クリア出すためのカウント
+	bool m_Flower;  //花咲かせるためのカウント卍
+
+	float m_TankRemaining;  //タンクの残量
 
 	static const float m_WaveSize_x;
 	static const float m_WaveSize_y;

@@ -20,11 +20,11 @@ CBackground::~CBackground()
 
 void CBackground::Action()
 {
-	//リザルト画面になったら破棄
-	if (g_SceneNumber == RESULT)
-	{
-		is_delete = true;
-	}
+	////リザルト画面になったら破棄
+	//if (g_SceneNumber == RESULT)
+	//{
+	//	is_delete = true;
+	//}
 
 	//m_scroll -= 5.0f;//スクロール
 	m_x -= 0.1f;

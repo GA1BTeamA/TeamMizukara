@@ -13,7 +13,7 @@ extern bool g_key_flag;
 CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
 	,im_x(33), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
-	, m_water_x(11), m_water_y(380)
+	, m_water_x(11), m_water_y(384)
 	, m_water_remaining2(100)
 {
 	m_name = TANK;
@@ -33,33 +33,10 @@ CTank::~CTank()
 
 void CTank::Action()
 {
+	m_water_remaining2;
+
 	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
-
-	//リザルト画面になったら破棄
-	if (g_SceneNumber == RESULT)
-	{
-		is_delete = true;
-	}
-
-	////クリア画面が表示されたら
-	//if (spri->GetCrearCnt() == true)
-	//{
-	//	//エンターキーが押されたら
-	//	if (Input::KeyPush(VK_RETURN) == true)
-	//	{
-	//		if (g_key_flag)
-	//		{
-	//			//破棄
-	//			is_delete = true;
-	//			g_key_flag = false;
-	//		}
-	//	}
-	//	else
-	//	{
-	//		g_key_flag = true;
-	//	}
-	//}
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
@@ -85,7 +62,7 @@ void CTank::Action()
 								bm->PushX();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining2 -= 0.02666;
 						}
 					}

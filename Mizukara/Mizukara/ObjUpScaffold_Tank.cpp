@@ -9,7 +9,7 @@
 extern int g_SceneNumber;
 
 const float ObjUpScaffold_Tank::m_WaveSize_x = 0.35f;
-const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
+//const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()
 	:m_x(295), m_y(249), m_wave_x(300), m_wave_y(350), m_ani_time1(0.0f), m_ani_time2(0.0f)
