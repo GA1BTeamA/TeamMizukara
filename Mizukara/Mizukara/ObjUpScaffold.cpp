@@ -70,5 +70,6 @@ void ObjUpScaffold::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	Draw::Draw2D(53, m_x-10 + ground->GetScroll(), m_y-50);
+	//‘«ê
+	Draw::Draw2D(53, m_x-9 + ground->GetScroll(), m_y-50);
 }

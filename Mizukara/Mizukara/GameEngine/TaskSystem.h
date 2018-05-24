@@ -46,6 +46,7 @@ enum {
 	TANK,
 	UPSCAFFOLD,
 	MOVEBLOCK,
+	DOWNBLOCK,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO
