@@ -8,6 +8,7 @@
 #include "Tank.h"
 #include "BucketMeter.h"
 extern int g_SceneNumber;
+extern bool g_key_flag;
 
 const float CWTM::m_WaveSize_x = 0.5f;
 const float CWTM::m_WaveSize_y = 0.6f;

@@ -6,14 +6,20 @@
 #include "ObjGround.h"
 #include "Hero.h"
 extern int g_SceneNumber;
+extern bool g_key_flag;
 
 const float CSPRI::m_WaveSize_x = 0.55f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
-	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
+	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), 
+	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
+	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), 
+	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
+	,m_CrearCnt(false)
 {
+	m_name = SPRI;
+
 	//ヒットラインの作成(左)
 	m_p_hit_line_spri = Collision::HitLineInsert(this);
 	m_p_hit_line_spri->SetPos1(m_x, m_y);
@@ -31,14 +37,41 @@ void CSPRI::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
+	//リザルト画面になったら破棄
+	if (g_SceneNumber == RESULT)
+	{
+		is_delete = true;
+	}
+
 	//当たり判定位置の更新
 	m_p_hit_line_spri->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_p_hit_line_spri->SetPos2(m_x + ground->GetScroll(), m_y + 100);
+
+	//クリア画面が表示されたら
+	if (m_CrearCnt == true)
+	{
+		//エンターキーが押されたら
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			//破棄
+			if (g_key_flag)
+			{
+				g_SceneNumber = RESULT;
+				is_delete = true;
+				g_key_flag = false;
+			}
+		}
+		else
+		{
+			g_key_flag = true;
+		}
+	}
 
 	//m_ani_time5++;
 	if (m_ani_time5 > 500 && m_ani_time5 <=510 && m_sy==230)
 	{
 		m_vy = -8.0f;
+		m_CrearCnt = true;
 	}
 	else if (m_ani_time5 > 600 && m_ani_time5 <= 610 && m_sy == 230)
 	{
@@ -59,6 +92,12 @@ void CSPRI::Action()
 void CSPRI::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
+	//クリア画面表示
+	if (m_CrearCnt == true)
+	{
+		Draw::Draw2D(63, 300, 200);
+	}
 
 	//水表示
 	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
@@ -226,13 +265,8 @@ void CSPRI::Draw()
 							{
 								m_move2 = 0;
 							}
-
-
 						}
-						
-
 					}
-					
 				}
 				
 				else

@@ -4,6 +4,9 @@
 
 #include "BucketMeter.h"
 #include "ObjGround.h"
+#include "Sprinkler.h"
+extern int g_SceneNumber;
+extern bool g_key_flag;
 
 const float CBucketMeter::m_BM_water_amount = 0.04f;
 const float CBucketMeter::m_BM_wave_amount = 1.6f;
@@ -25,7 +28,32 @@ CBucketMeter::~CBucketMeter()
 
 void CBucketMeter::Action()
 {
-	
+	//リザルト画面になったら破棄
+	if (g_SceneNumber == RESULT)
+	{
+		is_delete = true;
+	}
+
+	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+
+	////クリア画面が表示されたら
+	//if (spri->GetCrearCnt() == true)
+	//{
+	//	//エンターキーが押されたら
+	//	if (Input::KeyPush(VK_RETURN) == true)
+	//	{
+	//		if (g_key_flag)
+	//		{
+	//			//破棄
+	//			is_delete = true;
+	//			g_key_flag = false;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		g_key_flag = true;
+	//	}
+	//}
 }
 
 void CBucketMeter::Draw()

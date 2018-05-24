@@ -16,6 +16,7 @@ public:
 	void Draw();
 
 	HitLine* GetHitLineSpri() { return m_p_hit_line_spri; }
+	bool GetCrearCnt() { return m_CrearCnt; }
 
 private:
 	float m_x; //Sprinklerの位置
@@ -42,6 +43,8 @@ private:
 	int m_ani_time5;
 
 	int count;
+
+	bool m_CrearCnt;  //クリア出すためのカウント
 
 	static const float m_WaveSize_x;
 	static const float m_WaveSize_y;

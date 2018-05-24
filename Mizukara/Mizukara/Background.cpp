@@ -4,6 +4,7 @@
 
 #include "Background.h"
 #include "Hero.h"
+extern int g_SceneNumber;
 
 CBackground::CBackground()
 	:m_x(0), m_y(0), m_scroll(0.0f)
@@ -19,6 +20,12 @@ CBackground::~CBackground()
 
 void CBackground::Action()
 {
+	//リザルト画面になったら破棄
+	if (g_SceneNumber == RESULT)
+	{
+		is_delete = true;
+	}
+
 	//m_scroll -= 5.0f;//スクロール
 	m_x -= 0.1f;
 	if (m_x < -2400.f)

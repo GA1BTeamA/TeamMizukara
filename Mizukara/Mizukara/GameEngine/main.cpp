@@ -58,13 +58,6 @@
 #pragma comment(lib,"d3dCompiler.lib")
 
 //構造体-------------------
-/*enum Scene
-{
-	TITLE = 10,
-	TITLE_MAIN = 20,
-	GAME = 30,
-	GAME_MAIN=40,
-};*/
 
 //グローバル変数--------------
 bool g_ls_game_end = false;	//スレッド用ゲーム終了フラグ
@@ -145,6 +138,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(60, L"Images\\Gimmick3tank.png");//60番目Gimmick3tank.pngを読み込み
 	Draw::LoadImage(61, L"Images\\Gimmick3stand.png");//61番目Gimmick3stand.pngを読み込み
 	Draw::LoadImage(62, L"Images\\rope.png");//61番目Gimmick3stand.pngを読み込み
+	Draw::LoadImage(63, L"Images\\crearkari.png");//63番目crearkari.pngを読み込み
+
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -245,8 +240,8 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case RESULT://リザルト画面初期化
 			result = new CResult();
-			result->m_ActionPriority = 120;
-			result->m_DrawPriority = 120;
+			result->m_ActionPriority = 20;
+			result->m_DrawPriority = 20;
 			TaskSystem::InsertObj(result);
 			g_SceneNumber = RESULT_MAIN;
 			break;
@@ -280,16 +275,6 @@ unsigned __stdcall GameMainSled(void *p)
 			ground->m_DrawPriority = 80;
 			TaskSystem::InsertObj(ground);
 
-			bucketmeter = new CBucketMeter();
-			bucketmeter->m_ActionPriority = 100;
-			bucketmeter->m_DrawPriority = 170;
-			TaskSystem::InsertObj(bucketmeter);
-
-			spri = new CSPRI();
-			spri->m_ActionPriority = 60;
-			spri->m_DrawPriority = 60;
-			TaskSystem::InsertObj(spri);
-
 			mobl = new ObjMoveBlock();
 			mobl->m_ActionPriority = 110;
 			mobl->m_DrawPriority = 110;
@@ -319,6 +304,16 @@ unsigned __stdcall GameMainSled(void *p)
 			dwblt->m_ActionPriority = 130;
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_ActionPriority = 140;
+			bucketmeter->m_DrawPriority = 170;
+			TaskSystem::InsertObj(bucketmeter);
+
+			spri = new CSPRI();
+			spri->m_ActionPriority = 150;
+			spri->m_DrawPriority = 60;
+			TaskSystem::InsertObj(spri);
 
 			g_SceneNumber = GAME_MAIN;
 			break;

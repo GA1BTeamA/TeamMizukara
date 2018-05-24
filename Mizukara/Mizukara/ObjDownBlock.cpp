@@ -8,7 +8,7 @@
 
 
 ObjDownBlock::ObjDownBlock()
-	:m_x(840), m_y(280),m_gx(846),m_gy(135), m_RopeSizeScaffold(0.28f)
+	:m_x(854), m_y(245),m_gx(846),m_gy(135), m_RopeSizeScaffold(0.33f)
 {
 	m_name = DOWNBLOCK;
 
@@ -71,7 +71,7 @@ void ObjDownBlock::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//ロープ表示
-	Draw::Draw2D(62, m_gx+24 + ground->GetScroll(), m_gy, 1, m_RopeSizeScaffold);
+	Draw::Draw2D(62, m_gx+24 + ground->GetScroll(), 135, 1, m_RopeSizeScaffold);
 	//足場のブロック表示
-	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy + 95);
+	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy + 111);
 }

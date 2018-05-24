@@ -8,12 +8,12 @@
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjDownBlock_Tank::m_WaveSize_x = 0.25f;
+const float ObjDownBlock_Tank::m_WaveSize_x = 0.23f;
 const float ObjDownBlock_Tank::m_WaveSize_y = 0.3f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank()
-	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(692), m_wave_y(245), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(692), m_water_y(251), m_moveY(162)/*, m_RopeSizeBucket(0.28f)*/, m_water_remaining(2.0f)
+	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(692), m_wave_y(253), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	, m_water_x(692), m_water_y(259), m_moveY(162), m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_DwBlTank = Collision::HitLineInsert(this);
@@ -52,9 +52,14 @@ void ObjDownBlock_Tank::Action()
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
 							ObjDownBlock* db = (ObjDownBlock*)TaskSystem::GetObj(DOWNBLOCK);
-							m_moveY += 0.2f;
-							db->AddY(0.2f);
 
+							m_gy -= 0.5f;  //バケツ移動
+							m_RopeSizeBucket -= 0.0015f;  //バケツ側ロープ長さ変更
+
+							db->AddY(0.5f);  //足場ブロック移動
+							db->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
+
+							db->SetY(0.5f);  //足場当たり判定移動
 							//m_RopeSizeBoard -= 0.0006f;
 							//m_RopeSizeBucket += 0.0006f;
 
@@ -68,34 +73,41 @@ void ObjDownBlock_Tank::Action()
 						}
 					}
 				}
-				////水をタンクに戻す
-				//if (Input::KeyPush('C'))
-				//{
+				//水をタンクに戻す
+				if (Input::KeyPush('C'))
+				{
 
-				//	//バケツメーターオブジェクト取得
-				//	CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-				//	//バケツが空じゃなかったら
-				//	if (bm->GetWaterRem() > 0.0f) {
-				//		//満タンだったら入れれない
-				//		if (m_water_remaining < 6.0f) {
-				//			//足場オブジェクト取得
-				//			ObjDownBlock* db = (ObjDownBlock*)TaskSystem::GetObj(DOWNBLOCK);
-				//			m_moveY += 0.2f;
-				//			db->AddY(-0.2f);
+					//バケツメーターオブジェクト取得
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが空じゃなかったら
+					if (bm->GetWaterRem() > 0.0f) {
+						//満タンだったら入れれない
+						if (m_water_remaining < 6.0f) {
+							//足場オブジェクト取得
+							ObjDownBlock* db = (ObjDownBlock*)TaskSystem::GetObj(DOWNBLOCK);
+							//m_moveY += 0.2f;
+							//db->AddY(-0.2f);
+							m_gy += 0.5f;  //バケツ移動
+							m_RopeSizeBucket += 0.0015f;  //バケツ側ロープ長さ変更
 
-				//			//m_RopeSizeBoard += 0.0006f;
-				//			m_RopeSizeBucket -= 0.0006f;
+							db->AddY(-0.5f);  //足場ブロック移動
+							db->SetRopeSizeScaffold(-0.002f);  //足場ロープ長さ変更
 
-				//			if (bm != nullptr) {
-				//				//バケツメーターにセット
-				//				bm->PushC();
-				//			}
+							db->SetY(0.5f);  //足場当たり判定移動
 
-				//			//（バケツ満タン/75フレーム）
-				//			m_water_remaining += 0.02666;
-				//		}
-				//	}
-				//}
+							////m_RopeSizeBoard += 0.0006f;
+							//m_RopeSizeBucket -= 0.0006f;
+
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushC();
+							}
+
+							//（バケツ満タン/75フレーム）
+							m_water_remaining += 0.02666;
+						}
+					}
+				}
 				break;
 			}
 		}
@@ -240,11 +252,11 @@ void ObjDownBlock_Tank::Draw()
 	//Draw::Draw2D(21, a, m_y);
 
 	//ロープ表示
-	Draw::Draw2D(62, m_gx+10 + ground->GetScroll(), m_gy, 1, 0.28);
+	Draw::Draw2D(62, m_gx+10 + ground->GetScroll(), 135, 1, m_RopeSizeBucket);
 	//バケツ表示
-	Draw::Draw2D(56, m_gx+1 + ground->GetScroll(), m_gy+93, 1, 1);
+	Draw::Draw2D(56, m_gx+1 + ground->GetScroll(), m_gy+100, 1, 1);
 	//横ロープ表示
-	Draw::Draw2D(59, m_gx + 25 + ground->GetScroll(), m_gy - 23, 1, 1);
+	Draw::Draw2D(59, m_gx + 25 + ground->GetScroll(), 112, 1, 1);
 	//滑車表示
-	Draw::Draw2D(57, m_gx + 5 + ground->GetScroll(), m_gy - 25, 1, 1);
+	Draw::Draw2D(57, m_gx + 5 + ground->GetScroll(), 110, 1, 1);
 }

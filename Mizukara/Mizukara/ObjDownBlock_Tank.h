@@ -37,7 +37,7 @@ private:
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_y;
 
-	//float m_RopeSizeBucket;//バケツの方のロープの長さ
+	float m_RopeSizeBucket;//バケツの方のロープの長さ
 
 	HitLine* m_hit_line_DwBlTank;//当たり判定
 };

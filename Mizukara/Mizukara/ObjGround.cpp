@@ -4,6 +4,7 @@
 
 #include "ObjGround.h"
 #include "Hero.h"
+extern int g_SceneNumber;
 
 CObjGround::CObjGround()
 	:m_gx(0), m_gy(0), m_scroll(0.0f)
@@ -141,6 +142,12 @@ CObjGround::~CObjGround()
 
 void CObjGround::Action()
 {
+	//ƒŠƒUƒ‹ƒg‰æ–Ê‚É‚È‚Á‚½‚ç”jŠü
+	if (g_SceneNumber == RESULT)
+	{
+		is_delete = true;
+	}
+
 	/*CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 	float m_x = hero->GetX();
 	float m_y = hero->GetY();
