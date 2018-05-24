@@ -137,6 +137,9 @@ void CHero::Action()
 					if (m_p_hit_line_hero_copy[j]->GetAngle() == m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle())
 						continue;
 
+					//オブジェクトの下判定にあたったか
+					bool IsHitObjUnder = false;
+
 					for (int k = 0; k < 10; k++) {
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[k] != nullptr) {
 							//当たったヒットラインのなかに同じオブジェクトの当たり判定があって、
@@ -151,11 +154,15 @@ void CHero::Action()
 									if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() ==
 										m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetAngle()) {
 										//上にある方の判定のみ
-										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <
+										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <=
 											m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetPoint1().y) {
 											//主人公の下判定だったら
 											if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
 												IsHitGround = true;
+											}
+											//主人公の上判定だったら
+											else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_TOP) {
+												IsHitObjUnder = true;
 											}
 											else {
 												//主人公を当たった判定の近い方の点に移動（壁抜け防止）
@@ -186,6 +193,12 @@ void CHero::Action()
 								}
 							}
 						}
+					}
+
+					if (IsHitObjUnder) {
+						m_vy = 0.0f;
+						m_copy_y = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y;
+						continue;
 					}
 
 					//縦の地面判定に当たったら

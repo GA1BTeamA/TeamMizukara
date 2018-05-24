@@ -13,9 +13,8 @@ const float ObjMoveBlock_Tank::m_WaveSize_y = 0.4f;
 
 //コンストラクタ
 ObjMoveBlock_Tank::ObjMoveBlock_Tank()
-	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_gx(1620),m_gy(330),m_wave_x(1620),m_wave_y(364),m_water_x(1620),m_water_y(372),
-	 m_ani_time1(0.0f),m_ani_time2(0.0f) ,m_water_remaining(0.0f), m_moveY(350),
-	 m_RopeSizeScaffold(0.27)
+	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(364),m_water_x(1620),m_water_y(390),
+	 m_ani_time1(0.0f),m_ani_time2(0.0f) ,m_water_remaining(0.0f), m_water_remaining2(0.0f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_MoBlTank = Collision::HitLineInsert(this);
@@ -61,12 +60,9 @@ void ObjMoveBlock_Tank::Action()
 						//残量がなかったら汲めない
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
-							ObjMoveBlock* us = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
-							m_moveX -= 0.2f;
-							us->MddY(0.2f);
-
-							//m_RopeSizeBoard -= 0.0006f;
-							m_RopeSizeScaffold += 0.0006f;
+							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
+						//	m_moveX -= 0.2f;
+							mb->AddX(-1.0f);
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -89,26 +85,90 @@ void ObjMoveBlock_Tank::Action()
 						//満タンだったら入れれない
 						if (m_water_remaining < 6.0f) {
 							//足場オブジェクト取得
-							ObjMoveBlock* us = (ObjMoveBlock*)TaskSystem::GetObj(UPSCAFFOLD);
-							m_moveY += 0.2f;
-							us->MddY(-0.2f);
+							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
+							//地面に当たってなかったら
+							if (mb->GetX() < 1972 || mb->GetY() < 283.0f ) {
+								//		m_moveY += 0.2f;
+								mb->AddX(1.0f);
 
-							//m_RopeSizeBoard += 0.0006f;
-							m_RopeSizeScaffold -= 0.0006f;
+								if (bm != nullptr) {
+									//バケツメーターにセット
+									bm->PushC();
+								}
 
-							if (bm != nullptr) {
-								//バケツメーターにセット
-								bm->PushC();
+								//（バケツ満タン/75フレーム）
+								m_water_remaining += 0.02666;
 							}
-
-						    //（バケツ満タン/75フレーム）
-							m_water_remaining += 0.02666;
 						}
 					}
 				}
 				break;
 			}
 		}
+		if (m_hit_line_MoBlTank2->GetHitData()[i] != nullptr)
+		{
+			//自分の当たり判定の中に主人公の当たり判定があったら
+			if (m_hit_line_MoBlTank2->GetHitData()[i]->GetElement() == 0)
+			{
+				//タンクから水を汲む
+				if (Input::KeyPush('X'))
+				{
+
+					//バケツメーターオブジェクト取得
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが満タンじゃなかったら
+					if (bm->GetWaterRem() < 3.0f) {
+						//残量がなかったら汲めない
+						if (m_water_remaining2 > 0.0f) {
+							//足場オブジェクト取得
+							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
+							//m_moveX -= 0.2f;
+							mb->AddY(-1.0f);
+
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushX();
+							}
+
+							//　　　　　　　　　（バケツ満タン/75フレーム）
+							m_water_remaining2 -= 0.02666;
+						}
+					}
+				}
+				//水をタンクに戻す
+				if (Input::KeyPush('C'))
+				{
+
+					//バケツメーターオブジェクト取得
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが空じゃなかったら
+					if (bm->GetWaterRem() > 0.0f) {
+						//満タンだったら入れれない
+						if (m_water_remaining2 < 6.0f) {
+							//足場オブジェクト取得
+							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
+							if (mb->GetX() < 1972 || mb->GetY() < 283.0f) {
+								if (mb->GetY() < 365.0f) {
+
+									//	m_moveY += 0.2f;
+									mb->AddY(1.0f);
+
+									if (bm != nullptr) {
+										//バケツメーターにセット
+										bm->PushC();
+									}
+
+									//（バケツ満タン/75フレーム）
+									m_water_remaining2 += 0.02666;
+								}
+							}
+						}
+					}
+				}
+				break;
+			}
+		}
+
 	}
 
 	//当たり判定位置の更新
@@ -148,8 +208,8 @@ void ObjMoveBlock_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.74, 0.64);
-	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.74, 0.64);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.74, -(0.64 * m_water_remaining *1/6));
+	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.74, -(0.64*m_water_remaining2 *0.01));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -355,5 +415,5 @@ void ObjMoveBlock_Tank::Draw()
 		Draw::Draw2D(35, m_wave_x + 48 + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 	}
 
-	Draw::Draw2D(60, m_gx + ground->GetScroll(), m_gy, 1, 1);
+	Draw::Draw2D(60, 1620 + ground->GetScroll(), 330, 1, 1);
 }

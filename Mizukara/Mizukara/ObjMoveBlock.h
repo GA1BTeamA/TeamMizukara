@@ -15,17 +15,16 @@ public:
 	void Action();
 	void Draw();
 
-	void MddX(float x) { m_x += x; }
-	void MddY(float y) { m_y += y; }
+	float GetX() { return m_x; }
+	float GetY() { return m_y; }
+
+	void AddX(float x) { m_x += x; }
+	void AddY(float y) { m_y += y; }
 
 private:
 	float m_x;//位置
 	float m_y;
 
-	float m_gx;//グラフィックの位置
-	float m_gy;
-
 	HitLine* m_hit_line_MoBl[4];//左当たり判定
-	HitLine* m_hit_line_MoBl2[4];//右当たり判定
 };
 
