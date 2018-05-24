@@ -9,12 +9,11 @@
 extern int g_SceneNumber;
 
 const float ObjUpScaffold_Tank::m_WaveSize_x = 0.36f;
-const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()
-	:m_x(295), m_y(249), m_wave_x(300), m_wave_y(340), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	:m_x(295), m_y(249), m_wave_x(300), m_wave_y(350), m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_x(300), m_water_y(350), m_gx(490), m_gy(249), m_water_remaining(0.0f), m_moveY(350)
-	, m_RopeSizeBoard(0.3f), m_RopeSizeScaffold(0.27)
+	, m_RopeSizeBoard(0.3f), m_RopeSizeScaffold(0.27),m_PulleyAni(0),m_WaveSize_y(0.0f), m_WaterSize_y(0.0f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_UpScTank = Collision::HitLineInsert(this);
@@ -32,6 +31,8 @@ ObjUpScaffold_Tank::~ObjUpScaffold_Tank()
 void ObjUpScaffold_Tank::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
+	if (m_PulleyAni > 8) m_PulleyAni = 0;
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
@@ -53,11 +54,11 @@ void ObjUpScaffold_Tank::Action()
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
 							ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
-							m_moveY -= 0.2f;
-							us->AddY(0.2f);
+							m_moveY -= 0.14f;
+							us->AddY(0.14f);
 
-							m_RopeSizeBoard -= 0.0006f;
-							m_RopeSizeScaffold += 0.0006f;
+							m_RopeSizeBoard -= 0.0004f;
+							m_RopeSizeScaffold += 0.0004f;
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -66,11 +67,13 @@ void ObjUpScaffold_Tank::Action()
 
 							//　　　　　　　　　（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
+
+							m_PulleyAni++;
 						}
 					}
 				}
 				//水をタンクに戻す
-				if (Input::KeyPush('C'))
+				else if (Input::KeyPush('C'))
 				{
 
 					//バケツメーターオブジェクト取得
@@ -81,11 +84,11 @@ void ObjUpScaffold_Tank::Action()
 						if (m_water_remaining < 6.0f) {
 							//足場オブジェクト取得
 							ObjUpScaffold* us = (ObjUpScaffold*)TaskSystem::GetObj(UPSCAFFOLD);
-							m_moveY += 0.2f;
-							us->AddY(-0.2f);
+							m_moveY += 0.14f;
+							us->AddY(-0.14f);
 
-							m_RopeSizeBoard += 0.0006f;
-							m_RopeSizeScaffold -= 0.0006f;
+							m_RopeSizeBoard += 0.0004f;
+							m_RopeSizeScaffold -= 0.0004f;
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -94,6 +97,8 @@ void ObjUpScaffold_Tank::Action()
 
 							//　　　　　　　　　（バケツ満タン/75フレーム）
 							m_water_remaining += 0.02666;
+
+							m_PulleyAni++;
 						}
 					}
 				}
@@ -101,7 +106,13 @@ void ObjUpScaffold_Tank::Action()
 			}
 		}
 	}
-
+	//入れ始め時の描画のための処理
+	m_wave_y = 350 - m_water_remaining;
+	if (m_wave_y < 345)m_wave_y = 345;
+	m_WaveSize_y = m_water_remaining *0.5f;
+	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
+	m_WaterSize_y = m_water_remaining*0.2f;
+	if (m_WaterSize_y > 1.2)m_WaterSize_y = 1.2;
 
 	//当たり判定位置の更新
 	m_hit_line_UpScTank->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -125,7 +136,7 @@ void ObjUpScaffold_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.05, 1.24);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.05, m_WaterSize_y);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -245,7 +256,11 @@ void ObjUpScaffold_Tank::Draw()
 
 	Draw::Draw2D(55, m_gx - 189 + ground->GetScroll(), m_moveY);
 	Draw::Draw2D(52, m_gx - 190 + ground->GetScroll(), m_gy - 19);
-	Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
+
+	if(m_PulleyAni<=4)
+		Draw::Draw2D(54, m_gx+56 + ground->GetScroll(), m_gy - 20,-1,1);
+	else
+		Draw::Draw2D(54, m_gx - 180 + ground->GetScroll(), m_gy - 20);
 
 
 
