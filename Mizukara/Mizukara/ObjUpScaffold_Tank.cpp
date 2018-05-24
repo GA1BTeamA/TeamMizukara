@@ -8,7 +8,7 @@
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjUpScaffold_Tank::m_WaveSize_x = 0.36f;
+const float ObjUpScaffold_Tank::m_WaveSize_x = 0.35f;
 const float ObjUpScaffold_Tank::m_WaveSize_y = 0.6f;
 
 ObjUpScaffold_Tank::ObjUpScaffold_Tank()

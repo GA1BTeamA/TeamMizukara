@@ -17,6 +17,8 @@ public:
 	void Draw();
 
 	void AddY(float y) { m_gy += y; }  //足場のY動かすやつ
+	void SetRopeSizeScaffold(float rss) { m_RopeSizeScaffold += rss; }
+	void SetY(float y) { m_y += y; }  //足場ブロックの当たり判定動かすやつ
 
 private:
 	float m_x;//位置

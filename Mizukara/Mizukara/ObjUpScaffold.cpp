@@ -4,7 +4,8 @@
 
 #include "ObjUpScaffold.h"
 #include "ObjGround.h"
-
+#include "Sprinkler.h"
+extern bool g_key_flag;
 
 
 ObjUpScaffold::ObjUpScaffold()
@@ -53,6 +54,25 @@ ObjUpScaffold::~ObjUpScaffold()
 void ObjUpScaffold::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+	////クリア画面が表示されたら
+	//if (spri->GetCrearCnt() == true)
+	//{
+	//	//エンターキーが押されたら
+	//	if (Input::KeyPush(VK_RETURN) == true)
+	//	{
+	//		if (g_key_flag)
+	//		{
+	//			//破棄
+	//			is_delete = true;
+	//			g_key_flag = false;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		g_key_flag = true;
+	//	}
+	//}
 
 	//位置更新
 	m_hit_line_UpSc[0]->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -71,5 +91,5 @@ void ObjUpScaffold::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//足場
-	Draw::Draw2D(53, m_x-9 + ground->GetScroll(), m_y-50);
+	Draw::Draw2D(53, m_x-9 + ground->GetScroll(), m_y-51);
 }

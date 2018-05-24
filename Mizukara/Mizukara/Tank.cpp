@@ -6,7 +6,9 @@
 #include "ObjGround.h"
 #include "BucketMeter.h"
 #include "Hero.h"
+#include "Sprinkler.h"
 extern int g_SceneNumber;
+extern bool g_key_flag;
 
 CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
@@ -32,6 +34,32 @@ CTank::~CTank()
 void CTank::Action()
 {
 	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
+	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+
+	//リザルト画面になったら破棄
+	if (g_SceneNumber == RESULT)
+	{
+		is_delete = true;
+	}
+
+	////クリア画面が表示されたら
+	//if (spri->GetCrearCnt() == true)
+	//{
+	//	//エンターキーが押されたら
+	//	if (Input::KeyPush(VK_RETURN) == true)
+	//	{
+	//		if (g_key_flag)
+	//		{
+	//			//破棄
+	//			is_delete = true;
+	//			g_key_flag = false;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		g_key_flag = true;
+	//	}
+	//}
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
