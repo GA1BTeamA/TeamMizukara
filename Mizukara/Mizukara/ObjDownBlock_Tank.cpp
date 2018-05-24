@@ -3,15 +3,17 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "ObjDownBlock_Tank.h"
+#include "ObjDownBlock.h"
 #include "ObjGround.h"
+#include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjDownBlock_Tank::m_WaveSize_x = 0.5f;
-const float ObjDownBlock_Tank::m_WaveSize_y = 0.6f;
+const float ObjDownBlock_Tank::m_WaveSize_x = 0.25f;
+const float ObjDownBlock_Tank::m_WaveSize_y = 0.3f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank()
-	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(1190), m_wave_y(150+1000), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(1186), m_water_y(162+1000)
+	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(692), m_wave_y(245), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	, m_water_x(692), m_water_y(251), m_moveY(162)/*, m_RopeSizeBucket(0.28f)*/, m_water_remaining(2.0f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_DwBlTank = Collision::HitLineInsert(this);
@@ -30,6 +32,75 @@ void ObjDownBlock_Tank::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
+	//タンクから水を汲む＆戻す
+	for (int i = 0; i < 10; i++)
+	{
+		if (m_hit_line_DwBlTank->GetHitData()[i] != nullptr)
+		{
+			//自分の当たり判定の中に主人公の当たり判定があったら
+			if (m_hit_line_DwBlTank->GetHitData()[i]->GetElement() == 0)
+			{
+				//タンクから水を汲む
+				if (Input::KeyPush('X'))
+				{
+
+					//バケツメーターオブジェクト取得
+					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+					//バケツが満タンじゃなかったら
+					if (bm->GetWaterRem() < 3.0f) {
+						//残量がなかったら汲めない
+						if (m_water_remaining > 0.0f) {
+							//足場オブジェクト取得
+							ObjDownBlock* db = (ObjDownBlock*)TaskSystem::GetObj(DOWNBLOCK);
+							m_moveY += 0.2f;
+							db->AddY(0.2f);
+
+							//m_RopeSizeBoard -= 0.0006f;
+							//m_RopeSizeBucket += 0.0006f;
+
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushX();
+							}
+
+							//（バケツ満タン/75フレーム）
+							m_water_remaining -= 0.02666;
+						}
+					}
+				}
+				////水をタンクに戻す
+				//if (Input::KeyPush('C'))
+				//{
+
+				//	//バケツメーターオブジェクト取得
+				//	CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+				//	//バケツが空じゃなかったら
+				//	if (bm->GetWaterRem() > 0.0f) {
+				//		//満タンだったら入れれない
+				//		if (m_water_remaining < 6.0f) {
+				//			//足場オブジェクト取得
+				//			ObjDownBlock* db = (ObjDownBlock*)TaskSystem::GetObj(DOWNBLOCK);
+				//			m_moveY += 0.2f;
+				//			db->AddY(-0.2f);
+
+				//			//m_RopeSizeBoard += 0.0006f;
+				//			m_RopeSizeBucket -= 0.0006f;
+
+				//			if (bm != nullptr) {
+				//				//バケツメーターにセット
+				//				bm->PushC();
+				//			}
+
+				//			//（バケツ満タン/75フレーム）
+				//			m_water_remaining += 0.02666;
+				//		}
+				//	}
+				//}
+				break;
+			}
+		}
+	}
+
 	//当たり判定位置の更新
 	m_hit_line_DwBlTank->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_hit_line_DwBlTank->SetPos2(m_x + ground->GetScroll(), m_y + 100);
@@ -39,7 +110,7 @@ void ObjDownBlock_Tank::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	//WTMに近づいたらアイコンを出す
+	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_hit_line_DwBlTank->GetHitData()[i] != nullptr)
@@ -52,7 +123,7 @@ void ObjDownBlock_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.7, 0.4);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -168,7 +239,12 @@ void ObjDownBlock_Tank::Draw()
 
 	//Draw::Draw2D(21, a, m_y);
 
-	Draw::Draw2D(56, m_gx + ground->GetScroll(), m_gy, 1, 1);
+	//ロープ表示
+	Draw::Draw2D(62, m_gx+10 + ground->GetScroll(), m_gy, 1, 0.28);
+	//バケツ表示
+	Draw::Draw2D(56, m_gx+1 + ground->GetScroll(), m_gy+93, 1, 1);
+	//横ロープ表示
 	Draw::Draw2D(59, m_gx + 25 + ground->GetScroll(), m_gy - 23, 1, 1);
+	//滑車表示
 	Draw::Draw2D(57, m_gx + 5 + ground->GetScroll(), m_gy - 25, 1, 1);
 }

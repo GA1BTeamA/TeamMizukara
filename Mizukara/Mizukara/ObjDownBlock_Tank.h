@@ -19,7 +19,9 @@ private:
 	float m_y;
 
 	float m_gx;//グラフィックの位置
-	float m_gy;//
+	float m_gy;
+
+	float m_moveY;
 
 	float m_wave_x;  //波の位置
 	float m_wave_y;
@@ -30,8 +32,12 @@ private:
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
 
+	float m_water_remaining;
+
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_y;
+
+	//float m_RopeSizeBucket;//バケツの方のロープの長さ
 
 	HitLine* m_hit_line_DwBlTank;//当たり判定
 };

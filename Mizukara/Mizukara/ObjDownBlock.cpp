@@ -8,8 +8,10 @@
 
 
 ObjDownBlock::ObjDownBlock()
-	:m_x(840), m_y(280),m_gx(846),m_gy(135)
+	:m_x(840), m_y(280),m_gx(846),m_gy(135), m_RopeSizeScaffold(0.28f)
 {
+	m_name = DOWNBLOCK;
+
 	//足場ヒットライン作成し、値を設定(左)
 	m_hit_line_DwBl[0] = Collision::HitLineInsert(this);
 	m_hit_line_DwBl[0]->SetPos1(m_x, m_y);
@@ -45,6 +47,7 @@ ObjDownBlock::ObjDownBlock()
 
 ObjDownBlock::~ObjDownBlock()
 {
+
 }
 
 void ObjDownBlock::Action()
@@ -67,5 +70,8 @@ void ObjDownBlock::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy, 1, 1);
+	//ロープ表示
+	Draw::Draw2D(62, m_gx+24 + ground->GetScroll(), m_gy, 1, m_RopeSizeScaffold);
+	//足場のブロック表示
+	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy + 95);
 }
