@@ -18,9 +18,14 @@ public:
 private:
 	float m_x; //ギミック3の位置
 	float m_y;
+	float m_x2;
+	float m_y2;
 
 	float m_gx;//グラフィックの位置
 	float m_gy;
+
+	float m_moveX;
+	float m_moveY;
 
 	float m_wave_x;  //波の位置
 	float m_wave_y;
@@ -31,9 +36,14 @@ private:
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
 
+	float m_water_remaining;
+
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_y;
 
+	float m_RopeSizeScaffold;//足場の方のロープの長さ
+
 	HitLine* m_hit_line_MoBlTank;//当たり判定
+	HitLine* m_hit_line_MoBlTank2;//当たり判定
 };
 

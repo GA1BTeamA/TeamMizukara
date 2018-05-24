@@ -10,6 +10,8 @@ ObjMoveBlock::ObjMoveBlock()
 	:m_x(1794), m_y(234)
 	, m_gx(1800), m_gy(0)
 {
+	m_name = MOVEBLOCK;
+
 	//足場ヒットライン作成し、値を設定(左)
 	m_hit_line_MoBl[0] = Collision::HitLineInsert(this);
 	m_hit_line_MoBl[0]->SetPos1(m_x, m_y);
@@ -61,6 +63,15 @@ void ObjMoveBlock::Action()
 	m_hit_line_MoBl[2]->SetPos2(m_x + ground->GetScroll() + 100, m_y);
 	m_hit_line_MoBl[3]->SetPos1(m_x + ground->GetScroll(), m_y + 12);
 	m_hit_line_MoBl[3]->SetPos2(m_x + ground->GetScroll() + 100, m_y + 12);
+
+	/*m_hit_line_MoBl2[0]->SetPos1(m_x + ground->GetScroll(), m_y2);
+	m_hit_line_MoBl2[0]->SetPos2(m_x + ground->GetScroll(), m_y2 + 12);
+	m_hit_line_MoBl2[1]->SetPos1(m_x + ground->GetScroll() + 100, m_y2);
+	m_hit_line_MoBl2[1]->SetPos2(m_x + ground->GetScroll() + 100, m_y2 + 12);
+	m_hit_line_MoBl2[2]->SetPos1(m_x + ground->GetScroll(), m_y2);
+	m_hit_line_MoBl2[2]->SetPos2(m_x + ground->GetScroll() + 100, m_y2);
+	m_hit_line_MoBl2[3]->SetPos1(m_x + ground->GetScroll(), m_y2 + 12);
+	m_hit_line_MoBl2[3]->SetPos2(m_x + ground->GetScroll() + 100, m_y2 + 12);*/
 }
 
 //ドロー
