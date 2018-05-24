@@ -48,15 +48,15 @@ void CTank::Action()
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 					//バケツが満タンじゃなかったら
 					if (bm->GetWaterRem() < 3.0f) {
-
-						if (bm != nullptr) {
-							//バケツメーターにセット
-							bm->PushX();
-						}
-
 						//主人公の向きが左のときだけ汲める
 						if (hero->GetDirec() == LEFT)
 						{
+
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushX();
+							}
+
 							//　　　　　　　　　（バケツ満タン/75フレーム）
 							m_water_remaining2 -= 0.02666;
 						}
@@ -69,17 +69,17 @@ void CTank::Action()
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 					//バケツが空じゃなかったら
 					if (bm->GetWaterRem() > 0.0f) {
-						//		m_water_remaining += m_water_amount;
-						//		m_wave_y -= m_wave_amount;
-
-						if (bm != nullptr) {
-							//バケツメーターにセット
-							bm->PushC();
-						}
-
 						//主人公の向きが左のときだけ汲める
 						if (hero->GetDirec() == LEFT)
 						{
+							//		m_water_remaining += m_water_amount;
+							//		m_wave_y -= m_wave_amount;
+
+							if (bm != nullptr) {
+								//バケツメーターにセット
+								bm->PushC();
+							}
+
 							//　　　　　　　　　（バケツ満タン/75フレーム）
 							m_water_remaining2 += 0.02666;
 						}
@@ -104,11 +104,11 @@ void CTank::Draw()
 	{
 		if (m_p_hit_line_tank->GetHitData()[i] != nullptr)
 		{
-			if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
-			{
-				if (hero->GetDirec() == LEFT)
+				if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
 				{
-					Draw::Draw2D(47, im_x, im_y);
+					if (hero->GetDirec() == LEFT)
+					{
+						Draw::Draw2D(47, im_x, im_y);
 				}
 			}
 		}

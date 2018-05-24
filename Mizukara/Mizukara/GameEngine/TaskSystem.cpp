@@ -97,7 +97,9 @@ void CTaskSystem::ListAction()
 	for (auto ip = m_task_list->begin(); ip != m_task_list->end(); ip++)
 	{
 		//リスト内のオブジェクトが持つアクションメソッドを実行
-		ip->get()->Action();
+		if (ip->get()->is_delete == false) {
+			ip->get()->Action();
+		}
 	}
 }
 
@@ -108,7 +110,7 @@ void CTaskSystem::ListDraw()
 	for (auto ip = m_task_list->begin(); ip != m_task_list->end(); ip++)
 	{
 		//リスト内のオブジェクトが持つドローメソッドを実行
-		ip->get()->Draw();
+			ip->get()->Draw();
 	}
 }
 
