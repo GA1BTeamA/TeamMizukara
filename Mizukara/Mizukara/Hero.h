@@ -64,6 +64,7 @@ private:
 	bool m_XKey_Frag;  //Xキー押されたかのフラグ卍
 
 	bool m_IsScroll;//スクロール中か
+	bool m_IsHit2Line;//当たるべきだけど当たらないヒットラインにあたってるか
 
 	HitLine* m_p_hit_line_hero[4];//当たり判定
 	HitLine* m_p_hit_line_hero_copy[4];//当たり判定(コピー)

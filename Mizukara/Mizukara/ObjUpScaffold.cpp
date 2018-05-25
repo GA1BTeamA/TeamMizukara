@@ -9,7 +9,7 @@ extern bool g_key_flag;
 
 
 ObjUpScaffold::ObjUpScaffold()
-	:m_x(500),m_y(390-40)
+	:m_x(500),m_y(390/*-40*/)
 	,m_gx(490),m_gy(249)
 {
 	m_name = UPSCAFFOLD;

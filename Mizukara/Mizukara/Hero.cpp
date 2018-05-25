@@ -21,6 +21,7 @@ CHero::CHero()
 	, m_XKey_Frag(false)
 	, m_IsScroll(false)
 	,m_hero_delete_flag(false)
+	,m_IsHit2Line(false)
 {
 	m_name = PLAYER;
 
@@ -114,6 +115,9 @@ void CHero::Action()
 		bool IsHitGround = false;//地面に当たっているか
 		bool IsHitWall = false;//壁に当たっているか
 
+							   //交点までが一番短い点
+		float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
+
 		//地面に当たったら、
 		for (int i = 0; i < 10; i++)
 		{
@@ -134,11 +138,19 @@ void CHero::Action()
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 1)
 				{
 					//主人公の当たり判定と地面の当たり判定が平行ならスキップ
-					if (m_p_hit_line_hero_copy[j]->GetAngle() == m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle())
+					if (m_p_hit_line_hero_copy[j]->GetAngle() == m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() ||
+						((int)(m_p_hit_line_hero_copy[j]->GetAngle()) == 0 && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180) ||
+						((int)abs(m_p_hit_line_hero_copy[j]->GetAngle()) == (int)abs(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180))
 						continue;
 
 					//オブジェクトの下判定にあたったか
 					bool IsHitObjUnder = false;
+
+					//前フレームでm_IsHit2Lineがtrueになってたら地面に当たっている
+					if (m_IsHit2Line) {
+						IsHitGround = true;
+						m_IsHit2Line = false;
+					}
 
 					for (int k = 0; k < 10; k++) {
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[k] != nullptr) {
@@ -158,6 +170,7 @@ void CHero::Action()
 											m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetPoint1().y) {
 											//主人公の下判定だったら
 											if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
+												m_IsHit2Line = true;
 												IsHitGround = true;
 											}
 											//主人公の上判定だったら
@@ -246,8 +259,8 @@ void CHero::Action()
 
 					//交点変数
 					float Cross_x, Cross_y;
-					//交点までが一番短い点
-					float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
+					////交点までが一番短い点
+					//float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
 
 					//主人公のあたり判定の頂点をループ
 					for (int k = 0; k < 4; k++)
