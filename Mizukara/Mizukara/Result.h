@@ -5,6 +5,7 @@
 #include "GameEngine\\Audio.h"
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
+#include "GameEngine\\FontTex.h"
 
 //リザルトクラス
 class CResult : public CObj

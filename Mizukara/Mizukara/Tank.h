@@ -24,6 +24,7 @@ public:
 	float GetWaterAmount() { return m_water_amount; }
 	float GetWaveAmount() { return m_wave_amount; }
 	float GetWater_Remaining() { return m_water_remaining2; };  //水残量セット
+	void ResetWater_Remaining(float water_amount) { m_water_remaining2 = water_amount; }  //水残量リセット
 
 private:
 	float m_x; //位置

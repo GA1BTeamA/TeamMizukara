@@ -17,6 +17,7 @@ public:
 
 	HitLine* GetHitLineSpri() { return m_p_hit_line_spri; }
 	bool GetCrearCnt() { return m_CrearCnt; }
+	//float GetTankRemaining() { return m_TankRemaining; }
 
 private:
 	float m_x; //Sprinklerの位置
@@ -49,7 +50,7 @@ private:
 	bool m_CrearCnt;  //クリア出すためのカウント
 	bool m_Flower;  //花咲かせるためのカウント卍
 
-	float m_TankRemaining;  //タンクの残量
+	//float g_TankRemaining;  //タンクの残量
 
 	static const float m_WaveSize_x;
 	static const float m_WaveSize_y;

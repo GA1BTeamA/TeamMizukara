@@ -10,6 +10,7 @@
 extern int g_SceneNumber;
 extern bool g_key_flag;
 extern bool g_clearlist;
+extern float g_TankRemaining;
 
 const float CSPRI::m_WaveSize_x = 0.55f;
 const float CSPRI::m_WaveSize_y = 0.6f;
@@ -19,7 +20,7 @@ CSPRI::CSPRI()
 	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
 	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), 
 	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
-	,m_CrearCnt(false), m_Flower(false),m_TankRemaining(0)
+	,m_CrearCnt(false), m_Flower(false)
 	, m_fx(734), m_fy(250)
 {
 	m_name = SPRI;
@@ -73,33 +74,22 @@ void CSPRI::Action()
 			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
 			{
 				//タンクの水をスプリンクラーから出す
-				if (m_ani_time4 >= 460)
+				if (m_ani_time4 >= 460 && tank->GetWater_Remaining() > 0)
 				{
-					//CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-					//if (bm != nullptr) {
-					//	if (bm->GetWaterRem() < 3.0f) {
-							//bm->PushX();
-							/*tank->SetWater_Remaining(-0.02666);*/
-					tank->SetWater_Remaining(-0.3f);
-					m_TankRemaining += 0.3f;
-					//	}
-					//}
+					tank->SetWater_Remaining(-0.2f);
+					g_TankRemaining += 0.2f;
 				}
-
-				////水をタンクに戻す
-				//if (Input::KeyPush('C'))
-				//{
-				//	CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-				//	if (bm != nullptr) {
-				//		if (bm->GetWaterRem() > 0.0f) {
-				//			bm->PushC();
-				//			tank->SetWater_Remaining(0.02666);
-				//		}
-				//	}
-				//}
 				break;
 			}
 		}
+	}
+
+	//タンクの残量が0以下になったら、
+	if (tank->GetWater_Remaining() < 0)
+	{
+		//ランク用のタンク残量からマイナス分を引く
+		g_TankRemaining += tank->GetWater_Remaining();
+		tank->ResetWater_Remaining(0);
 	}
 
 	//m_ani_time5++;
@@ -290,7 +280,7 @@ void CSPRI::Draw()
 							m_ani_time5++;
 							m_move2++;
 
-							if (tank->GetWater_Remaining() >= 0)
+							if (tank->GetWater_Remaining() > 0)
 							{
 								if (m_move2 <= 10)//スプリンクラーから水が出る
 								{
@@ -331,25 +321,25 @@ void CSPRI::Draw()
 	}
 
 	//花表示
-	if (m_TankRemaining >= 30)
+	if (g_TankRemaining >= 80)
 	{
-		Draw::Draw2D(65, m_fx, m_fy);
+		Draw::Draw2D(68, m_fx, m_fy);  //Sランク
 	}
-	else if (m_TankRemaining >= 50)
+	else if (g_TankRemaining >= 70)
 	{
-		Draw::Draw2D(66, m_fx, m_fy);
+		Draw::Draw2D(67, m_fx, m_fy);  //Aランク
 	}
-	else if (m_TankRemaining >= 70)
+	else if (g_TankRemaining >= 50)
 	{
-		Draw::Draw2D(67, m_fx, m_fy);
+		Draw::Draw2D(66, m_fx, m_fy);  //Bランク
 	}
-	else if (m_TankRemaining >= 80)
+	else if (g_TankRemaining >= 30)
 	{
-		Draw::Draw2D(68, m_fx, m_fy);
+		Draw::Draw2D(65, m_fx, m_fy);  //Cランク
 	}
-	else if (m_TankRemaining >=10)
+	else if (g_TankRemaining >=10)
 	{
-		Draw::Draw2D(64, m_fx, m_fy);
+		Draw::Draw2D(64, m_fx, m_fy);  //Dランク
 	}
 
 	/*if (m_ani_time3 >= 29)
