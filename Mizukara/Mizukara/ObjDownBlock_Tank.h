@@ -33,9 +33,10 @@ private:
 	int m_ani_time2;
 
 	float m_water_remaining;
+	float m_bucket_remaining;
 
 	static const float m_WaveSize_x;  //波のサイズ用
-	static const float m_WaveSize_y;
+	float m_WaveSize_y;
 
 	float m_RopeSizeBucket;//バケツの方のロープの長さ
 
