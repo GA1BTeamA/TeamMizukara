@@ -9,11 +9,13 @@
 extern int g_SceneNumber;
 
 const float ObjDownBlock_Tank::m_WaveSize_x = 0.23f;
-const float ObjDownBlock_Tank::m_WaveSize_y = 0.3f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank()
-	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(692), m_wave_y(253), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(692), m_water_y(259), m_moveY(162), m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
+	:m_x(676), m_y(150),m_gx(691),m_gy(135), m_wave_x(692), m_wave_y(253), 
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(0.3f)
+	, m_water_x(692), m_water_y(259), m_moveY(162), 
+	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
+	, m_bucket_remaining(0.4f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_DwBlTank = Collision::HitLineInsert(this);
@@ -60,6 +62,11 @@ void ObjDownBlock_Tank::Action()
 							db->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
 
 							db->SetY(0.5f);  //足場当たり判定移動
+
+							m_bucket_remaining -= 0.006f;  //水減らす
+							m_wave_y -= 0.3f;  //波の位置
+							m_water_y -= 0.325f;  //水の位置
+							//m_WaveSize_y -= 0.01f;
 							//m_RopeSizeBoard -= 0.0006f;
 							//m_RopeSizeBucket += 0.0006f;
 
@@ -70,6 +77,7 @@ void ObjDownBlock_Tank::Action()
 
 							//（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
+							
 						}
 					}
 				}
@@ -95,6 +103,10 @@ void ObjDownBlock_Tank::Action()
 
 							db->SetY(-0.5f);  //足場当たり判定移動
 
+							m_bucket_remaining += 0.006f;  //水減らす
+							m_wave_y += 0.3f;  //波の位置
+							m_water_y += 0.325f;  //水の位置
+							//m_WaveSize_y += 0.01f;
 							////m_RopeSizeBoard += 0.0006f;
 							//m_RopeSizeBucket -= 0.0006f;
 
@@ -135,7 +147,7 @@ void ObjDownBlock_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.7, 0.4);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.7, m_bucket_remaining);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
