@@ -40,6 +40,7 @@
 #include "..\ObjDownBlock_Tank.h"
 #include "..\ObjMoveBlock.h"
 #include "..\ObjMoveBlock_Tank.h"
+#include "..\ObjGround2.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -208,6 +209,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjDownBlock_Tank* dwblt;
 		ObjMoveBlock* mobl;
 		ObjMoveBlock_Tank* moblt;
+		ObjGround2* ground2;
 
 		switch (g_SceneNumber)
 		{
@@ -327,6 +329,21 @@ unsigned __stdcall GameMainSled(void *p)
 		case GAME_MAIN:
 			break;
 
+		case GAME2:
+			ground2 = new ObjGround2();
+			ground2->m_ActionPriority = 90;
+			ground2->m_DrawPriority = 80;
+			TaskSystem::InsertObj(ground2);
+
+			hero = new CHero();
+			hero->m_ActionPriority = 60;
+			hero->m_DrawPriority = 150;
+			TaskSystem::InsertObj(hero);
+
+			g_SceneNumber = GAME_MAIN2;
+			break;
+		case GAME_MAIN2:
+			break;
 		}
 
 
