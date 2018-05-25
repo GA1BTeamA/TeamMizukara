@@ -7,6 +7,7 @@
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
+extern float g_TankRemaining;
 
 //コンストラクタ
 CResult::CResult()
@@ -99,6 +100,8 @@ void CResult::Action()
 
 void CResult::Draw()
 {
+	CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+
 	Draw::Draw2D(23, m_x, m_y);
 
 	if (m_cursor == LEFT)
@@ -111,5 +114,27 @@ void CResult::Draw()
 	}
 	else {
 		;
+	}
+
+	//ランク表示
+	if (g_TankRemaining >= 80)
+	{
+		Font::StrDraw(L"S", 100, 100, 1, 1, 0, 0, 1);
+	}
+	else if (g_TankRemaining >= 70)
+	{
+		Font::StrDraw(L"A", 100, 100, 1, 1, 0, 0, 1);
+	}
+	else if (g_TankRemaining >= 50)
+	{
+		Font::StrDraw(L"B", 100, 100, 1, 1, 0, 0, 1);
+	}
+	else if (g_TankRemaining >= 30)
+	{
+		Font::StrDraw(L"C", 100, 100, 1, 1, 0, 0, 1);
+	}
+	else if (g_TankRemaining >= 10)
+	{
+		Font::StrDraw(L"D", 100, 100, 1, 1, 0, 0, 1);
 	}
 }

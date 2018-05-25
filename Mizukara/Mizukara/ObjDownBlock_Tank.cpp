@@ -93,7 +93,7 @@ void ObjDownBlock_Tank::Action()
 							db->AddY(-0.5f);  //足場ブロック移動
 							db->SetRopeSizeScaffold(-0.002f);  //足場ロープ長さ変更
 
-							db->SetY(0.5f);  //足場当たり判定移動
+							db->SetY(-0.5f);  //足場当たり判定移動
 
 							////m_RopeSizeBoard += 0.0006f;
 							//m_RopeSizeBucket -= 0.0006f;

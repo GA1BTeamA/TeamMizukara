@@ -65,6 +65,7 @@ int g_SceneNumber = TITLE;//ゲーム画面フラグ
 bool g_key_flag = true;//キーフラグ
 float Default_c[4] = { 1.0f,1.0f,1.0f,1.0f };//デフォルトカラー
 bool g_clearlist = false;
+float g_TankRemaining;  //タンクの残量
 
 //プロトタイプ宣言------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	//ウィンドウプロジーシャー
