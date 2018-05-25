@@ -286,6 +286,6 @@ void CObjGround::Action()
 void CObjGround::Draw()
 {
 
-
+	//ステージ1地面描画
 	Draw::Draw2D(22, m_scroll, 0);
 }
