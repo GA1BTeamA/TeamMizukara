@@ -17,6 +17,10 @@ public:
 	float GetScroll() { return m_scroll; }  //m_scroll取得用
 
 private:
+	float m_gx; //位置
+	float m_gy;
+
+	HitLine* m_p_hit_line_ground2[25];//当たり判定
 	float m_scroll;//左右スクロール用
 };
 

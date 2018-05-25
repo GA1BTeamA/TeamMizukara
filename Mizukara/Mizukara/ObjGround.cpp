@@ -6,6 +6,7 @@
 #include "Hero.h"
 extern int g_SceneNumber;
 
+//コンストラクタ
 CObjGround::CObjGround()
 	:m_gx(0), m_gy(0), m_scroll(0.0f)
 {
@@ -135,11 +136,13 @@ CObjGround::CObjGround()
 
 }
 
+//デストラクタ
 CObjGround::~CObjGround()
 {
 
 }
 
+//アクション
 void CObjGround::Action()
 {
 	////リザルト画面になったら破棄
@@ -267,6 +270,7 @@ void CObjGround::Action()
 
 }
 
+//ドロー
 void CObjGround::Draw()
 {
 
