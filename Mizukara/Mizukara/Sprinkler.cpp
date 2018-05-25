@@ -18,7 +18,7 @@ const float CSPRI::m_WaveSize_y = 0.6f;
 CSPRI::CSPRI()
 	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), 
 	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
-	, m_move1(0),m_move2(0.0f),im_x(2150), im_y(130), 
+	, m_move1(0.0f),m_move2(0.0f),im_x(2150), im_y(130), 
 	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
 	,m_CrearCnt(false), m_Flower(false)
 	, m_fx(734), m_fy(250)
@@ -59,6 +59,7 @@ void CSPRI::Action()
 				g_SceneNumber = RESULT;
 				g_clearlist = true;
 				g_key_flag = false;
+				g_TankRemaining = false;
 			}
 		}
 		else
@@ -93,18 +94,18 @@ void CSPRI::Action()
 	}
 
 	//m_ani_time5++;
-	if (m_ani_time5 > 500 && m_ani_time5 <=510 && m_sy==230)
+	if (m_ani_time5 > 1300 && m_ani_time5 <=1310 && m_sy==230)
 	{
 		m_vy = -8.0f;
 		m_CrearCnt = true;
 	}
-	else if (m_ani_time5 > 600 && m_ani_time5 <= 610 && m_sy == 230)
+	else if (m_ani_time5 > 1400 && m_ani_time5 <= 1410 && m_sy == 230)
 	{
 		m_vy = -8.0f;
 	}
-	else if (m_ani_time5 >= 571)
+	else if (m_ani_time5 >= 1411)
 	{
-		m_ani_time5 = 440;
+		m_ani_time5 = 1200;
 	}
 		m_vy += 9.8 / (16.0f);
 
