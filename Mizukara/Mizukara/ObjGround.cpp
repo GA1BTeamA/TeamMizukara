@@ -18,7 +18,7 @@ CObjGround::CObjGround()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[1] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[1]->Set4direc(HIT_LEFT);
+	m_p_hit_line_ground[1]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[2] = Collision::HitLineInsert(this);
@@ -34,7 +34,7 @@ CObjGround::CObjGround()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[5] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[5]->Set4direc(HIT_RIGHT);
+	m_p_hit_line_ground[5]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[6] = Collision::HitLineInsert(this);
@@ -82,53 +82,65 @@ CObjGround::CObjGround()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[17] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground[17]->Set4direc(HIT_LEFT);
+	m_p_hit_line_ground[17]->Set4direc(HIT_RIGHT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground[18] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground[18]->Set4direc(HIT_TOP);
 
-	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 400);
-	m_p_hit_line_ground[0]->SetPos2(m_scroll + 600, m_gy + 400);
-	m_p_hit_line_ground[1]->SetPos1(m_scroll + 600, m_gy + 320);
-	m_p_hit_line_ground[1]->SetPos2(m_scroll + 600, m_gy + 400);
-	m_p_hit_line_ground[2]->SetPos1(m_scroll + 600, m_gy + 320);
-	m_p_hit_line_ground[2]->SetPos2(m_scroll + 900, m_gy + 320);
-	m_p_hit_line_ground[3]->SetPos1(m_scroll + 900, m_gy + 320);
-	m_p_hit_line_ground[3]->SetPos2(m_scroll + 900, m_gy + 237);
-	m_p_hit_line_ground[4]->SetPos1(m_scroll + 900, m_gy + 237);
-	m_p_hit_line_ground[4]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
-	m_p_hit_line_ground[5]->SetPos1(m_scroll + 1307 - 10, m_gy + 264);
-	m_p_hit_line_ground[5]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
-	m_p_hit_line_ground[6]->SetPos1(m_scroll + 1207 - 10, m_gy + 264);
-	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
-	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1333 - 10, m_gy + 291);
-	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
-	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1233 - 10, m_gy + 291);
-	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
-	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1359 - 10, m_gy + 318);
-	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
-	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1259 - 10, m_gy + 318);
-	m_p_hit_line_ground[10]->SetPos2(m_scroll + 1385 - 10, m_gy + 318);
-	m_p_hit_line_ground[11]->SetPos1(m_scroll + 1385 - 10, m_gy + 318);
-	m_p_hit_line_ground[11]->SetPos2(m_scroll + 1385 - 10, m_gy + 346);
-	m_p_hit_line_ground[12]->SetPos1(m_scroll + 1285 - 10, m_gy + 346);
-	m_p_hit_line_ground[12]->SetPos2(m_scroll + 1411 - 10, m_gy + 346);
-	m_p_hit_line_ground[13]->SetPos1(m_scroll + 1411 - 10, m_gy + 346);
-	m_p_hit_line_ground[13]->SetPos2(m_scroll + 1411 - 10, m_gy + 373);
-	m_p_hit_line_ground[14]->SetPos1(m_scroll + 1311 - 10, m_gy + 373);
-	m_p_hit_line_ground[14]->SetPos2(m_scroll + 1437 - 10, m_gy + 373);
-	m_p_hit_line_ground[15]->SetPos1(m_scroll + 1437 - 10, m_gy + 373);
-	m_p_hit_line_ground[15]->SetPos2(m_scroll + 1437 - 10, m_gy + 400);
-	m_p_hit_line_ground[16]->SetPos1(m_scroll + 1337 - 10, m_gy + 400);
-	m_p_hit_line_ground[16]->SetPos2(m_scroll + 2022, m_gy + 400);
-	m_p_hit_line_ground[17]->SetPos1(m_scroll + 2022, m_gy + 400);
-	m_p_hit_line_ground[17]->SetPos2(m_scroll + 2022, m_gy + 320);
-	m_p_hit_line_ground[18]->SetPos1(m_scroll + 2022, m_gy + 320);
-	m_p_hit_line_ground[18]->SetPos2(m_scroll + 2400, m_gy + 320);
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground[19] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground[19]->Set4direc(HIT_LEFT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground[20] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground[20]->Set4direc(HIT_TOP);
+
+	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 0);
+	m_p_hit_line_ground[0]->SetPos2(m_scroll + 90, m_gy + 0);
+	m_p_hit_line_ground[1]->SetPos1(m_scroll + 90, m_gy + 0);
+	m_p_hit_line_ground[1]->SetPos2(m_scroll + 90, m_gy + 400);
+	m_p_hit_line_ground[2]->SetPos1(m_scroll + 0, m_gy + 400);
+	m_p_hit_line_ground[2]->SetPos2(m_scroll + 600, m_gy + 400);
+	m_p_hit_line_ground[3]->SetPos1(m_scroll + 600, m_gy + 320);
+	m_p_hit_line_ground[3]->SetPos2(m_scroll + 600, m_gy + 400);
+	m_p_hit_line_ground[4]->SetPos1(m_scroll + 600, m_gy + 320);
+	m_p_hit_line_ground[4]->SetPos2(m_scroll + 900, m_gy + 320);
+	m_p_hit_line_ground[5]->SetPos1(m_scroll + 900, m_gy + 320);
+	m_p_hit_line_ground[5]->SetPos2(m_scroll + 900, m_gy + 237);
+	m_p_hit_line_ground[6]->SetPos1(m_scroll + 900, m_gy + 237);
+	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
+	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1307 - 10, m_gy + 264);
+	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
+	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1207 - 10, m_gy + 264);
+	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
+	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1333 - 10, m_gy + 291);
+	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
+	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1233 - 10, m_gy + 291);
+	m_p_hit_line_ground[10]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
+	m_p_hit_line_ground[11]->SetPos1(m_scroll + 1359 - 10, m_gy + 318);
+	m_p_hit_line_ground[11]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
+	m_p_hit_line_ground[12]->SetPos1(m_scroll + 1259 - 10, m_gy + 318);
+	m_p_hit_line_ground[12]->SetPos2(m_scroll + 1385 - 10, m_gy + 318);
+	m_p_hit_line_ground[13]->SetPos1(m_scroll + 1385 - 10, m_gy + 318);
+	m_p_hit_line_ground[13]->SetPos2(m_scroll + 1385 - 10, m_gy + 346);
+	m_p_hit_line_ground[14]->SetPos1(m_scroll + 1285 - 10, m_gy + 346);
+	m_p_hit_line_ground[14]->SetPos2(m_scroll + 1411 - 10, m_gy + 346);
+	m_p_hit_line_ground[15]->SetPos1(m_scroll + 1411 - 10, m_gy + 346);
+	m_p_hit_line_ground[15]->SetPos2(m_scroll + 1411 - 10, m_gy + 373);
+	m_p_hit_line_ground[16]->SetPos1(m_scroll + 1311 - 10, m_gy + 373);
+	m_p_hit_line_ground[16]->SetPos2(m_scroll + 1437 - 10, m_gy + 373);
+	m_p_hit_line_ground[17]->SetPos1(m_scroll + 1437 - 10, m_gy + 373);
+	m_p_hit_line_ground[17]->SetPos2(m_scroll + 1437 - 10, m_gy + 400);
+	m_p_hit_line_ground[18]->SetPos1(m_scroll + 1337 - 10, m_gy + 400);
+	m_p_hit_line_ground[18]->SetPos2(m_scroll + 2022, m_gy + 400);
+	m_p_hit_line_ground[19]->SetPos1(m_scroll + 2022, m_gy + 400);
+	m_p_hit_line_ground[19]->SetPos2(m_scroll + 2022, m_gy + 320);
+	m_p_hit_line_ground[20]->SetPos1(m_scroll + 2022, m_gy + 320);
+	m_p_hit_line_ground[20]->SetPos2(m_scroll + 2400, m_gy + 320);
 
 
-	for (int i = 0; i < 19; i++) {
+	for (int i = 0; i < 21; i++) {
 		m_p_hit_line_ground[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground[i]->SetAngle();
@@ -229,44 +241,48 @@ void CObjGround::Action()
 
 
 	//位置更新
-	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 400);
-	m_p_hit_line_ground[0]->SetPos2(m_scroll + 600, m_gy + 400);
-	m_p_hit_line_ground[1]->SetPos1(m_scroll + 600, m_gy + 320);
-	m_p_hit_line_ground[1]->SetPos2(m_scroll + 600, m_gy + 400);
-	m_p_hit_line_ground[2]->SetPos1(m_scroll + 600, m_gy + 320);
-	m_p_hit_line_ground[2]->SetPos2(m_scroll + 900, m_gy + 320);
-	m_p_hit_line_ground[3]->SetPos1(m_scroll + 900, m_gy + 320);
-	m_p_hit_line_ground[3]->SetPos2(m_scroll + 900, m_gy + 237);
-	m_p_hit_line_ground[4]->SetPos1(m_scroll + 900, m_gy + 237);
-	m_p_hit_line_ground[4]->SetPos2(m_scroll + 1307-10, m_gy + 237);
-	m_p_hit_line_ground[5]->SetPos1(m_scroll + 1307-10, m_gy + 264);
-	m_p_hit_line_ground[5]->SetPos2(m_scroll + 1307-10, m_gy + 237);
-	m_p_hit_line_ground[6]->SetPos1(m_scroll + 1207-10, m_gy + 264);
-	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1333-10, m_gy + 264);
-	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1333-10, m_gy + 291);
-	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1333-10, m_gy + 264);
-	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1233-10, m_gy + 291);
-	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1359-10, m_gy + 291);
-	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1359-10, m_gy + 318);
-	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1359-10, m_gy + 291);
-	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1259-10, m_gy + 318);
-	m_p_hit_line_ground[10]->SetPos2(m_scroll + 1385-10, m_gy + 318);
-	m_p_hit_line_ground[11]->SetPos1(m_scroll + 1385-10, m_gy + 318);
-	m_p_hit_line_ground[11]->SetPos2(m_scroll + 1385-10, m_gy + 346);
-	m_p_hit_line_ground[12]->SetPos1(m_scroll + 1285-10, m_gy + 346);
-	m_p_hit_line_ground[12]->SetPos2(m_scroll + 1411-10, m_gy + 346);
-	m_p_hit_line_ground[13]->SetPos1(m_scroll + 1411-10, m_gy + 346);
-	m_p_hit_line_ground[13]->SetPos2(m_scroll + 1411-10, m_gy + 373);
-	m_p_hit_line_ground[14]->SetPos1(m_scroll + 1311-10, m_gy + 373);
-	m_p_hit_line_ground[14]->SetPos2(m_scroll + 1437-10, m_gy + 373);
-	m_p_hit_line_ground[15]->SetPos1(m_scroll + 1437-10, m_gy + 373);
-	m_p_hit_line_ground[15]->SetPos2(m_scroll + 1437-10, m_gy + 400);
-	m_p_hit_line_ground[16]->SetPos1(m_scroll + 1337-10, m_gy + 400);
-	m_p_hit_line_ground[16]->SetPos2(m_scroll + 2022, m_gy + 400);
-	m_p_hit_line_ground[17]->SetPos1(m_scroll + 2022, m_gy + 400);
-	m_p_hit_line_ground[17]->SetPos2(m_scroll + 2022, m_gy + 320);
-	m_p_hit_line_ground[18]->SetPos1(m_scroll + 2022, m_gy + 320);
-	m_p_hit_line_ground[18]->SetPos2(m_scroll + 2400, m_gy + 320);
+	m_p_hit_line_ground[0]->SetPos1(m_scroll + 0, m_gy + 0);
+	m_p_hit_line_ground[0]->SetPos2(m_scroll + 90, m_gy + 0);
+	m_p_hit_line_ground[1]->SetPos1(m_scroll + 90, m_gy + 0);
+	m_p_hit_line_ground[1]->SetPos2(m_scroll + 90, m_gy + 400);
+	m_p_hit_line_ground[2]->SetPos1(m_scroll + 0, m_gy + 400);
+	m_p_hit_line_ground[2]->SetPos2(m_scroll + 600, m_gy + 400);
+	m_p_hit_line_ground[3]->SetPos1(m_scroll + 600, m_gy + 320);
+	m_p_hit_line_ground[3]->SetPos2(m_scroll + 600, m_gy + 400);
+	m_p_hit_line_ground[4]->SetPos1(m_scroll + 600, m_gy + 320);
+	m_p_hit_line_ground[4]->SetPos2(m_scroll + 900, m_gy + 320);
+	m_p_hit_line_ground[5]->SetPos1(m_scroll + 900, m_gy + 320);
+	m_p_hit_line_ground[5]->SetPos2(m_scroll + 900, m_gy + 237);
+	m_p_hit_line_ground[6]->SetPos1(m_scroll + 900, m_gy + 237);
+	m_p_hit_line_ground[6]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
+	m_p_hit_line_ground[7]->SetPos1(m_scroll + 1307 - 10, m_gy + 264);
+	m_p_hit_line_ground[7]->SetPos2(m_scroll + 1307 - 10, m_gy + 237);
+	m_p_hit_line_ground[8]->SetPos1(m_scroll + 1207 - 10, m_gy + 264);
+	m_p_hit_line_ground[8]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
+	m_p_hit_line_ground[9]->SetPos1(m_scroll + 1333 - 10, m_gy + 291);
+	m_p_hit_line_ground[9]->SetPos2(m_scroll + 1333 - 10, m_gy + 264);
+	m_p_hit_line_ground[10]->SetPos1(m_scroll + 1233 - 10, m_gy + 291);
+	m_p_hit_line_ground[10]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
+	m_p_hit_line_ground[11]->SetPos1(m_scroll + 1359 - 10, m_gy + 318);
+	m_p_hit_line_ground[11]->SetPos2(m_scroll + 1359 - 10, m_gy + 291);
+	m_p_hit_line_ground[12]->SetPos1(m_scroll + 1259 - 10, m_gy + 318);
+	m_p_hit_line_ground[12]->SetPos2(m_scroll + 1385 - 10, m_gy + 318);
+	m_p_hit_line_ground[13]->SetPos1(m_scroll + 1385 - 10, m_gy + 318);
+	m_p_hit_line_ground[13]->SetPos2(m_scroll + 1385 - 10, m_gy + 346);
+	m_p_hit_line_ground[14]->SetPos1(m_scroll + 1285 - 10, m_gy + 346);
+	m_p_hit_line_ground[14]->SetPos2(m_scroll + 1411 - 10, m_gy + 346);
+	m_p_hit_line_ground[15]->SetPos1(m_scroll + 1411 - 10, m_gy + 346);
+	m_p_hit_line_ground[15]->SetPos2(m_scroll + 1411 - 10, m_gy + 373);
+	m_p_hit_line_ground[16]->SetPos1(m_scroll + 1311 - 10, m_gy + 373);
+	m_p_hit_line_ground[16]->SetPos2(m_scroll + 1437 - 10, m_gy + 373);
+	m_p_hit_line_ground[17]->SetPos1(m_scroll + 1437 - 10, m_gy + 373);
+	m_p_hit_line_ground[17]->SetPos2(m_scroll + 1437 - 10, m_gy + 400);
+	m_p_hit_line_ground[18]->SetPos1(m_scroll + 1337 - 10, m_gy + 400);
+	m_p_hit_line_ground[18]->SetPos2(m_scroll + 2022, m_gy + 400);
+	m_p_hit_line_ground[19]->SetPos1(m_scroll + 2022, m_gy + 400);
+	m_p_hit_line_ground[19]->SetPos2(m_scroll + 2022, m_gy + 320);
+	m_p_hit_line_ground[20]->SetPos1(m_scroll + 2022, m_gy + 320);
+	m_p_hit_line_ground[20]->SetPos2(m_scroll + 2400, m_gy + 320);
 
 }
 

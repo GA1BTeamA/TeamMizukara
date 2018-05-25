@@ -15,7 +15,7 @@ ObjDownBlock_Tank::ObjDownBlock_Tank()
 	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(0.3f)
 	, m_water_x(692), m_water_y(259), m_moveY(162), 
 	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
-	, m_bucket_remaining(0.4f)
+	, m_bucket_remaining(0.4f), m_PulleyAni(0)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_DwBlTank = Collision::HitLineInsert(this);
@@ -33,6 +33,8 @@ ObjDownBlock_Tank::~ObjDownBlock_Tank()
 void ObjDownBlock_Tank::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+
+	if (m_PulleyAni > 8) m_PulleyAni = 0;
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
@@ -64,7 +66,9 @@ void ObjDownBlock_Tank::Action()
 							db->SetY(0.5f);  //足場当たり判定移動
 
 							m_bucket_remaining -= 0.006f;  //水減らす
-							m_wave_y -= 0.3f;  //波の位置
+							//波の位置
+							if (m_wave_y < 248)m_wave_y -= 0.26f;
+							else m_wave_y -= 0.3f;
 							m_water_y -= 0.325f;  //水の位置
 							//m_WaveSize_y -= 0.01f;
 							//m_RopeSizeBoard -= 0.0006f;
@@ -78,6 +82,8 @@ void ObjDownBlock_Tank::Action()
 							//（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
 							
+							m_PulleyAni++;
+
 						}
 					}
 				}
@@ -104,7 +110,9 @@ void ObjDownBlock_Tank::Action()
 							db->SetY(-0.5f);  //足場当たり判定移動
 
 							m_bucket_remaining += 0.006f;  //水減らす
-							m_wave_y += 0.3f;  //波の位置
+							//波の位置
+							if (m_wave_y < 248)m_wave_y += 0.26f;
+							else m_wave_y += 0.3f;
 							m_water_y += 0.325f;  //水の位置
 							//m_WaveSize_y += 0.01f;
 							////m_RopeSizeBoard += 0.0006f;
@@ -117,6 +125,9 @@ void ObjDownBlock_Tank::Action()
 
 							//（バケツ満タン/75フレーム）
 							m_water_remaining += 0.02666;
+
+							m_PulleyAni++;
+
 						}
 					}
 				}
@@ -124,6 +135,9 @@ void ObjDownBlock_Tank::Action()
 			}
 		}
 	}
+
+	m_WaveSize_y = m_water_remaining *0.5f;
+	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	//当たり判定位置の更新
 	m_hit_line_DwBlTank->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -270,5 +284,8 @@ void ObjDownBlock_Tank::Draw()
 	//横ロープ表示
 	Draw::Draw2D(59, m_gx + 25 + ground->GetScroll(), 112, 1, 1);
 	//滑車表示
-	Draw::Draw2D(57, m_gx + 5 + ground->GetScroll(), 110, 1, 1);
+	if (m_PulleyAni <= 4)
+		Draw::Draw2D(57, m_gx + 5 + ground->GetScroll(), 110, 1, 1);
+	else
+		Draw::Draw2D(57, m_gx +189 + ground->GetScroll(), 110, -1, 1);
 }

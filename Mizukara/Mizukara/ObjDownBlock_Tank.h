@@ -38,6 +38,8 @@ private:
 	static const float m_WaveSize_x;  //波のサイズ用
 	float m_WaveSize_y;
 
+	int m_PulleyAni;//滑車アニメーション用
+
 	float m_RopeSizeBucket;//バケツの方のロープの長さ
 
 	HitLine* m_hit_line_DwBlTank;//当たり判定

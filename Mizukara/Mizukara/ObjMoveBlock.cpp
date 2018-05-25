@@ -14,13 +14,13 @@ ObjMoveBlock::ObjMoveBlock()
 	//足場ヒットライン作成し、値を設定(左)
 	m_hit_line_MoBl[0] = Collision::HitLineInsert(this);
 	m_hit_line_MoBl[0]->SetPos1(m_x, m_y);
-	m_hit_line_MoBl[0]->SetPos2(m_x, m_y + 32);
+	m_hit_line_MoBl[0]->SetPos2(m_x, m_y + 30);
 	m_hit_line_MoBl[0]->Set4direc(HIT_LEFT);
 
 	//足場ヒットライン作成し、値を設定(右)
 	m_hit_line_MoBl[1] = Collision::HitLineInsert(this);
 	m_hit_line_MoBl[1]->SetPos1(m_x + 50, m_y);
-	m_hit_line_MoBl[1]->SetPos2(m_x + 50, m_y + 32);
+	m_hit_line_MoBl[1]->SetPos2(m_x + 50, m_y + 30);
 	m_hit_line_MoBl[1]->Set4direc(HIT_RIGHT);
 
 	//足場ヒットライン作成し、値を設定(上)
@@ -31,8 +31,8 @@ ObjMoveBlock::ObjMoveBlock()
 
 	//足場ヒットライン作成し、値を設定(下)
 	m_hit_line_MoBl[3] = Collision::HitLineInsert(this);
-	m_hit_line_MoBl[3]->SetPos1(m_x, m_y + 32);
-	m_hit_line_MoBl[3]->SetPos2(m_x + 50, m_y + 32);
+	m_hit_line_MoBl[3]->SetPos1(m_x, m_y + 30);
+	m_hit_line_MoBl[3]->SetPos2(m_x + 50, m_y + 30);
 	m_hit_line_MoBl[3]->Set4direc(HIT_UNDER);
 
 	for (int i = 0; i < 4; i++) {
@@ -55,13 +55,13 @@ void ObjMoveBlock::Action()
 
 	//位置更新
 	m_hit_line_MoBl[0]->SetPos1(m_x + ground->GetScroll(), m_y);
-	m_hit_line_MoBl[0]->SetPos2(m_x + ground->GetScroll(), m_y + 32);
+	m_hit_line_MoBl[0]->SetPos2(m_x + ground->GetScroll(), m_y + 30);
 	m_hit_line_MoBl[1]->SetPos1(m_x + ground->GetScroll() + 50, m_y);
-	m_hit_line_MoBl[1]->SetPos2(m_x + ground->GetScroll() + 50, m_y + 32);
+	m_hit_line_MoBl[1]->SetPos2(m_x + ground->GetScroll() + 50, m_y + 30);
 	m_hit_line_MoBl[2]->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_hit_line_MoBl[2]->SetPos2(m_x + ground->GetScroll() + 50, m_y);
-	m_hit_line_MoBl[3]->SetPos1(m_x + ground->GetScroll(), m_y + 32);
-	m_hit_line_MoBl[3]->SetPos2(m_x + ground->GetScroll() + 50, m_y + 32);
+	m_hit_line_MoBl[3]->SetPos1(m_x + ground->GetScroll(), m_y + 30);
+	m_hit_line_MoBl[3]->SetPos2(m_x + ground->GetScroll() + 50, m_y + 30);
 
 }
 
@@ -70,7 +70,7 @@ void ObjMoveBlock::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
-	Draw::Draw2D(62, m_x + 23 + ground->GetScroll(), m_y-360, 1, 1);
+	Draw::Draw2D(62, m_x + 23 + ground->GetScroll(), m_y-364, 1, 1);
 
-	Draw::Draw2D(61, m_x + ground->GetScroll(), m_y-20);
+	Draw::Draw2D(61, m_x + ground->GetScroll(), m_y-26);
 }
