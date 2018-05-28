@@ -8,6 +8,7 @@
 #include "Menu.h"
 #include "ObjGround.h"
 #include "Sprinkler.h"
+#include "ObjGround2.h"
 
 //ålŒöƒNƒ‰ƒX
 class CHero : public CObj
