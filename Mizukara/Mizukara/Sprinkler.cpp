@@ -275,14 +275,17 @@ void CSPRI::Draw()
 					}
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move1, m_wave_y + 70, 1, 1);
-
+						//Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+						if (m_ani_time4 > 301 && m_ani_time4 < 1660)
+						{
+							Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+						}
 						if (m_ani_time4 >= 460)
 						{
 							m_ani_time5++;
 							m_move2++;
-
+							//Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank->GetWater_Remaining() > 0)
 							{
 								if (m_move2 <= 10)//スプリンクラーから水が出る
@@ -298,6 +301,22 @@ void CSPRI::Draw()
 									m_move2 = 0;
 								}
 							}
+							if (m_ani_time5 > 1300 && m_ani_time5 <= 1310 && m_sy == 230)
+							{
+								Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+								m_vy = -8.0f;
+								//m_CrearCnt = true;
+							}
+							else if (m_ani_time5 > 1400 && m_ani_time5 <= 1410 && m_sy == 230)
+							{
+								Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+								m_vy = -8.0f;
+							}
+							/*else if (m_ani_time5 >= 1411)
+							{
+								m_ani_time5 = 1200;
+							}*/
+
 						}
 					}
 				}

@@ -45,6 +45,7 @@ private:
 	int m_ani_time3;
 	int m_ani_time4;
 	int m_ani_time5;
+	int m_ani_time6;
 
 	int count;
 	bool m_CrearCnt;  //クリア出すためのカウント

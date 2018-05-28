@@ -343,7 +343,7 @@ unsigned __stdcall GameMainSled(void *p)
 			tank = new CTank();
 			tank->m_ActionPriority = 80;
 			tank->m_DrawPriority = 90;
-			TaskSystem::InsertObj(tank);
+			//TaskSystem::InsertObj(tank);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;
