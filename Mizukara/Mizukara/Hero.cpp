@@ -416,6 +416,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
 						if (ground->GetScroll() != -1600.0f) {
@@ -465,6 +466,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
 						if (ground->GetScroll() != 0.0f) {
