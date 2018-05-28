@@ -15,6 +15,8 @@ extern float g_TankRemaining;
 const float CSPRI::m_WaveSize_x = 0.55f;
 const float CSPRI::m_WaveSize_y = 0.6f;
 
+CHero* hero;
+
 CSPRI::CSPRI()
 	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), 
 	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
@@ -310,11 +312,11 @@ void CSPRI::Draw()
 					}
 					else if (m_ani_time3 < 20)
 					{
-						Draw::Draw2D(7, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(7, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1,1);
 					}
 					else if (m_ani_time3 < 30)
 					{
-						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1, 1);
+						Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_wave_y - 10, 1,1);
 					}
 				}
 			}

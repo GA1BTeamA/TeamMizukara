@@ -285,12 +285,12 @@ unsigned __stdcall GameMainSled(void *p)
 
 			mobl = new ObjMoveBlock();
 			mobl->m_ActionPriority = 110;
-			mobl->m_DrawPriority = 110;
+			mobl->m_DrawPriority = 40;
 			TaskSystem::InsertObj(mobl);
 
 			moblt = new ObjMoveBlock_Tank();
 			moblt->m_ActionPriority = 110;
-			moblt->m_DrawPriority = 110;
+			moblt->m_DrawPriority = 70;
 			TaskSystem::InsertObj(moblt);
 
 			upsc = new ObjUpScaffold();
@@ -339,6 +339,11 @@ unsigned __stdcall GameMainSled(void *p)
 			hero->m_ActionPriority = 60;
 			hero->m_DrawPriority = 150;
 			TaskSystem::InsertObj(hero);
+
+			tank = new CTank();
+			tank->m_ActionPriority = 80;
+			tank->m_DrawPriority = 90;
+			//TaskSystem::InsertObj(tank);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;
