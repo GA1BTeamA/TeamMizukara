@@ -331,7 +331,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case GAME2:
 			ground2 = new ObjGround2();
-			ground2->m_ActionPriority = 90;
+			ground2->m_ActionPriority = 50;
 			ground2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(ground2);
 

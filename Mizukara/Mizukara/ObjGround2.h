@@ -14,6 +14,7 @@ public:
 	void Action();
 	void Draw();
 
+	void AddScroll(float as) { m_scroll -= as; }	//スクロール値加算
 	float GetScroll() { return m_scroll; }  //m_scroll取得用
 
 private:
