@@ -4,6 +4,7 @@
 
 #include "Tank.h"
 #include "ObjGround.h"
+#include "ObjGround2.h"
 #include "BucketMeter.h"
 #include "Hero.h"
 #include "Sprinkler.h"
