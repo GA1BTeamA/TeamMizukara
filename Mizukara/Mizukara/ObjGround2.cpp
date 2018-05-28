@@ -25,7 +25,7 @@ ObjGround2::ObjGround2()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground2[3] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground2[3]->Set4direc(HIT_RIGHT);
+	m_p_hit_line_ground2[3]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground2[4] = Collision::HitLineInsert(this);
@@ -33,7 +33,7 @@ ObjGround2::ObjGround2()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground2[5] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground2[5]->Set4direc(HIT_RIGHT);
+	m_p_hit_line_ground2[5]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground2[6] = Collision::HitLineInsert(this);
@@ -41,32 +41,50 @@ ObjGround2::ObjGround2()
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground2[7] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground2[7]->Set4direc(HIT_RIGHT);
+	m_p_hit_line_ground2[7]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground2[8] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground2[8]->Set4direc(HIT_LEFT);
+	m_p_hit_line_ground2[8]->Set4direc(HIT_RIGHT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[9] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[9]->Set4direc(HIT_LEFT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[10] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[10]->Set4direc(HIT_TOP);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[11] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[11]->Set4direc(HIT_RIGHT);
 
 	m_p_hit_line_ground2[0]->SetPos1(m_scroll + 0, m_gy + 400);  //最初
 	m_p_hit_line_ground2[0]->SetPos2(m_scroll + /*274*/494, m_gy + 400);
 	m_p_hit_line_ground2[1]->SetPos1(m_scroll + 550, m_gy + 400);  //0段目
-	m_p_hit_line_ground2[1]->SetPos2(m_scroll + 1000, m_gy + 400);
+	m_p_hit_line_ground2[1]->SetPos2(m_scroll + 2900, m_gy + 400);
 	m_p_hit_line_ground2[2]->SetPos1(m_scroll + 602, m_gy + 374);  //1段目
-	m_p_hit_line_ground2[2]->SetPos2(m_scroll + 700, m_gy + 374);
+	m_p_hit_line_ground2[2]->SetPos2(m_scroll + 680, m_gy + 374);
 	m_p_hit_line_ground2[3]->SetPos1(m_scroll + 602, m_gy + 400);  //0と1間
 	m_p_hit_line_ground2[3]->SetPos2(m_scroll + 602, m_gy + 374);
 	m_p_hit_line_ground2[4]->SetPos1(m_scroll + 627, m_gy + 348);  //2段目
-	m_p_hit_line_ground2[4]->SetPos2(m_scroll + 700, m_gy + 348);
-	m_p_hit_line_ground2[5]->SetPos1(m_scroll + 627, m_gy + 374);  //1と2の間
+	m_p_hit_line_ground2[4]->SetPos2(m_scroll + 680, m_gy + 348);
+	m_p_hit_line_ground2[5]->SetPos1(m_scroll + 627, m_gy + 400);  //1と2の間
 	m_p_hit_line_ground2[5]->SetPos2(m_scroll + 627, m_gy + 348);
 	m_p_hit_line_ground2[6]->SetPos1(m_scroll + 652, m_gy + 322);  //3段目
-	m_p_hit_line_ground2[6]->SetPos2(m_scroll + 700, m_gy + 322);
-	m_p_hit_line_ground2[7]->SetPos1(m_scroll + 652, m_gy + 348);  //2と3の間
+	m_p_hit_line_ground2[6]->SetPos2(m_scroll + /*705*/755, m_gy + 322);
+	m_p_hit_line_ground2[7]->SetPos1(m_scroll + 652, m_gy + 400);  //2と3の間
 	m_p_hit_line_ground2[7]->SetPos2(m_scroll + 652, m_gy + 322);
-	m_p_hit_line_ground2[8]->SetPos1(m_scroll + 700, m_gy + 322);  //3段目反対側の壁
-	m_p_hit_line_ground2[8]->SetPos2(m_scroll + 700, m_gy + 400);
+	m_p_hit_line_ground2[8]->SetPos1(m_scroll + 705, m_gy + 450);  //3段目反対側の壁
+	m_p_hit_line_ground2[8]->SetPos2(m_scroll + 705, m_gy + 322);
+	m_p_hit_line_ground2[9]->SetPos1(m_scroll + 888, m_gy + 450);  //1個目ギミック超えたとこ壁
+	m_p_hit_line_ground2[9]->SetPos2(m_scroll + 888, m_gy + 248);
+	m_p_hit_line_ground2[10]->SetPos1(m_scroll + 888, m_gy + /*248*/288);  //1個目ギミック超えたとこ地面
+	m_p_hit_line_ground2[10]->SetPos2(m_scroll + 970, m_gy + /*248*/288);
+	m_p_hit_line_ground2[11]->SetPos1(m_scroll + 970, m_gy + 248);  //その地面の段差
+	m_p_hit_line_ground2[11]->SetPos2(m_scroll + 970, m_gy + 208);
 
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 12; i++) {
 		m_p_hit_line_ground2[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground2[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground2[i]->SetAngle();
@@ -86,21 +104,28 @@ void ObjGround2::Action()
 	m_p_hit_line_ground2[0]->SetPos1(m_scroll + 0, m_gy + 400);  //最初
 	m_p_hit_line_ground2[0]->SetPos2(m_scroll + /*274*/494, m_gy + 400);
 	m_p_hit_line_ground2[1]->SetPos1(m_scroll + 550, m_gy + 400);  //0段目
-	m_p_hit_line_ground2[1]->SetPos2(m_scroll + 1000, m_gy + 400);
+	m_p_hit_line_ground2[1]->SetPos2(m_scroll + 2900, m_gy + 400);
 	m_p_hit_line_ground2[2]->SetPos1(m_scroll + 602, m_gy + 374);  //1段目
-	m_p_hit_line_ground2[2]->SetPos2(m_scroll + 700, m_gy + 374);
+	m_p_hit_line_ground2[2]->SetPos2(m_scroll + 680, m_gy + 374);
 	m_p_hit_line_ground2[3]->SetPos1(m_scroll + 602, m_gy + 400);  //0と1間
 	m_p_hit_line_ground2[3]->SetPos2(m_scroll + 602, m_gy + 374);
 	m_p_hit_line_ground2[4]->SetPos1(m_scroll + 627, m_gy + 348);  //2段目
-	m_p_hit_line_ground2[4]->SetPos2(m_scroll + 700, m_gy + 348);
-	m_p_hit_line_ground2[5]->SetPos1(m_scroll + 627, m_gy + 374);  //1と2の間
+	m_p_hit_line_ground2[4]->SetPos2(m_scroll + 680, m_gy + 348);
+	m_p_hit_line_ground2[5]->SetPos1(m_scroll + 627, m_gy + 400);  //1と2の間
 	m_p_hit_line_ground2[5]->SetPos2(m_scroll + 627, m_gy + 348);
 	m_p_hit_line_ground2[6]->SetPos1(m_scroll + 652, m_gy + 322);  //3段目
-	m_p_hit_line_ground2[6]->SetPos2(m_scroll + 700, m_gy + 322);
-	m_p_hit_line_ground2[7]->SetPos1(m_scroll + 652, m_gy + 348);  //2と3の間
+	m_p_hit_line_ground2[6]->SetPos2(m_scroll + /*705*/755, m_gy + 322);
+	m_p_hit_line_ground2[7]->SetPos1(m_scroll + 652, m_gy + 400);  //2と3の間
 	m_p_hit_line_ground2[7]->SetPos2(m_scroll + 652, m_gy + 322);
-	m_p_hit_line_ground2[8]->SetPos1(m_scroll + 700, m_gy + 322);  //3段目反対側の壁
-	m_p_hit_line_ground2[8]->SetPos2(m_scroll + 700, m_gy + 400);
+	m_p_hit_line_ground2[8]->SetPos1(m_scroll + 705, m_gy + 450);  //3段目反対側の壁
+	m_p_hit_line_ground2[8]->SetPos2(m_scroll + 705, m_gy + 322);
+	m_p_hit_line_ground2[9]->SetPos1(m_scroll + 888, m_gy + 450);  //1個目ギミック超えたとこ壁
+	m_p_hit_line_ground2[9]->SetPos2(m_scroll + 888, m_gy + 248);
+	m_p_hit_line_ground2[10]->SetPos1(m_scroll + 888, m_gy + /*248*/288);  //1個目ギミック超えたとこ地面
+	m_p_hit_line_ground2[10]->SetPos2(m_scroll + 970, m_gy + /*248*/288);
+	m_p_hit_line_ground2[11]->SetPos1(m_scroll + 970, m_gy + 248);  //その地面の段差
+	m_p_hit_line_ground2[11]->SetPos2(m_scroll + 970, m_gy + 208);
+
 }
 
 //ドロー
@@ -109,5 +134,5 @@ void ObjGround2::Draw()
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
 
-	//Draw::Draw2D(58, 635, 319);
+	Draw::Draw2D(58, m_scroll+888, 248);
 }
