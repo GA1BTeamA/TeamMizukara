@@ -227,7 +227,8 @@ void CHero::Action()
 					//あたったのが　オブジェクトの上判定で　水平ベクトルで　主人公の元位置より上にある場合
 					else if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90 &&
-						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y) {
+						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y &&
+						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y) {
 						IsHitWall = true;
 					}
 					else {
@@ -261,6 +262,42 @@ void CHero::Action()
 					float Cross_x, Cross_y;
 					////交点までが一番短い点
 					//float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
+
+					//バグ中
+					if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90 &&
+						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
+						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
+						if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_RIGHT) {
+							//主人公の移動ベクトルと地面ベクトルの交点を求める
+							Collision::LineCrossPoint(m_copy_x + m_point_position[2].x, m_copy_y /*+ m_point_position[2].y*/,
+								m_copy_x + m_point_position[2].x, m_copy_y + m_point_position[2].y,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y,
+								&Cross_x, &Cross_y);
+
+							//エラーが返されなかったら
+							if (Cross_x != -9999.0f && Cross_y != -9999.0f)
+							{
+								//主人公から交点までのベクトルを取り出す
+					//			Cross_x -= m_x + m_point_position[k].x;
+								Cross_y = -(m_y + m_point_position[2].y - Cross_y);
+
+								//主人公から交点までのベクトルの中から一番短いものを見つける
+								//水平ベクトルならｘ無視
+								if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+								{
+									Cross_x_min = Cross_x;
+								}
+								//垂直ベクトルならｙ無視
+								if (Cross_y_min > Cross_y && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
+								{
+									Cross_y_min = Cross_y;
+								}
+							}
+						}
+					}
 
 					//主人公のあたり判定の頂点をループ
 					for (int k = 0; k < 4; k++)
@@ -363,7 +400,8 @@ void CHero::Action()
 						}
 					}
 					//!(主人公の縦ベクトルと地面のベクトルが一点だけで接してた場合)
-					if (m_p_hit_line_hero_copy[j]->GetAngle() == 0.0f) {
+					if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
+						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
 						//主人公の左の場合
 						if (!(((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x <= m_copy_x) &&
 							(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x <= m_copy_x)) ||
@@ -381,7 +419,7 @@ void CHero::Action()
 								if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP) {
 									IsHitGround = true;
 								}
-								if (Move_y < Cross_y_min) Move_y = Cross_y_min;
+								if (Move_y < abs(Cross_y_min)) Move_y = Cross_y_min;
 							}
 						}
 					}
@@ -392,14 +430,18 @@ void CHero::Action()
 							//低い場合
 							((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y >= m_copy_y + m_point_position[2].y) &&
 							(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y >= m_copy_y + m_point_position[2].y)))) {
-							//エラーじゃなければ主人公を交点まで移動
-							if (Cross_x_min != 9999.0f) {
-								IsHitWall = true;
-								if (Move_x < Cross_x_min) Move_x = Cross_x_min;
-							}
-							if (Cross_y_min != 9999.0f) {
-								IsHitWall = true;
-								if (Move_y < Cross_y_min) Move_y = Cross_y_min;
+							if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90 ||
+								(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 0  ||
+								(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180) {
+								//エラーじゃなければ主人公を交点まで移動
+								if (Cross_x_min != 9999.0f) {
+									IsHitWall = true;
+									if (Move_x < Cross_x_min) Move_x = Cross_x_min;
+								}
+								if (Cross_y_min != 9999.0f) {
+									IsHitWall = true;
+									if (Move_y < Cross_y_min) Move_y = Cross_y_min;
+								}
 							}
 						}
 					}
@@ -670,6 +712,8 @@ void CHero::Action()
 
 			//デバッグ用
 			//m_copy_x += move_dash_x;
+			if(IsHitGround)
+	//		m_vy = 0.0f;
 
 			//地面に当たってたらスペースキーでジャンプ
 			if (IsHitGround)
