@@ -83,8 +83,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(7, L"Images\\BoyRW2.png");//7番目に"BoyRW2.png"を読み込み
 	Draw::LoadImage(8, L"Images\\BoyLW2.png");//8番目に"BoyLW2.png"を読み込み
 	Draw::LoadImage(6, L"Images\\BoySquat.png");//4番目に"BoySquat.png"を読み込み
-	Draw::LoadImage(4, L"Images\\Player5.png");//4番目に"Player5.png"を読み込み
-	Draw::LoadImage(5, L"Images\\Player6.png");//5番目に"Player6.png"を読み込み
+	Draw::LoadImage(4, L"Images\\BoyUp.png");//4番目に"BoyUp.png"を読み込み
+	Draw::LoadImage(5, L"Images\\BoyDown.png");//5番目に"BoyDown.png"を読み込み
 	//Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
 	Draw::LoadImage(9, L"Images\\BoyJump.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
@@ -146,7 +146,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(66, L"Images\\BHimawari.png");//66番目BHimawari.pngを読み込み
 	Draw::LoadImage(67, L"Images\\AHimawari.png");//67番目AHimawari.pngを読み込み
 	Draw::LoadImage(68, L"Images\\SHimawari.png");//68番目SHimawari.pngを読み込み
-	Draw::LoadImage(69, L"Images\\Stage2.png");//68番目Stage2.pngを読み込み
+	Draw::LoadImage(69, L"Images\\Stage2.png");//69番目Stage2.pngを読み込み
+	Draw::LoadImage(70, L"Images\\icon3.png");//70番目に"icon3.pngを読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -331,7 +332,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case GAME2:
 			ground2 = new ObjGround2();
-			ground2->m_ActionPriority = 50;
+			ground2->m_ActionPriority = 90;
 			ground2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(ground2);
 
