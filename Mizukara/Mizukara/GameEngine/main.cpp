@@ -147,6 +147,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(67, L"Images\\AHimawari.png");//67番目AHimawari.pngを読み込み
 	Draw::LoadImage(68, L"Images\\SHimawari.png");//68番目SHimawari.pngを読み込み
 	Draw::LoadImage(69, L"Images\\Stage2.png");//68番目Stage2.pngを読み込み
+	Draw::LoadImage(70, L"Images\\icon3.png");//47番目に"icon3.pngを読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了

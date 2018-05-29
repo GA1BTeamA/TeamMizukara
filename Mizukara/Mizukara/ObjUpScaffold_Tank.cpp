@@ -131,7 +131,7 @@ void ObjUpScaffold_Tank::Draw()
 		{
 			if (m_hit_line_UpScTank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, m_x + 20 + ground->GetScroll(), m_y + 15);
+				Draw::Draw2D(70, m_x - 15 + ground->GetScroll(), m_y - 110);
 			}
 		}
 	}
