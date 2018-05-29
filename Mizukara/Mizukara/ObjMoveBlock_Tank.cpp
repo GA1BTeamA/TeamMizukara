@@ -191,7 +191,7 @@ void ObjMoveBlock_Tank::Draw()
 		{
 			if (m_hit_line_MoBlTank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, m_x + ground->GetScroll(), m_y - 20);
+				Draw::Draw2D(70, m_x - 10 + ground->GetScroll(), m_y - 15);
 			}
 		}
 	}
@@ -202,7 +202,7 @@ void ObjMoveBlock_Tank::Draw()
 		{
 			if (m_hit_line_MoBlTank2->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, m_x + 50 + ground->GetScroll(), m_y - 20);
+				Draw::Draw2D(70, m_x + 40 + ground->GetScroll(), m_y - 15);
 			}
 		}
 	}

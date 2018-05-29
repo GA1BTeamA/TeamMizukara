@@ -4,6 +4,7 @@
 
 #include "Hero.h"
 #include "Sprinkler.h"
+#include "ObjGround2.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
@@ -263,7 +264,6 @@ void CHero::Action()
 					////交点までが一番短い点
 					//float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
 
-					//バグ中
 					if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90 &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
@@ -297,6 +297,37 @@ void CHero::Action()
 								}
 							}
 						}
+						else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_LEFT) {
+							//主人公の移動ベクトルと地面ベクトルの交点を求める
+							Collision::LineCrossPoint(m_copy_x, m_copy_y,
+								m_copy_x, m_copy_y + m_point_position[2].y,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x,
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y,
+								&Cross_x, &Cross_y);
+
+							//エラーが返されなかったら
+							if (Cross_x != -9999.0f && Cross_y != -9999.0f)
+							{
+								//主人公から交点までのベクトルを取り出す
+								//			Cross_x -= m_x + m_point_position[k].x;
+								Cross_y = -(m_y + m_point_position[2].y - Cross_y);
+
+								//主人公から交点までのベクトルの中から一番短いものを見つける
+								//水平ベクトルならｘ無視
+								if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+								{
+									Cross_x_min = Cross_x;
+								}
+								//垂直ベクトルならｙ無視
+								if (Cross_y_min > Cross_y && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
+								{
+									Cross_y_min = Cross_y;
+								}
+							}
+						}
+
 					}
 
 					//主人公のあたり判定の頂点をループ
@@ -481,26 +512,26 @@ void CHero::Action()
 						}
 					}
 					//ステージ2
-					if (ground2 != nullptr) {
-						if (ground2->GetScroll() != -2400.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground2->AddScroll(m_x + Move_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
-							}
-							else {
-								//スクロール値加算
-								ground2->AddScroll(m_copy_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
-							}
-							m_IsScroll = true;
-						}
-						else if (Move_x != -9999.0f) {
-							m_x += Move_x;
-						}
-					}
+					//if (ground2 != nullptr) {
+					//	if (ground2->GetScroll() != -2400.0f) {
+					//		if (Move_x != -9999.0f) {
+					//			//スクロール値加算
+					//			ground2->AddScroll(m_x + Move_x - 350.0f);
+					//			//主人公をスクロールラインで止める
+					//			m_x = 350.0f;
+					//		}
+					//		else {
+					//			//スクロール値加算
+					//			ground2->AddScroll(m_copy_x - 350.0f);
+					//			//主人公をスクロールラインで止める
+					//			m_x = 350.0f;
+					//		}
+					//		m_IsScroll = true;
+					//	}
+					//	else if (Move_x != -9999.0f) {
+					//		m_x += Move_x;
+					//	}
+					//}
 				}
 				//後方スクロールライン
 				else if (m_copy_x < 200.0f)
@@ -531,26 +562,26 @@ void CHero::Action()
 						}
 					}
 					//ステージ2
-					if (ground2 != nullptr) {
-						if (ground2->GetScroll() != 0.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground2->AddScroll(m_x + Move_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
-							}
-							else {
-								//スクロール値加算
-								ground2->AddScroll(m_copy_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
-							}
-							m_IsScroll = true;
-						}
-						else if (Move_x != -9999.0f) {
-							m_x += Move_x;
-						}
-					}
+					//if (ground2 != nullptr) {
+					//	if (ground2->GetScroll() != 0.0f) {
+					//		if (Move_x != -9999.0f) {
+					//			//スクロール値加算
+					//			ground2->AddScroll(m_x + Move_x - 200.0f);
+					//			//主人公をスクロールラインで止める
+					//			m_x = 200.0f;
+					//		}
+					//		else {
+					//			//スクロール値加算
+					//			ground2->AddScroll(m_copy_x - 200.0f);
+					//			//主人公をスクロールラインで止める
+					//			m_x = 200.0f;
+					//		}
+					//		m_IsScroll = true;
+					//	}
+					//	else if (Move_x != -9999.0f) {
+					//		m_x += Move_x;
+					//	}
+					//}
 				}
 				else {
 					if (Move_x != -9999.0f) {
