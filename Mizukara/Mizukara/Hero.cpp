@@ -4,6 +4,7 @@
 
 #include "Hero.h"
 #include "Sprinkler.h"
+#include "ObjGround2.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
