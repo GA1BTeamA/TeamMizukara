@@ -851,7 +851,7 @@ void CHero::Action()
 			if (Input::KeyPush(VK_RIGHT) || Input::KeyPush(VK_LEFT))
 			{
 				m_ani_time++;
-				if (m_ani_time >= 24)
+				if (m_ani_time >= 32)
 				{
 					m_ani_time = 0;
 				}
@@ -889,13 +889,13 @@ void CHero::Draw()
 			if (Input::KeyPush(VK_LEFT))
 			{
 				//ç∂ï‡Ç´
-				if (m_ani_time <= 6) {
+				if (m_ani_time <= 8) {
 					Draw::Draw2D(3, m_x, m_y);
 				}
-				else if (m_ani_time <= 12) {
+				else if (m_ani_time <= 16) {
 					Draw::Draw2D(1, m_x, m_y);
 				}
-				else if (m_ani_time <= 18) {
+				else if (m_ani_time <= 24) {
 					Draw::Draw2D(8, m_x, m_y);
 				}
 				else {
@@ -905,13 +905,13 @@ void CHero::Draw()
 			else if (Input::KeyPush(VK_RIGHT))
 			{
 				//âEï‡Ç´
-				if (m_ani_time <= 6) {
+				if (m_ani_time <= 8) {
 					Draw::Draw2D(2, m_x, m_y);
 				}
-				else if (m_ani_time <= 12) {
+				else if (m_ani_time <= 16) {
 					Draw::Draw2D(0, m_x, m_y);
 				}
-				else if (m_ani_time <= 18) {
+				else if (m_ani_time <= 24) {
 					Draw::Draw2D(7, m_x, m_y);
 				}
 				else {
