@@ -110,16 +110,17 @@ void CTank::Draw()
 	{
 		if (m_p_hit_line_tank->GetHitData()[i] != nullptr)
 		{
-				if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
+			if (m_p_hit_line_tank->GetHitData()[i]->GetElement() == 0)
+			{
+				if (hero->GetDirec() == LEFT)
 				{
-					if (hero->GetDirec() == LEFT)
-					{
-						Draw::Draw2D(47, im_x, im_y);
+					Draw::Draw2D(47, im_x, im_y);
 				}
 			}
 		}
 	}
 
+	//if (g_SceneNumber == GAME)
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//êÖï\é¶
