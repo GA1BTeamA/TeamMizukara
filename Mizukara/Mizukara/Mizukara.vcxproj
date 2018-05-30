@@ -131,6 +131,8 @@
     <ClCompile Include="GameEngine\WindowCreate.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="ObjBoat.cpp" />
+    <ClCompile Include="ObjBoat_Tank.cpp" />
     <ClCompile Include="ObjDownBlock.cpp" />
     <ClCompile Include="ObjDownBlock_Tank.cpp" />
     <ClCompile Include="ObjGround2.cpp" />
@@ -163,6 +165,8 @@
     <ClInclude Include="GameEngine\WindowCreate.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="ObjBoat.h" />
+    <ClInclude Include="ObjBoat_Tank.h" />
     <ClInclude Include="ObjDownBlock.h" />
     <ClInclude Include="ObjDownBlock_Tank.h" />
     <ClInclude Include="ObjGround2.h" />

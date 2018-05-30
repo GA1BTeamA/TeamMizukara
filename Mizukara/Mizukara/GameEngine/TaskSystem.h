@@ -50,6 +50,7 @@ enum {
 	MOVEBLOCK,
 	DOWNBLOCK,
 	GROUND2,
+	BOAT,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO

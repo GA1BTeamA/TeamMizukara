@@ -122,6 +122,7 @@ void CTank::Draw()
 
 	//if (g_SceneNumber == GAME)
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
 	//…•\Ž¦
 	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y,2.95, -(3.65*m_water_remaining2 *0.01));

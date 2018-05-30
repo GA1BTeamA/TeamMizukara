@@ -104,7 +104,6 @@ void CSPRI::Action()
 	else if (m_ani_time5 > 1400 && m_ani_time5 <= 1410 && m_sy == 230)
 	{
 		m_vy = -8.0f;
-		Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 	}
 	else if (m_ani_time5 >= 1411)
 	{
@@ -276,15 +275,15 @@ void CSPRI::Draw()
 					}
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
-						Draw::Draw2D(50, m_wave_x + ground->GetScroll() - 86 + m_move1, m_wave_y + 70, 1, 1);
+						Draw::Draw2D(50, m_wave_x - 36 + ground->GetScroll() - 50 + m_move1, 300, 1, 1);
 						
-						if (m_sy <= 180)
+						if (m_sy <=200)
 						{
 							Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 						}
 						else
 						{
-							Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							Draw::Draw2D(71, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 						}
 
 						if (m_ani_time4 >= 460)
