@@ -5,6 +5,7 @@
 #include "Hero.h"
 #include "Sprinkler.h"
 #include "ObjGround2.h"
+#include "ObjGround3.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
@@ -489,6 +490,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
@@ -512,26 +514,47 @@ void CHero::Action()
 						}
 					}
 					//ステージ2
-					//if (ground2 != nullptr) {
-					//	if (ground2->GetScroll() != -2400.0f) {
-					//		if (Move_x != -9999.0f) {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_x + Move_x - 350.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 350.0f;
-					//		}
-					//		else {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_copy_x - 350.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 350.0f;
-					//		}
-					//		m_IsScroll = true;
-					//	}
-					//	else if (Move_x != -9999.0f) {
-					//		m_x += Move_x;
-					//	}
-					//}
+					if (ground2 != nullptr) {
+						if (ground2->GetScroll() != -2400.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground2->AddScroll(m_x + Move_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							else {
+								//スクロール値加算
+								ground2->AddScroll(m_copy_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+					//ステージ3
+					if (ground3 != nullptr) {
+						if (ground3->GetScroll() != -2400.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground3->AddScroll(m_x + Move_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							else {
+								//スクロール値加算
+								ground3->AddScroll(m_copy_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
 				}
 				//後方スクロールライン
 				else if (m_copy_x < 200.0f)
@@ -539,6 +562,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
@@ -562,26 +586,48 @@ void CHero::Action()
 						}
 					}
 					//ステージ2
-					//if (ground2 != nullptr) {
-					//	if (ground2->GetScroll() != 0.0f) {
-					//		if (Move_x != -9999.0f) {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_x + Move_x - 200.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 200.0f;
-					//		}
-					//		else {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_copy_x - 200.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 200.0f;
-					//		}
-					//		m_IsScroll = true;
-					//	}
-					//	else if (Move_x != -9999.0f) {
-					//		m_x += Move_x;
-					//	}
-					//}
+					if (ground2 != nullptr) {
+						if (ground2->GetScroll() != 0.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground2->AddScroll(m_x + Move_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							else {
+								//スクロール値加算
+								ground2->AddScroll(m_copy_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+					//ステージ3
+					if (ground3 != nullptr) {
+						if (ground3->GetScroll() != 0.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground3->AddScroll(m_x + Move_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							else {
+								//スクロール値加算
+								ground3->AddScroll(m_copy_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+
 				}
 				else {
 					if (Move_x != -9999.0f) {
