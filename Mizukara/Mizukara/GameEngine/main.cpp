@@ -41,6 +41,7 @@
 #include "..\ObjMoveBlock.h"
 #include "..\ObjMoveBlock_Tank.h"
 #include "..\ObjGround2.h"
+#include "..\ObjGround3.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -148,6 +149,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(68, L"Images\\SHimawari.png");//68番目SHimawari.pngを読み込み
 	Draw::LoadImage(69, L"Images\\Stage2.png");//69番目Stage2.pngを読み込み
 	Draw::LoadImage(70, L"Images\\icon3.png");//70番目に"icon3.pngを読み込み
+	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -211,6 +213,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjMoveBlock* mobl;
 		ObjMoveBlock_Tank* moblt;
 		ObjGround2* ground2;
+		ObjGround3* ground3;
 
 		switch (g_SceneNumber)
 		{
@@ -349,6 +352,28 @@ unsigned __stdcall GameMainSled(void *p)
 			g_SceneNumber = GAME_MAIN2;
 			break;
 		case GAME_MAIN2:
+			break;
+
+		case GAME3:
+			ground3 = new ObjGround3();
+			ground3->m_ActionPriority = 90;
+			ground3->m_DrawPriority = 80;
+			TaskSystem::InsertObj(ground3);
+
+			hero = new CHero();
+			hero->m_ActionPriority = 60;
+			hero->m_DrawPriority = 150;
+			TaskSystem::InsertObj(hero);
+
+			tank = new CTank();
+			tank->m_ActionPriority = 80;
+			tank->m_DrawPriority = 90;
+			//TaskSystem::InsertObj(tank);
+
+			g_SceneNumber = GAME_MAIN3;
+			break;
+
+		case GAME_MAIN3:
 			break;
 		}
 
