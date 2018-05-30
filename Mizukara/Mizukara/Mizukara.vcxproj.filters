@@ -132,6 +132,9 @@
     <ClCompile Include="ObjBoat_Tank.cpp">
       <Filter>ソース ファイル\ギミック4（ボート）</Filter>
     </ClCompile>
+    <ClCompile Include="ObjGround3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -223,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="ObjBoat_Tank.h">
       <Filter>ヘッダー ファイル\ギミック4（ボート）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGround3.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 #include "Hero.h"
 #include "Sprinkler.h"
 #include "ObjGround2.h"
+#include "ObjGround3.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
@@ -489,6 +490,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
@@ -532,6 +534,27 @@ void CHero::Action()
 							m_x += Move_x;
 						}
 					}
+					//ステージ3
+					if (ground3 != nullptr) {
+						if (ground3->GetScroll() != -2400.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground3->AddScroll(m_x + Move_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							else {
+								//スクロール値加算
+								ground3->AddScroll(m_copy_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
 				}
 				//後方スクロールライン
 				else if (m_copy_x < 200.0f)
@@ -539,6 +562,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
@@ -582,6 +606,28 @@ void CHero::Action()
 							m_x += Move_x;
 						}
 					}
+					//ステージ3
+					if (ground3 != nullptr) {
+						if (ground3->GetScroll() != 0.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground3->AddScroll(m_x + Move_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							else {
+								//スクロール値加算
+								ground3->AddScroll(m_copy_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+
 				}
 				else {
 					if (Move_x != -9999.0f) {
@@ -920,13 +966,29 @@ void CHero::Draw()
 			}
 			else if (m_XKey_Frag == true)
 			{
-				//水汲む
-				Draw::Draw2D(5, m_x, m_y);
+				if (m_direc == RIGHT)
+				{
+					//水汲む右向き
+					Draw::Draw2D(5, m_x, m_y);
+				}
+				else if (m_direc == LEFT)
+				{
+					//水汲む左向き卍
+					Draw::Draw2D(5, m_x + 60, m_y, -1, 1);
+				}
 			}
 			else if (m_CKey_Frag == true)
 			{
-				//水戻す
-				Draw::Draw2D(4, m_x, m_y);
+				if (m_direc == RIGHT)
+				{
+					//水戻す右向き
+					Draw::Draw2D(4, m_x, m_y);
+				}
+				else if (m_direc == LEFT)
+				{
+					//水戻す左向き
+					Draw::Draw2D(4, m_x + 60, m_y, -1, 1);
+				}
 			}
 			else if (m_CKey_Frag == false)
 			{
