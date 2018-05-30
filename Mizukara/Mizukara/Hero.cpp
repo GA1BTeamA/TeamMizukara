@@ -920,13 +920,29 @@ void CHero::Draw()
 			}
 			else if (m_XKey_Frag == true)
 			{
-				//…‹‚‚Ş
-				Draw::Draw2D(5, m_x, m_y);
+				if (m_direc == RIGHT)
+				{
+					//…‹‚‚Ş‰EŒü‚«
+					Draw::Draw2D(5, m_x, m_y);
+				}
+				else if (m_direc == LEFT)
+				{
+					//…‹‚‚Ş¶Œü‚«™Â
+					Draw::Draw2D(5, m_x + 60, m_y, -1, 1);
+				}
 			}
 			else if (m_CKey_Frag == true)
 			{
-				//…–ß‚·
-				Draw::Draw2D(4, m_x, m_y);
+				if (m_direc == RIGHT)
+				{
+					//…–ß‚·‰EŒü‚«
+					Draw::Draw2D(4, m_x, m_y);
+				}
+				else if (m_direc == LEFT)
+				{
+					//…–ß‚·¶Œü‚«
+					Draw::Draw2D(4, m_x + 60, m_y, -1, 1);
+				}
 			}
 			else if (m_CKey_Frag == false)
 			{
