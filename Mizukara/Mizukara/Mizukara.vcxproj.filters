@@ -120,6 +120,9 @@
     <ClCompile Include="ObjGround2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjGround3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -204,6 +207,9 @@
       <Filter>ヘッダー ファイル\ギミック3（動かす足場）</Filter>
     </ClInclude>
     <ClInclude Include="ObjGround2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGround3.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
