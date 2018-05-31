@@ -228,7 +228,7 @@ void CHero::Action()
 					}
 					//あたったのが　オブジェクトの上判定で　水平ベクトルで　主人公の元位置より上にある場合
 					else if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP &&
-						(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90.0456467 &&
+						(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90.0456467f &&
 						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y &&
 						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y) {
 						IsHitWall = true;
@@ -265,7 +265,7 @@ void CHero::Action()
 					////交点までが一番短い点
 					//float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
 
-					if ((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90.0456467 &&
+					if ((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90.0456467f &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
 						if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_RIGHT) {
