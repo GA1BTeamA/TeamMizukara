@@ -9,12 +9,13 @@
 extern int g_SceneNumber;
 
 const float ObjBoat_Tank::m_WaveSize_x = 3.25f;
-const float ObjBoat_Tank::m_WaterSize_x = 5.25f;
+const float ObjBoat_Tank::m_WaterSize_x = 9.45f;
+const float ObjBoat_Tank::m_WaterSize_y = 3.88f;
 
 ObjBoat_Tank::ObjBoat_Tank()
 	:m_x(676), m_y(150), m_gx(275), m_gy(330), m_wave_x(274), m_wave_y(400),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(1.0f),m_WaterSize_y(2.0f)
-	, m_water_x(330), m_water_y(400), m_moveY(162),
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(1.0f)
+	, m_water_x(276), m_water_y(409), m_moveY(162),
 	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
 	, m_bucket_remaining(0.4f), m_BoatAni(0)
 {
@@ -150,7 +151,7 @@ void ObjBoat_Tank::Draw()
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
 	//ボート表示
-	Draw::Draw2D(72, m_gx + ground2->GetScroll(), m_gy, 1, 1);
+	Draw::Draw2D(73, m_gx + ground2->GetScroll(), m_gy, 1, 1);
 
 	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)

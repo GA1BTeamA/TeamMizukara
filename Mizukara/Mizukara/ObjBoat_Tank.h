@@ -37,7 +37,7 @@ private:
 
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaterSize_x;//水のサイズ
-	float m_WaterSize_y;
+	static const float m_WaterSize_y;
 	float m_WaveSize_y;
 
 	int m_BoatAni;//ボートアニメーション用

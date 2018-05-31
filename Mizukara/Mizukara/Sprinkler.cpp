@@ -283,7 +283,7 @@ void CSPRI::Draw()
 						}
 						else
 						{
-							Draw::Draw2D(71, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 						}
 
 						if (m_ani_time4 >= 460)
