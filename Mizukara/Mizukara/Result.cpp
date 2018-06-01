@@ -52,6 +52,7 @@ void CResult::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = TITLE;
 				TaskSystem::TaskClear();
 				g_key_flag = false;
@@ -69,6 +70,7 @@ void CResult::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = STAGESELECTO;
 				TaskSystem::TaskClear();
 				g_key_flag = false;

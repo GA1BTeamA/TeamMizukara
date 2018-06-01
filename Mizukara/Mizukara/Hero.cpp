@@ -707,7 +707,6 @@ void CHero::Action()
 				//メニューオブジェクトを破棄
 				else
 				{
-
 					//オブジェクト取得
 					CMenu* menu = (CMenu*)TaskSystem::GetObj(MENU);
 					if (menu != nullptr)

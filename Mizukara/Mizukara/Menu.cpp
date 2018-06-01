@@ -52,6 +52,7 @@ void CMenu::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				//ヒーローオブジェクト情報取得
 				CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 				if (hero != nullptr)
@@ -73,6 +74,7 @@ void CMenu::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = TITLE;
 				g_clearlist = true;
 				g_key_flag = false;
@@ -90,6 +92,7 @@ void CMenu::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				g_clearlist = true;
 				g_key_flag = false;

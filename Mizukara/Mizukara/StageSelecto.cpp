@@ -80,6 +80,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				is_delete = true;
 				g_key_flag = false;
@@ -97,6 +98,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME2;
 				is_delete = true;
 				g_key_flag = false;
@@ -114,6 +116,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME3;
 				is_delete = true;
 				g_key_flag = false;
@@ -131,6 +134,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				is_delete = true;
 				g_key_flag = false;
@@ -148,6 +152,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				is_delete = true;
 				g_key_flag = false;
