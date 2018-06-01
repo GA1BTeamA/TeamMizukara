@@ -9,22 +9,36 @@
 extern int g_SceneNumber;
 
 const float ObjBoat_Tank::m_WaveSize_x = 3.25f;
-const float ObjBoat_Tank::m_WaterSize_x = 9.45f;
-const float ObjBoat_Tank::m_WaterSize_y = 3.88f;
+const float ObjBoat_Tank::m_WaterSize_x = 9.47f;
+const float ObjBoat_Tank::m_WaterSize_y = 3.90f;
 
 ObjBoat_Tank::ObjBoat_Tank()
-	:m_x(676), m_y(150), m_gx(275), m_gy(330), m_wave_x(274), m_wave_y(400),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(1.0f)
-	, m_water_x(276), m_water_y(409), m_moveY(162),
+	:m_x(276), m_y(400), m_gx(275), m_gy(330), m_wave_x(275), m_wave_y(410),m_move_x(0.0f),
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_WaveSize_y(1.5f)
+	, m_water_x(275), m_water_y(409), m_moveY(162),
 	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
 	, m_bucket_remaining(0.4f), m_BoatAni(0)
 {
 	//ヒットラインの作成(左)
-	m_hit_line_BoatTank = Collision::HitLineInsert(this);
-	m_hit_line_BoatTank->SetPos1(m_x, m_y);
-	m_hit_line_BoatTank->SetPos2(m_x, m_y + 100);
-	m_hit_line_BoatTank->SetElement(2);		//属性を2にする
-	m_hit_line_BoatTank->SetInvisible(false);	//無敵モード無効
+	m_hit_line_BoatTank[0] = Collision::HitLineInsert(this);
+	m_hit_line_BoatTank[0]->SetPos1(m_x, m_y);
+	m_hit_line_BoatTank[0]->SetPos2(m_x, m_y + 100);
+	m_hit_line_BoatTank[0]->SetElement(2);		//属性を2にする
+	m_hit_line_BoatTank[0]->SetInvisible(false);	//無敵モード無効
+
+	//ボートの前方ヒットライン
+	m_hit_line_BoatTank[1] = Collision::HitLineInsert(this);
+	m_hit_line_BoatTank[1]->SetPos1(m_x+113, m_y);
+	m_hit_line_BoatTank[1]->SetPos2(m_x+113, m_y + 100);
+	m_hit_line_BoatTank[1]->SetElement(2);		//属性を2にする
+	m_hit_line_BoatTank[1]->SetInvisible(false);	//無敵モード無効
+
+	//ボートの後方ヒットライン												//ボートの前方ヒットライン
+	m_hit_line_BoatTank[2] = Collision::HitLineInsert(this);
+	m_hit_line_BoatTank[2]->SetPos1(m_x, m_y);
+	m_hit_line_BoatTank[2]->SetPos2(m_x, m_y + 100);
+	m_hit_line_BoatTank[2]->SetElement(2);		//属性を2にする
+	m_hit_line_BoatTank[2]->SetInvisible(false);	//無敵モード無効
 }
 
 ObjBoat_Tank::~ObjBoat_Tank()
@@ -41,10 +55,10 @@ void ObjBoat_Tank::Action()
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_hit_line_BoatTank->GetHitData()[i] != nullptr)
+		if (m_hit_line_BoatTank[0]->GetHitData()[i] != nullptr)
 		{
 			//自分の当たり判定の中に主人公の当たり判定があったら
-			if (m_hit_line_BoatTank->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_BoatTank[0]->GetHitData()[i]->GetElement() == 0)
 			{
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
@@ -142,25 +156,35 @@ void ObjBoat_Tank::Action()
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	//当たり判定位置の更新
-	m_hit_line_BoatTank->SetPos1(m_x + ground2->GetScroll(), m_y);
-	m_hit_line_BoatTank->SetPos2(m_x + ground2->GetScroll(), m_y + 100);
+	m_hit_line_BoatTank[0]->SetPos1(m_x + ground2->GetScroll(), m_y);
+	m_hit_line_BoatTank[0]->SetPos2(m_x + ground2->GetScroll(), m_y + 100);
 }
 
 void ObjBoat_Tank::Draw()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
+	Draw::Draw2D(73, m_gx + m_move_x + ground2->GetScroll(), m_gy, 1, 1);
 	//ボート表示
-	Draw::Draw2D(73, m_gx + ground2->GetScroll(), m_gy, 1, 1);
+	/*m_ani_time3++;
+	if (m_ani_time3 = 100)
+	{
+		m_move_x++;
+
+		if (m_move_x = 100)
+		{
+			m_move_x = 160;
+		}
+	}*/
 
 	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_hit_line_BoatTank->GetHitData()[i] != nullptr)
+		if (m_hit_line_BoatTank[0]->GetHitData()[i] != nullptr)
 		{
-			if (m_hit_line_BoatTank->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_BoatTank[0]->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(70, m_x - 10 + ground2->GetScroll(), m_y - 130);
+				Draw::Draw2D(70, m_x - 15 + ground2->GetScroll(), m_y - 150);
 			}
 		}
 	}

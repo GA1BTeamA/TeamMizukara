@@ -29,5 +29,7 @@ private:
 
 	float m_RopeSizeScaffold;
 
+	float m_scroll;
+
 	HitLine* m_hit_line_Boat[4];//“–‚½‚è”»’è
 };
