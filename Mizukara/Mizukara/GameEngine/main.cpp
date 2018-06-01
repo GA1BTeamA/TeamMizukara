@@ -162,7 +162,9 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(75, L"Images\\RedT.png");//75番目に"RedT.png"を読み込み
 	Draw::LoadImage(76, L"Images\\RedW.png");//76番目に"RedW.png"を読み込み
 	Draw::LoadImage(77, L"Images\\Baketu.png");//77番目に"Baketu.png"を読み込み
-
+	Draw::LoadImage(78, L"Images\\Stage2B.png");//78番目Stage2B.pngを読み込み
+	Draw::LoadImage(79, L"Images\\Stage3B.png");//79番目Stage3B.pngを読み込み
+	Draw::LoadImage(80, L"Images\\Gimmick2pulleyshort.png");//80番目Gimmick2pulleyshort.pngを読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -353,9 +355,14 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME2:
+			background = new CBackground();
+			background->m_ActionPriority = 10;
+			background->m_DrawPriority = 10;
+			TaskSystem::InsertObj(background);
+
 			ground2 = new ObjGround2();
 			ground2->m_ActionPriority = 90;
-			ground2->m_DrawPriority = 80;
+			ground2->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground2);
 
 			boat = new ObjBoat();
@@ -375,7 +382,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			tank2 = new CTank2();
 			tank2->m_ActionPriority = 80;
-			tank2->m_DrawPriority = 90;
+			tank2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(tank2);
 
 			g_SceneNumber = GAME_MAIN2;
@@ -384,9 +391,14 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME3:
+			background = new CBackground();
+			background->m_ActionPriority = 10;
+			background->m_DrawPriority = 10;
+			TaskSystem::InsertObj(background);
+
 			ground3 = new ObjGround3();
 			ground3->m_ActionPriority = 90;
-			ground3->m_DrawPriority = 80;
+			ground3->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground3);
 
 			hero = new CHero();
@@ -396,7 +408,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			tank3 = new CTank3();
 			tank3->m_ActionPriority = 80;
-			tank3->m_DrawPriority = 90;
+			tank3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(tank3);
 
 			colordoor = new ObjColorDoor();

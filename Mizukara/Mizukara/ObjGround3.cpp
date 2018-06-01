@@ -241,5 +241,6 @@ void ObjGround3::Draw()
 	//ステージ3地面描画
 	Draw::Draw2D(71, m_scroll, 0);
 
+
 	//Draw::Draw2D(58, m_scroll + 90, 319);
 }
