@@ -44,6 +44,8 @@
 #include "..\ObjBoat.h"
 #include "..\ObjBoat_Tank.h"
 #include "..\ObjGround3.h"
+#include "..\ObjDownBlockStage2.h"
+#include "..\ObjDownBlock_TankStage2.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -221,6 +223,8 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjBoat* boat;
 		ObjBoat_Tank* boat_t;
 		ObjGround3* ground3;
+		ObjDownBlockStage2* dwblS2;
+		ObjDownBlock_TankStage2* dwbltS2;
 
 		switch (g_SceneNumber)
 		{
@@ -365,6 +369,17 @@ unsigned __stdcall GameMainSled(void *p)
 			tank->m_ActionPriority = 80;
 			tank->m_DrawPriority = 90;
 			//TaskSystem::InsertObj(tank);
+
+			dwblS2 = new ObjDownBlockStage2();
+			dwblS2->m_ActionPriority = 130;
+			dwblS2->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwblS2);
+
+			dwbltS2 = new ObjDownBlock_TankStage2();
+			dwbltS2->m_ActionPriority = 130;
+			dwbltS2->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwbltS2);
+
 
 			g_SceneNumber = GAME_MAIN2;
 			break;

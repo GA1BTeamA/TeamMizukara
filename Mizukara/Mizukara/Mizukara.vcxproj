@@ -134,7 +134,9 @@
     <ClCompile Include="ObjBoat.cpp" />
     <ClCompile Include="ObjBoat_Tank.cpp" />
     <ClCompile Include="ObjDownBlock.cpp" />
+    <ClCompile Include="ObjDownBlockStage2.cpp" />
     <ClCompile Include="ObjDownBlock_Tank.cpp" />
+    <ClCompile Include="ObjDownBlock_TankStage2.cpp" />
     <ClCompile Include="ObjGround2.cpp" />
     <ClCompile Include="ObjGround3.cpp" />
     <ClCompile Include="ObjMoveBlock.cpp" />
@@ -169,7 +171,9 @@
     <ClInclude Include="ObjBoat.h" />
     <ClInclude Include="ObjBoat_Tank.h" />
     <ClInclude Include="ObjDownBlock.h" />
+    <ClInclude Include="ObjDownBlockStage2.h" />
     <ClInclude Include="ObjDownBlock_Tank.h" />
+    <ClInclude Include="ObjDownBlock_TankStage2.h" />
     <ClInclude Include="ObjGround2.h" />
     <ClInclude Include="ObjGround3.h" />
     <ClInclude Include="ObjMoveBlock.h" />
