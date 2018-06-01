@@ -4,7 +4,8 @@
 
 #include "ObjDownBlock.h"
 #include "ObjGround.h"
-
+#include "ObjGround2.h"
+extern int g_SceneNumber;
 
 
 ObjDownBlock::ObjDownBlock()
@@ -71,7 +72,7 @@ void ObjDownBlock::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//ロープ表示
-	Draw::Draw2D(62, m_gx+24 + ground->GetScroll(), 135, 1, m_RopeSizeScaffold);
+	Draw::Draw2D(62, m_gx + 24 + ground->GetScroll(), 135, 1, m_RopeSizeScaffold);
 	//足場のブロック表示
 	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy + 111);
 }
