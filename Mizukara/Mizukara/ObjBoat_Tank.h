@@ -29,20 +29,23 @@ private:
 	float m_water_x;  //水の位置
 	float m_water_y;
 
+	int m_move_x;//ボートを動かす
+
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
+	int m_ani_time3;  //ボートアニメーション用
 
 	float m_water_remaining;
 	float m_bucket_remaining;
 
 	static const float m_WaveSize_x;  //波のサイズ用
+	float m_WaveSize_y;
 	static const float m_WaterSize_x;//水のサイズ
 	static const float m_WaterSize_y;
-	float m_WaveSize_y;
 
-	int m_BoatAni;//ボートアニメーション用
+	int m_BoatAni;//ボートアニメーション(タンク)用
 
 	float m_RopeSizeBucket;//バケツの方のロープの長さ
 
-	HitLine* m_hit_line_BoatTank;//当たり判定
+	HitLine* m_hit_line_BoatTank[4];//当たり判定
 };

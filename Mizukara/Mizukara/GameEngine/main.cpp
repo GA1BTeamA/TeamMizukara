@@ -89,7 +89,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(4, L"Images\\BoyUp.png");//4番目に"BoyUp.png"を読み込み
 	Draw::LoadImage(5, L"Images\\BoyDown.png");//5番目に"BoyDown.png"を読み込み
 	//Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
-	Draw::LoadImage(9, L"Images\\BoyJump.png");//5番目に"Player6.png"を読み込み
+	Draw::LoadImage(9, L"Images\\BoyJumghp.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
@@ -154,6 +154,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
 	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//71番目に"BoyJumpN.png"を読み込み
 	Draw::LoadImage(73, L"Images\\Hune.png");//72番目に"Hune.png"を読み込み
+	Draw::LoadImage(74, L"Images\\Baketu.png");//72番目に"Hune.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -345,6 +346,16 @@ unsigned __stdcall GameMainSled(void *p)
 			ground2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(ground2);
 
+			boat = new ObjBoat();
+			boat->m_ActionPriority = 50;
+			boat->m_DrawPriority = 160;
+			TaskSystem::InsertObj(boat);
+
+			boat_t = new ObjBoat_Tank();
+			boat_t->m_ActionPriority = 70;
+			boat_t->m_DrawPriority = 160;
+			TaskSystem::InsertObj(boat_t);
+
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
 			hero->m_DrawPriority = 150;
@@ -354,16 +365,6 @@ unsigned __stdcall GameMainSled(void *p)
 			tank->m_ActionPriority = 80;
 			tank->m_DrawPriority = 90;
 			//TaskSystem::InsertObj(tank);
-
-			boat = new ObjBoat();
-			boat->m_ActionPriority = 70;
-			boat->m_DrawPriority = 140;
-			TaskSystem::InsertObj(boat);
-
-			boat_t = new ObjBoat_Tank();
-			boat_t->m_ActionPriority = 70;
-			boat_t->m_DrawPriority = 140;
-			TaskSystem::InsertObj(boat_t);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;
