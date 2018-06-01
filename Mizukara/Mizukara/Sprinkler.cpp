@@ -276,6 +276,7 @@ void CSPRI::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground->GetScroll() - 50 + m_move1, 300, 1, 1);
+						Draw::Draw2D(74, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
 						
 						if (m_sy <=200)
 						{
