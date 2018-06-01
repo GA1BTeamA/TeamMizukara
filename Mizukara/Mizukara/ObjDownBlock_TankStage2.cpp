@@ -2,63 +2,47 @@
 #define _SECURE_SCL (0)
 #define _HAS_ITERATOR_DEBUGGING (0)
 
-#include "ObjBoat_Tank.h"
-#include "ObjBoat.h"
+#include "ObjDownBlock_TankStage2.h"
+#include "ObjDownBlockStage2.h"
 #include "ObjGround2.h"
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjBoat_Tank::m_WaveSize_x = 3.25f;
-const float ObjBoat_Tank::m_WaterSize_x = 9.47f;
-const float ObjBoat_Tank::m_WaterSize_y = 3.90f;
+const float ObjDownBlock_TankStage2::m_WaveSize_x = 0.23f;
 
-ObjBoat_Tank::ObjBoat_Tank()
-	:m_x(276), m_y(400), m_gx(275), m_gy(330), m_wave_x(275), m_wave_y(410),m_move_x(0.0f),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_WaveSize_y(1.5f)
-	, m_water_x(275), m_water_y(409), m_moveY(162),
+ObjDownBlock_TankStage2::ObjDownBlock_TankStage2()
+	:m_x(676), m_y(150), m_gx(691), m_gy(135), m_wave_x(692), m_wave_y(253),
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(0.3f)
+	, m_water_x(692), m_water_y(259), m_moveY(162),
 	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
-	, m_bucket_remaining(0.4f), m_BoatAni(0)
+	, m_bucket_remaining(0.4f), m_PulleyAni(0)
 {
 	//ヒットラインの作成(左)
-	m_hit_line_BoatTank[0] = Collision::HitLineInsert(this);
-	m_hit_line_BoatTank[0]->SetPos1(m_x, m_y);
-	m_hit_line_BoatTank[0]->SetPos2(m_x, m_y + 100);
-	m_hit_line_BoatTank[0]->SetElement(2);		//属性を2にする
-	m_hit_line_BoatTank[0]->SetInvisible(false);	//無敵モード無効
-
-	//ボートの前方ヒットライン
-	m_hit_line_BoatTank[1] = Collision::HitLineInsert(this);
-	m_hit_line_BoatTank[1]->SetPos1(m_x+113, m_y);
-	m_hit_line_BoatTank[1]->SetPos2(m_x+113, m_y + 100);
-	m_hit_line_BoatTank[1]->SetElement(2);		//属性を2にする
-	m_hit_line_BoatTank[1]->SetInvisible(false);	//無敵モード無効
-
-	//ボートの後方ヒットライン												//ボートの前方ヒットライン
-	m_hit_line_BoatTank[2] = Collision::HitLineInsert(this);
-	m_hit_line_BoatTank[2]->SetPos1(m_x, m_y);
-	m_hit_line_BoatTank[2]->SetPos2(m_x, m_y + 100);
-	m_hit_line_BoatTank[2]->SetElement(2);		//属性を2にする
-	m_hit_line_BoatTank[2]->SetInvisible(false);	//無敵モード無効
+	m_hit_line_DwBlS2Tank = Collision::HitLineInsert(this);
+	m_hit_line_DwBlS2Tank->SetPos1(m_x, m_y);
+	m_hit_line_DwBlS2Tank->SetPos2(m_x, m_y + 100);
+	m_hit_line_DwBlS2Tank->SetElement(2);		//属性を2にする
+	m_hit_line_DwBlS2Tank->SetInvisible(false);	//無敵モード無効
 }
 
-ObjBoat_Tank::~ObjBoat_Tank()
+ObjDownBlock_TankStage2::~ObjDownBlock_TankStage2()
 {
 
 }
 
-void ObjBoat_Tank::Action()
+void ObjDownBlock_TankStage2::Action()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
-	if (m_BoatAni > 8) m_BoatAni = 0;
+	if (m_PulleyAni > 8) m_PulleyAni = 0;
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_hit_line_BoatTank[0]->GetHitData()[i] != nullptr)
+		if (m_hit_line_DwBlS2Tank->GetHitData()[i] != nullptr)
 		{
 			//自分の当たり判定の中に主人公の当たり判定があったら
-			if (m_hit_line_BoatTank[0]->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_DwBlS2Tank->GetHitData()[i]->GetElement() == 0)
 			{
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
@@ -71,15 +55,15 @@ void ObjBoat_Tank::Action()
 						//残量がなかったら汲めない
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
-							ObjBoat* bt = (ObjBoat*)TaskSystem::GetObj(BOAT);
+							ObjDownBlockStage2* db = (ObjDownBlockStage2*)TaskSystem::GetObj(DOWNBLOCKSTAGE2);
 
 							m_gy -= 0.5f;  //バケツ移動
 							m_RopeSizeBucket -= 0.0015f;  //バケツ側ロープ長さ変更
 
-						//	bt->AddY(0.5f);  //足場ブロック移動
-							bt->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
+							db->AddY(0.5f);  //足場ブロック移動
+							db->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
 
-					//		bt->SetY(0.5f);  //足場当たり判定移動
+							db->SetY(0.5f);  //足場当たり判定移動
 
 							m_bucket_remaining -= 0.006f;  //水減らす
 														   //波の位置
@@ -98,7 +82,7 @@ void ObjBoat_Tank::Action()
 							//（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
 
-							m_BoatAni++;
+							m_PulleyAni++;
 
 						}
 					}
@@ -114,16 +98,16 @@ void ObjBoat_Tank::Action()
 						//満タンだったら入れれない
 						if (m_water_remaining < 6.0f) {
 							//足場オブジェクト取得
-							ObjBoat* bt = (ObjBoat*)TaskSystem::GetObj(BOAT);
+							ObjDownBlockStage2* db = (ObjDownBlockStage2*)TaskSystem::GetObj(DOWNBLOCKSTAGE2);
 							//m_moveY += 0.2f;
 							//db->AddY(-0.2f);
 							m_gy += 0.5f;  //バケツ移動
 							m_RopeSizeBucket += 0.0015f;  //バケツ側ロープ長さ変更
 
-							//bt->AddY(-0.5f);  //足場ブロック移動
-							bt->SetRopeSizeScaffold(-0.002f);  //足場ロープ長さ変更
+							db->AddY(-0.5f);  //足場ブロック移動
+							db->SetRopeSizeScaffold(-0.002f);  //足場ロープ長さ変更
 
-						//	db->SetY(-0.5f);  //足場当たり判定移動
+							db->SetY(-0.5f);  //足場当たり判定移動
 
 							m_bucket_remaining += 0.006f;  //水減らす
 														   //波の位置
@@ -142,7 +126,7 @@ void ObjBoat_Tank::Action()
 							//（バケツ満タン/75フレーム）
 							m_water_remaining += 0.02666;
 
-							m_BoatAni++;
+							m_PulleyAni++;
 
 						}
 					}
@@ -156,41 +140,28 @@ void ObjBoat_Tank::Action()
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	//当たり判定位置の更新
-	m_hit_line_BoatTank[0]->SetPos1(m_x + ground2->GetScroll(), m_y);
-	m_hit_line_BoatTank[0]->SetPos2(m_x + ground2->GetScroll(), m_y + 100);
+	m_hit_line_DwBlS2Tank->SetPos1(m_x + ground2->GetScroll(), m_y);
+	m_hit_line_DwBlS2Tank->SetPos2(m_x + ground2->GetScroll(), m_y + 100);
 }
 
-void ObjBoat_Tank::Draw()
+void ObjDownBlock_TankStage2::Draw()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
-
-	Draw::Draw2D(73, m_gx + m_move_x + ground2->GetScroll(), m_gy, 1, 1);
-	//ボート表示
-	/*m_ani_time3++;
-	if (m_ani_time3 = 100)
-	{
-		m_move_x++;
-
-		if (m_move_x = 100)
-		{
-			m_move_x = 160;
-		}
-	}*/
 
 	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
-		if (m_hit_line_BoatTank[0]->GetHitData()[i] != nullptr)
+		if (m_hit_line_DwBlS2Tank->GetHitData()[i] != nullptr)
 		{
-			if (m_hit_line_BoatTank[0]->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_DwBlS2Tank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(70, m_x - 15 + ground2->GetScroll(), m_y - 150);
+				Draw::Draw2D(70, m_x - 10 + ground2->GetScroll(), m_y - 130);
 			}
 		}
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, m_WaterSize_x, m_WaterSize_y);
+	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 0.7, m_bucket_remaining);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -306,6 +277,15 @@ void ObjBoat_Tank::Draw()
 
 	//Draw::Draw2D(21, a, m_y);
 
-	
-	
+	//ロープ表示
+	Draw::Draw2D(62, m_gx + 280 + ground2->GetScroll(), 135, 1, m_RopeSizeBucket);
+	//バケツ表示
+	Draw::Draw2D(56, m_gx + 180 + ground2->GetScroll(), m_gy + 100, 1, 1);
+	//横ロープ表示
+	Draw::Draw2D(59, m_gx + 190 + ground2->GetScroll(), 85, 1, 1);
+	//滑車表示
+	if (m_PulleyAni <= 4)
+		Draw::Draw2D(57, m_gx + 180 + ground2->GetScroll(), 80, 1, 1);
+	else
+		Draw::Draw2D(57, m_gx + 180 + ground2->GetScroll(), 80, -1, 1);
 }

@@ -44,6 +44,12 @@
 #include "..\ObjBoat.h"
 #include "..\ObjBoat_Tank.h"
 #include "..\ObjGround3.h"
+#include "..\ObjColorDoor.h"
+#include "..\ObjColorDoor_Tank.h"
+#include "..\Tank2.h"
+#include "..\Tank3.h"
+#include "..\ObjDownBlockStage2.h"
+#include "..\ObjDownBlock_TankStage2.h"
 #include "..\ObjScale.h"
 
 //削除されていないメモリを出力にダンプする---
@@ -90,7 +96,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(4, L"Images\\BoyUp.png");//4番目に"BoyUp.png"を読み込み
 	Draw::LoadImage(5, L"Images\\BoyDown.png");//5番目に"BoyDown.png"を読み込み
 	//Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
-	Draw::LoadImage(9, L"Images\\BoyJump.png");//5番目に"Player6.png"を読み込み
+	Draw::LoadImage(9, L"Images\\BoyJumghp.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
@@ -152,6 +158,16 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(68, L"Images\\SHimawari.png");//68番目SHimawari.pngを読み込み
 	Draw::LoadImage(69, L"Images\\Stage2.png");//69番目Stage2.pngを読み込み
 	Draw::LoadImage(70, L"Images\\icon3.png");//70番目に"icon3.pngを読み込み
+	Draw::LoadImage(71, L"Images\\Stage3.png");//71番目Stage3.pngを読み込み
+	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//72番目に"BoyJumpN.png"を読み込み
+	Draw::LoadImage(73, L"Images\\Hune.png");//73番目に"Hune.png"を読み込み
+	Draw::LoadImage(74, L"Images\\RedM.png");//74番目に"RedM.png"を読み込み
+	Draw::LoadImage(75, L"Images\\RedT.png");//75番目に"RedT.png"を読み込み
+	Draw::LoadImage(76, L"Images\\RedW.png");//76番目に"RedW.png"を読み込み
+	Draw::LoadImage(77, L"Images\\Baketu.png");//77番目に"Baketu.png"を読み込み
+	Draw::LoadImage(78, L"Images\\Stage2B.png");//78番目Stage2B.pngを読み込み
+	Draw::LoadImage(79, L"Images\\Stage3B.png");//79番目Stage3B.pngを読み込み
+	Draw::LoadImage(80, L"Images\\Gimmick2pulleyshort.png");//80番目Gimmick2pulleyshort.pngを読み込み
 	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
 	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//71番目に"BoyJumpN.png"を読み込み
 	Draw::LoadImage(73, L"Images\\Hune.png");//72番目に"Hune.png"を読み込み
@@ -167,7 +183,7 @@ unsigned __stdcall MusicLoadSled(void *p)
 {
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
-
+	Audio::LoadSEMusic(0, "Sounds\\splash.ogg");
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -222,6 +238,12 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjBoat* boat;
 		ObjBoat_Tank* boat_t;
 		ObjGround3* ground3;
+		ObjColorDoor* colordoor;
+		ObjColorDoor_Tank* colordoort;
+		CTank2* tank2;
+		CTank3* tank3;
+		ObjDownBlockStage2* dwblS2;
+		ObjDownBlock_TankStage2* dwbltS2;
 		ObjScale* scale;
 
 		switch (g_SceneNumber)
@@ -343,30 +365,46 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME2:
+			background = new CBackground();
+			background->m_ActionPriority = 10;
+			background->m_DrawPriority = 10;
+			TaskSystem::InsertObj(background);
+
 			ground2 = new ObjGround2();
 			ground2->m_ActionPriority = 90;
-			ground2->m_DrawPriority = 80;
+			ground2->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground2);
+
+			boat = new ObjBoat();
+			boat->m_ActionPriority = 50;
+			boat->m_DrawPriority = 160;
+			TaskSystem::InsertObj(boat);
+
+			boat_t = new ObjBoat_Tank();
+			boat_t->m_ActionPriority = 70;
+			boat_t->m_DrawPriority = 160;
+			TaskSystem::InsertObj(boat_t);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
 			hero->m_DrawPriority = 150;
 			TaskSystem::InsertObj(hero);
 
-			tank = new CTank();
-			tank->m_ActionPriority = 80;
-			tank->m_DrawPriority = 90;
-			//TaskSystem::InsertObj(tank);
+			tank2 = new CTank2();
+			tank2->m_ActionPriority = 80;
+			tank2->m_DrawPriority = 80;
+			TaskSystem::InsertObj(tank2);
 
-			boat = new ObjBoat();
-			boat->m_ActionPriority = 70;
-			boat->m_DrawPriority = 140;
-			TaskSystem::InsertObj(boat);
+			dwblS2 = new ObjDownBlockStage2();
+			dwblS2->m_ActionPriority = 130;
+			dwblS2->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwblS2);
 
-			boat_t = new ObjBoat_Tank();
-			boat_t->m_ActionPriority = 70;
-			boat_t->m_DrawPriority = 140;
-			TaskSystem::InsertObj(boat_t);
+			dwbltS2 = new ObjDownBlock_TankStage2();
+			dwbltS2->m_ActionPriority = 130;
+			dwbltS2->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwbltS2);
+
 
 			scale = new ObjScale();
 			scale->m_ActionPriority = 90;
@@ -379,9 +417,14 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME3:
+			background = new CBackground();
+			background->m_ActionPriority = 10;
+			background->m_DrawPriority = 10;
+			TaskSystem::InsertObj(background);
+
 			ground3 = new ObjGround3();
 			ground3->m_ActionPriority = 90;
-			ground3->m_DrawPriority = 80;
+			ground3->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground3);
 
 			hero = new CHero();
@@ -389,10 +432,20 @@ unsigned __stdcall GameMainSled(void *p)
 			hero->m_DrawPriority = 150;
 			TaskSystem::InsertObj(hero);
 
-			tank = new CTank();
-			tank->m_ActionPriority = 80;
-			tank->m_DrawPriority = 90;
-			//TaskSystem::InsertObj(tank);
+			tank3 = new CTank3();
+			tank3->m_ActionPriority = 80;
+			tank3->m_DrawPriority = 80;
+			TaskSystem::InsertObj(tank3);
+
+			colordoor = new ObjColorDoor();
+			colordoor->m_ActionPriority = 100;
+			colordoor->m_DrawPriority = 100;
+			TaskSystem::InsertObj(colordoor);
+
+			colordoort = new ObjColorDoor_Tank();
+			colordoort->m_ActionPriority = 110;
+			colordoort->m_DrawPriority = 110;
+			TaskSystem::InsertObj(colordoort);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;
@@ -442,7 +495,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	CWindowCreate::NewWindow(800, 600, name, hInstance);//ウィンドウ作成
 	CDeviceCreate::InitDevice(CWindowCreate::GethWnd(), 800, 600);//DirectX Deviceの初期化
 	//CDeviceCreate::Init3DEnviroment();//3D環境構築
-	//Audio::InitAudio();//オーディオ作成
+	Audio::InitAudio();//オーディオ作成
 	Input::InitInput();//入力用のクラス初期化
 	Draw::InitPolygonRender();//ポリゴン表示環境の初期化
 	TaskSystem::InitTaskSystem();//タスクシステム初期化
@@ -457,7 +510,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	CloseHandle(handoru[1]);//ハンドル[1]を閉じる
 
 	//Audio::StartLoopMusic();//バックミュージックスタート
-
 
 	//デバッグ用オブジェクト作成
 	SceneMain* scenemain = new SceneMain();
@@ -488,7 +540,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	Draw::DeletePolygonRender();//ポリゴン表示環境の破棄
 	//CDeviceCreate::Delete3DEnviroment();//3D環境破棄
 	CDeviceCreate::ShutDown();//DirectXの環境破棄
-	//Audio::DeleteAudio();//オーディオ環境の破棄
+	Audio::DeleteAudio();//オーディオ環境の破棄
 
 	CoUninitialize();
 	//この時点で開放されていないメモリの情報の表示

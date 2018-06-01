@@ -4,6 +4,7 @@
 
 #include "BucketMeter.h"
 #include "ObjGround.h"
+#include "ObjGround2.h"
 #include "Sprinkler.h"
 extern int g_SceneNumber;
 extern bool g_key_flag;

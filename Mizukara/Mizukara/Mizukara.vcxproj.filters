@@ -43,6 +43,18 @@
     <Filter Include="ヘッダー ファイル\ギミック5（天秤）">
       <UniqueIdentifier>{19c8b315-3f28-4603-a680-7b1310936d74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック8">
+      <UniqueIdentifier>{74aa48f5-a269-46c7-a614-b645f4b57fa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ギミック8（色付き門）">
+      <UniqueIdentifier>{db68bfcd-9dec-421f-9c73-7c8d11ce9288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック6%28下がるブロック%29">
+      <UniqueIdentifier>{f1108e96-d34c-418c-aab1-8af0f717c861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ギミック6%28下がるブロック%29">
+      <UniqueIdentifier>{ec3eaf57-4d1f-46bf-ae71-07d6fc2403a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Collision.cpp">
@@ -141,6 +153,24 @@
     <ClCompile Include="ObjGround3.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjColorDoor.cpp">
+      <Filter>ソース ファイル\ギミック8（色付き門）</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjColorDoor_Tank.cpp">
+      <Filter>ソース ファイル\ギミック8（色付き門）</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank2.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDownBlock_TankStage2.cpp">
+      <Filter>ソース ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDownBlockStage2.cpp">
+      <Filter>ソース ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClCompile>
     <ClCompile Include="ObjScale.cpp">
       <Filter>ソース ファイル\ギミック5（天秤）</Filter>
     </ClCompile>
@@ -238,6 +268,24 @@
     </ClInclude>
     <ClInclude Include="ObjGround3.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjColorDoor.h">
+      <Filter>ヘッダー ファイル\ギミック8</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjColorDoor_Tank.h">
+      <Filter>ヘッダー ファイル\ギミック8</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDownBlock_TankStage2.h">
+      <Filter>ヘッダー ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDownBlockStage2.h">
+      <Filter>ヘッダー ファイル\ギミック6%28下がるブロック%29</Filter>
     </ClInclude>
     <ClInclude Include="ObjScale.h">
       <Filter>ヘッダー ファイル\ギミック5（天秤）</Filter>
