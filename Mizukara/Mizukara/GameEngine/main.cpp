@@ -166,7 +166,7 @@ unsigned __stdcall MusicLoadSled(void *p)
 {
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
-
+	Audio::LoadSEMusic(0, "Sounds\\splash.ogg");
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -435,7 +435,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	CWindowCreate::NewWindow(800, 600, name, hInstance);//ウィンドウ作成
 	CDeviceCreate::InitDevice(CWindowCreate::GethWnd(), 800, 600);//DirectX Deviceの初期化
 	//CDeviceCreate::Init3DEnviroment();//3D環境構築
-	//Audio::InitAudio();//オーディオ作成
+	Audio::InitAudio();//オーディオ作成
 	Input::InitInput();//入力用のクラス初期化
 	Draw::InitPolygonRender();//ポリゴン表示環境の初期化
 	TaskSystem::InitTaskSystem();//タスクシステム初期化
@@ -450,7 +450,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	CloseHandle(handoru[1]);//ハンドル[1]を閉じる
 
 	//Audio::StartLoopMusic();//バックミュージックスタート
-
 
 	//デバッグ用オブジェクト作成
 	SceneMain* scenemain = new SceneMain();
@@ -481,7 +480,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	Draw::DeletePolygonRender();//ポリゴン表示環境の破棄
 	//CDeviceCreate::Delete3DEnviroment();//3D環境破棄
 	CDeviceCreate::ShutDown();//DirectXの環境破棄
-	//Audio::DeleteAudio();//オーディオ環境の破棄
+	Audio::DeleteAudio();//オーディオ環境の破棄
 
 	CoUninitialize();
 	//この時点で開放されていないメモリの情報の表示
