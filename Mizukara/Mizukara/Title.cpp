@@ -49,6 +49,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = STORY;
 				is_delete = true;
 				g_key_flag = false;
@@ -66,6 +67,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = STAGESELECTO;
 				is_delete = true;
 				g_key_flag = false;
@@ -89,6 +91,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				m_IsDrawOpe = !(m_IsDrawOpe);
 				g_key_flag = false;
 			}
