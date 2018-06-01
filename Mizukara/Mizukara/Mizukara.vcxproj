@@ -133,6 +133,8 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="ObjBoat.cpp" />
     <ClCompile Include="ObjBoat_Tank.cpp" />
+    <ClCompile Include="ObjColorDoor.cpp" />
+    <ClCompile Include="ObjColorDoor_Tank.cpp" />
     <ClCompile Include="ObjDownBlock.cpp" />
     <ClCompile Include="ObjDownBlock_Tank.cpp" />
     <ClCompile Include="ObjGround2.cpp" />
@@ -145,6 +147,8 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Sprinkler.cpp" />
     <ClCompile Include="StageSelecto.cpp" />
+    <ClCompile Include="Tank2.cpp" />
+    <ClCompile Include="Tank3.cpp" />
     <ClCompile Include="WTM.cpp" />
     <ClCompile Include="ObjGround.cpp" />
     <ClCompile Include="SceneMain.cpp">
@@ -168,6 +172,8 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="ObjBoat.h" />
     <ClInclude Include="ObjBoat_Tank.h" />
+    <ClInclude Include="ObjColorDoor.h" />
+    <ClInclude Include="ObjColorDoor_Tank.h" />
     <ClInclude Include="ObjDownBlock.h" />
     <ClInclude Include="ObjDownBlock_Tank.h" />
     <ClInclude Include="ObjGround2.h" />
@@ -180,6 +186,8 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="Sprinkler.h" />
     <ClInclude Include="StageSelecto.h" />
+    <ClInclude Include="Tank2.h" />
+    <ClInclude Include="Tank3.h" />
     <ClInclude Include="WTM.h" />
     <ClInclude Include="ObjGround.h" />
     <ClInclude Include="SceneMain.h">

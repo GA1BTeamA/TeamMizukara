@@ -44,6 +44,10 @@
 #include "..\ObjBoat.h"
 #include "..\ObjBoat_Tank.h"
 #include "..\ObjGround3.h"
+#include "..\ObjColorDoor.h"
+#include "..\ObjColorDoor_Tank.h"
+#include "..\Tank2.h"
+#include "..\Tank3.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -151,9 +155,13 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(68, L"Images\\SHimawari.png");//68番目SHimawari.pngを読み込み
 	Draw::LoadImage(69, L"Images\\Stage2.png");//69番目Stage2.pngを読み込み
 	Draw::LoadImage(70, L"Images\\icon3.png");//70番目に"icon3.pngを読み込み
-	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
-	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//71番目に"BoyJumpN.png"を読み込み
-	Draw::LoadImage(73, L"Images\\Hune.png");//72番目に"Hune.png"を読み込み
+	Draw::LoadImage(71, L"Images\\Stage3.png");//71番目Stage3.pngを読み込み
+	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//72番目に"BoyJumpN.png"を読み込み
+	Draw::LoadImage(73, L"Images\\Hune.png");//73番目に"Hune.png"を読み込み
+	Draw::LoadImage(74, L"Images\\RedM.png");//74番目に"RedM.png"を読み込み
+	Draw::LoadImage(75, L"Images\\RedT.png");//75番目に"RedT.png"を読み込み
+	Draw::LoadImage(76, L"Images\\RedW.png");//76番目に"RedW.png"を読み込み
+
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -220,6 +228,10 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjBoat* boat;
 		ObjBoat_Tank* boat_t;
 		ObjGround3* ground3;
+		ObjColorDoor* colordoor;
+		ObjColorDoor_Tank* colordoort;
+		CTank2* tank2;
+		CTank3* tank3;
 
 		switch (g_SceneNumber)
 		{
@@ -350,10 +362,10 @@ unsigned __stdcall GameMainSled(void *p)
 			hero->m_DrawPriority = 150;
 			TaskSystem::InsertObj(hero);
 
-			tank = new CTank();
-			tank->m_ActionPriority = 80;
-			tank->m_DrawPriority = 90;
-			//TaskSystem::InsertObj(tank);
+			tank2 = new CTank2();
+			tank2->m_ActionPriority = 80;
+			tank2->m_DrawPriority = 90;
+			TaskSystem::InsertObj(tank2);
 
 			boat = new ObjBoat();
 			boat->m_ActionPriority = 70;
@@ -381,10 +393,20 @@ unsigned __stdcall GameMainSled(void *p)
 			hero->m_DrawPriority = 150;
 			TaskSystem::InsertObj(hero);
 
-			tank = new CTank();
-			tank->m_ActionPriority = 80;
-			tank->m_DrawPriority = 90;
-			//TaskSystem::InsertObj(tank);
+			tank3 = new CTank3();
+			tank3->m_ActionPriority = 80;
+			tank3->m_DrawPriority = 90;
+			TaskSystem::InsertObj(tank3);
+
+			colordoor = new ObjColorDoor();
+			colordoor->m_ActionPriority = 100;
+			colordoor->m_DrawPriority = 100;
+			TaskSystem::InsertObj(colordoor);
+
+			colordoort = new ObjColorDoor_Tank();
+			colordoort->m_ActionPriority = 110;
+			colordoort->m_DrawPriority = 110;
+			TaskSystem::InsertObj(colordoort);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;
