@@ -139,6 +139,7 @@
     <ClCompile Include="ObjGround3.cpp" />
     <ClCompile Include="ObjMoveBlock.cpp" />
     <ClCompile Include="ObjMoveBlock_Tank.cpp" />
+    <ClCompile Include="ObjScale.cpp" />
     <ClCompile Include="ObjStory.cpp" />
     <ClCompile Include="ObjUpScaffold.cpp" />
     <ClCompile Include="ObjUpScaffold_Tank.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="ObjGround3.h" />
     <ClInclude Include="ObjMoveBlock.h" />
     <ClInclude Include="ObjMoveBlock_Tank.h" />
+    <ClInclude Include="ObjScale.h" />
     <ClInclude Include="ObjStory.h" />
     <ClInclude Include="ObjUpScaffold.h" />
     <ClInclude Include="ObjUpScaffold_Tank.h" />

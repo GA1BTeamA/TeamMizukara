@@ -44,6 +44,7 @@
 #include "..\ObjBoat.h"
 #include "..\ObjBoat_Tank.h"
 #include "..\ObjGround3.h"
+#include "..\ObjScale.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -154,6 +155,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
 	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//71番目に"BoyJumpN.png"を読み込み
 	Draw::LoadImage(73, L"Images\\Hune.png");//72番目に"Hune.png"を読み込み
+	Draw::LoadImage(74, L"Images\\kaitendai.png");//74番目に"kaitendai.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -220,6 +222,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjBoat* boat;
 		ObjBoat_Tank* boat_t;
 		ObjGround3* ground3;
+		ObjScale* scale;
 
 		switch (g_SceneNumber)
 		{
@@ -364,6 +367,11 @@ unsigned __stdcall GameMainSled(void *p)
 			boat_t->m_ActionPriority = 70;
 			boat_t->m_DrawPriority = 140;
 			TaskSystem::InsertObj(boat_t);
+
+			scale = new ObjScale();
+			scale->m_ActionPriority = 90;
+			scale->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;

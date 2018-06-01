@@ -37,6 +37,12 @@
     <Filter Include="ヘッダー ファイル\ギミック4（ボート）">
       <UniqueIdentifier>{bb98a2c3-010c-447f-a987-507342bdc07b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ギミック5（天秤）">
+      <UniqueIdentifier>{fffe33b1-5b46-4358-95b8-f5e5f385ba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック5（天秤）">
+      <UniqueIdentifier>{19c8b315-3f28-4603-a680-7b1310936d74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Collision.cpp">
@@ -135,6 +141,9 @@
     <ClCompile Include="ObjGround3.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjScale.cpp">
+      <Filter>ソース ファイル\ギミック5（天秤）</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -229,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="ObjGround3.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjScale.h">
+      <Filter>ヘッダー ファイル\ギミック5（天秤）</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

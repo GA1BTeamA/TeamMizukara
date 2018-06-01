@@ -287,10 +287,10 @@ void CHero::Action()
 
 								//主人公から交点までのベクトルの中から一番短いものを見つける
 								//水平ベクトルならｘ無視
-								if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
-								{
-									Cross_x_min = Cross_x;
-								}
+								//if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+								//{
+								//	Cross_x_min = Cross_x;
+								//}
 								//垂直ベクトルならｙ無視
 								if (Cross_y <= 0 && Cross_y_min > abs(Cross_y) && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
 								{
@@ -317,10 +317,10 @@ void CHero::Action()
 
 								//主人公から交点までのベクトルの中から一番短いものを見つける
 								//水平ベクトルならｘ無視
-								if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
-								{
-									Cross_x_min = Cross_x;
-								}
+								//if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+								//{
+								//	Cross_x_min = Cross_x;
+								//}
 								//垂直ベクトルならｙ無視
 								if (Cross_y <= 0 && Cross_y_min > abs(Cross_y) && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
 								{
@@ -328,7 +328,15 @@ void CHero::Action()
 								}
 							}
 						}
-
+						//左と右の当たり判定にあたってなくて下に当たったら端の上に立たせる
+						else if(Cross_y_min==9999.0f &&
+							m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER){
+							if(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y)
+								Move_y = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y-(m_copy_y+ m_point_position[2].y);
+							else
+								Move_y = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y - (m_copy_y + m_point_position[2].y);
+							IsHitGround = true;
+						}
 					}
 
 					//初期化
@@ -420,7 +428,8 @@ void CHero::Action()
 
 										//主人公から交点までのベクトルの中から一番短いものを見つける
 										//水平ベクトルならｘ無視
-										if (Cross_x_min > Cross_x && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90)
+										if (Cross_x_min > Cross_x && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 0 ||
+																	 (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180)
 										{
 											Cross_x_min = Cross_x;
 										}
