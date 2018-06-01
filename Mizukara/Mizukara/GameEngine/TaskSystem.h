@@ -55,6 +55,7 @@ enum {
 	BOAT,
 	GROUND3,
 	COLORDOOR,
+	DOWNBLOCKSTAGE2,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO

@@ -43,6 +43,12 @@
     <Filter Include="ソース ファイル\ギミック8（色付き門）">
       <UniqueIdentifier>{db68bfcd-9dec-421f-9c73-7c8d11ce9288}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック6%28下がるブロック%29">
+      <UniqueIdentifier>{f1108e96-d34c-418c-aab1-8af0f717c861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ギミック6%28下がるブロック%29">
+      <UniqueIdentifier>{ec3eaf57-4d1f-46bf-ae71-07d6fc2403a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Collision.cpp">
@@ -153,6 +159,12 @@
     <ClCompile Include="Tank3.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjDownBlock_TankStage2.cpp">
+      <Filter>ソース ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDownBlockStage2.cpp">
+      <Filter>ソース ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -259,6 +271,12 @@
     </ClInclude>
     <ClInclude Include="Tank3.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDownBlock_TankStage2.h">
+      <Filter>ヘッダー ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDownBlockStage2.h">
+      <Filter>ヘッダー ファイル\ギミック6%28下がるブロック%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

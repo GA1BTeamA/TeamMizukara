@@ -48,6 +48,8 @@
 #include "..\ObjColorDoor_Tank.h"
 #include "..\Tank2.h"
 #include "..\Tank3.h"
+#include "..\ObjDownBlockStage2.h"
+#include "..\ObjDownBlock_TankStage2.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -235,6 +237,8 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjColorDoor_Tank* colordoort;
 		CTank2* tank2;
 		CTank3* tank3;
+		ObjDownBlockStage2* dwblS2;
+		ObjDownBlock_TankStage2* dwbltS2;
 
 		switch (g_SceneNumber)
 		{
@@ -384,6 +388,17 @@ unsigned __stdcall GameMainSled(void *p)
 			tank2->m_ActionPriority = 80;
 			tank2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(tank2);
+
+			dwblS2 = new ObjDownBlockStage2();
+			dwblS2->m_ActionPriority = 130;
+			dwblS2->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwblS2);
+
+			dwbltS2 = new ObjDownBlock_TankStage2();
+			dwbltS2->m_ActionPriority = 130;
+			dwbltS2->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwbltS2);
+
 
 			g_SceneNumber = GAME_MAIN2;
 			break;
