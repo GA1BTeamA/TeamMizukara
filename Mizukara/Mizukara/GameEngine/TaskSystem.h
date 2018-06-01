@@ -52,6 +52,7 @@ enum {
 	MOVEBLOCK,
 	DOWNBLOCK,
 	GROUND2,
+	BOAT,
 	GROUND3,
 };
 

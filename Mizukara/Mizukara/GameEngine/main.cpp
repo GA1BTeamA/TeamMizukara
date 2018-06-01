@@ -41,6 +41,8 @@
 #include "..\ObjMoveBlock.h"
 #include "..\ObjMoveBlock_Tank.h"
 #include "..\ObjGround2.h"
+#include "..\ObjBoat.h"
+#include "..\ObjBoat_Tank.h"
 #include "..\ObjGround3.h"
 
 //削除されていないメモリを出力にダンプする---
@@ -150,6 +152,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(69, L"Images\\Stage2.png");//69番目Stage2.pngを読み込み
 	Draw::LoadImage(70, L"Images\\icon3.png");//70番目に"icon3.pngを読み込み
 	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
+	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//71番目に"BoyJumpN.png"を読み込み
+	Draw::LoadImage(73, L"Images\\Hune.png");//72番目に"Hune.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -213,6 +217,8 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjMoveBlock* mobl;
 		ObjMoveBlock_Tank* moblt;
 		ObjGround2* ground2;
+		ObjBoat* boat;
+		ObjBoat_Tank* boat_t;
 		ObjGround3* ground3;
 
 		switch (g_SceneNumber)
@@ -348,6 +354,16 @@ unsigned __stdcall GameMainSled(void *p)
 			tank->m_ActionPriority = 80;
 			tank->m_DrawPriority = 90;
 			//TaskSystem::InsertObj(tank);
+
+			boat = new ObjBoat();
+			boat->m_ActionPriority = 70;
+			boat->m_DrawPriority = 140;
+			TaskSystem::InsertObj(boat);
+
+			boat_t = new ObjBoat_Tank();
+			boat_t->m_ActionPriority = 70;
+			boat_t->m_DrawPriority = 140;
+			TaskSystem::InsertObj(boat_t);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;
