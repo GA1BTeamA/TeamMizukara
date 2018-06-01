@@ -12,8 +12,8 @@ extern bool g_key_flag;
 
 //コンストラクタ
 CHero::CHero()
-	:m_x(200),m_y(300)
-	, m_copy_x(200), m_copy_y(300)
+	:m_x(130),m_y(300)
+	, m_copy_x(130), m_copy_y(300)
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
 	,m_ani_time (0)

@@ -103,6 +103,10 @@ ObjGround3::ObjGround3()
 	m_p_hit_line_ground3[22] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground3[22]->Set4direc(HIT_TOP);
 
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[23] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground3[23]->Set4direc(HIT_RIGHT);
+
 	m_p_hit_line_ground3[0]->SetPos1(m_scroll + 0, m_gy + 400);  //最初地面
 	m_p_hit_line_ground3[0]->SetPos2(m_scroll + 3300, m_gy + 400);
 	m_p_hit_line_ground3[1]->SetPos1(m_scroll + 524, m_gy + 450);  //最初の箱左側
@@ -149,8 +153,10 @@ ObjGround3::ObjGround3()
 	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2820, m_gy + 250);
 	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
 	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 3300, m_gy + 319);
+	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground3[23]->SetPos2(m_scroll + 90, m_gy + 0);
 
-	for (int i = 0; i < 23; i++) {
+	for (int i = 0; i < 24; i++) {
 		m_p_hit_line_ground3[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground3[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground3[i]->SetAngle();
@@ -223,6 +229,8 @@ void ObjGround3::Action()
 	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2820, m_gy + 250);
 	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
 	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 3300, m_gy + 319);
+	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground3[23]->SetPos2(m_scroll + 90, m_gy + 0);
 
 
 }
@@ -233,5 +241,6 @@ void ObjGround3::Draw()
 	//ステージ3地面描画
 	Draw::Draw2D(71, m_scroll, 0);
 
-	Draw::Draw2D(58, m_scroll + 2820, 319);
+
+	//Draw::Draw2D(58, m_scroll + 90, 319);
 }
