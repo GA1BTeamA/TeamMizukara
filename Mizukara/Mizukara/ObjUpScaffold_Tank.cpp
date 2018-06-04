@@ -120,6 +120,7 @@ void ObjUpScaffold_Tank::Action()
 	m_hit_line_UpScTank->SetPos2(m_x + ground->GetScroll(), m_y + 100);
 }
 
+//ÉhÉçÅ[
 void ObjUpScaffold_Tank::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);

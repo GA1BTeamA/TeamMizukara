@@ -408,6 +408,11 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
 
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_ActionPriority = 140;
+			bucketmeter->m_DrawPriority = 170;
+			TaskSystem::InsertObj(bucketmeter);
+
 			g_SceneNumber = GAME_MAIN2;
 			break;
 		case GAME_MAIN2:
@@ -443,6 +448,11 @@ unsigned __stdcall GameMainSled(void *p)
 			colordoort->m_ActionPriority = 110;
 			colordoort->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_ActionPriority = 140;
+			bucketmeter->m_DrawPriority = 170;
+			TaskSystem::InsertObj(bucketmeter);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;
