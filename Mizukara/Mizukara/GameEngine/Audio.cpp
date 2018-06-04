@@ -16,19 +16,19 @@ using namespace std;
 
 IXAudio2*				CAudio::m_pXAudio2;			//XAudio2オブジェクト
 IXAudio2MasteringVoice* CAudio::m_pMasteringVoice;	//マスターボイス
-ChunkInfo				CAudio::m_DataChunk;		//サウンド情報
-unsigned char*			CAudio::m_pResourceData;	//サウンドファイル情報を持つポインタ
-IXAudio2SourceVoice*	CAudio::m_pSourceVoice;		//サウンドボイスインターフェース
-IXAudio2SubmixVoice*	CAudio::m_pSFXSubmixVoice;	//サブミクスインターフェース
+ChunkInfo				CAudio::m_DataChunk[32];		//サウンド情報
+unsigned char*			CAudio::m_pResourceData[32];	//サウンドファイル情報を持つポインタ
+IXAudio2SourceVoice*	CAudio::m_pSourceVoice[32][16];		//サウンドボイスインターフェース
+IXAudio2SubmixVoice*	CAudio::m_pSFXSubmixVoice[32];	//サブミクスインターフェース
 ChunkInfo				CAudio::m_SEDataChunk[32];		//SE用のサウンド情報
 unsigned char*			CAudio::m_pSEResourceData[32];	//SE用のサウンドファイル情報を持つポインタ
 IXAudio2SourceVoice*	CAudio::m_pSESourceVoice[32][16];	//SE用のサウンドボイスインターフェース
 IXAudio2SubmixVoice*	CAudio::m_pSESFXSubmixVoice[32];//SE用のサブミクスインターフェース
 
 //BackMusic用のミュージックのボリューム調整
-void CAudio::LoopMusicVolume(float t)
+void CAudio::LoopMusicVolume(int id,float t)
 {
-	m_pSFXSubmixVoice->SetVolume(t, 0);
+	m_pSFXSubmixVoice[id]->SetVolume(t, 0);
 }
 //SE用ミュージックのボリューム調整
 void CAudio::SEMusicVolume(int id, float t)
@@ -72,25 +72,45 @@ void CAudio::StartMusic(int id)
 }
 
 //ループ用の音楽停止
-void CAudio::StopLoopMusic()
+void CAudio::StopLoopMusic(int id)
 {
-	m_pSourceVoice->Stop();					//音楽停止
-	m_pSourceVoice->FlushSourceBuffers();	//サウンドボイスに保留中バッファ破棄
+	for (int i = 0; i < 32; i++)
+	{
+		//iがバッファの最大要素数を超えないようにする
+		int buffer_count = i % 16;
+
+
+			m_pSourceVoice[id][buffer_count]->Stop();					//音楽停止
+			m_pSourceVoice[id][buffer_count]->FlushSourceBuffers();	//サウンドボイスに保留中バッファ破棄
+	}
 }
 
 //ループ用の音楽再生
-void CAudio::StartLoopMusic()
+void CAudio::StartLoopMusic(int id)
 {
 	//サウンドバッファにLoadBackMusicで読み込んだ波形情報をLoop用で設定
 	XAUDIO2_BUFFER SoundBuffer = { 0 };
-	SoundBuffer.AudioBytes	= m_DataChunk.Size;
-	SoundBuffer.pAudioData	= reinterpret_cast<BYTE*>(m_DataChunk.pData);
+	SoundBuffer.AudioBytes	= m_DataChunk[id].Size;
+	SoundBuffer.pAudioData	= reinterpret_cast<BYTE*>(m_DataChunk[id].pData);
 	SoundBuffer.LoopCount	= XAUDIO2_LOOP_INFINITE;//ループ設定
 	SoundBuffer.Flags		= XAUDIO2_END_OF_STREAM;
-	//サウンドバッファをセット
-	m_pSourceVoice->SubmitSourceBuffer(&SoundBuffer);
-	//サウンドスタート
-	m_pSourceVoice->Start();
+
+	for (int i = 0; i < 32; i++)
+	{
+		//iがバッファの最大要素数を超えないようにする
+		int buffer_count = i % 16;
+
+		//多重再生サウンドバッファの空を探す
+		XAUDIO2_VOICE_STATE stats;
+		m_pSourceVoice[id][buffer_count]->GetState(&stats);
+		if (stats.BuffersQueued == 0)
+		{
+			//サウンドバッファをセット
+			m_pSourceVoice[id][buffer_count]->SubmitSourceBuffer(&SoundBuffer);
+			//サウンドスタート
+			m_pSourceVoice[id][buffer_count]->Start();
+		}
+	}
 }
 //Waveファイル読み込み
 unsigned char* CAudio::LoadWave(ChunkInfo* p_chunk_info, WAVEFORMATEX* p_wave, wchar_t*name)
@@ -205,17 +225,19 @@ void CAudio::LoadSEMusic(int id, wchar_t* name)
 }
 
 //ループ用の音楽読み込み
-void CAudio::LoadBackMusic(wchar_t* name)
+void CAudio::LoadBackMusic(int id,wchar_t* name)
 {
 	//Waveファイル取得
 	WAVEFORMATEX WaveformatEx;
-	m_pResourceData = LoadWave(&m_DataChunk, &WaveformatEx, name);
+	m_pResourceData[id] = LoadWave(&m_DataChunk[id], &WaveformatEx, name);
 
 	//再生のためのインターフェース生成
-	XAUDIO2_SEND_DESCRIPTOR SFXSend = { 0,m_pSFXSubmixVoice };
+	XAUDIO2_SEND_DESCRIPTOR SFXSend = { 0,m_pSFXSubmixVoice[id] };
 	XAUDIO2_VOICE_SENDS SFXSendList = { 1,&SFXSend };
-	m_pXAudio2->CreateSourceVoice(&m_pSourceVoice, &WaveformatEx, 0U, 2.0f, NULL, &SFXSendList);
-
+	for (int i = 0; i < 16; i++)
+	{
+		m_pXAudio2->CreateSourceVoice(&m_pSourceVoice[id][i], &WaveformatEx, 0U, 2.0f, NULL, &SFXSendList);
+	}
 }
 
 //SE用の音楽読み込みOgg用
@@ -236,17 +258,19 @@ void CAudio::LoadSEMusic(int id, char* name)
 }
 
 //ループ用の音楽読み込みOgg用
-void CAudio::LoadBackMusic(char* name)
+void CAudio::LoadBackMusic(int id,char* name)
 {
 	//Waveファイル取得
 	WAVEFORMATEX WaveformatEx;
-	m_pResourceData = LoadOgg(&m_DataChunk, &WaveformatEx, name);
+	m_pResourceData[id] = LoadOgg(&m_DataChunk[id], &WaveformatEx, name);
 
 	//再生のためのインターフェース生成
-	XAUDIO2_SEND_DESCRIPTOR SFXSend = { 0,m_pSFXSubmixVoice };
+	XAUDIO2_SEND_DESCRIPTOR SFXSend = { 0,m_pSFXSubmixVoice[id] };
 	XAUDIO2_VOICE_SENDS SFXSendList = { 1,&SFXSend };
-	m_pXAudio2->CreateSourceVoice(&m_pSourceVoice, &WaveformatEx, 0U, 2.0f, NULL, &SFXSendList);
-
+	for (int i = 0; i < 16; i++)
+	{
+		m_pXAudio2->CreateSourceVoice(&m_pSourceVoice[id][i], &WaveformatEx, 0U, 2.0f, NULL, &SFXSendList);
+	}
 }
 
 void CAudio::InitAudio()
@@ -262,16 +286,25 @@ void CAudio::InitAudio()
 	//マスターボイス作成
 	m_pXAudio2->CreateMasteringVoice(&m_pMasteringVoice);
 
-	//ミックスボイス作成
-	m_pXAudio2->CreateSubmixVoice(&m_pSFXSubmixVoice, 1, 44100, 0, 0, 0, 0);
+	for (int i = 0; i < 32; i++)
+	{
+		//ミックスボイス作成
+		m_pXAudio2->CreateSubmixVoice(&m_pSFXSubmixVoice[i], 1, 44100, 0, 0, 0, 0);
+	}
 
 	for (int i = 0; i < 32; i++)
 	{
 		m_pXAudio2->CreateSubmixVoice(&m_pSESFXSubmixVoice[i], 1, 44100, 0, 0, 0, 0);
 	}
 
-	//サウンドボイス初期化
-	m_pSourceVoice = nullptr;
+	for (int i = 0; i < 32; i++)
+	{
+		for (int j = 0; j < 16; j++)
+		{
+			//サウンドボイス初期化
+			m_pSourceVoice[i][j] = nullptr;
+		}
+	}
 
 	//SE用のサウンドボイスの初期化
 	for (int i = 0; i < 32; i++)
@@ -305,18 +338,26 @@ void CAudio::DeleteAudio()
 		}
 	}
 
-	//LOOP用のサウンドボイスとリソースの破棄
-	if (m_pSourceVoice != nullptr)
+	//サウンドボイスとリソースの破棄
+	for (int i = 0; i < 32; i++)
 	{
-		m_pSourceVoice->Stop();
-		m_pSourceVoice->FlushSourceBuffers();
-		m_pSourceVoice->DestroyVoice();
-	}
+		//サウンドボイスの破棄
+		for (int j = 0; j < 16; j++)
+		{
+			//LOOP用のサウンドボイスとリソースの破棄
+			if (m_pSourceVoice[i][j] != nullptr)
+			{
+				m_pSourceVoice[i][j]->Stop();
+				m_pSourceVoice[i][j]->FlushSourceBuffers();
+				m_pSourceVoice[i][j]->DestroyVoice();
+			}
+		}
 
-	//サウンドデータ破棄
-	if (m_DataChunk.pData != nullptr)
-	{
-		delete[] m_pResourceData;
+		//サウンドデータ破棄
+		if (m_DataChunk[i].pData != nullptr)
+		{
+			delete[] m_pResourceData[i];
+		}
 	}
 
 	//SE用のサブミックスサウンド破棄
@@ -325,8 +366,11 @@ void CAudio::DeleteAudio()
 		m_pSESFXSubmixVoice[i]->DestroyVoice();
 	}
 
-	//ミックスサウンド破棄
-	m_pSFXSubmixVoice->DestroyVoice();
+	for (int i = 0; i < 32; i++)
+	{
+		//ミックスサウンド破棄
+		m_pSFXSubmixVoice[i]->DestroyVoice();
+	}
 
 	//マスターボイス破棄
 	m_pMasteringVoice->DestroyVoice();

@@ -16,11 +16,13 @@ public:
 	void Action();
 	void Draw();
 
-	void AddY(float y) { m_y += y; }
+	void AddAngle(float a) { m_angle += a; }
 
 private:
 	float m_x;//ˆÊ’u
 	float m_y;
+
+	float m_angle;//ŒX‚«
 
 	HitLine* m_hit_line_Scale[4];//“–‚½‚è”»’è
 };

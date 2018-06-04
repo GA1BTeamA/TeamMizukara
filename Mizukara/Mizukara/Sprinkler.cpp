@@ -58,6 +58,7 @@ void CSPRI::Action()
 			//破棄
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(9);
 				g_SceneNumber = RESULT;
 				g_clearlist = true;
 				g_key_flag = false;
@@ -76,6 +77,11 @@ void CSPRI::Action()
 		{
 			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
 			{
+				Audio::StopLoopMusic(6);
+
+				Audio::StartLoopMusic(9);
+				Audio::LoopMusicVolume(9, 0.05f);
+
 				//タンクの水をスプリンクラーから出す
 				if (m_ani_time4 >= 460 && tank->GetWater_Remaining() > 0)
 				{
