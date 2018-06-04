@@ -25,9 +25,13 @@ private:
 
 	float m_wave_x;  //波の位置
 	float m_wave_y;
+	float m_wave_x2;
+	float m_wave_y2;
 
 	float m_water_x;  //水の位置
 	float m_water_y;
+	float m_water_x2;  
+	float m_water_y2;
 
 	int m_move_x;//ボートを動かす
 
@@ -39,9 +43,12 @@ private:
 	float m_bucket_remaining;
 
 	static const float m_WaveSize_x;  //波のサイズ用
+	static const float m_WaveSize_x2;
 	float m_WaveSize_y;
 	static const float m_WaterSize_x;//水のサイズ
 	static const float m_WaterSize_y;
+	static const float m_WaterSize_x2;
+	static const float m_WaterSize_y2;
 
 	int m_BoatAni;//ボートアニメーション(タンク)用
 
