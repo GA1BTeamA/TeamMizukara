@@ -20,8 +20,12 @@ CObjStory::~CObjStory()
 
 void CObjStory::Action()
 {
+	Audio::StartLoopMusic(4);
+	Audio::LoopMusicVolume(4, 0.05f);
+
 	//アニメーション終了でステージセレクトへ
 	if (m_time++ > 300) {
+		Audio::StopLoopMusic(4);
 		g_SceneNumber = STAGESELECTO;
 		is_delete = true;
 	}
@@ -31,6 +35,7 @@ void CObjStory::Action()
 	{
 		if (g_key_flag)
 		{
+			Audio::StopLoopMusic(4);
 			g_SceneNumber = STAGESELECTO;
 			is_delete = true;
 			g_key_flag = false;

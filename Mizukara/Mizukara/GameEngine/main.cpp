@@ -151,10 +151,10 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(68, L"Images\\SHimawari.png");//68番目SHimawari.pngを読み込み
 	Draw::LoadImage(69, L"Images\\Stage2.png");//69番目Stage2.pngを読み込み
 	Draw::LoadImage(70, L"Images\\icon3.png");//70番目に"icon3.pngを読み込み
-	Draw::LoadImage(71, L"Images\\Stage3.png");//69番目Stage3.pngを読み込み
-	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//71番目に"BoyJumpN.png"を読み込み
-	Draw::LoadImage(73, L"Images\\Hune.png");//72番目に"Hune.png"を読み込み
-	Draw::LoadImage(74, L"Images\\Baketu.png");//72番目に"Hune.png"を読み込み
+	Draw::LoadImage(71, L"Images\\Stage3.png");//71番目Stage3.pngを読み込み
+	Draw::LoadImage(72, L"Images\\BoyJumpN.png");//72番目に"BoyJumpN.png"を読み込み
+	Draw::LoadImage(73, L"Images\\Hune.png");//73番目に"Hune.png"を読み込み
+	Draw::LoadImage(74, L"Images\\Baketu.png");//74番目に"Baketu.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -166,7 +166,19 @@ unsigned __stdcall MusicLoadSled(void *p)
 {
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
-	Audio::LoadSEMusic(0, "Sounds\\splash.ogg");
+	Audio::LoadSEMusic(0, "Sounds\\Splash.ogg");
+	Audio::LoadBackMusic(1, "Sounds\\Water.ogg");
+	Audio::LoadBackMusic(2, "Sounds\\Menu.ogg");
+	Audio::LoadBackMusic(3, "Sounds\\Title.ogg");
+	Audio::LoadBackMusic(4, "Sounds\\Story.ogg");
+	Audio::LoadBackMusic(5, "Sounds\\StageSerect.ogg");
+	Audio::LoadBackMusic(6, "Sounds\\Stage1.ogg");
+	Audio::LoadBackMusic(7, "Sounds\\Stage2.ogg");
+	Audio::LoadBackMusic(8, "Sounds\\Stage3.ogg");
+	Audio::LoadBackMusic(9, "Sounds\\Clear.ogg");
+	Audio::LoadBackMusic(10, "Sounds\\Result.ogg");
+	Audio::LoadBackMusic(11, "Sounds\\Ending.ogg");
+
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }

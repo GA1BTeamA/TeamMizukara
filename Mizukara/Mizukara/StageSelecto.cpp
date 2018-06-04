@@ -20,6 +20,8 @@ CStageSelecto::~CStageSelecto()
 
 void CStageSelecto::Action()
 {
+	Audio::StartLoopMusic(5);
+	Audio::LoopMusicVolume(5, 0.05f);
 
 		//ç∂ÇâüÇµÇΩÇÁç∂Ç…
 		if (Input::KeyPush(VK_LEFT) == true)
@@ -80,8 +82,11 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
 				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
+				Audio::StartLoopMusic(6);
+				Audio::LoopMusicVolume(6, 0.05f);
 				is_delete = true;
 				g_key_flag = false;
 			}
@@ -98,6 +103,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
 				Audio::StartMusic(0);
 				g_SceneNumber = GAME2;
 				is_delete = true;
@@ -116,6 +122,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
 				Audio::StartMusic(0);
 				g_SceneNumber = GAME3;
 				is_delete = true;
@@ -134,6 +141,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
 				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				is_delete = true;
@@ -152,6 +160,7 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
 				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				is_delete = true;

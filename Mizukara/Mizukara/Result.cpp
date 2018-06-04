@@ -23,6 +23,11 @@ CResult::~CResult()
 
 void CResult::Action()
 {
+	Audio::StopLoopMusic(6);
+
+	Audio::StartLoopMusic(10);
+	Audio::LoopMusicVolume(10, 0.07f);
+
 	//ç∂ÇâüÇµÇΩÇÁç∂Ç…
 	if (Input::KeyPush(VK_LEFT) == true)
 	{
@@ -53,6 +58,7 @@ void CResult::Action()
 			if (g_key_flag)
 			{
 				Audio::StartMusic(0);
+				Audio::StopLoopMusic(10);
 				g_SceneNumber = TITLE;
 				TaskSystem::TaskClear();
 				g_key_flag = false;
@@ -71,6 +77,7 @@ void CResult::Action()
 			if (g_key_flag)
 			{
 				Audio::StartMusic(0);
+				Audio::StopLoopMusic(10);
 				g_SceneNumber = STAGESELECTO;
 				TaskSystem::TaskClear();
 				g_key_flag = false;
