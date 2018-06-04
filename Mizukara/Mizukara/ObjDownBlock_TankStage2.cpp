@@ -158,7 +158,7 @@ void ObjDownBlock_TankStage2::Draw()
 	if (m_PulleyAni <= 4)
 		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, 1, 1);
 	else
-		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, -1, 1);
+		Draw::Draw2D(80, m_gx + 350 + ground2->GetScroll(), 80, -1, 1);
 
 	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
