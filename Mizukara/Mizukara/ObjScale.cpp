@@ -7,14 +7,12 @@
 #include "Sprinkler.h"
 #include <math.h>
 extern bool g_key_flag;
-float angle;
-bool aa;
 
 ObjScale::ObjScale()
-	:m_x(795), m_y(340)
+	:m_x(795), m_y(340),m_angle(0.0f)
 {
-	angle = 0;
-	aa = false;
+	m_name = SCALE;
+
 	////天秤ヒットライン作成し、値を設定(左)
 	//m_hit_line_Scale[0] = Collision::HitLineInsert(this);
 	//m_hit_line_Scale[0]->SetPos1(m_x, m_y);
@@ -56,16 +54,6 @@ void ObjScale::Action()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
-	if (aa)
-		angle += 0.1;
-	else
-		angle -= 0.1;
-
-	if (angle > 30)
-		aa = false;
-	else if (angle < -30)
-		aa = true;
-
 	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
 	////クリア画面が表示されたら
 	//if (spri->GetCrearCnt() == true)
@@ -91,8 +79,8 @@ void ObjScale::Action()
 	//m_hit_line_Scale[0]->SetPos2(m_x + ground2->GetScroll(), m_y + 13);
 	//m_hit_line_Scale[1]->SetPos1(m_x + ground2->GetScroll() + 145, m_y);
 	//m_hit_line_Scale[1]->SetPos2(m_x + ground2->GetScroll() + 145, m_y + 13);
-	m_hit_line_Scale[2]->SetPos1(m_x + 4.0f + ground2->GetScroll()+72.5*sin(3.14 / 180 * (fmod((270.0f+5.12316553f+ angle),360))), m_y+ 72.5*(-cos(3.14 / 180 * ((270.0f + 5.12316553f+ angle)))));
-	m_hit_line_Scale[2]->SetPos2(m_x + 4.0f + ground2->GetScroll() + 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f+ angle), 360))), m_y + 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f+ angle)))));
+	m_hit_line_Scale[2]->SetPos1(m_x + 4.0f + ground2->GetScroll()+72.5*sin(3.14 / 180 * (fmod((270.0f+5.12316553f+ m_angle),360))), m_y+ 72.5*(-cos(3.14 / 180 * ((270.0f + 5.12316553f+ m_angle)))));
+	m_hit_line_Scale[2]->SetPos2(m_x + 4.0f + ground2->GetScroll() + 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f+ m_angle), 360))), m_y + 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f+ m_angle)))));
 	//m_hit_line_Scale[3]->SetPos1(m_x + ground2->GetScroll(), m_y + 13);
 	//m_hit_line_Scale[3]->SetPos2(m_x + ground2->GetScroll() + 145, m_y + 13);
 
@@ -105,5 +93,5 @@ void ObjScale::Draw()
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
 	//足場
-	Draw::Draw2D(74, m_x-70 + ground2->GetScroll(), m_y-10,angle);
+	Draw::Draw2D(81, m_x-70 + ground2->GetScroll(), m_y-10,m_angle);
 }
