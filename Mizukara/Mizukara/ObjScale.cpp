@@ -9,7 +9,7 @@
 extern bool g_key_flag;
 
 ObjScale::ObjScale()
-	:m_x(795), m_y(340),m_angle(0.0f)
+	:m_x(795), m_y(330),m_angle(0.0f)
 {
 	m_name = SCALE;
 

@@ -710,7 +710,7 @@ void CHero::Action()
 				if (m_IsMenu == false)
 				{
 					Audio::StopLoopMusic(6);
-					menu = new CMenu();
+					//menu = new CMenu();
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
