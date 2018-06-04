@@ -87,6 +87,10 @@ ObjGround2::ObjGround2()
 	m_p_hit_line_ground2[18] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground2[18]->Set4direc(HIT_TOP);
 
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[19] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[19]->Set4direc(HIT_RIGHT);
+
 	m_p_hit_line_ground2[0]->SetPos1(m_scroll + 0, m_gy + 400);  //最初
 	m_p_hit_line_ground2[0]->SetPos2(m_scroll + /*274*/494, m_gy + 400);
 	m_p_hit_line_ground2[1]->SetPos1(m_scroll + 550, m_gy + 400);  //0段目
@@ -125,8 +129,10 @@ ObjGround2::ObjGround2()
 	m_p_hit_line_ground2[17]->SetPos2(m_scroll + 1846, m_gy + /*149*/350);
 	m_p_hit_line_ground2[18]->SetPos1(m_scroll + 1846, m_gy + /*149*/350);  //ぞうさん階段手前の地面
 	m_p_hit_line_ground2[18]->SetPos2(m_scroll + /*2045*/2300, m_gy + /*149*/350);
+	m_p_hit_line_ground2[19]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground2[19]->SetPos2(m_scroll + 90, m_gy);
 
-	for (int i = 0; i < 19; i++) {
+	for (int i = 0; i < 20; i++) {
 		m_p_hit_line_ground2[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground2[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground2[i]->SetAngle();
@@ -192,6 +198,9 @@ void ObjGround2::Action()
 	m_p_hit_line_ground2[17]->SetPos2(m_scroll + 1846, m_gy + /*149*/350);
 	m_p_hit_line_ground2[18]->SetPos1(m_scroll + 1846, m_gy + /*149*/350);  //ぞうさん階段手前の地面
 	m_p_hit_line_ground2[18]->SetPos2(m_scroll + /*2045*/2300, m_gy + /*149*/350);
+	m_p_hit_line_ground2[19]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground2[19]->SetPos2(m_scroll + 90, m_gy);
+
 }
 
 //ドロー
@@ -199,6 +208,7 @@ void ObjGround2::Draw()
 {
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
+
 
 	//Draw::Draw2D(58, m_scroll+2045, 149);
 }
