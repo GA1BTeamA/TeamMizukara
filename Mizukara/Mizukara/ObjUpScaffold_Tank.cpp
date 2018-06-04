@@ -96,7 +96,7 @@ void ObjUpScaffold_Tank::Action()
 								bm->PushC();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining += 0.02666;
 
 							m_PulleyAni++;

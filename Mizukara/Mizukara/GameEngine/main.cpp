@@ -51,6 +51,7 @@
 #include "..\ObjDownBlockStage2.h"
 #include "..\ObjDownBlock_TankStage2.h"
 #include "..\ObjScale.h"
+#include "..\WTM3.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -242,6 +243,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjDownBlockStage2* dwblS2;
 		ObjDownBlock_TankStage2* dwbltS2;
 		ObjScale* scale;
+		CWTM3* wtm3;
 
 		switch (g_SceneNumber)
 		{
@@ -428,6 +430,11 @@ unsigned __stdcall GameMainSled(void *p)
 			ground3->m_ActionPriority = 90;
 			ground3->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground3);
+
+			wtm3 = new CWTM3();
+			wtm3->m_ActionPriority = 70;
+			wtm3->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm3);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
