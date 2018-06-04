@@ -727,6 +727,8 @@ void CHero::Action()
 					{
 						menu->is_delete = true;
 						m_IsMenu = false;
+						Audio::StopLoopMusic(2);
+						Audio::StartLoopMusic(6);
 					}
 				}
 				m_menu_key_flag = false;
