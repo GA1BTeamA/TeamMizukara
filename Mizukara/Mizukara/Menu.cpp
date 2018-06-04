@@ -59,6 +59,8 @@ void CMenu::Action()
 				{
 					hero->MenuDel();
 					is_delete = true;
+					Audio::StopLoopMusic(2);
+					Audio::StartLoopMusic(6);
 				}
 			}
 		}
@@ -78,6 +80,7 @@ void CMenu::Action()
 				g_SceneNumber = TITLE;
 				g_clearlist = true;
 				g_key_flag = false;
+				Audio::StopLoopMusic(2);
 			}
 		}
 		else
@@ -109,6 +112,8 @@ void CMenu::Action()
 				}
 				g_clearlist = true;
 				g_key_flag = false;
+				Audio::StopLoopMusic(2);
+				Audio::StartLoopMusic(6);
 			}
 		}
 		else

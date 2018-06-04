@@ -20,6 +20,9 @@ CTitle::~CTitle()
 
 void CTitle::Action()
 {
+	Audio::StartLoopMusic(3);
+	Audio::LoopMusicVolume(3, 0.05f);
+
 	//ç∂ÇâüÇµÇΩÇÁç∂Ç…
 	if (Input::KeyPush(VK_LEFT)==true)
 	{
@@ -49,6 +52,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(3);
 				Audio::StartMusic(0);
 				g_SceneNumber = STORY;
 				is_delete = true;
@@ -67,6 +71,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(3);
 				Audio::StartMusic(0);
 				g_SceneNumber = STAGESELECTO;
 				is_delete = true;

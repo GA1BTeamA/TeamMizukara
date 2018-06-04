@@ -58,6 +58,7 @@ void CSPRI::Action()
 			//破棄
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(9);
 				g_SceneNumber = RESULT;
 				g_clearlist = true;
 				g_key_flag = false;
@@ -76,6 +77,11 @@ void CSPRI::Action()
 		{
 			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
 			{
+				Audio::StopLoopMusic(6);
+
+				Audio::StartLoopMusic(9);
+				Audio::LoopMusicVolume(9, 0.05f);
+
 				//タンクの水をスプリンクラーから出す
 				if (m_ani_time4 >= 460 && tank->GetWater_Remaining() > 0)
 				{
@@ -276,11 +282,11 @@ void CSPRI::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground->GetScroll() - 50 + m_move1, 300, 1, 1);
-						Draw::Draw2D(74, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
+						Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
 						
 						if (m_sy <=200)
 						{
-							Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
 						}
 						else
 						{

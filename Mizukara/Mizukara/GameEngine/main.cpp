@@ -97,7 +97,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(4, L"Images\\BoyUp.png");//4番目に"BoyUp.png"を読み込み
 	Draw::LoadImage(5, L"Images\\BoyDown.png");//5番目に"BoyDown.png"を読み込み
 	//Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
-	Draw::LoadImage(9, L"Images\\BoyJumghp.png");//5番目に"Player6.png"を読み込み
+	Draw::LoadImage(9, L"Images\\BoyJump.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
 	Draw::LoadImage(12, L"Images\\Background.png");//12番目に"Background.png"を読み込み
@@ -181,7 +181,19 @@ unsigned __stdcall MusicLoadSled(void *p)
 {
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
-	Audio::LoadSEMusic(0, "Sounds\\splash.ogg");
+	Audio::LoadSEMusic(0, "Sounds\\Splash.ogg");
+	Audio::LoadBackMusic(1, "Sounds\\Water.ogg");
+	Audio::LoadBackMusic(2, "Sounds\\Menu.ogg");
+	Audio::LoadBackMusic(3, "Sounds\\Title.ogg");
+	Audio::LoadBackMusic(4, "Sounds\\Story.ogg");
+	Audio::LoadBackMusic(5, "Sounds\\StageSerect.ogg");
+	Audio::LoadBackMusic(6, "Sounds\\Stage1.ogg");
+	Audio::LoadBackMusic(7, "Sounds\\Stage2.ogg");
+	Audio::LoadBackMusic(8, "Sounds\\Stage3.ogg");
+	Audio::LoadBackMusic(9, "Sounds\\Clear.ogg");
+	Audio::LoadBackMusic(10, "Sounds\\Result.ogg");
+	Audio::LoadBackMusic(11, "Sounds\\Ending.ogg");
+
 	_endthreadex(0);	//スレッド終了
 	return 0;
 }
@@ -396,12 +408,12 @@ unsigned __stdcall GameMainSled(void *p)
 
 			dwblS2 = new ObjDownBlockStage2();
 			dwblS2->m_ActionPriority = 130;
-			dwblS2->m_DrawPriority = 130;
+			dwblS2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(dwblS2);
 
 			dwbltS2 = new ObjDownBlock_TankStage2();
 			dwbltS2->m_ActionPriority = 130;
-			dwbltS2->m_DrawPriority = 130;
+			dwbltS2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(dwbltS2);
 
 			scale = new ObjScale();
@@ -454,6 +466,11 @@ unsigned __stdcall GameMainSled(void *p)
 			colordoort->m_ActionPriority = 110;
 			colordoort->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_ActionPriority = 140;
+			bucketmeter->m_DrawPriority = 170;
+			TaskSystem::InsertObj(bucketmeter);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;
