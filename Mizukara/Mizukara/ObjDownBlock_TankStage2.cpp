@@ -11,9 +11,9 @@ extern int g_SceneNumber;
 const float ObjDownBlock_TankStage2::m_WaveSize_x = 0.23f;
 
 ObjDownBlock_TankStage2::ObjDownBlock_TankStage2()
-	:m_x(676), m_y(150), m_gx(691), m_gy(135), m_wave_x(692), m_wave_y(253),
+	:m_x(889), m_y(210), m_gx(691), m_gy(135), m_wave_x(889), m_wave_y(210),
 	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(0.3f)
-	, m_water_x(692), m_water_y(259), m_moveY(162),
+	, m_water_x(889), m_water_y(220), m_moveY(162),
 	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
 	, m_bucket_remaining(0.4f), m_PulleyAni(0)
 {
@@ -148,6 +148,18 @@ void ObjDownBlock_TankStage2::Draw()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
+	//ロープ表示
+	Draw::Draw2D(62, m_gx + 206 + ground2->GetScroll(), 100, 1, m_RopeSizeBucket);
+	//バケツ表示
+	Draw::Draw2D(56, m_gx + 197 + ground2->GetScroll(), m_gy + 64, 1, 1);
+	//横ロープ表示
+	Draw::Draw2D(59, m_gx + 205 + ground2->GetScroll(), 85, 0.9, 1);
+	//滑車表示
+	if (m_PulleyAni <= 4)
+		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, 1, 1);
+	else
+		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, -1, 1);
+
 	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
 	{
@@ -155,7 +167,7 @@ void ObjDownBlock_TankStage2::Draw()
 		{
 			if (m_hit_line_DwBlS2Tank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(70, m_x - 10 + ground2->GetScroll(), m_y - 130);
+				Draw::Draw2D(70, m_x-20 + ground2->GetScroll(), m_y-195);
 			}
 		}
 	}
@@ -277,15 +289,5 @@ void ObjDownBlock_TankStage2::Draw()
 
 	//Draw::Draw2D(21, a, m_y);
 
-	//ロープ表示
-	Draw::Draw2D(62, m_gx + 280 + ground2->GetScroll(), 135, 1, m_RopeSizeBucket);
-	//バケツ表示
-	Draw::Draw2D(56, m_gx + 180 + ground2->GetScroll(), m_gy + 100, 1, 1);
-	//横ロープ表示
-	Draw::Draw2D(59, m_gx + 190 + ground2->GetScroll(), 85, 1, 1);
-	//滑車表示
-	if (m_PulleyAni <= 4)
-		Draw::Draw2D(57, m_gx + 180 + ground2->GetScroll(), 80, 1, 1);
-	else
-		Draw::Draw2D(57, m_gx + 180 + ground2->GetScroll(), 80, -1, 1);
+	
 }

@@ -96,7 +96,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(4, L"Images\\BoyUp.png");//4”Ô–Ú‚É"BoyUp.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(5, L"Images\\BoyDown.png");//5”Ô–Ú‚É"BoyDown.png"‚ð“Ç‚Ýž‚Ý
 	//Draw::LoadImage(6, L"Images\\Player8.png");//6”Ô–Ú‚É"Player8.png"‚ð“Ç‚Ýž‚Ý
-	Draw::LoadImage(9, L"Images\\BoyJumghp.png");//5”Ô–Ú‚É"Player6.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(9, L"Images\\BoyJump.png");//5”Ô–Ú‚É"Player6.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(10, L"Images\\Tank.png");//10”Ô–Ú‚É"Tank.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11”Ô–Ú‚É"BucketMeter.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(12, L"Images\\Background.png");//12”Ô–Ú‚É"Background.png"‚ð“Ç‚Ýž‚Ý
@@ -394,12 +394,12 @@ unsigned __stdcall GameMainSled(void *p)
 
 			dwblS2 = new ObjDownBlockStage2();
 			dwblS2->m_ActionPriority = 130;
-			dwblS2->m_DrawPriority = 130;
+			dwblS2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(dwblS2);
 
 			dwbltS2 = new ObjDownBlock_TankStage2();
 			dwbltS2->m_ActionPriority = 130;
-			dwbltS2->m_DrawPriority = 130;
+			dwbltS2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(dwbltS2);
 
 
