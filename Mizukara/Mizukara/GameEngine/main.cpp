@@ -51,6 +51,7 @@
 #include "..\ObjDownBlockStage2.h"
 #include "..\ObjDownBlock_TankStage2.h"
 #include "..\ObjScale.h"
+#include "..\ObjScale_Tank.h"
 
 //削除されていないメモリを出力にダンプする---
 #include <crtdbg.h>
@@ -168,7 +169,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(78, L"Images\\Stage2B.png");//78番目Stage2B.pngを読み込み
 	Draw::LoadImage(79, L"Images\\Stage3B.png");//79番目Stage3B.pngを読み込み
 	Draw::LoadImage(80, L"Images\\Gimmick2pulleyshort.png");//80番目Gimmick2pulleyshort.pngを読み込み
-	Draw::LoadImage(81, L"Images\\kaitendai.png");//74番目に"kaitendai.png"を読み込み
+	Draw::LoadImage(81, L"Images\\kaitendai.png");//81番目に"kaitendai.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -242,6 +243,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjDownBlockStage2* dwblS2;
 		ObjDownBlock_TankStage2* dwbltS2;
 		ObjScale* scale;
+		ObjScale_Tank* scale_t;
 
 		switch (g_SceneNumber)
 		{
@@ -402,11 +404,20 @@ unsigned __stdcall GameMainSled(void *p)
 			dwbltS2->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwbltS2);
 
-
 			scale = new ObjScale();
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
+
+			scale_t = new ObjScale_Tank();
+			scale_t->m_ActionPriority = 90;
+			scale_t->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t);
+
+			bucketmeter = new CBucketMeter();
+			bucketmeter->m_ActionPriority = 140;
+			bucketmeter->m_DrawPriority = 170;
+			TaskSystem::InsertObj(bucketmeter);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;

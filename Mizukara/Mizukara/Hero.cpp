@@ -707,7 +707,14 @@ void CHero::Action()
 				//メニューオブジェクトを生成
 				if (m_IsMenu == false)
 				{
-					menu = new CMenu();
+					//地面オブジェクト取得
+					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
+
+					if(ground != nullptr) menu = new CMenu(1);
+					else if (ground2 != nullptr) menu = new CMenu(2);
+					else if (ground3 != nullptr) menu = new CMenu(3);
 					menu->m_ActionPriority = 100;
 					menu->m_DrawPriority = 900;
 					TaskSystem::InsertObj(menu);

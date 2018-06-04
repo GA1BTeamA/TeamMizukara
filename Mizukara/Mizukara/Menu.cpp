@@ -10,8 +10,8 @@ extern bool g_key_flag;
 extern bool g_clearlist;
 
 //コンストラクタ
-CMenu::CMenu()
-	:m_x(20), m_y(20), m_cursor(LEFT)
+CMenu::CMenu(unsigned int n)
+	:m_x(20), m_y(20), m_cursor(LEFT),m_StageNo(n)
 {
 	m_name = MENU;
 }
@@ -93,7 +93,20 @@ void CMenu::Action()
 			if (g_key_flag)
 			{
 				Audio::StartMusic(0);
-				g_SceneNumber = GAME;
+				//同じステージをやり直す
+				switch (m_StageNo)
+				{
+				case 1:
+					g_SceneNumber = GAME;
+					break;
+				case 2:
+					g_SceneNumber = GAME2;
+					break;
+				case 3:
+					g_SceneNumber = GAME3;
+					break;
+
+				}
 				g_clearlist = true;
 				g_key_flag = false;
 			}
