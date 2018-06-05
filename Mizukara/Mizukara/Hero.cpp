@@ -840,7 +840,9 @@ void CHero::Action()
 
 						//ŽålŒö‚Ì“–‚½‚è”»’è‚É“–‚½‚Á‚Ä‚½‚Ì‚ªƒ^ƒ“ƒNorWTM‚È‚ç™Â
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
-							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 5 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 6)
 						{
 							if (m_CKey_Frag == false)
 								Audio::StartLoopMusic(1);
