@@ -676,6 +676,15 @@ void CHero::Action()
 			}
 		}
 
+		//虹判定のサンプル
+		//if (m_x >= 300 && 500>=m_x)
+		//{
+		//	if (m_y > 300 - sqrt(100 * 100 - (400 - m_x)*(400 - m_x))) {
+		//		m_y = 300 - sqrt(100 * 100 - (400 - m_x)*(400 - m_x));
+		//		IsHitGround = true;
+		//	}
+		//}
+
 		//当たり判定の位置更新
 		m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
 		m_p_hit_line_hero[0]->SetPos2(m_x, m_y + 100);

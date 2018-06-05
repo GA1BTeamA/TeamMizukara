@@ -479,6 +479,16 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
 
+			//scale = new ObjScale();
+			//scale->m_ActionPriority = 90;
+			//scale->m_DrawPriority = 80;
+			//TaskSystem::InsertObj(scale);
+
+			//scale_t = new ObjScale_Tank();
+			//scale_t->m_ActionPriority = 90;
+			//scale_t->m_DrawPriority = 80;
+			//TaskSystem::InsertObj(scale_t);
+
 			g_SceneNumber = GAME_MAIN3;
 			break;
 

@@ -39,6 +39,8 @@ private:
 	float m_WaterSize_y;//…—p
 	float m_WaveSize_y;//”g—p
 
+	float rgba[4];  //…‚ÌF
+
 
 	HitLine* m_hit_line_ColorDoorTank[2];//“–‚½‚è”»’è
 };
