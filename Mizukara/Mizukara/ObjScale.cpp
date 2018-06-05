@@ -4,9 +4,11 @@
 
 #include "ObjScale.h"
 #include "ObjGround2.h"
+#include "ObjGround3.h"
 #include "Sprinkler.h"
 #include <math.h>
 extern bool g_key_flag;
+extern int g_SceneNumber;
 
 ObjScale::ObjScale()
 	:m_x(795), m_y(330),m_angle(0.0f)
@@ -53,6 +55,7 @@ ObjScale::~ObjScale()
 void ObjScale::Action()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
 	////ƒNƒŠƒA‰æ–Ê‚ª•\Ž¦‚³‚ê‚½‚ç
@@ -79,8 +82,20 @@ void ObjScale::Action()
 	//m_hit_line_Scale[0]->SetPos2(m_x + ground2->GetScroll(), m_y + 13);
 	//m_hit_line_Scale[1]->SetPos1(m_x + ground2->GetScroll() + 145, m_y);
 	//m_hit_line_Scale[1]->SetPos2(m_x + ground2->GetScroll() + 145, m_y + 13);
-	m_hit_line_Scale[2]->SetPos1(m_x + 4.0f + ground2->GetScroll()+72.5*sin(3.14 / 180 * (fmod((270.0f+5.12316553f+ m_angle),360))), m_y+ 72.5*(-cos(3.14 / 180 * ((270.0f + 5.12316553f+ m_angle)))));
-	m_hit_line_Scale[2]->SetPos2(m_x + 4.0f + ground2->GetScroll() + 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f+ m_angle), 360))), m_y + 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f+ m_angle)))));
+	switch (g_SceneNumber)
+	{
+	case GAME_MAIN2:
+		m_hit_line_Scale[2]->SetPos1(m_x + 4.0f + ground2->GetScroll() + 72.5*sin(3.14 / 180 * (fmod((270.0f + 5.12316553f + m_angle), 360))), m_y + 72.5*(-cos(3.14 / 180 * ((270.0f + 5.12316553f + m_angle)))));
+		m_hit_line_Scale[2]->SetPos2(m_x + 4.0f + ground2->GetScroll() + 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f + m_angle), 360))), m_y + 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f + m_angle)))));
+		break;
+
+	case GAME_MAIN3:
+		m_hit_line_Scale[2]->SetPos1(m_x + 4.0f + ground3->GetScroll() + 72.5*sin(3.14 / 180 * (fmod((270.0f + 5.12316553f + m_angle), 360))), m_y + 72.5*(-cos(3.14 / 180 * ((270.0f + 5.12316553f + m_angle)))));
+		m_hit_line_Scale[2]->SetPos2(m_x + 4.0f + ground3->GetScroll() + 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f + m_angle), 360))), m_y + 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f + m_angle)))));
+		break;
+	}
+	//m_hit_line_Scale[2]->SetPos1(m_x + 4.0f + ground2->GetScroll()+72.5*sin(3.14 / 180 * (fmod((270.0f+5.12316553f+ m_angle),360))), m_y+ 72.5*(-cos(3.14 / 180 * ((270.0f + 5.12316553f+ m_angle)))));
+	//m_hit_line_Scale[2]->SetPos2(m_x + 4.0f + ground2->GetScroll() + 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f+ m_angle), 360))), m_y + 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f+ m_angle)))));
 	//m_hit_line_Scale[3]->SetPos1(m_x + ground2->GetScroll(), m_y + 13);
 	//m_hit_line_Scale[3]->SetPos2(m_x + ground2->GetScroll() + 145, m_y + 13);
 
@@ -91,7 +106,17 @@ void ObjScale::Action()
 void ObjScale::Draw()
 {
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
-	//‘«ê
-	Draw::Draw2D(81, m_x-70 + ground2->GetScroll(), m_y-10,m_angle);
+	switch (g_SceneNumber)
+	{
+	case GAME_MAIN2:
+		//‘«ê
+		Draw::Draw2D(81, m_x - 70 + ground2->GetScroll(), m_y - 10, m_angle);
+		break;
+
+	case GAME_MAIN3:
+		//‘«ê
+		Draw::Draw2D(81, m_x - 70 + ground3->GetScroll(), m_y - 10, m_angle);
+	}
 }

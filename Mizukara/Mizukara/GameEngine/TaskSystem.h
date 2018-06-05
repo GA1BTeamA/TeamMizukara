@@ -57,6 +57,7 @@ enum {
 	COLORDOOR,
 	DOWNBLOCKSTAGE2,
 	SCALE,
+	WTM3,
 };
 
 //int g_SceneNumber = TITLE;//ƒQ[ƒ€‰æ–Êƒtƒ‰ƒO

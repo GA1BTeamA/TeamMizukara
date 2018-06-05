@@ -14,6 +14,8 @@ public:
 	void Action();
 	void Draw();
 
+	float GetColorR() { return rgba[0]; }
+
 private:
 	float m_x; //WTMの位置
 	float m_y;
@@ -36,6 +38,8 @@ private:
 	static const float m_water_amount;  //水の量変更用卍
 	static const float m_wave_amount;  //波の高さ変更用卍
 	float m_water_remaining;  //水の残量
+
+	float rgba[4];  //水の色
 
 	HitLine* m_p_hit_line_wtm3;//当たり判定
 };
