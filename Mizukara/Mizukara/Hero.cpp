@@ -690,14 +690,29 @@ void CHero::Action()
 			}
 		}
 
-		//虹判定のサンプル
-		//if (m_x >= 300 && 500>=m_x)
-		//{
-		//	if (m_y > 300 - sqrt(100 * 100 - (400 - m_x)*(400 - m_x))) {
-		//		m_y = 300 - sqrt(100 * 100 - (400 - m_x)*(400 - m_x));
-		//		IsHitGround = true;
-		//	}
-		//}
+		if (g_SceneNumber == GAME_MAIN2) {
+			ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+
+			//ぞうさん
+			//横方向の有効範囲
+			if (m_x+ abs(ground2->GetScroll()) >= 2150 && 2350 >= m_x + abs(ground2->GetScroll()))
+			{
+				//円の中心点　-（（斜辺　*　斜辺）-（底辺　*　底辺））
+				if (m_y > 250 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))))) {
+					m_y = 250 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))));
+					IsHitGround = true;
+				}
+			}
+			//虹
+			if (m_x + abs(ground2->GetScroll()) >= 2350 && 3200 >= m_x + abs(ground2->GetScroll()))
+			{
+				if (m_y > 600 - sqrt(400 * 400 - (2800 - (m_x + abs(ground2->GetScroll())))*(2800 - (m_x + abs(ground2->GetScroll()))))) {
+					m_y = 600 - sqrt(400 * 400 - (2800 - (m_x + abs(ground2->GetScroll())))*(2800 - (m_x + abs(ground2->GetScroll()))));
+					IsHitGround = true;
+				}
+			}
+
+		}
 
 		//当たり判定の位置更新
 		m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
