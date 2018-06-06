@@ -21,6 +21,8 @@ public:
 private:
 	float m_x;//ˆÊ’u
 	float m_y;
+	float m_x2;//ˆÊ’u
+	float m_y2;
 
 	float m_angle;//ŒX‚«
 
