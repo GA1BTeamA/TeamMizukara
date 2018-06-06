@@ -869,6 +869,7 @@ void CHero::Action()
 						{
 							if (m_CKey_Frag == false)
 								Audio::StartLoopMusic(1);
+							Audio::LoopMusicVolume(1, 0.03f);
 
 							m_CKey_Frag = true;
 						}
