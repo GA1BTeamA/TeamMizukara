@@ -10,11 +10,18 @@
 extern bool g_key_flag;
 extern int g_SceneNumber;
 
-ObjScale::ObjScale()
-	:m_x(795), m_y(330),m_angle(0.0f)
-	,m_x2(1150), m_y2(180)
+ObjScale::ObjScale(float x,float y,unsigned int n)
+	:m_x(x+70), m_y(y-17),m_angle(0.0f)
 {
-	m_name = SCALE;
+	switch (n)
+	{
+	case 1:	m_name = SCALE1; break;
+	case 2:	m_name = SCALE2; break;
+	case 3:	m_name = SCALE3; break;
+	case 4:	m_name = SCALE4; break;
+	case 5:	m_name = SCALE5; break;
+
+	}
 
 	////天秤ヒットライン作成し、値を設定(左)
 	//m_hit_line_Scale[0] = Collision::HitLineInsert(this);

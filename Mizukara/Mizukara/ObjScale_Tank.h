@@ -10,12 +10,14 @@
 class ObjScale_Tank :public CObj
 {
 public:
-	ObjScale_Tank();
+	ObjScale_Tank(float x,float y,float r1,float r2,unsigned int n);
 	~ObjScale_Tank();
 	void Action();
 	void Draw();
 
 private:
+	unsigned int m_ScaleNo;//天秤の番号
+
 	float m_x; //ギミック3の位置
 	float m_y;
 	float m_x2;

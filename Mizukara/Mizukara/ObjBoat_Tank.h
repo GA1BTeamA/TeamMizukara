@@ -52,7 +52,10 @@ private:
 
 	int m_BoatAni;//ボートアニメーション(タンク)用
 
+	float m_scroll;
+
 	float m_RopeSizeBucket;//バケツの方のロープの長さ
 
 	HitLine* m_hit_line_BoatTank[4];//当たり判定
+	HitLine* m_hit_line_Boat[2];//当たり判定
 };
