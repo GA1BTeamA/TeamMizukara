@@ -20,6 +20,7 @@ public:
 	void SetColor(float r, float g, float b, float a) {
 		rgba[0] = r, rgba[1] = g, rgba[2] = b, rgba[3] = a;
 	}
+	float GetColorR() { return rgba[0]; }
 
 private:
 	float m_x; //ˆÊ’u

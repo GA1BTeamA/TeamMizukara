@@ -13,12 +13,14 @@ const float ObjScale_Tank::m_WaveSize_x = 0.25f;
 const float ObjScale_Tank::m_WaveSize_y = 0.4f;
 
 //コンストラクタ
-ObjScale_Tank::ObjScale_Tank()
-	:m_x(725+72.5), m_y(347), m_x2(845-72.5), m_y2(347), m_wave_x(725+72.5), m_wave_y(375), m_water_x(725+72.5), m_water_y(383),
-	m_wave_x2(845-72.5), m_wave_y2(375), m_water_x2(845-72.5), m_water_y2(383), m_angle(0.0f),
+ObjScale_Tank::ObjScale_Tank(float x,float y, float r1, float r2, unsigned int n)
+	:m_ScaleNo(n),m_x(x+72.5), m_y(y), m_x2(x +47.5), m_y2(y), m_wave_x(x+72.5), m_wave_y(y+28), m_water_x(x+72.5), m_water_y(y+36),
+	m_wave_x2(x + 47.5), m_wave_y2(y + 28), m_water_x2(x + 47.5), m_water_y2(y + 36),
 	m_angle_x(0.0f), m_angle_y(0.0f), m_angle_x2(0.0f), m_angle_y2(0.0f),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_water_remaining(0.0f), m_water_remaining2(0.0f)
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_water_remaining(r1), m_water_remaining2(r2)
 {
+	m_angle = 0.1f * (m_water_remaining2 - m_water_remaining) / 0.02666f;
+
 	//ヒットラインの作成(左)
 	m_hit_line_ScaleTank = Collision::HitLineInsert(this);
 	m_hit_line_ScaleTank->SetPos1(m_x, m_y - 30);
@@ -63,10 +65,8 @@ void ObjScale_Tank::Action()
 					if (bm->GetWaterRem() < 3.0f) {
 						//残量がなかったら汲めない
 						if (m_water_remaining > 0.0f) {
-							//足場オブジェクト取得
-							ObjScale* sc = (ObjScale*)TaskSystem::GetObj(SCALE);
+							
 							m_angle += 0.1f;
-							sc->AddAngle(0.1f);
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -88,12 +88,9 @@ void ObjScale_Tank::Action()
 					if (bm->GetWaterRem() > 0.0f) {
 						//満タンだったら入れれない
 						if (m_water_remaining < 6.0f) {
-							//足場オブジェクト取得
-							ObjScale* sc = (ObjScale*)TaskSystem::GetObj(SCALE);
 							//地面に当たってなかったら
 				//			if (sc->GetX() <= 1972 || mb->GetY() <= 283.0f) {
 							m_angle += -0.1f;
-							sc->AddAngle(-0.1f);
 
 								if (bm != nullptr) {
 									//バケツメーターにセット
@@ -124,10 +121,7 @@ void ObjScale_Tank::Action()
 					if (bm->GetWaterRem() < 3.0f) {
 						//残量がなかったら汲めない
 						if (m_water_remaining2 > 0.0f) {
-							//足場オブジェクト取得
-							ObjScale* sc = (ObjScale*)TaskSystem::GetObj(SCALE);
 							m_angle += -0.1f;
-							sc->AddAngle(-0.1f);
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -149,13 +143,10 @@ void ObjScale_Tank::Action()
 					if (bm->GetWaterRem() > 0.0f) {
 						//満タンだったら入れれない
 						if (m_water_remaining2 < 6.0f) {
-							//足場オブジェクト取得
-							ObjScale* sc = (ObjScale*)TaskSystem::GetObj(SCALE);
-				//			if (sc->GetX() < 1972 || mb->GetY() <= 283.0f) {
+							//			if (sc->GetX() < 1972 || mb->GetY() <= 283.0f) {
 				//				if (sc->GetY() < 365.0f) {
 
 							m_angle += 0.1f;
-							sc->AddAngle(0.1f);
 
 									if (bm != nullptr) {
 										//バケツメーターにセット
@@ -174,6 +165,18 @@ void ObjScale_Tank::Action()
 		}
 
 	}
+
+	//足場オブジェクト取得
+	ObjScale* sc;
+	switch (m_ScaleNo)
+	{
+	case 1:	sc = (ObjScale*)TaskSystem::GetObj(SCALE1);	break;
+	case 2:	sc = (ObjScale*)TaskSystem::GetObj(SCALE2); break;
+	case 3:	sc = (ObjScale*)TaskSystem::GetObj(SCALE3); break;
+	case 4:	sc = (ObjScale*)TaskSystem::GetObj(SCALE4); break;
+	case 5:	sc = (ObjScale*)TaskSystem::GetObj(SCALE5); break;
+	}
+	sc->SetAngle(m_angle);
 
 	//傾きによる座標変更を計算
 	m_angle_x = 72.5*sin(3.14 / 180 * (fmod((270.0f + 5.12316553f + m_angle), 360)));

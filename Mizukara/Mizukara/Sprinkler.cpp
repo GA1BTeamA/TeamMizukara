@@ -300,6 +300,9 @@ void CSPRI::Draw()
 							//Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank->GetWater_Remaining() > 0)
 							{
+								Audio::StartLoopMusic(13);
+								Audio::LoopMusicVolume(13, 0.1f);
+
 								if (m_move2 <= 10)//スプリンクラーから水が出る
 								{
 									Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
@@ -313,11 +316,13 @@ void CSPRI::Draw()
 									m_move2 = 0;
 								}
 							}
-
+							else
+							{
+								Audio::StopLoopMusic(13);
+							}
 						}
 					}
 				}
-				
 				else
 				{
 					m_move1++;
