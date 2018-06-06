@@ -17,6 +17,10 @@ public:
 	void PushX();
 	void PushC();
 	float GetWaterRem() { return m_water_remaining; }
+	void SetColor(float r, float g, float b, float a) {
+		rgba[0] = r, rgba[1] = g, rgba[2] = b, rgba[3] = a;
+	}
+
 private:
 	float m_x; //位置
 	float m_y;
@@ -34,4 +38,5 @@ private:
 	static const float m_BM_wave_amount;  //波の高さ変更用卍
 	float m_water_remaining;  //水の残量
 
+	float rgba[4];  //水の色
 };

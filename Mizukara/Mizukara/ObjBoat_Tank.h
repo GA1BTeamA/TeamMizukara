@@ -46,7 +46,7 @@ private:
 	static const float m_WaveSize_x2;
 	float m_WaveSize_y;
 	static const float m_WaterSize_x;//êÖÇÃÉTÉCÉY
-	static const float m_WaterSize_y;
+	float m_WaterSize_y;
 	static const float m_WaterSize_x2;
 	static const float m_WaterSize_y2;
 

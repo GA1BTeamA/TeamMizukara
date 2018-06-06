@@ -14,6 +14,9 @@ public:
 	~ObjColorDoor();
 	void Action();
 	void Draw();
+
+	void AddY(float y) { m_gy += y; m_y += y; }
+
 private:
 	float m_x;//ˆÊ’u
 	float m_y;

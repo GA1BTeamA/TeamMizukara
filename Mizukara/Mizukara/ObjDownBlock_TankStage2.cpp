@@ -60,10 +60,10 @@ void ObjDownBlock_TankStage2::Action()
 							m_gy -= 0.5f;  //バケツ移動
 							m_RopeSizeBucket -= 0.0015f;  //バケツ側ロープ長さ変更
 
-							db->AddY(0.5f);  //足場ブロック移動
-							db->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
+							db->AddY(0.8f);  //足場ブロック移動
+							db->SetRopeSizeScaffold(0.0025f);  //足場ロープ長さ変更
 
-							db->SetY(0.5f);  //足場当たり判定移動
+							db->SetY(0.8f);  //足場当たり判定移動
 
 							m_bucket_remaining -= 0.006f;  //水減らす
 														   //波の位置
@@ -104,10 +104,10 @@ void ObjDownBlock_TankStage2::Action()
 							m_gy += 0.5f;  //バケツ移動
 							m_RopeSizeBucket += 0.0015f;  //バケツ側ロープ長さ変更
 
-							db->AddY(-0.5f);  //足場ブロック移動
-							db->SetRopeSizeScaffold(-0.002f);  //足場ロープ長さ変更
+							db->AddY(-0.8f);  //足場ブロック移動
+							db->SetRopeSizeScaffold(-0.0025f);  //足場ロープ長さ変更
 
-							db->SetY(-0.5f);  //足場当たり判定移動
+							db->SetY(-0.8f);  //足場当たり判定移動
 
 							m_bucket_remaining += 0.006f;  //水減らす
 														   //波の位置
@@ -158,7 +158,7 @@ void ObjDownBlock_TankStage2::Draw()
 	if (m_PulleyAni <= 4)
 		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, 1, 1);
 	else
-		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, -1, 1);
+		Draw::Draw2D(80, m_gx + 350 + ground2->GetScroll(), 80, -1, 1);
 
 	//ギミックに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)

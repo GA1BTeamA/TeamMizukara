@@ -676,6 +676,15 @@ void CHero::Action()
 			}
 		}
 
+		//虹判定のサンプル
+		//if (m_x >= 300 && 500>=m_x)
+		//{
+		//	if (m_y > 300 - sqrt(100 * 100 - (400 - m_x)*(400 - m_x))) {
+		//		m_y = 300 - sqrt(100 * 100 - (400 - m_x)*(400 - m_x));
+		//		IsHitGround = true;
+		//	}
+		//}
+
 		//当たり判定の位置更新
 		m_p_hit_line_hero[0]->SetPos1(m_x, m_y);
 		m_p_hit_line_hero[0]->SetPos2(m_x, m_y + 100);
@@ -710,7 +719,7 @@ void CHero::Action()
 				if (m_IsMenu == false)
 				{
 					Audio::StopLoopMusic(6);
-					menu = new CMenu();
+					//menu = new CMenu();
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
@@ -840,7 +849,9 @@ void CHero::Action()
 
 						//主人公の当たり判定に当たってたのがタンクorWTMなら卍
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
-							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 5 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 6)
 						{
 							if (m_CKey_Frag == false)
 								Audio::StartLoopMusic(1);

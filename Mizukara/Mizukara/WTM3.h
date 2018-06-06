@@ -6,25 +6,25 @@
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
 
-//ギミック8タンククラス
-class ObjColorDoor_Tank :public CObj
+class CWTM3 : public CObj
 {
 public:
-	ObjColorDoor_Tank();
-	~ObjColorDoor_Tank();
+	CWTM3();
+	~CWTM3();
 	void Action();
 	void Draw();
+
+	float GetColorR() { return rgba[0]; }
+
 private:
-	float m_x; //ギミック2の位置
+	float m_x; //WTMの位置
 	float m_y;
-
-	float m_gx;//グラフィックの位置
-	float m_gy;
-
-	float m_moveY;
 
 	float m_wave_x;  //波の位置
 	float m_wave_y;
+
+	float im_x;//アイコンの位置
+	float im_y;
 
 	float m_water_x;  //水の位置
 	float m_water_y;
@@ -32,16 +32,15 @@ private:
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
 
-	float m_water_remaining;
-
 	static const float m_WaveSize_x;  //波のサイズ用
+	static const float m_WaveSize_y;
 
-	float m_WaterSize_y;//水用
-	float m_WaveSize_y;//波用
+	static const float m_water_amount;  //水の量変更用卍
+	static const float m_wave_amount;  //波の高さ変更用卍
+	float m_water_remaining;  //水の残量
 
 	float rgba[4];  //水の色
 
-
-	HitLine* m_hit_line_ColorDoorTank[2];//当たり判定
+	HitLine* m_p_hit_line_wtm3;//当たり判定
 };
 

@@ -5,6 +5,7 @@
 #include "ObjScale_Tank.h"
 #include "ObjScale.h"
 #include "ObjGround2.h"
+#include "ObjGround3.h"
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
@@ -42,6 +43,7 @@ ObjScale_Tank::~ObjScale_Tank()
 void ObjScale_Tank::Action()
 {
 	ObjGround2* ground = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
@@ -179,18 +181,41 @@ void ObjScale_Tank::Action()
 	m_angle_x2 = 72.5 * sin(3.14 / 180 * (fmod((90.0f - 5.12316553f + m_angle), 360)));
 	m_angle_y2 = 72.5 * (-cos(3.14 / 180 * ((90.0f - 5.12316553f + m_angle))));
 
-	//当たり判定位置の更新
-	m_hit_line_ScaleTank->SetPos1(m_x + ground->GetScroll()+ m_angle_x, m_y - 30 + m_angle_y);
-	m_hit_line_ScaleTank->SetPos2(m_x + ground->GetScroll()+ m_angle_x, m_y + m_angle_y);
 
-	m_hit_line_ScaleTank2->SetPos1(m_x2-50 + ground->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
-	m_hit_line_ScaleTank2->SetPos2(m_x2-50 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+	switch (g_SceneNumber)
+	{
+	case GAME_MAIN2:
+		//当たり判定位置の更新
+		m_hit_line_ScaleTank->SetPos1(m_x + ground->GetScroll() + m_angle_x, m_y - 30 + m_angle_y);
+		m_hit_line_ScaleTank->SetPos2(m_x + ground->GetScroll() + m_angle_x, m_y + m_angle_y);
+
+		m_hit_line_ScaleTank2->SetPos1(m_x2 - 50 + ground->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
+		m_hit_line_ScaleTank2->SetPos2(m_x2 - 50 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+		break;
+
+	case GAME_MAIN3:
+		//当たり判定位置の更新
+		m_hit_line_ScaleTank->SetPos1(m_x + ground3->GetScroll() + m_angle_x, m_y - 30 + m_angle_y);
+		m_hit_line_ScaleTank->SetPos2(m_x + ground3->GetScroll() + m_angle_x, m_y + m_angle_y);
+
+		m_hit_line_ScaleTank2->SetPos1(m_x2 - 50 + ground3->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
+		m_hit_line_ScaleTank2->SetPos2(m_x2 - 50 + ground3->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+		break;
+	}
+	////当たり判定位置の更新
+	//m_hit_line_ScaleTank->SetPos1(m_x + ground->GetScroll()+ m_angle_x, m_y - 30 + m_angle_y);
+	//m_hit_line_ScaleTank->SetPos2(m_x + ground->GetScroll()+ m_angle_x, m_y + m_angle_y);
+
+	//m_hit_line_ScaleTank2->SetPos1(m_x2-50 + ground->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
+	//m_hit_line_ScaleTank2->SetPos2(m_x2-50 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
 }
 
 //ドロー
 void ObjScale_Tank::Draw()
 {
 	ObjGround2* ground = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
+
 
 	//WTMに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)

@@ -26,8 +26,8 @@ ObjBoat::ObjBoat()
 
 	m_hit_line_Boat[2] = Collision::HitLineInsert(this);
 	m_hit_line_Boat[2]->Set4direc(HIT_RIGHT);
-	m_hit_line_Boat[2]->SetPos1(m_scroll + 350, m_y);  //右
-	m_hit_line_Boat[2]->SetPos2(m_scroll + 350, m_y+100);
+	m_hit_line_Boat[2]->SetPos1(m_scroll + 400, m_y);  //右
+	m_hit_line_Boat[2]->SetPos2(m_scroll + 400, m_y-100);
 	
 	for (int i = 0; i < 3; i++)
 	{
@@ -62,8 +62,8 @@ void ObjBoat::Action()
 	m_hit_line_Boat[0]->SetPos2(ground2->GetScroll() + 350, m_y);
 	m_hit_line_Boat[1]->SetPos1(ground2->GetScroll() + 310, m_y);  //左
 	m_hit_line_Boat[1]->SetPos2(ground2->GetScroll() + 310, m_y+100);
-	m_hit_line_Boat[2]->SetPos1(ground2->GetScroll() + 350, m_y);  //右
-	m_hit_line_Boat[2]->SetPos2(ground2->GetScroll() + 350, m_y+100);
+	m_hit_line_Boat[2]->SetPos1(ground2->GetScroll() + 400, m_y);  //右
+	m_hit_line_Boat[2]->SetPos2(ground2->GetScroll() + 400, m_y-100);
 
 }
 
