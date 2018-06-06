@@ -296,7 +296,14 @@ void CHero::Action()
 								//垂直ベクトルならｙ無視
 								if (Cross_y <= 0 && Cross_y_min > abs(Cross_y) && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
 								{
-									Cross_y_min = Cross_y;
+									if (m_x + m_point_position[2].x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x) {
+											Cross_y_min = Cross_y;
+									}
+									//斜め判定に横から当たったら止める
+									else {
+										IsHitWall = true;
+										Move_x = 0.0f;
+									}
 								}
 							}
 						}
@@ -326,7 +333,14 @@ void CHero::Action()
 								//垂直ベクトルならｙ無視
 								if (Cross_y <= 0 && Cross_y_min > abs(Cross_y) && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
 								{
-									Cross_y_min = Cross_y;
+									if (m_x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+											Cross_y_min = Cross_y;
+									}
+									//斜め判定に横から当たったら止める
+									else {
+										IsHitWall = true;
+										Move_x = 0.0f;
+									}
 								}
 							}
 						}

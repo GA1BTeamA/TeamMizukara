@@ -171,8 +171,11 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(79, L"Images\\Stage3B.png");//79番目Stage3B.pngを読み込み
 	Draw::LoadImage(80, L"Images\\Gimmick2pulleyshort.png");//80番目Gimmick2pulleyshort.pngを読み込み
 	Draw::LoadImage(81, L"Images\\kaitendai.png");//81番目に"kaitendai.png"を読み込み
-	Draw::LoadImage(82, L"Images\\Story2.png");//82番目に"Story2.png"を読み込み
-	Draw::LoadImage(83, L"Images\\Story3.png");//83番目に"Story3.png"を読み込み
+	Draw::LoadImage(82, L"Images\\GreenM.png");//82番目に"GreenM.png"を読み込み
+	Draw::LoadImage(83, L"Images\\GreenT.png");//83番目に"GreenT.png"を読み込み
+	Draw::LoadImage(84, L"Images\\GreenW.png");//84番目に"GreenW.png"を読み込み
+	Draw::LoadImage(85, L"Images\\Story2.png");//82番目に"Story2.png"を読み込み
+	Draw::LoadImage(86, L"Images\\Story3.png");//83番目に"Story3.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -261,6 +264,16 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjDownBlock_TankStage2* dwbltS2;
 		ObjScale* scale;
 		ObjScale_Tank* scale_t;
+		ObjScale* scale2;
+		ObjScale_Tank* scale_t2;
+		ObjScale* scale3;
+		ObjScale_Tank* scale_t3;
+		ObjScale* scale4;
+		ObjScale_Tank* scale_t4;
+		ObjScale* scale5;
+		ObjScale_Tank* scale_t5;
+
+
 		CWTM3* wtm3;
 
 		switch (g_SceneNumber)
@@ -422,15 +435,51 @@ unsigned __stdcall GameMainSled(void *p)
 			dwbltS2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(dwbltS2);
 
-			scale = new ObjScale();
+			scale = new ObjScale(725.0f, 347.0f,1);
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-
-			scale_t = new ObjScale_Tank();
+			scale_t = new ObjScale_Tank(725.0f, 347.0f,3.0f,6.0f,1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
+
+			scale2 = new ObjScale(1075.0f, 247.0f,2);
+			scale2->m_ActionPriority = 90;
+			scale2->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale2);
+			scale_t2 = new ObjScale_Tank(1075.0f, 247.0f,0.0f,6.0f,2);
+			scale_t2->m_ActionPriority = 90;
+			scale_t2->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t2);
+
+			scale3 = new ObjScale(1355.0f, 147.0f, 3);
+			scale3->m_ActionPriority = 90;
+			scale3->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale3);
+			scale_t3 = new ObjScale_Tank(1355.0f, 147.0f,0.0f,6.0f, 3);
+			scale_t3->m_ActionPriority = 90;
+			scale_t3->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t3);
+
+			scale4 = new ObjScale(1520.0f, 147.0f, 4);
+			scale4->m_ActionPriority = 90;
+			scale4->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale4);
+			scale_t4 = new ObjScale_Tank(1520.0f, 147.0f,0.0f,6.0f, 4);
+			scale_t4->m_ActionPriority = 90;
+			scale_t4->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t4);
+
+			scale5 = new ObjScale(1685.0f, 147.0f, 5);
+			scale5->m_ActionPriority = 90;
+			scale5->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale5);
+			scale_t5 = new ObjScale_Tank(1685.0f, 147.0f,6.0f,0.0f, 5);
+			scale_t5->m_ActionPriority = 90;
+			scale_t5->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t5);
+
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;

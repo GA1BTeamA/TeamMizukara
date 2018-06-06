@@ -69,6 +69,7 @@ void CTank3::Action()
 							//（バケツ満タン/75フレーム）
 							m_water_remaining2 -= 0.02666;
 						}
+						bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 					}
 				}
 				//水をタンクに戻す
@@ -89,9 +90,10 @@ void CTank3::Action()
 								bm->PushC();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//　（バケツ満タン/75フレーム）
 							m_water_remaining2 += 0.02666;
 						}
+						bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 					}
 				}
 				break;
@@ -99,7 +101,7 @@ void CTank3::Action()
 		}
 	}
 	//波の位置設定
-	//　　　　満タン位置+タンクの高さ*（満タン-残量）/100
+	//満タン位置+タンクの高さ*（満タン-残量）/100
 	m_wave_y = 250 + 110 * (100 - m_water_remaining2)*0.01;
 
 }

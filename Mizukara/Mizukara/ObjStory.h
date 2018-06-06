@@ -18,5 +18,7 @@ private:
 	float m_x; //位置
 	float m_y;
 
+	int m_StoryScene;
+
 	unsigned int m_time;//ストーリー描画時間
 };
