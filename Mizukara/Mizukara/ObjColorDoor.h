@@ -15,14 +15,16 @@ public:
 	void Action();
 	void Draw();
 
-	void AddY(float y) { m_gy += y; m_y += y; }
+	void AddY(float y) { m_y += y; }
 
 private:
 	float m_x;//位置
 	float m_y;
+	float m_x2;//位置
+	float m_y2;
 
-	float m_gx;  //グラフィック位置
-	float m_gy;
+	//float m_gx;  //グラフィック位置
+	//float m_gy;
 
 	HitLine* m_hit_line_ColorDoor[4];//当たり判定
 };
