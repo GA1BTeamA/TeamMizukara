@@ -17,6 +17,9 @@ public:
 private:
 	float m_x; //ギミック2の位置
 	float m_y;
+	float m_x2; //ギミック2の位置
+	float m_y2;
+
 
 	float m_gx;//グラフィックの位置
 	float m_gy;
