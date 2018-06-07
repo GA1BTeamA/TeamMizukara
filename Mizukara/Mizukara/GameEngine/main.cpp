@@ -54,6 +54,7 @@
 #include "..\ObjScale.h"
 #include "..\ObjScale_Tank.h"
 #include "..\WTM3.h"
+#include "..\ZTank.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -278,6 +279,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjScale_Tank* scale_t4;
 		ObjScale* scale5;
 		ObjScale_Tank* scale_t5;
+		ObjElephant_Tank* ztank;
 
 
 		CWTM3* wtm3;
@@ -500,6 +502,11 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm2_3->m_ActionPriority = 70;
 			wtm2_3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_3);
+
+			ztank = new ObjElephant_Tank();
+			ztank->m_ActionPriority = 70;
+			ztank->m_DrawPriority = 200;
+			TaskSystem::InsertObj(ztank);
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;

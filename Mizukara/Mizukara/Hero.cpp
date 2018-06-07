@@ -749,12 +749,14 @@ void CHero::Action()
 
 			//ぞうさん
 			//横方向の有効範囲
-			if (m_x+ abs(ground2->GetScroll()) >= 2150 && 2350 >= m_x + abs(ground2->GetScroll()))
-			{
-				//円の中心点　-（（斜辺　*　斜辺）-（底辺　*　底辺））
-				if (m_y > 225 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))))) {
-					m_y = 225 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))));
-					IsHitGround = true;
+			if (!IsHitWall) {
+				if (m_x + abs(ground2->GetScroll()) >= 2150 && 2350 >= m_x + abs(ground2->GetScroll()))
+				{
+					//円の中心点　-（（斜辺　*　斜辺）-（底辺　*　底辺））
+					if (m_y > 225 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))))) {
+						m_y = 225 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))));
+						IsHitGround = true;
+					}
 				}
 			}
 			//虹
