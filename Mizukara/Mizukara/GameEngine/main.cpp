@@ -32,6 +32,7 @@
 #include "..\ObjGround.h"
 #include "..\SceneMain.h"
 #include "..\WTM.h"
+#include "..\WTM2.h"
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
 #include "..\ObjUpScaffold.h"
@@ -176,6 +177,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(84, L"Images\\GreenW.png");//84番目に"GreenW.png"を読み込み
 	Draw::LoadImage(85, L"Images\\Story2.png");//82番目に"Story2.png"を読み込み
 	Draw::LoadImage(86, L"Images\\Story3.png");//83番目に"Story3.png"を読み込み
+	Draw::LoadImage(87, L"Images\\Rainbow.png");//87番目に"Rainbow.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -245,6 +247,9 @@ unsigned __stdcall GameMainSled(void *p)
 		CBucketMeter* bucketmeter;
 		CObjGround* ground;
 		CWTM* wtm;
+		CWTM2* wtm2_1;
+		CWTM2* wtm2_2;
+		CWTM2* wtm2_3;
 		CSPRI* spri;
 		ObjUpScaffold* upsc;
 		ObjUpScaffold_Tank* upsct;
@@ -405,15 +410,15 @@ unsigned __stdcall GameMainSled(void *p)
 			ground2->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground2);
 
-			boat = new ObjBoat();
-			boat->m_ActionPriority = 50;
-			boat->m_DrawPriority = 160;
-			TaskSystem::InsertObj(boat);
+			//boat = new ObjBoat();
+			//boat->m_ActionPriority = 50;
+			//boat->m_DrawPriority = 160;
+			//TaskSystem::InsertObj(boat);
 
-			boat_t = new ObjBoat_Tank();
-			boat_t->m_ActionPriority = 70;
-			boat_t->m_DrawPriority = 160;
-			TaskSystem::InsertObj(boat_t);
+			//boat_t = new ObjBoat_Tank();
+			//boat_t->m_ActionPriority = 70;
+			//boat_t->m_DrawPriority = 160;
+			//TaskSystem::InsertObj(boat_t);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
@@ -439,47 +444,61 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-			scale_t = new ObjScale_Tank(725.0f, 347.0f,3.0f,6.0f,1);
+			scale_t = new ObjScale_Tank(725.0f, 347.0f,1.0f,6.0f,1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
 
-			scale2 = new ObjScale(1075.0f, 247.0f,2);
+			scale2 = new ObjScale(1075.0f, 190.0f,2);
 			scale2->m_ActionPriority = 90;
 			scale2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale2);
-			scale_t2 = new ObjScale_Tank(1075.0f, 247.0f,0.0f,6.0f,2);
+			scale_t2 = new ObjScale_Tank(1075.0f, 190.0f,0.0f,6.0f,2);
 			scale_t2->m_ActionPriority = 90;
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
 
-			scale3 = new ObjScale(1355.0f, 147.0f, 3);
+			scale3 = new ObjScale(1355.0f, 197.0f, 3);
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale3);
-			scale_t3 = new ObjScale_Tank(1355.0f, 147.0f,0.0f,6.0f, 3);
+			scale_t3 = new ObjScale_Tank(1355.0f, 197.0f,0.0f,6.0f, 3);
 			scale_t3->m_ActionPriority = 90;
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);
 
-			scale4 = new ObjScale(1520.0f, 147.0f, 4);
+			scale4 = new ObjScale(1520.0f, 167.0f, 4);
 			scale4->m_ActionPriority = 90;
 			scale4->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale4);
-			scale_t4 = new ObjScale_Tank(1520.0f, 147.0f,0.0f,6.0f, 4);
+			scale_t4 = new ObjScale_Tank(1520.0f, 167.0f,0.0f,6.0f, 4);
 			scale_t4->m_ActionPriority = 90;
 			scale_t4->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t4);
 
-			scale5 = new ObjScale(1685.0f, 147.0f, 5);
+			scale5 = new ObjScale(1685.0f, 197.0f, 5);
 			scale5->m_ActionPriority = 90;
 			scale5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale5);
-			scale_t5 = new ObjScale_Tank(1685.0f, 147.0f,6.0f,0.0f, 5);
+			scale_t5 = new ObjScale_Tank(1685.0f, 197.0f,6.0f,0.0f, 5);
 			scale_t5->m_ActionPriority = 90;
 			scale_t5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t5);
 
+			wtm2_1 = new CWTM2(650.0f,315.0f);
+			wtm2_1->m_ActionPriority = 70;
+			wtm2_1->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm2_1);
+
+			wtm2_2 = new CWTM2(1260.0f, 188.0f);
+			wtm2_2->m_ActionPriority = 70;
+			wtm2_2->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm2_2);
+
+			wtm2_3 = new CWTM2(1940.0f, 145.0f);
+			wtm2_3->m_ActionPriority = 70;
+			wtm2_3->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm2_3);
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;

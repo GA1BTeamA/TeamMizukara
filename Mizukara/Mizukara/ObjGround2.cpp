@@ -91,6 +91,30 @@ ObjGround2::ObjGround2()
 	m_p_hit_line_ground2[19] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground2[19]->Set4direc(HIT_RIGHT);
 
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[20] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[20]->Set4direc(HIT_TOP);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[21] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[21]->Set4direc(HIT_RIGHT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[22] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[22]->Set4direc(HIT_TOP);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[23] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[23]->Set4direc(HIT_RIGHT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[24] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[24]->Set4direc(HIT_TOP);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground2[25] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground2[25]->Set4direc(HIT_RIGHT);
+
 	m_p_hit_line_ground2[0]->SetPos1(m_scroll + 0, m_gy + 400);  //最初
 	m_p_hit_line_ground2[0]->SetPos2(m_scroll + /*274*/494, m_gy + 400);
 	m_p_hit_line_ground2[1]->SetPos1(m_scroll + 550, m_gy + 400);  //0段目
@@ -126,13 +150,25 @@ ObjGround2::ObjGround2()
 	m_p_hit_line_ground2[16]->SetPos1(m_scroll + 1332, m_gy + 450);  //高い地面反対側の壁
 	m_p_hit_line_ground2[16]->SetPos2(m_scroll + 1332, m_gy + 191);
 	m_p_hit_line_ground2[17]->SetPos1(m_scroll + 1846, m_gy + 450);  //洞窟最後、ぞうさん手前の壁
-	m_p_hit_line_ground2[17]->SetPos2(m_scroll + 1846, m_gy + /*149*/350);
-	m_p_hit_line_ground2[18]->SetPos1(m_scroll + 1846, m_gy + /*149*/350);  //ぞうさん階段手前の地面
-	m_p_hit_line_ground2[18]->SetPos2(m_scroll + /*2045*/2300, m_gy + /*149*/350);
-	m_p_hit_line_ground2[19]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
-	m_p_hit_line_ground2[19]->SetPos2(m_scroll + 90, m_gy);
+	m_p_hit_line_ground2[17]->SetPos2(m_scroll + 1846, m_gy + 149);
+	m_p_hit_line_ground2[18]->SetPos1(m_scroll + 1846, m_gy + 149);  //ぞうさん階段1上
+	m_p_hit_line_ground2[18]->SetPos2(m_scroll + 2045, m_gy + 149);
+	m_p_hit_line_ground2[19]->SetPos1(m_scroll + 2045, m_gy + 249);  //ぞうさん階段1右
+	m_p_hit_line_ground2[19]->SetPos2(m_scroll + 2045, m_gy + 149);
+	m_p_hit_line_ground2[20]->SetPos1(m_scroll + 1945, m_gy + 176);  //ぞうさん階段2上
+	m_p_hit_line_ground2[20]->SetPos2(m_scroll + 2071, m_gy + 176);
+	m_p_hit_line_ground2[21]->SetPos1(m_scroll + 2071, m_gy + 253);  //ぞうさん階段2右
+	m_p_hit_line_ground2[21]->SetPos2(m_scroll + 2071, m_gy + 176);
+	m_p_hit_line_ground2[22]->SetPos1(m_scroll + 2000, m_gy + 203);  //ぞうさん階段3上
+	m_p_hit_line_ground2[22]->SetPos2(m_scroll + 2097, m_gy + 203);
+	m_p_hit_line_ground2[23]->SetPos1(m_scroll + 2097, m_gy + 280);  //ぞうさん階段3右
+	m_p_hit_line_ground2[23]->SetPos2(m_scroll + 2097, m_gy + 203);
+	m_p_hit_line_ground2[24]->SetPos1(m_scroll + 2000, m_gy + 230);  //ぞうさん階段終わりの地面
+	m_p_hit_line_ground2[24]->SetPos2(m_scroll + 2250, m_gy + 230);
+	m_p_hit_line_ground2[25]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground2[25]->SetPos2(m_scroll + 90, m_gy);
 
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < 26; i++) {
 		m_p_hit_line_ground2[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground2[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground2[i]->SetAngle();
@@ -195,11 +231,23 @@ void ObjGround2::Action()
 	m_p_hit_line_ground2[16]->SetPos1(m_scroll + 1332, m_gy + 450);  //高い地面反対側の壁
 	m_p_hit_line_ground2[16]->SetPos2(m_scroll + 1332, m_gy + 191);
 	m_p_hit_line_ground2[17]->SetPos1(m_scroll + 1846, m_gy + 450);  //洞窟最後、ぞうさん手前の壁
-	m_p_hit_line_ground2[17]->SetPos2(m_scroll + 1846, m_gy + /*149*/350);
-	m_p_hit_line_ground2[18]->SetPos1(m_scroll + 1846, m_gy + /*149*/350);  //ぞうさん階段手前の地面
-	m_p_hit_line_ground2[18]->SetPos2(m_scroll + /*2045*/2300, m_gy + /*149*/350);
-	m_p_hit_line_ground2[19]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
-	m_p_hit_line_ground2[19]->SetPos2(m_scroll + 90, m_gy);
+	m_p_hit_line_ground2[17]->SetPos2(m_scroll + 1846, m_gy + 149);
+	m_p_hit_line_ground2[18]->SetPos1(m_scroll + 1846, m_gy + 149);  //ぞうさん階段1上
+	m_p_hit_line_ground2[18]->SetPos2(m_scroll + 2045, m_gy + 149);
+	m_p_hit_line_ground2[19]->SetPos1(m_scroll + 2045, m_gy + 249);  //ぞうさん階段1右
+	m_p_hit_line_ground2[19]->SetPos2(m_scroll + 2045, m_gy + 149);
+	m_p_hit_line_ground2[20]->SetPos1(m_scroll + 1945, m_gy + 176);  //ぞうさん階段2上
+	m_p_hit_line_ground2[20]->SetPos2(m_scroll + 2071, m_gy + 176);
+	m_p_hit_line_ground2[21]->SetPos1(m_scroll + 2071, m_gy + 253);  //ぞうさん階段2右
+	m_p_hit_line_ground2[21]->SetPos2(m_scroll + 2071, m_gy + 176);
+	m_p_hit_line_ground2[22]->SetPos1(m_scroll + 2000, m_gy + 203);  //ぞうさん階段3上
+	m_p_hit_line_ground2[22]->SetPos2(m_scroll + 2097, m_gy + 203);
+	m_p_hit_line_ground2[23]->SetPos1(m_scroll + 2097, m_gy + 280);  //ぞうさん階段3右
+	m_p_hit_line_ground2[23]->SetPos2(m_scroll + 2097, m_gy + 203);
+	m_p_hit_line_ground2[24]->SetPos1(m_scroll + 2000, m_gy + 230);  //ぞうさん階段終わりの地面
+	m_p_hit_line_ground2[24]->SetPos2(m_scroll + 2250, m_gy + 230);
+	m_p_hit_line_ground2[25]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground2[25]->SetPos2(m_scroll + 90, m_gy);
 
 }
 
@@ -208,6 +256,7 @@ void ObjGround2::Draw()
 {
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
+	Draw::Draw2D(87, m_scroll+2450, 200);
 
 
 	//Draw::Draw2D(58, m_scroll+2045, 149);
