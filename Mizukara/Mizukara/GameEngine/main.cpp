@@ -257,7 +257,11 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjBoat_Tank* boat_t;
 		ObjGround3* ground3;
 		ObjColorDoor* colordoor;
+		ObjColorDoor* colordoor2;
+		ObjColorDoor* colordoor3;
 		ObjColorDoor_Tank* colordoort;
+		ObjColorDoor_Tank* colordoort2;
+		ObjColorDoor_Tank* colordoort3;
 		CTank2* tank2;
 		CTank3* tank3;
 		ObjDownBlockStage2* dwblS2;
@@ -272,9 +276,8 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjScale_Tank* scale_t4;
 		ObjScale* scale5;
 		ObjScale_Tank* scale_t5;
-
-
 		CWTM3* wtm3;
+		CWTM3* wtm3_1;
 
 		switch (g_SceneNumber)
 		{
@@ -502,10 +505,17 @@ unsigned __stdcall GameMainSled(void *p)
 			ground3->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground3);
 
-			wtm3 = new CWTM3();
+			//赤WTM
+			wtm3 = new CWTM3(211,234,74);
 			wtm3->m_ActionPriority = 70;
 			wtm3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3);
+
+			//緑WTM
+			wtm3_1 = new CWTM3(745,146,82);
+			wtm3_1->m_ActionPriority = 70;
+			wtm3_1->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm3_1);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
@@ -517,30 +527,56 @@ unsigned __stdcall GameMainSled(void *p)
 			tank3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(tank3);
 
-			colordoor = new ObjColorDoor();
+			//赤門
+			colordoor = new ObjColorDoor(425,261,76,1);
 			colordoor->m_ActionPriority = 100;
 			colordoor->m_DrawPriority = 100;
 			TaskSystem::InsertObj(colordoor);
 
-			colordoort = new ObjColorDoor_Tank();
+			//赤門(2個め)
+			colordoor2 = new ObjColorDoor(916,174,76,2);
+			colordoor2->m_ActionPriority = 100;
+			colordoor2->m_DrawPriority = 100;
+			TaskSystem::InsertObj(colordoor2);
+
+			//緑門
+			colordoor3 = new ObjColorDoor(1062, 174, 84, 3);
+			colordoor3->m_ActionPriority = 100;
+			colordoor3->m_DrawPriority = 100;
+			TaskSystem::InsertObj(colordoor3);
+
+			//赤タンク
+			colordoort = new ObjColorDoor_Tank(345,335,75,347,380,1);
 			colordoort->m_ActionPriority = 110;
 			colordoort->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort);
+
+			//赤タンク
+			colordoort2 = new ObjColorDoor_Tank(845, 248, 75, 847, 380,2);
+			colordoort2->m_ActionPriority = 110;
+			colordoort2->m_DrawPriority = 110;
+			TaskSystem::InsertObj(colordoort2);
+
+			//緑タンク
+			colordoort3 = new ObjColorDoor_Tank(990, 248, 82,992,292,3);
+			colordoort3->m_ActionPriority = 110;
+			colordoort3->m_DrawPriority = 110;
+			TaskSystem::InsertObj(colordoort3);
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;
 			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
 
-			//scale = new ObjScale();
-			//scale->m_ActionPriority = 90;
-			//scale->m_DrawPriority = 80;
-			//TaskSystem::InsertObj(scale);
+			scale = new ObjScale(570.0f, 326.0f, 1);
+			scale->m_ActionPriority = 90;
+			scale->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale);
 
-			//scale_t = new ObjScale_Tank();
-			//scale_t->m_ActionPriority = 90;
-			//scale_t->m_DrawPriority = 80;
-			//TaskSystem::InsertObj(scale_t);
+			scale_t = new ObjScale_Tank(562.0f, 323.0f, 0.0f, 3.0f, 1);
+			scale_t->m_ActionPriority = 90;
+			scale_t->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;

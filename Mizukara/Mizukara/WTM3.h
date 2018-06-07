@@ -9,7 +9,7 @@
 class CWTM3 : public CObj
 {
 public:
-	CWTM3();
+	CWTM3(float x,float y,int color);
 	~CWTM3();
 	void Action();
 	void Draw();
@@ -19,6 +19,10 @@ public:
 private:
 	float m_x; //WTMの位置
 	float m_y;
+
+	float m_gx; //WTMの位置(グラフィック)
+	float m_gy;
+
 
 	float m_wave_x;  //波の位置
 	float m_wave_y;

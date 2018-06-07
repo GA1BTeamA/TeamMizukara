@@ -219,66 +219,134 @@ void ObjScale_Tank::Draw()
 	ObjGround2* ground = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
-
-	//WTMに近づいたらアイコンを出す
-	for (int i = 0; i < 10; i++)
+	switch (g_SceneNumber)
 	{
-		if (m_hit_line_ScaleTank->GetHitData()[i] != nullptr)
+	case GAME_MAIN2:
+		//WTMに近づいたらアイコンを出す
+		for (int i = 0; i < 10; i++)
 		{
-			if (m_hit_line_ScaleTank->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_ScaleTank->GetHitData()[i] != nullptr)
 			{
-				Draw::Draw2D(70, m_x - 20 + ground->GetScroll() + m_angle_x, m_y - 150 + m_angle_y);
+				if (m_hit_line_ScaleTank->GetHitData()[i]->GetElement() == 0)
+				{
+					Draw::Draw2D(70, m_x - 20 + ground->GetScroll() + m_angle_x, m_y - 150 + m_angle_y);
+				}
 			}
 		}
-	}
 
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_hit_line_ScaleTank2->GetHitData()[i] != nullptr)
+		for (int i = 0; i < 10; i++)
 		{
-			if (m_hit_line_ScaleTank2->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_ScaleTank2->GetHitData()[i] != nullptr)
 			{
-				Draw::Draw2D(70, m_x2-10 + ground->GetScroll() + m_angle_x2, m_y2 - 150 + m_angle_y2);
+				if (m_hit_line_ScaleTank2->GetHitData()[i]->GetElement() == 0)
+				{
+					Draw::Draw2D(70, m_x2 - 10 + ground->GetScroll() + m_angle_x2, m_y2 - 150 + m_angle_y2);
+				}
 			}
 		}
+
+		//水表示
+		Draw::Draw2D(48, m_water_x + ground->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
+		Draw::Draw2D(48, m_water_x2 + ground->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.74, -(0.64*m_water_remaining2 * 1 / 6));
+
+		//波アニメーション(後ろ)
+		if (m_ani_time1 >= 109)
+		{
+			m_ani_time1 = 0;
+		}
+		else
+		{
+			m_ani_time1++;
+		}
+
+		//波アニメーション(後ろ)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll() + m_angle_x, (m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
+
+		//波アニメーション2(後ろ)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x2 + ground->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2 * 2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
+
+		//波アニメーション(前)
+		if (m_ani_time2 >= 54)
+		{
+			m_ani_time2 = 0;
+		}
+		else
+		{
+			m_ani_time2++;
+		}
+
+		//波アニメーション
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll() + m_angle_x, (m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
+
+		//波アニメーション2(前)
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x2 + ground->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
+	
+		Draw::Draw2D(56, m_x + ground->GetScroll() + m_angle_x, m_y + m_angle_y, 1, 1);
+		Draw::Draw2D(56, m_x2 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2, 1, 1);
+		break;
+
+	case GAME_MAIN3:
+		//WTMに近づいたらアイコンを出す
+		for (int i = 0; i < 10; i++)
+		{
+			if (m_hit_line_ScaleTank->GetHitData()[i] != nullptr)
+			{
+				if (m_hit_line_ScaleTank->GetHitData()[i]->GetElement() == 0)
+				{
+					Draw::Draw2D(70, m_x - 20 + ground3->GetScroll() + m_angle_x, m_y - 150 + m_angle_y);
+				}
+			}
+		}
+
+		for (int i = 0; i < 10; i++)
+		{
+			if (m_hit_line_ScaleTank2->GetHitData()[i] != nullptr)
+			{
+				if (m_hit_line_ScaleTank2->GetHitData()[i]->GetElement() == 0)
+				{
+					Draw::Draw2D(70, m_x2 - 10 + ground3->GetScroll() + m_angle_x2, m_y2 - 150 + m_angle_y2);
+				}
+			}
+		}
+
+		//水表示
+		Draw::Draw2D(48, m_water_x + ground3->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
+		Draw::Draw2D(48, m_water_x2 + ground3->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.74, -(0.64*m_water_remaining2 * 1 / 6));
+
+		//波アニメーション(後ろ)
+		if (m_ani_time1 >= 109)
+		{
+			m_ani_time1 = 0;
+		}
+		else
+		{
+			m_ani_time1++;
+		}
+
+		//波アニメーション(後ろ)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground3->GetScroll() + m_angle_x, (m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
+
+		//波アニメーション2(後ろ)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x2 + ground3->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2 * 2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
+
+		//波アニメーション(前)
+		if (m_ani_time2 >= 54)
+		{
+			m_ani_time2 = 0;
+		}
+		else
+		{
+			m_ani_time2++;
+		}
+
+		//波アニメーション
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground3->GetScroll() + m_angle_x, (m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
+
+		//波アニメーション2(前)
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x2 + ground3->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
+
+		Draw::Draw2D(56, m_x + ground3->GetScroll() + m_angle_x, m_y + m_angle_y, 1, 1);
+		Draw::Draw2D(56, m_x2 + ground3->GetScroll() + m_angle_x2, m_y2 + m_angle_y2, 1, 1);
+		break;
 	}
-
-	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
-	Draw::Draw2D(48, m_water_x2 + ground->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.74, -(0.64*m_water_remaining2 * 1 / 6));
-
-	//波アニメーション(後ろ)
-	if (m_ani_time1 >= 109)
-	{
-		m_ani_time1 = 0;
-	}
-	else
-	{
-		m_ani_time1++;
-	}
-
-	//波アニメーション(後ろ)
-	Draw::Draw2D(36+(m_ani_time1/10), m_wave_x + ground->GetScroll() + m_angle_x,(m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
-
-	//波アニメーション2(後ろ)
-	Draw::Draw2D(36+(m_ani_time1/10), m_wave_x2 + ground->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2 * 2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
-
-	//波アニメーション(前)
-	if (m_ani_time2 >= 54)
-	{
-		m_ani_time2 = 0;
-	}
-	else
-	{
-		m_ani_time2++;
-	}
-
-	//波アニメーション
-	Draw::Draw2D(25+(m_ani_time2/5), m_wave_x + ground->GetScroll() + m_angle_x, (m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
-
-	//波アニメーション2(前)
-	Draw::Draw2D(25+(m_ani_time2/5), m_wave_x2 + ground->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
-
-	Draw::Draw2D(56, m_x + ground->GetScroll() + m_angle_x, m_y + m_angle_y, 1, 1);
-	Draw::Draw2D(56, m_x2 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2, 1, 1);
 }

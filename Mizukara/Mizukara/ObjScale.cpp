@@ -131,7 +131,7 @@ void ObjScale::Draw()
 	case GAME_MAIN2:
 		//‘«ê
 		Draw::Draw2D(81, m_x - 70 + ground2->GetScroll(), m_y - 10, m_angle);
-		Draw::Draw2D(81, m_x2 - 70 + ground2->GetScroll(), m_y2 - 10, m_angle);
+		//Draw::Draw2D(81, m_x2 - 70 + ground2->GetScroll(), m_y2 - 10, m_angle);
 
 		break;
 

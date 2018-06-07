@@ -10,15 +10,15 @@
 class ObjColorDoor_Tank :public CObj
 {
 public:
-	ObjColorDoor_Tank();
+	ObjColorDoor_Tank(float x,float y,int color,float waveX,float waveY, unsigned int n);
 	~ObjColorDoor_Tank();
 	void Action();
 	void Draw();
 private:
 	float m_x; //ギミック2の位置
 	float m_y;
-	float m_x2; //ギミック2の位置
-	float m_y2;
+	//float m_x2; //ギミック2の位置
+	//float m_y2;
 
 
 	float m_gx;//グラフィックの位置
@@ -44,6 +44,7 @@ private:
 
 	float rgba[4];  //水の色
 
+	unsigned int m_DoorNo;//天秤の番号
 
 	HitLine* m_hit_line_ColorDoorTank[2];//当たり判定
 };

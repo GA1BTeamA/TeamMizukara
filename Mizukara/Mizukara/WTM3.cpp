@@ -19,20 +19,35 @@ const float CWTM3::m_wave_amount = 0.3f*0.04f;
 
 
 //コンストラクタ
-CWTM3::CWTM3()
-	:m_x(250), m_y(234), m_wave_x(236), m_wave_y(350), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(230), im_y(139), m_water_x(235), m_water_y(370), m_water_remaining(1.4)
+CWTM3::CWTM3(float x, float y,int color)
+	:m_x(x), m_y(y), m_wave_x(x+6), m_wave_y(y+36), m_ani_time1(0.0f), m_ani_time2(0.0f)
+	, im_x(210), im_y(139), m_water_x(x+3), m_water_y(y+136), m_water_remaining(1.4)
+	,m_gx(x),m_gy(y+65)
 {
-	//for (int i = 0; i < 4; i++)
-	//{
-	//	rgba[i] = 1;
-	//}
-
-	//水の色用配列初期化
-	rgba[0] = 2.0f;
-	rgba[1] = 0.5f;
-	rgba[2] = 0.5f;
-	rgba[3] = 1.0f;
+	if (color == 74)
+	{
+		//水の色用配列初期化(赤)
+		rgba[0] = 2.0f;
+		rgba[1] = 0.5f;
+		rgba[2] = 0.5f;
+		rgba[3] = 1.0f;
+	}
+	else if(color==82)
+	{
+		//水の色用配列初期化(緑)
+		rgba[0] = 0.0f;
+		rgba[1] = 1.0f;
+		rgba[2] = 0.5f;
+		rgba[3] = 1.0f;
+	}
+	else
+	{
+		//水の色用配列初期化
+		rgba[0] = 1.0f;
+		rgba[1] = 1.0f;
+		rgba[2] = 1.0f;
+		rgba[3] = 1.0f;
+	}
 
 	//ヒットラインの作成(左)
 	m_p_hit_line_wtm3 = Collision::HitLineInsert(this);
@@ -74,6 +89,14 @@ void CWTM3::Action()
 							{
 								bm->SetColor(2.0f, 0.5f, 0.5f, 1.0f);
 							}
+							else if (rgba[0] == 0.0f)
+							{
+								bm->SetColor(0.0f, 1.0f, 0.5f, 1.0f);
+							}
+							else
+							{
+								bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+							}
 						}
 					}
 				}
@@ -92,15 +115,23 @@ void CWTM3::Action()
 							{
 								bm->SetColor(2.0f, 0.5f, 0.5f, 1.0f);
 							}
+							else if (rgba[0] == 0.0f)
+							{
+								bm->SetColor(0.0f, 1.0f, 0.5f, 1.0f);
+							}
+							else
+							{
+								bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+							}
 						}
 					}
 				}
 				break;
 			}
-			else
-			{
-				bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-			}
+			//else
+			//{
+			//	bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+			//}
 		}
 	}
 
@@ -142,55 +173,8 @@ void CWTM3::Draw()
 	{
 		m_ani_time1++;
 	}
-
-	float a = 103.65;
-	//float b = *tank->GetWaveY() - a + tank->GetWater_Remaining();
-
 	//波アニメーション
-	if (m_ani_time1 < 10)
-	{
-		Draw::Draw2D(36, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y,rgba);
-	}
-	else if (m_ani_time1 < 20)
-	{
-		Draw::Draw2D(37, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 30)
-	{
-		Draw::Draw2D(38, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 40)
-	{
-		Draw::Draw2D(39, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 50)
-	{
-		Draw::Draw2D(40, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 60)
-	{
-		Draw::Draw2D(41, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 70)
-	{
-		Draw::Draw2D(42, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 80)
-	{
-		Draw::Draw2D(43, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 90)
-	{
-		Draw::Draw2D(44, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 100)
-	{
-		Draw::Draw2D(45, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time1 < 110)
-	{
-		Draw::Draw2D(46, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
+	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -201,51 +185,18 @@ void CWTM3::Draw()
 	{
 		m_ani_time2++;
 	}
-
 	//波アニメーション
-	if (m_ani_time2 < 5)
+	Draw::Draw2D(25 + (m_ani_time1 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
+
+	if (rgba[0] == 2.0f)
 	{
-		Draw::Draw2D(25, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
+		//赤のWTM表示
+		Draw::Draw2D(74, m_gx + ground->GetScroll(), m_gy);
 	}
-	else if (m_ani_time2 < 10)
+	else
 	{
-		Draw::Draw2D(26, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 15)
-	{
-		Draw::Draw2D(27, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 20)
-	{
-		Draw::Draw2D(28, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 25)
-	{
-		Draw::Draw2D(29, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 30)
-	{
-		Draw::Draw2D(30, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 35)
-	{
-		Draw::Draw2D(31, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 40)
-	{
-		Draw::Draw2D(32, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 45)
-	{
-		Draw::Draw2D(33, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 50)
-	{
-		Draw::Draw2D(34, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
-	}
-	else if (m_ani_time2 < 55)
-	{
-		Draw::Draw2D(35, m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
+		//緑のWTM表示
+		Draw::Draw2D(82, m_gx + ground->GetScroll(), m_gy);
 	}
 
 	//Draw::Draw2D(21, a, m_y);
