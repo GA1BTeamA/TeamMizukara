@@ -4,6 +4,7 @@
 
 #include "Hero.h"
 #include "Sprinkler.h"
+#include "Sprinkler2.h"
 #include "ObjBoat_Tank.h"
 #include "ObjGround2.h"
 #include "ObjGround3.h"
@@ -139,6 +140,7 @@ void CHero::Action()
 				{
 					m_hero_delete_flag = true;
 				}
+
 				ObjBoat_Tank* boat_tank = (ObjBoat_Tank*)TaskSystem::GetObj(BOAT_TANK);
 				if (boat_tank != nullptr)
 				{

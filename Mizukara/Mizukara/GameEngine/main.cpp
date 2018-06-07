@@ -35,6 +35,7 @@
 #include "..\WTM2.h"
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
+#include "..\Sprinkler2.h"
 #include "..\ObjUpScaffold.h"
 #include "..\ObjUpScaffold_Tank.h"
 #include "..\ObjDownBlock.h"
@@ -252,6 +253,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM2* wtm2_2;
 		CWTM2* wtm2_3;
 		CSPRI* spri;
+		CSPRI2* spri2;
 		ObjUpScaffold* upsc;
 		ObjUpScaffold_Tank* upsct;
 		ObjDownBlock* dwbl;
@@ -411,15 +413,15 @@ unsigned __stdcall GameMainSled(void *p)
 			ground2->m_DrawPriority = 90;
 			TaskSystem::InsertObj(ground2);
 
-			//boat = new ObjBoat();
-			//boat->m_ActionPriority = 50;
-			//boat->m_DrawPriority = 160;
-			//TaskSystem::InsertObj(boat);
+			boat = new ObjBoat();
+			boat->m_ActionPriority = 50;
+			boat->m_DrawPriority = 160;
+			TaskSystem::InsertObj(boat);
 
-			//boat_t = new ObjBoat_Tank();
-			//boat_t->m_ActionPriority = 70;
-			//boat_t->m_DrawPriority = 160;
-			//TaskSystem::InsertObj(boat_t);
+			boat_t = new ObjBoat_Tank();
+			boat_t->m_ActionPriority = 70;
+			boat_t->m_DrawPriority = 160;
+			TaskSystem::InsertObj(boat_t);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
@@ -505,6 +507,11 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_ActionPriority = 140;
 			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
+
+			spri2 = new CSPRI2();
+			spri2->m_ActionPriority = 150;
+			spri2->m_DrawPriority = 60;
+			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;
 			break;

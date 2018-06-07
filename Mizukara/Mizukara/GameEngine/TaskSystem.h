@@ -46,6 +46,7 @@ enum {
 	MENU,
 	GROUND,
 	SPRI,
+	SPRI2,
 	BUCKETMETER,
 	TANK,
 	TANK2,
