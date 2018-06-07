@@ -175,8 +175,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(82, L"Images\\GreenM.png");//82”Ô–Ú‚É"GreenM.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(83, L"Images\\GreenT.png");//83”Ô–Ú‚É"GreenT.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(84, L"Images\\GreenW.png");//84”Ô–Ú‚É"GreenW.png"‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(85, L"Images\\Story2.png");//82”Ô–Ú‚É"Story2.png"‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(86, L"Images\\Story3.png");//83”Ô–Ú‚É"Story3.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(85, L"Images\\Story2.png");//85”Ô–Ú‚É"Story2.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(86, L"Images\\Story3.png");//86”Ô–Ú‚É"Story3.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(87, L"Images\\Rainbow.png");//87”Ô–Ú‚É"Rainbow.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(88, L"Images\\Ztank.png");//88”Ô–Ú‚É"Ztank.png"‚ğ“Ç‚İ‚İ
 
