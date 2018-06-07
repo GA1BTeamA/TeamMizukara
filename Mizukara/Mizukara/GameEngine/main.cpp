@@ -152,7 +152,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(60, L"Images\\Gimmick3tank.png");//60”Ô–ÚGimmick3tank.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(61, L"Images\\Gimmick3stand.png");//61”Ô–ÚGimmick3stand.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(62, L"Images\\rope.png");//61”Ô–ÚGimmick3stand.png‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(63, L"Images\\crearkari.png");//63”Ô–Úcrearkari.png‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(63, L"Images\\clear.png");//63”Ô–Úclear.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(64, L"Images\\Me.png");//64”Ô–ÚMe.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(65, L"Images\\CHimawari.png");//65”Ô–ÚCHimawari.png‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(66, L"Images\\BHimawari.png");//66”Ô–ÚBHimawari.png‚ğ“Ç‚İ‚İ
