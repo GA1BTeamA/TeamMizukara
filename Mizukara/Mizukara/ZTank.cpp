@@ -12,8 +12,8 @@ const float ObjElephant_Tank::m_WaveSize_y = 0.4f;
 
 //コンストラクタ
 ObjElephant_Tank::ObjElephant_Tank()
-	:m_x(2300), m_y(170), m_wave_x(2300), m_wave_y(250), m_water_x(2300), m_water_y(270),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_water_remaining(0.0f)
+	:m_x(2230), m_y(175), m_wave_x(2230), m_wave_y(200), m_water_x(2230), m_water_y(210),
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_water_remaining(0.0f),m_alpha(0.0f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_ZTank = Collision::HitLineInsert(this);
@@ -24,8 +24,8 @@ ObjElephant_Tank::ObjElephant_Tank()
 	m_hit_line_ZTank->SetAngle();
 												//ヒットラインの作成2(左)
 	m_hit_line_ZTankWall = Collision::HitLineInsert(this);
-	m_hit_line_ZTankWall->SetPos1(m_x+100, m_y+100);
-	m_hit_line_ZTankWall->SetPos2(m_x+100, m_y-200);
+	m_hit_line_ZTankWall->SetPos1(m_x+60, m_y+100);
+	m_hit_line_ZTankWall->SetPos2(m_x+60, m_y-200);
 	m_hit_line_ZTankWall->SetElement(1);		//属性を6にする
 	m_hit_line_ZTankWall->SetInvisible(false);	//無敵モード無効
 	m_hit_line_ZTankWall->SetAngle();
@@ -93,6 +93,7 @@ void ObjElephant_Tank::Action()
 						}
 						else{
 							m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
+							m_alpha += 0.01f;
 						}
 					}
 				}
@@ -106,8 +107,11 @@ void ObjElephant_Tank::Action()
 	m_hit_line_ZTank->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_hit_line_ZTank->SetPos2(m_x + ground->GetScroll(), m_y + 100);
 
-	m_hit_line_ZTankWall->SetPos1(m_x + ground->GetScroll(), m_y+100);
-	m_hit_line_ZTankWall->SetPos2(m_x + ground->GetScroll(), m_y-200);
+	m_hit_line_ZTankWall->SetPos1(m_x+60 + ground->GetScroll(), m_y+100);
+	m_hit_line_ZTankWall->SetPos2(m_x+60 + ground->GetScroll(), m_y-200);
+
+	if (m_alpha!= 0.0f && m_alpha < 1.0f)m_alpha += 0.01f;
+
 }
 
 //ドロー
@@ -122,18 +126,7 @@ void ObjElephant_Tank::Draw()
 		{
 			if (m_hit_line_ZTank->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(70, m_x - 10 + ground->GetScroll(), m_y - 15);
-			}
-		}
-	}
-
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_hit_line_ZTankWall->GetHitData()[i] != nullptr)
-		{
-			if (m_hit_line_ZTankWall->GetHitData()[i]->GetElement() == 0)
-			{
-				Draw::Draw2D(70, m_x + 40 + ground->GetScroll(), m_y - 15);
+				Draw::Draw2D(70, m_x - 30 + ground->GetScroll(), m_y - 50);
 			}
 		}
 	}
@@ -254,4 +247,8 @@ void ObjElephant_Tank::Draw()
 	}
 
 	Draw::Draw2D(88, m_x + ground->GetScroll(), m_y, 1, 1);
+
+	float c[4] = { 1.0f,1.0f,1.0f,m_alpha };
+
+	Draw::Draw2D(87, ground->GetScroll() + 2450, 200,c);
 }

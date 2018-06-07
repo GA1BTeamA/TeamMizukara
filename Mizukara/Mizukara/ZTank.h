@@ -36,6 +36,8 @@ private:
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_y;
 
+	float m_alpha;//虹用の透明度
+
 	HitLine* m_hit_line_ZTank;//当たり判定
 	HitLine* m_hit_line_ZTankWall;//当たり判定
 };

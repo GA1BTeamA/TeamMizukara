@@ -245,22 +245,22 @@ void ObjScale_Tank::Draw()
 	{
 	case GAME_MAIN2:
 		//WTMに近づいたらアイコンを出す
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
-			if (m_hit_line_ScaleTank->GetHitData()[i] != nullptr)
+			if (m_hit_line_ScaleTank[i / 10]->GetHitData()[i % 10] != nullptr)
 			{
-				if (m_hit_line_ScaleTank->GetHitData()[i]->GetElement() == 0)
+				if (m_hit_line_ScaleTank[i / 10]->GetHitData()[i % 10]->GetElement() == 0)
 				{
 					Draw::Draw2D(70, m_x - 20 + ground->GetScroll() + m_angle_x, m_y - 150 + m_angle_y);
 				}
 			}
 		}
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
-			if (m_hit_line_ScaleTank2->GetHitData()[i] != nullptr)
+			if (m_hit_line_ScaleTank2[i / 10]->GetHitData()[i % 10] != nullptr)
 			{
-				if (m_hit_line_ScaleTank2->GetHitData()[i]->GetElement() == 0)
+				if (m_hit_line_ScaleTank2[i / 10]->GetHitData()[i % 10]->GetElement() == 0)
 				{
 					Draw::Draw2D(70, m_x2 - 10 + ground->GetScroll() + m_angle_x2, m_y2 - 150 + m_angle_y2);
 				}
@@ -309,22 +309,22 @@ void ObjScale_Tank::Draw()
 
 	case GAME_MAIN3:
 		//WTMに近づいたらアイコンを出す
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
-			if (m_hit_line_ScaleTank->GetHitData()[i] != nullptr)
+			if (m_hit_line_ScaleTank[i / 10]->GetHitData()[i % 10] != nullptr)
 			{
-				if (m_hit_line_ScaleTank->GetHitData()[i]->GetElement() == 0)
+				if (m_hit_line_ScaleTank[i / 10]->GetHitData()[i % 10]->GetElement() == 0)
 				{
 					Draw::Draw2D(70, m_x - 20 + ground3->GetScroll() + m_angle_x, m_y - 150 + m_angle_y);
 				}
 			}
 		}
 
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
-			if (m_hit_line_ScaleTank2->GetHitData()[i] != nullptr)
+			if (m_hit_line_ScaleTank2[i / 10]->GetHitData()[i % 10] != nullptr)
 			{
-				if (m_hit_line_ScaleTank2->GetHitData()[i]->GetElement() == 0)
+				if (m_hit_line_ScaleTank2[i / 10]->GetHitData()[i % 10]->GetElement() == 0)
 				{
 					Draw::Draw2D(70, m_x2 - 10 + ground3->GetScroll() + m_angle_x2, m_y2 - 150 + m_angle_y2);
 				}
