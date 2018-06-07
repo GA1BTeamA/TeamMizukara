@@ -128,10 +128,10 @@ void CSPRI::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 	CTank* tank = (CTank*)TaskSystem::GetObj(TANK);
 
-	//クリア画面表示
+		//クリア画面表示
 	if (m_CrearCnt == true)
 	{
-		Draw::Draw2D(63, 300, 200);
+		Draw::Draw2D(63, 280, 130);
 	}
 
 	//水表示
