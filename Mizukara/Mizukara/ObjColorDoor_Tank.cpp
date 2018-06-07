@@ -85,6 +85,10 @@ void ObjColorDoor_Tank::Action()
 								//us->AddY(0.14f);
 								cd->AddY(0.6f);
 
+								if (cd)
+									Audio::StartLoopMusic(12);
+								Audio::LoopMusicVolume(12, 0.05f);
+
 								if (bm != nullptr) {
 									//バケツメーターにセット
 									bm->PushX();
@@ -113,6 +117,10 @@ void ObjColorDoor_Tank::Action()
 								//us->AddY(-0.14f);
 								cd->AddY(-0.6f);
 
+								if (cd)
+									Audio::StartLoopMusic(12);
+								Audio::LoopMusicVolume(12, 0.05f);
+
 								if (bm != nullptr) {
 									//バケツメーターにセット
 									bm->PushC();
@@ -121,7 +129,12 @@ void ObjColorDoor_Tank::Action()
 								m_water_remaining += 0.02666;
 							}
 						}
+						
 					}
+					//CもXも押してなかったら音楽を止める
+					if (!(Input::KeyPush('C')) && !(Input::KeyPush('X')))
+						Audio::StopLoopMusic(12);
+
 					break;
 				}
 			}

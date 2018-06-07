@@ -13,10 +13,10 @@ ObjBoat::ObjBoat()
 {
 	m_name = BOAT;
 
-	//m_hit_line_Boat[0] = Collision::HitLineInsert(this);
-	//m_hit_line_Boat[0]->Set4direc(HIT_TOP);
-	//m_hit_line_Boat[0]->SetPos1(m_scroll + 310, m_y);  //足場上
-	//m_hit_line_Boat[0]->SetPos2(m_scroll + 350, m_y);
+	m_hit_line_Boat[0] = Collision::HitLineInsert(this);
+	m_hit_line_Boat[0]->Set4direc(HIT_TOP);
+	m_hit_line_Boat[0]->SetPos1(m_scroll + 310, m_y);  //足場上
+	m_hit_line_Boat[0]->SetPos2(m_scroll + 350, m_y);
 
 	////ヒットボックス作成し、作成したヒットボックスの値を設定
 	//m_hit_line_Boat[1] = Collision::HitLineInsert(this);
