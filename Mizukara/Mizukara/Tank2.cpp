@@ -16,7 +16,7 @@ CTank2::CTank2()
 	, m_water_x(11), m_water_y(384)
 	, m_water_remaining2(100)
 {
-	m_name = TANK;
+	m_name = TANK2;
 
 	//auto* ground = g;
 

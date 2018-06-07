@@ -180,6 +180,15 @@
     <ClCompile Include="ObjScale_Tank.cpp">
       <Filter>ソース ファイル\ギミック5（天秤）</Filter>
     </ClCompile>
+    <ClCompile Include="WTM2.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ZTank.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprinkler2.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -300,6 +309,15 @@
       <Filter>ヘッダー ファイル\ギミック5（天秤）</Filter>
     </ClInclude>
     <ClInclude Include="WTM3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="WTM2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ZTank.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprinkler2.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

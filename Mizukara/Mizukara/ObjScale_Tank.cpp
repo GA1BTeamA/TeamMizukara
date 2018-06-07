@@ -22,17 +22,31 @@ ObjScale_Tank::ObjScale_Tank(float x,float y, float r1, float r2, unsigned int n
 	m_angle = 0.1f * (m_water_remaining2 - m_water_remaining) / 0.02666f;
 
 	//ヒットラインの作成(左)
-	m_hit_line_ScaleTank = Collision::HitLineInsert(this);
-	m_hit_line_ScaleTank->SetPos1(m_x, m_y - 30);
-	m_hit_line_ScaleTank->SetPos2(m_x, m_y);
-	m_hit_line_ScaleTank->SetElement(5);		//属性を5にする
-	m_hit_line_ScaleTank->SetInvisible(false);	//無敵モード無効
+	m_hit_line_ScaleTank[0] = Collision::HitLineInsert(this);
+	m_hit_line_ScaleTank[0]->SetPos1(m_x, m_y - 50);
+	m_hit_line_ScaleTank[0]->SetPos2(m_x, m_y);
+	m_hit_line_ScaleTank[0]->SetElement(5);		//属性を5にする
+	m_hit_line_ScaleTank[0]->SetInvisible(false);	//無敵モード無効
+
+	m_hit_line_ScaleTank[1] = Collision::HitLineInsert(this);
+	m_hit_line_ScaleTank[1]->SetPos1(m_x-40, m_y + 30);
+	m_hit_line_ScaleTank[1]->SetPos2(m_x, m_y+30);
+	m_hit_line_ScaleTank[1]->SetElement(5);		//属性を5にする
+	m_hit_line_ScaleTank[1]->SetInvisible(false);	//無敵モード無効
+
 												//ヒットラインの作成2(左)
-	m_hit_line_ScaleTank2 = Collision::HitLineInsert(this);
-	m_hit_line_ScaleTank2->SetPos1(m_x2, m_y2 - 30);
-	m_hit_line_ScaleTank2->SetPos2(m_x2, m_y2);
-	m_hit_line_ScaleTank2->SetElement(6);		//属性を6にする
-	m_hit_line_ScaleTank2->SetInvisible(false);	//無敵モード無効
+	m_hit_line_ScaleTank2[0] = Collision::HitLineInsert(this);
+	m_hit_line_ScaleTank2[0]->SetPos1(m_x2+20, m_y2 - 50);
+	m_hit_line_ScaleTank2[0]->SetPos2(m_x2+20, m_y2);
+	m_hit_line_ScaleTank2[0]->SetElement(6);		//属性を6にする
+	m_hit_line_ScaleTank2[0]->SetInvisible(false);	//無敵モード無効
+
+	m_hit_line_ScaleTank2[1] = Collision::HitLineInsert(this);
+	m_hit_line_ScaleTank2[1]->SetPos1(m_x2+20, m_y2 + 30);
+	m_hit_line_ScaleTank2[1]->SetPos2(m_x2+60, m_y2+30);
+	m_hit_line_ScaleTank2[1]->SetElement(6);		//属性を6にする
+	m_hit_line_ScaleTank2[1]->SetInvisible(false);	//無敵モード無効
+
 }
 
 //デストラクタ
@@ -48,12 +62,12 @@ void ObjScale_Tank::Action()
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//タンクから水を汲む＆戻す
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
-		if (m_hit_line_ScaleTank->GetHitData()[i] != nullptr)
+		if (m_hit_line_ScaleTank[i/10]->GetHitData()[i%10] != nullptr)
 		{
 			//自分の当たり判定の中に主人公の当たり判定があったら
-			if (m_hit_line_ScaleTank->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_ScaleTank[i / 10]->GetHitData()[i % 10]->GetElement() == 0)
 			{
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
@@ -106,10 +120,10 @@ void ObjScale_Tank::Action()
 				break;
 			}
 		}
-		if (m_hit_line_ScaleTank2->GetHitData()[i] != nullptr)
+		if (m_hit_line_ScaleTank2[i / 10]->GetHitData()[i % 10] != nullptr)
 		{
 			//自分の当たり判定の中に主人公の当たり判定があったら
-			if (m_hit_line_ScaleTank2->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_ScaleTank2[i / 10]->GetHitData()[i % 10]->GetElement() == 0)
 			{
 				//タンクから水を汲む
 				if (Input::KeyPush('X'))
@@ -189,20 +203,28 @@ void ObjScale_Tank::Action()
 	{
 	case GAME_MAIN2:
 		//当たり判定位置の更新
-		m_hit_line_ScaleTank->SetPos1(m_x + ground->GetScroll() + m_angle_x, m_y - 30 + m_angle_y);
-		m_hit_line_ScaleTank->SetPos2(m_x + ground->GetScroll() + m_angle_x, m_y + m_angle_y);
+		m_hit_line_ScaleTank[0]->SetPos1(m_x + ground->GetScroll() + m_angle_x, m_y - 50 + m_angle_y);
+		m_hit_line_ScaleTank[0]->SetPos2(m_x + ground->GetScroll() + m_angle_x, m_y + m_angle_y);
+		m_hit_line_ScaleTank[1]->SetPos1(m_x-40 + ground->GetScroll() + m_angle_x, m_y + 30 + m_angle_y);
+		m_hit_line_ScaleTank[1]->SetPos2(m_x + ground->GetScroll() + m_angle_x, m_y+30 + m_angle_y);
 
-		m_hit_line_ScaleTank2->SetPos1(m_x2 - 50 + ground->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
-		m_hit_line_ScaleTank2->SetPos2(m_x2 - 50 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+		m_hit_line_ScaleTank2[0]->SetPos1(m_x2 + ground->GetScroll() + m_angle_x2, m_y2 - 50 + m_angle_y2);
+		m_hit_line_ScaleTank2[0]->SetPos2(m_x2 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+		m_hit_line_ScaleTank2[1]->SetPos1(m_x2 + 20 + ground->GetScroll() + m_angle_x2, m_y2 + 30 + m_angle_y2);
+		m_hit_line_ScaleTank2[1]->SetPos2(m_x2 + 60 + ground->GetScroll() + m_angle_x2, m_y2+30 + m_angle_y2);
 		break;
 
 	case GAME_MAIN3:
 		//当たり判定位置の更新
-		m_hit_line_ScaleTank->SetPos1(m_x + ground3->GetScroll() + m_angle_x, m_y - 30 + m_angle_y);
-		m_hit_line_ScaleTank->SetPos2(m_x + ground3->GetScroll() + m_angle_x, m_y + m_angle_y);
+		m_hit_line_ScaleTank[0]->SetPos1(m_x + ground3->GetScroll() + m_angle_x, m_y - 50 + m_angle_y);
+		m_hit_line_ScaleTank[0]->SetPos2(m_x + ground3->GetScroll() + m_angle_x, m_y + m_angle_y);
+		m_hit_line_ScaleTank[1]->SetPos1(m_x - 40 + ground3->GetScroll() + m_angle_x, m_y + 30 + m_angle_y);
+		m_hit_line_ScaleTank[1]->SetPos2(m_x + ground3->GetScroll() + m_angle_x, m_y + 30 + m_angle_y);
 
-		m_hit_line_ScaleTank2->SetPos1(m_x2 - 50 + ground3->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
-		m_hit_line_ScaleTank2->SetPos2(m_x2 - 50 + ground3->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+		m_hit_line_ScaleTank2[0]->SetPos1(m_x2 + ground3->GetScroll() + m_angle_x2, m_y2 - 50 + m_angle_y2);
+		m_hit_line_ScaleTank2[0]->SetPos2(m_x2 + ground3->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+		m_hit_line_ScaleTank2[1]->SetPos1(m_x2 + 20 + ground3->GetScroll() + m_angle_x2, m_y2 + 30 + m_angle_y2);
+		m_hit_line_ScaleTank2[1]->SetPos2(m_x2 + 60 + ground3->GetScroll() + m_angle_x2, m_y2 + 30 + m_angle_y2);
 		break;
 	}
 	////当たり判定位置の更新

@@ -150,6 +150,7 @@
     <ClCompile Include="ObjUpScaffold_Tank.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Sprinkler.cpp" />
+    <ClCompile Include="Sprinkler2.cpp" />
     <ClCompile Include="StageSelecto.cpp" />
     <ClCompile Include="Tank2.cpp" />
     <ClCompile Include="Tank3.cpp" />
@@ -160,7 +161,9 @@
     </ClCompile>
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="WTM2.cpp" />
     <ClCompile Include="WTM3.cpp" />
+    <ClCompile Include="ZTank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
@@ -194,6 +197,7 @@
     <ClInclude Include="ObjUpScaffold_Tank.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Sprinkler.h" />
+    <ClInclude Include="Sprinkler2.h" />
     <ClInclude Include="StageSelecto.h" />
     <ClInclude Include="Tank2.h" />
     <ClInclude Include="Tank3.h" />
@@ -204,7 +208,9 @@
     </ClInclude>
     <ClInclude Include="Tank.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="WTM2.h" />
     <ClInclude Include="WTM3.h" />
+    <ClInclude Include="ZTank.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="GameEngine\libogg_static.lib" />
