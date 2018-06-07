@@ -194,7 +194,7 @@ void CStageSelecto::Draw()
 		Draw::Draw2D(14, 280, 210);
 	}
 	else if (m_cursor == UNDER){
-		Draw::Draw2D(14, 470, 330);
+		Draw::Draw2D(14, 470, 335);
 	}
 	/*else if (m_cursor == UNDER_LEFT) {
 		Draw::Draw2D(14, 90, 330);
