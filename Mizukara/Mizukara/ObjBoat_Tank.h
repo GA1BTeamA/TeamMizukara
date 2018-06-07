@@ -14,6 +14,9 @@ public:
 	~ObjBoat_Tank();
 	void Action();
 	void Draw();
+
+	float GetBoatWaterVolume() { return m_water_remaining; }
+	//HitLine* GetHitLineBoatTank() { return m_hit_line_BoatTank[4]; }
 private:
 	float m_x; //ギミック4の位置
 	float m_y;
@@ -33,7 +36,8 @@ private:
 	float m_water_x2;  
 	float m_water_y2;
 
-	int m_move_x;//ボートを動かす
+	int m_ani_time_x;//ボートを動かす
+	int m_move_x;
 
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
@@ -41,6 +45,7 @@ private:
 
 	float m_water_remaining;
 	float m_bucket_remaining;
+	//float m_point_position[4];
 
 	static const float m_WaveSize_x;  //波のサイズ用
 	static const float m_WaveSize_x2;

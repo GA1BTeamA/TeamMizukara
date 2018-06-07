@@ -4,6 +4,7 @@
 
 #include "Hero.h"
 #include "Sprinkler.h"
+#include "ObjBoat_Tank.h"
 #include "ObjGround2.h"
 #include "ObjGround3.h"
 
@@ -16,7 +17,7 @@ CHero::CHero()
 	, m_copy_x(130), m_copy_y(300)
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
-	,m_ani_time (0)
+	,m_ani_time (0),m_ani_time2(0)
 	, move_x(5.0f)
 	, move_dash_x(7.5f)
 	, m_CKey_Frag(false)
@@ -105,6 +106,8 @@ CHero::~CHero()
 
 void CHero::Action()
 {
+	//ObjBoat_Tank* boat_tank = (ObjBoat_Tank*)TaskSystem::GetObj(BOAT_TANK);
+
 	if (m_hero_delete_flag == false)
 	{
 		////テスト
@@ -135,9 +138,28 @@ void CHero::Action()
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 4)
 				{
 					m_hero_delete_flag = true;
-
 				}
-
+				ObjBoat_Tank* boat_tank = (ObjBoat_Tank*)TaskSystem::GetObj(BOAT_TANK);
+				if (boat_tank != nullptr)
+				{
+					m_water_remaining = boat_tank->GetBoatWaterVolume();
+					
+					if (m_ani_time2 >=161)
+					{
+						m_hero_delete_flag = false;
+					} 
+					else if (m_water_remaining >= 4.0f)
+					{
+						/*m_water_remaining--;*/
+						m_hero_delete_flag = true;
+						m_ani_time2++;
+						//if (m_ani_time2 = 160)
+						//{
+						//	m_hero_delete_flag = false;
+						//}
+					}
+					
+				}
 				//主人公の当たり判定に当たってたのが地面なら
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 1)
 				{
