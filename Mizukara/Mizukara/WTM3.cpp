@@ -67,7 +67,7 @@ CWTM3::~CWTM3()
 void CWTM3::Action()
 {
 	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
-	CTank3* tank = (CTank3*)TaskSystem::GetObj(TANK);
+	CTank3* tank = (CTank3*)TaskSystem::GetObj(TANK3);
 	CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 
 	for (int i = 0; i < 10; i++)
@@ -147,7 +147,7 @@ void CWTM3::Action()
 void CWTM3::Draw()
 {
 	ObjGround3* ground = (ObjGround3*)TaskSystem::GetObj(GROUND3);
-	CTank3* tank = (CTank3*)TaskSystem::GetObj(TANK);
+	CTank3* tank = (CTank3*)TaskSystem::GetObj(TANK3);
 
 	//WTMに近づいたらアイコンを出す
 	for (int i = 0; i < 10; i++)
