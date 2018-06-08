@@ -181,6 +181,10 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(86, L"Images\\Story3.png");//86番目に"Story3.png"を読み込み
 	Draw::LoadImage(87, L"Images\\Rainbow.png");//87番目に"Rainbow.png"を読み込み
 	Draw::LoadImage(88, L"Images\\Ztank.png");//88番目に"Ztank.png"を読み込み
+	Draw::LoadImage(89, L"Images\\CTeiboku.png");//89番目に"CTeiboku.png"を読み込み
+	Draw::LoadImage(90, L"Images\\BTeiboku.png");//90番目に"BTeiboku.png"を読み込み
+	Draw::LoadImage(91, L"Images\\AHaibisukasu.png");//91番目に"AHaibisukasu.png"を読み込み
+	Draw::LoadImage(92, L"Images\\SHaibisukasu.png");//92番目に"SHaibisukasu.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -522,7 +526,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
-			spri2->m_DrawPriority = 60;
+			spri2->m_DrawPriority = 210;
 			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;

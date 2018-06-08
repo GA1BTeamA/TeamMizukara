@@ -16,12 +16,12 @@ const float CSPRI2::m_WaveSize_x = 0.55f;
 const float CSPRI2::m_WaveSize_y = 0.6f;
 
 CSPRI2::CSPRI2()
-	:m_x(2800), m_y(250), m_wave_x(2150), m_wave_y(230),
+	:m_x(2800), m_y(250), m_wave_x(2950), m_wave_y(230),
 	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_ani_time4(0.0f), m_ani_time5(0.0f)
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
-	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
+	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
 	, m_CrearCnt(false), m_Flower(false)
-	, m_fx(734), m_fy(250)
+	, m_fx(744), m_fy(258)
 {
 	m_name = SPRI2;
 
@@ -267,7 +267,7 @@ void CSPRI2::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					//m_ani_time5++;
+					m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
@@ -295,7 +295,7 @@ void CSPRI2::Draw()
 						{
 							m_ani_time5++;
 							m_move2++;
-							//Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							//Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank2->GetWater_Remaining() > 0)
 							{
 								Audio::StartLoopMusic(13);
@@ -345,19 +345,19 @@ void CSPRI2::Draw()
 	//花表示
 	if (g_TankRemaining >= 80)
 	{
-		Draw::Draw2D(68, m_fx, m_fy);  //Sランク
+		Draw::Draw2D(92, m_fx, m_fy);  //Sランク
 	}
 	else if (g_TankRemaining >= 70)
 	{
-		Draw::Draw2D(67, m_fx, m_fy);  //Aランク
+		Draw::Draw2D(91, m_fx, m_fy);  //Aランク
 	}
 	else if (g_TankRemaining >= 50)
 	{
-		Draw::Draw2D(66, m_fx, m_fy);  //Bランク
+		Draw::Draw2D(90, m_fx, m_fy);  //Bランク
 	}
 	else if (g_TankRemaining >= 30)
 	{
-		Draw::Draw2D(65, m_fx, m_fy);  //Cランク
+		Draw::Draw2D(89, m_fx, m_fy);  //Cランク
 	}
 	else if (g_TankRemaining >= 10)
 	{

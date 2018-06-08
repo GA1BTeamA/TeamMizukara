@@ -151,6 +151,7 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Sprinkler.cpp" />
     <ClCompile Include="Sprinkler2.cpp" />
+    <ClCompile Include="Sprinkler3.cpp" />
     <ClCompile Include="StageSelecto.cpp" />
     <ClCompile Include="Tank2.cpp" />
     <ClCompile Include="Tank3.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="Sprinkler.h" />
     <ClInclude Include="Sprinkler2.h" />
+    <ClInclude Include="Sprinkler3.h" />
     <ClInclude Include="StageSelecto.h" />
     <ClInclude Include="Tank2.h" />
     <ClInclude Include="Tank3.h" />
