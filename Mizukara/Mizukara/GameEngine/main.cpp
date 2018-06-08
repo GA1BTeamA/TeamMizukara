@@ -294,6 +294,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 		CWTM3* wtm3;
 		CWTM3* wtm3_1;
+		CWTM3* wtm3_2;
 
 		switch (g_SceneNumber)
 		{
@@ -556,6 +557,11 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm3_1->m_ActionPriority = 70;
 			wtm3_1->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_1);
+
+			wtm3_2 = new CWTM3(1195, 146, 0);
+			wtm3_2->m_ActionPriority = 70;
+			wtm3_2->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm3_2);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
