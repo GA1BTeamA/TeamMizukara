@@ -4,12 +4,12 @@
 
 #include "ObjDownBlock.h"
 #include "ObjGround.h"
-#include "ObjGround2.h"
+#include "ObjGround3.h"
 extern int g_SceneNumber;
 
 
-ObjDownBlock::ObjDownBlock()
-	:m_x(854), m_y(245),m_gx(846),m_gy(135), m_RopeSizeScaffold(0.33f)
+ObjDownBlock::ObjDownBlock(float x,float y)
+	:m_x(x), m_y(y),m_gx(x-8),m_gy(y-110), m_RopeSizeScaffold(0.33f),m_rope_y(y - 110)
 {
 	m_name = DOWNBLOCK;
 
@@ -54,25 +54,48 @@ ObjDownBlock::~ObjDownBlock()
 void ObjDownBlock::Action()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
-	//位置更新
-	m_hit_line_DwBl[0]->SetPos1(m_x + ground->GetScroll(), m_y);
-	m_hit_line_DwBl[0]->SetPos2(m_x + ground->GetScroll(), m_y + 40);
-	m_hit_line_DwBl[1]->SetPos1(m_x + ground->GetScroll() + 60, m_y);
-	m_hit_line_DwBl[1]->SetPos2(m_x + ground->GetScroll() + 60, m_y + 40);
-	m_hit_line_DwBl[2]->SetPos1(m_x + ground->GetScroll(), m_y);
-	m_hit_line_DwBl[2]->SetPos2(m_x + ground->GetScroll() + 60, m_y);
-	m_hit_line_DwBl[3]->SetPos1(m_x + ground->GetScroll(), m_y + 40);
-	m_hit_line_DwBl[3]->SetPos2(m_x + ground->GetScroll() + 60, m_y + 40);
+	if (ground != nullptr) {
+		//位置更新
+		m_hit_line_DwBl[0]->SetPos1(m_x + ground->GetScroll(), m_y);
+		m_hit_line_DwBl[0]->SetPos2(m_x + ground->GetScroll(), m_y + 40);
+		m_hit_line_DwBl[1]->SetPos1(m_x + ground->GetScroll() + 60, m_y);
+		m_hit_line_DwBl[1]->SetPos2(m_x + ground->GetScroll() + 60, m_y + 40);
+		m_hit_line_DwBl[2]->SetPos1(m_x + ground->GetScroll(), m_y);
+		m_hit_line_DwBl[2]->SetPos2(m_x + ground->GetScroll() + 60, m_y);
+		m_hit_line_DwBl[3]->SetPos1(m_x + ground->GetScroll(), m_y + 40);
+		m_hit_line_DwBl[3]->SetPos2(m_x + ground->GetScroll() + 60, m_y + 40);
+	}
+	else {
+		//位置更新
+		m_hit_line_DwBl[0]->SetPos1(m_x + ground3->GetScroll(), m_y);
+		m_hit_line_DwBl[0]->SetPos2(m_x + ground3->GetScroll(), m_y + 40);
+		m_hit_line_DwBl[1]->SetPos1(m_x + ground3->GetScroll() + 60, m_y);
+		m_hit_line_DwBl[1]->SetPos2(m_x + ground3->GetScroll() + 60, m_y + 40);
+		m_hit_line_DwBl[2]->SetPos1(m_x + ground3->GetScroll(), m_y);
+		m_hit_line_DwBl[2]->SetPos2(m_x + ground3->GetScroll() + 60, m_y);
+		m_hit_line_DwBl[3]->SetPos1(m_x + ground3->GetScroll(), m_y + 40);
+		m_hit_line_DwBl[3]->SetPos2(m_x + ground3->GetScroll() + 60, m_y + 40);
+	}
 
 }
 
 void ObjDownBlock::Draw()
 {
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
-	//ロープ表示
-	Draw::Draw2D(62, m_gx + 24 + ground->GetScroll(), 135, 1, m_RopeSizeScaffold);
-	//足場のブロック表示
-	Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy + 111);
+	if (ground != nullptr) {
+		//ロープ表示
+		Draw::Draw2D(62, m_gx + 24 + ground->GetScroll(), m_rope_y, 1, m_RopeSizeScaffold);
+		//足場のブロック表示
+		Draw::Draw2D(58, m_gx + ground->GetScroll(), m_gy + 111);
+	}
+	else {
+		//ロープ表示
+		Draw::Draw2D(62, m_gx + 24 + ground3->GetScroll(), m_rope_y, 1, m_RopeSizeScaffold);
+		//足場のブロック表示
+		Draw::Draw2D(58, m_gx + ground3->GetScroll(), m_gy + 111);
+	}
 }
