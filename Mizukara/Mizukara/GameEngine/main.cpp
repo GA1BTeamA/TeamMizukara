@@ -36,6 +36,7 @@
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
 #include "..\Sprinkler2.h"
+#include "..\Sprinkler3.h"
 #include "..\ObjUpScaffold.h"
 #include "..\ObjUpScaffold_Tank.h"
 #include "..\ObjDownBlock.h"
@@ -185,6 +186,11 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(90, L"Images\\BTeiboku.png");//90番目に"BTeiboku.png"を読み込み
 	Draw::LoadImage(91, L"Images\\AHaibisukasu.png");//91番目に"AHaibisukasu.png"を読み込み
 	Draw::LoadImage(92, L"Images\\SHaibisukasu.png");//92番目に"SHaibisukasu.png"を読み込み
+	Draw::LoadImage(93, L"Images\\SMe.png");//93番目に"SMe.png"を読み込み
+	Draw::LoadImage(94, L"Images\\CSuzuran.png");//94番目に"CSuzuran.png"を読み込み
+	Draw::LoadImage(95, L"Images\\BSuzuran.png");//95番目に"BSuzuran.png"を読み込み
+	Draw::LoadImage(96, L"Images\\ASuzuran.png");//96番目に"ASuzuran.png"を読み込み
+	Draw::LoadImage(97, L"Images\\SSzuran.png");//97番目に"SSuzuran.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -259,6 +265,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM2* wtm2_3;
 		CSPRI* spri;
 		CSPRI2* spri2;
+		CSPRI3* spri3;
 		ObjUpScaffold* upsc;
 		ObjUpScaffold_Tank* upsct;
 		ObjDownBlock* dwbl;
@@ -640,6 +647,11 @@ unsigned __stdcall GameMainSled(void *p)
 			dwblt->m_ActionPriority = 130;
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
+
+			spri3 = new CSPRI3();
+			spri3->m_ActionPriority = 150;
+			spri3->m_DrawPriority = 210;
+			TaskSystem::InsertObj(spri3);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;
