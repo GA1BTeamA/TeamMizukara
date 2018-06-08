@@ -7,7 +7,7 @@
 #include "ObjGround3.h"
 #include "BucketMeter.h"
 #include "Hero.h"
-#include "Sprinkler.h"
+#include "Sprinkler3.h"
 extern int g_SceneNumber;
 extern bool g_key_flag;
 

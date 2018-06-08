@@ -17,7 +17,7 @@ const float CSPRI3::m_WaveSize_y = 0.6f;
 
 CSPRI3::CSPRI3()
 	:m_x(2800), m_y(250), m_wave_x(2950), m_wave_y(230),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_ani_time4(0.0f), m_ani_time5(0.0f)
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_ani_time4(0.0f), m_ani_time5(0.0f),m_ani_time6(0.0f)
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
 	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
 	, m_CrearCnt(false), m_Flower(false)
@@ -57,10 +57,13 @@ void CSPRI3::Action()
 			if (g_key_flag)
 			{
 				Audio::StopLoopMusic(9);
-				g_SceneNumber = RESULT;
-				g_clearlist = true;
-				g_key_flag = false;
-				g_TankRemaining = false;
+				//if (m_ani_time6 >= 1000)
+				//{
+					g_SceneNumber = RESULT;
+					g_clearlist = true;
+					g_key_flag = false;
+					g_TankRemaining = false;
+				//}
 			}
 		}
 		else
@@ -132,6 +135,28 @@ void CSPRI3::Draw()
 		Draw::Draw2D(63, 300, 200);
 	}
 
+	//if (m_CrearCnt == true)
+	//{
+	//	//エンターキーが押されたら
+	//	if (Input::KeyPush(VK_RETURN) == true)
+	//	{
+	//		//破棄
+	//		if (g_key_flag)
+	//		{
+	//			Audio::StopLoopMusic(9);
+	//			m_ani_time6++;
+	//			Draw::Draw2D(98, m_wave_x + ground3->GetScroll(), m_wave_y - 230 + m_ani_time6, 1, 1);
+	//			/*g_SceneNumber = RESULT;
+	//			g_clearlist = true;
+	//			g_key_flag = false;
+	//			g_TankRemaining = false;*/
+	//		}
+	//	}
+	//	else
+	//	{
+	//		g_key_flag = true;
+	//	}
+	//}
 	//水表示
 	Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 1.6, 1.4);
 
