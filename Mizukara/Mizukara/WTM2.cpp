@@ -75,7 +75,7 @@ void CWTM2::Action()
 		}
 	}
 
-	//m_wave_y = 150 + 42 * (100 - tank2->GetWater_Remaining())*0.01;
+	m_wave_y = m_y + 84 + 42 * (100 - tank2->GetWater_Remaining()*2)*0.01;
 
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
@@ -104,7 +104,7 @@ void CWTM2::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 1.7, -(1.4*tank2->GetWater_Remaining()*0.01));
+	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 1.7, -(2.7*tank2->GetWater_Remaining()*0.01));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

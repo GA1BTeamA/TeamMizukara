@@ -345,23 +345,23 @@ void CSPRI::Draw()
 	}
 
 	//花表示
-	if (g_TankRemaining >= 80)
+	if (g_TankRemaining >= 40)
 	{
 		Draw::Draw2D(68, m_fx, m_fy);  //Sランク
 	}
-	else if (g_TankRemaining >= 70)
+	else if (g_TankRemaining >= 35)
 	{
 		Draw::Draw2D(67, m_fx, m_fy);  //Aランク
 	}
-	else if (g_TankRemaining >= 50)
+	else if (g_TankRemaining >= 25)
 	{
 		Draw::Draw2D(66, m_fx, m_fy);  //Bランク
 	}
-	else if (g_TankRemaining >= 30)
+	else if (g_TankRemaining >= 10)
 	{
 		Draw::Draw2D(65, m_fx, m_fy);  //Cランク
 	}
-	else if (g_TankRemaining >=10)
+	else if (g_TankRemaining >=1)
 	{
 		Draw::Draw2D(64, m_fx, m_fy);  //Dランク
 	}
