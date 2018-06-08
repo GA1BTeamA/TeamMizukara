@@ -10,7 +10,7 @@
 class ObjDownBlock_Tank : public CObj
 {
 public:
-	ObjDownBlock_Tank();
+	ObjDownBlock_Tank(float x,float y);
 	~ObjDownBlock_Tank();
 	void Action();
 	void Draw();
@@ -20,6 +20,9 @@ private:
 
 	float m_gx;//グラフィックの位置
 	float m_gy;
+
+	float m_save_x;//保存用
+	float m_save_y;
 
 	float m_moveY;
 
