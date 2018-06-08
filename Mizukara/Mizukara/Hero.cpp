@@ -806,6 +806,8 @@ void CHero::Action()
 				if (m_IsMenu == false)
 				{
 					Audio::StopLoopMusic(6);
+					Audio::StopLoopMusic(7);
+					Audio::StopLoopMusic(8);
 					//menu = new CMenu();
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
@@ -832,7 +834,12 @@ void CHero::Action()
 						menu->is_delete = true;
 						m_IsMenu = false;
 						Audio::StopLoopMusic(2);
-						Audio::StartLoopMusic(6);
+						switch (g_SceneNumber)
+						{
+						case GAME_MAIN:		Audio::StartLoopMusic(6);	break;
+						case GAME_MAIN2:	Audio::StartLoopMusic(7);	break;
+						case GAME_MAIN3:	Audio::StartLoopMusic(8);	break;
+						}
 					}
 				}
 				m_menu_key_flag = false;

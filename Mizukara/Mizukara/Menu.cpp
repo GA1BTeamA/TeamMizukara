@@ -60,7 +60,18 @@ void CMenu::Action()
 					hero->MenuDel();
 					is_delete = true;
 					Audio::StopLoopMusic(2);
-					Audio::StartLoopMusic(6);
+					switch (m_StageNo)
+					{
+					case 1:
+						Audio::StartLoopMusic(6);
+						break;
+					case 2:
+						Audio::StartLoopMusic(7);
+						break;
+					case 3:
+						Audio::StartLoopMusic(8);
+						break;
+					}
 				}
 			}
 		}
@@ -101,19 +112,21 @@ void CMenu::Action()
 				{
 				case 1:
 					g_SceneNumber = GAME;
+					Audio::StartLoopMusic(6);
 					break;
 				case 2:
 					g_SceneNumber = GAME2;
+					Audio::StartLoopMusic(7);
 					break;
 				case 3:
 					g_SceneNumber = GAME3;
+					Audio::StartLoopMusic(8);
 					break;
 
 				}
 				g_clearlist = true;
 				g_key_flag = false;
 				Audio::StopLoopMusic(2);
-				Audio::StartLoopMusic(6);
 			}
 		}
 		else
