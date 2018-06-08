@@ -17,6 +17,8 @@ ObjColorDoor::ObjColorDoor(float x, float y,int color_number,unsigned int n)
 	case 1:	m_name = COLORDOOR; break;
 	case 2:	m_name = COLORDOOR2; break;
 	case 3:	m_name = COLORDOOR3; break;
+	case 4:	m_name = COLORDOOR4; break;
+	case 5:	m_name = COLORDOOR5; break;
 	}
 
 	////ヒットライン作成し、値を設定(左)

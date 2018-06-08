@@ -148,9 +148,9 @@ ObjGround3::ObjGround3()
 	m_p_hit_line_ground3[19]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の左部分
 	m_p_hit_line_ground3[19]->SetPos2(m_scroll + 2530, m_gy + 250);
 	m_p_hit_line_ground3[20]->SetPos1(m_scroll + 2530, m_gy + 250);  //最終ギミック黄黒の上(足場)部分
-	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2820, m_gy + 250);
-	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2820, m_gy + 450);  //最終ギミック黄黒の右部分
-	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2820, m_gy + 250);
+	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2880, m_gy + 250);
+	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2880, m_gy + 450);  //最終ギミック黄黒の右部分
+	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2880, m_gy + 250);
 	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
 	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 3300, m_gy + 319);
 	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
@@ -224,9 +224,9 @@ void ObjGround3::Action()
 	m_p_hit_line_ground3[19]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の左部分
 	m_p_hit_line_ground3[19]->SetPos2(m_scroll + 2530, m_gy + 250);
 	m_p_hit_line_ground3[20]->SetPos1(m_scroll + 2530, m_gy + 250);  //最終ギミック黄黒の上(足場)部分
-	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2820, m_gy + 250);
-	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2820, m_gy + 450);  //最終ギミック黄黒の右部分
-	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2820, m_gy + 250);
+	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2840, m_gy + 250);
+	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2840, m_gy + 450);  //最終ギミック黄黒の右部分
+	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2840, m_gy + 250);
 	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
 	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 3300, m_gy + 319);
 	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
