@@ -192,6 +192,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(96, L"Images\\ASuzuran.png");//96番目に"ASuzuran.png"を読み込み
 	Draw::LoadImage(97, L"Images\\SSzuran.png");//97番目に"SSuzuran.png"を読み込み
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98番目に"AllClear.png"を読み込み
+	Draw::LoadImage(99, L"Images\\Box.png");//99番目に"Box.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -675,11 +676,11 @@ unsigned __stdcall GameMainSled(void *p)
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
 
-			scale3 = new ObjScale(2300.0f, 286.0f, 3);
+			scale3 = new ObjScale(2350.0f, 286.0f, 3);
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale3);
-			scale_t3 = new ObjScale_Tank(2300.0f, 283.0f, 6.0f, 0.0f, 3);
+			scale_t3 = new ObjScale_Tank(2350.0f, 283.0f, 6.0f, 0.0f, 3);
 			scale_t3->m_ActionPriority = 90;
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);

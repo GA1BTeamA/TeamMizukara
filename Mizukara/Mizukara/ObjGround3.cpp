@@ -79,33 +79,43 @@ ObjGround3::ObjGround3()
 	m_p_hit_line_ground3[16] = Collision::HitLineInsert(this);
 	m_p_hit_line_ground3[16]->Set4direc(HIT_RIGHT);
 
-	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground3[17] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[17]->Set4direc(HIT_UNDER);
-
-	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[17]->Set4direc(HIT_TOP);
 	m_p_hit_line_ground3[18] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[18]->Set4direc(HIT_LEFT);
-
-	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[18]->Set4direc(HIT_RIGHT);
 	m_p_hit_line_ground3[19] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[19]->Set4direc(HIT_LEFT);
-
-	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[19]->Set4direc(HIT_TOP);
 	m_p_hit_line_ground3[20] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[20]->Set4direc(HIT_TOP);
+	m_p_hit_line_ground3[20]->Set4direc(HIT_RIGHT);
+
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground3[21] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[21]->Set4direc(HIT_RIGHT);
+	m_p_hit_line_ground3[21]->Set4direc(HIT_UNDER);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground3[22] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[22]->Set4direc(HIT_TOP);
+	m_p_hit_line_ground3[22]->Set4direc(HIT_LEFT);
 
 	//ヒットボックス作成し、作成したヒットボックスの値を設定
 	m_p_hit_line_ground3[23] = Collision::HitLineInsert(this);
-	m_p_hit_line_ground3[23]->Set4direc(HIT_RIGHT);
+	m_p_hit_line_ground3[23]->Set4direc(HIT_LEFT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[24] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground3[24]->Set4direc(HIT_TOP);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[25] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground3[25]->Set4direc(HIT_RIGHT);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[26] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground3[26]->Set4direc(HIT_TOP);
+
+	//ヒットボックス作成し、作成したヒットボックスの値を設定
+	m_p_hit_line_ground3[27] = Collision::HitLineInsert(this);
+	m_p_hit_line_ground3[27]->Set4direc(HIT_RIGHT);
 
 	m_p_hit_line_ground3[0]->SetPos1(m_scroll + 0, m_gy + 400);  //最初地面
 	m_p_hit_line_ground3[0]->SetPos2(m_scroll + 3300, m_gy + 400);
@@ -141,22 +151,30 @@ ObjGround3::ObjGround3()
 	m_p_hit_line_ground3[15]->SetPos2(m_scroll + 2062, m_gy + 285);
 	m_p_hit_line_ground3[16]->SetPos1(m_scroll + 2062, m_gy + 285);  //コンテナ上の階段1段目右側
 	m_p_hit_line_ground3[16]->SetPos2(m_scroll + 2062, m_gy + 480);
-	m_p_hit_line_ground3[17]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の下部分
-	m_p_hit_line_ground3[17]->SetPos2(m_scroll + 2816, m_gy + 262);
-	m_p_hit_line_ground3[18]->SetPos1(m_scroll + 2814, m_gy + 450);  //最終ギミック黄黒の下左部分
-	m_p_hit_line_ground3[18]->SetPos2(m_scroll + 2814, m_gy + 256);
-	m_p_hit_line_ground3[19]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の左部分
-	m_p_hit_line_ground3[19]->SetPos2(m_scroll + 2530, m_gy + 250);
-	m_p_hit_line_ground3[20]->SetPos1(m_scroll + 2530, m_gy + 250);  //最終ギミック黄黒の上(足場)部分
-	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2880, m_gy + 250);
-	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2880, m_gy + 450);  //最終ギミック黄黒の右部分
-	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2880, m_gy + 250);
-	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
-	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 3300, m_gy + 319);
-	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
-	m_p_hit_line_ground3[23]->SetPos2(m_scroll + 90, m_gy + 0);
+	m_p_hit_line_ground3[17]->SetPos1(m_scroll + 2100, m_gy + 343);
+	m_p_hit_line_ground3[17]->SetPos2(m_scroll + 2229, m_gy + 343);
+	m_p_hit_line_ground3[18]->SetPos1(m_scroll + 2229, m_gy + 400);
+	m_p_hit_line_ground3[18]->SetPos2(m_scroll + 2229, m_gy + 343);
+	m_p_hit_line_ground3[19]->SetPos1(m_scroll + 2150, m_gy + 372);
+	m_p_hit_line_ground3[19]->SetPos2(m_scroll + 2268, m_gy + 372);
+	m_p_hit_line_ground3[20]->SetPos1(m_scroll + 2268, m_gy + 450);
+	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2268, m_gy + 372);
+	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の下部分
+	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2816, m_gy + 262);
+	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2814, m_gy + 450);  //最終ギミック黄黒の下左部分
+	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 2814, m_gy + 256);
+	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の左部分
+	m_p_hit_line_ground3[23]->SetPos2(m_scroll + 2530, m_gy + 250);
+	m_p_hit_line_ground3[24]->SetPos1(m_scroll + 2530, m_gy + 250);  //最終ギミック黄黒の上(足場)部分
+	m_p_hit_line_ground3[24]->SetPos2(m_scroll + 2840, m_gy + 250);
+	m_p_hit_line_ground3[25]->SetPos1(m_scroll + 2840, m_gy + 450);  //最終ギミック黄黒の右部分
+	m_p_hit_line_ground3[25]->SetPos2(m_scroll + 2840, m_gy + 250);
+	m_p_hit_line_ground3[26]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
+	m_p_hit_line_ground3[26]->SetPos2(m_scroll + 3300, m_gy + 319);
+	m_p_hit_line_ground3[27]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground3[27]->SetPos2(m_scroll + 90, m_gy + 0);
 
-	for (int i = 0; i < 24; i++) {
+	for (int i = 0; i < 28; i++) {
 		m_p_hit_line_ground3[i]->SetElement(1);		//属性を1にする
 		m_p_hit_line_ground3[i]->SetInvisible(false);	//無敵モード無効
 		m_p_hit_line_ground3[i]->SetAngle();
@@ -217,20 +235,30 @@ void ObjGround3::Action()
 	m_p_hit_line_ground3[15]->SetPos2(m_scroll + 2062, m_gy + 285);
 	m_p_hit_line_ground3[16]->SetPos1(m_scroll + 2062, m_gy + 285);  //コンテナ上の階段1段目右側
 	m_p_hit_line_ground3[16]->SetPos2(m_scroll + 2062, m_gy + 480);
-	m_p_hit_line_ground3[17]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の下部分
-	m_p_hit_line_ground3[17]->SetPos2(m_scroll + 2816, m_gy + 262);
-	m_p_hit_line_ground3[18]->SetPos1(m_scroll + 2814, m_gy + 450);  //最終ギミック黄黒の下左部分
-	m_p_hit_line_ground3[18]->SetPos2(m_scroll + 2814, m_gy + 256);
-	m_p_hit_line_ground3[19]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の左部分
-	m_p_hit_line_ground3[19]->SetPos2(m_scroll + 2530, m_gy + 250);
-	m_p_hit_line_ground3[20]->SetPos1(m_scroll + 2530, m_gy + 250);  //最終ギミック黄黒の上(足場)部分
-	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2840, m_gy + 250);
-	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2840, m_gy + 450);  //最終ギミック黄黒の右部分
-	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2840, m_gy + 250);
-	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
-	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 3300, m_gy + 319);
-	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
-	m_p_hit_line_ground3[23]->SetPos2(m_scroll + 90, m_gy + 0);
+
+	m_p_hit_line_ground3[17]->SetPos1(m_scroll + 2100, m_gy + 343);
+	m_p_hit_line_ground3[17]->SetPos2(m_scroll + 2229, m_gy + 343);
+	m_p_hit_line_ground3[18]->SetPos1(m_scroll + 2229, m_gy + 400);
+	m_p_hit_line_ground3[18]->SetPos2(m_scroll + 2229, m_gy + 343);
+	m_p_hit_line_ground3[19]->SetPos1(m_scroll + 2150, m_gy + 372);
+	m_p_hit_line_ground3[19]->SetPos2(m_scroll + 2268, m_gy + 372);
+	m_p_hit_line_ground3[20]->SetPos1(m_scroll + 2268, m_gy + 450);
+	m_p_hit_line_ground3[20]->SetPos2(m_scroll + 2268, m_gy + 372);
+
+	m_p_hit_line_ground3[21]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の下部分
+	m_p_hit_line_ground3[21]->SetPos2(m_scroll + 2816, m_gy + 262);
+	m_p_hit_line_ground3[22]->SetPos1(m_scroll + 2814, m_gy + 450);  //最終ギミック黄黒の下左部分
+	m_p_hit_line_ground3[22]->SetPos2(m_scroll + 2814, m_gy + 256);
+	m_p_hit_line_ground3[23]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の左部分
+	m_p_hit_line_ground3[23]->SetPos2(m_scroll + 2530, m_gy + 250);
+	m_p_hit_line_ground3[24]->SetPos1(m_scroll + 2530, m_gy + 250);  //最終ギミック黄黒の上(足場)部分
+	m_p_hit_line_ground3[24]->SetPos2(m_scroll + 2840, m_gy + 250);
+	m_p_hit_line_ground3[25]->SetPos1(m_scroll + 2840, m_gy + 450);  //最終ギミック黄黒の右部分
+	m_p_hit_line_ground3[25]->SetPos2(m_scroll + 2840, m_gy + 250);
+	m_p_hit_line_ground3[26]->SetPos1(m_scroll + 2817, m_gy + 319);  //ゴールの足場
+	m_p_hit_line_ground3[26]->SetPos2(m_scroll + 3300, m_gy + 319);
+	m_p_hit_line_ground3[27]->SetPos1(m_scroll + 90, m_gy + 450);  //タンク当たり判定
+	m_p_hit_line_ground3[27]->SetPos2(m_scroll + 90, m_gy + 0);
 
 
 }
@@ -240,6 +268,8 @@ void ObjGround3::Draw()
 {
 	//ステージ3地面描画
 	Draw::Draw2D(71, m_scroll, 0);
+
+	Draw::Draw2D(99, m_scroll+2190, 342);
 
 
 	//Draw::Draw2D(58, m_scroll + 90, 319);
