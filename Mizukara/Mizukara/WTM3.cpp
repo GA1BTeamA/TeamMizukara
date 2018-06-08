@@ -21,7 +21,7 @@ const float CWTM3::m_wave_amount = 0.3f*0.04f;
 //コンストラクタ
 CWTM3::CWTM3(float x, float y,int color)
 	:m_x(x), m_y(y), m_wave_x(x+6), m_wave_y(y+36), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(210), im_y(139), m_water_x(x+3), m_water_y(y+136), m_water_remaining(1.4)
+	, im_x(x), im_y(y-70), m_water_x(x+3), m_water_y(y+136), m_water_remaining(1.4)
 	,m_gx(x),m_gy(y+65)
 {
 	if (color == 74)
@@ -40,7 +40,7 @@ CWTM3::CWTM3(float x, float y,int color)
 		rgba[2] = 0.5f;
 		rgba[3] = 1.0f;
 	}
-	else
+	else if(color == 0)
 	{
 		//水の色用配列初期化
 		rgba[0] = 1.0f;
@@ -135,7 +135,7 @@ void CWTM3::Action()
 		}
 	}
 
-	m_wave_y = 315+42 * (100 - tank->GetWater_Remaining())*0.01;
+	m_wave_y = m_y+81+42 * (100 - tank->GetWater_Remaining())*0.01;
 
 	ObjGround3* ground = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
@@ -193,10 +193,14 @@ void CWTM3::Draw()
 		//赤のWTM表示
 		Draw::Draw2D(74, m_gx + ground->GetScroll(), m_gy);
 	}
-	else
+	else if(rgba[0]==0.0f)
 	{
 		//緑のWTM表示
 		Draw::Draw2D(82, m_gx + ground->GetScroll(), m_gy);
+	}
+	else if(rgba[0]==1.0f)
+	{
+		;
 	}
 
 	//Draw::Draw2D(21, a, m_y);
