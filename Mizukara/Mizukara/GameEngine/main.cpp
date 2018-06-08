@@ -36,6 +36,7 @@
 #include "..\Menu.h"
 #include "..\Sprinkler.h"
 #include "..\Sprinkler2.h"
+#include "..\Sprinkler3.h"
 #include "..\ObjUpScaffold.h"
 #include "..\ObjUpScaffold_Tank.h"
 #include "..\ObjDownBlock.h"
@@ -181,6 +182,16 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(86, L"Images\\Story3.png");//86番目に"Story3.png"を読み込み
 	Draw::LoadImage(87, L"Images\\Rainbow.png");//87番目に"Rainbow.png"を読み込み
 	Draw::LoadImage(88, L"Images\\Ztank.png");//88番目に"Ztank.png"を読み込み
+	Draw::LoadImage(89, L"Images\\CTeiboku.png");//89番目に"CTeiboku.png"を読み込み
+	Draw::LoadImage(90, L"Images\\BTeiboku.png");//90番目に"BTeiboku.png"を読み込み
+	Draw::LoadImage(91, L"Images\\AHaibisukasu.png");//91番目に"AHaibisukasu.png"を読み込み
+	Draw::LoadImage(92, L"Images\\SHaibisukasu.png");//92番目に"SHaibisukasu.png"を読み込み
+	Draw::LoadImage(93, L"Images\\SMe.png");//93番目に"SMe.png"を読み込み
+	Draw::LoadImage(94, L"Images\\CSuzuran.png");//94番目に"CSuzuran.png"を読み込み
+	Draw::LoadImage(95, L"Images\\BSuzuran.png");//95番目に"BSuzuran.png"を読み込み
+	Draw::LoadImage(96, L"Images\\ASuzuran.png");//96番目に"ASuzuran.png"を読み込み
+	Draw::LoadImage(97, L"Images\\SSzuran.png");//97番目に"SSuzuran.png"を読み込み
+	Draw::LoadImage(98, L"Images\\AllClear.png");//98番目に"AllClear.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -255,6 +266,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM2* wtm2_3;
 		CSPRI* spri;
 		CSPRI2* spri2;
+		CSPRI3* spri3;
 		ObjUpScaffold* upsc;
 		ObjUpScaffold_Tank* upsct;
 		ObjDownBlock* dwbl;
@@ -290,6 +302,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 		CWTM3* wtm3;
 		CWTM3* wtm3_1;
+		CWTM3* wtm3_2;
 
 		switch (g_SceneNumber)
 		{
@@ -383,12 +396,12 @@ unsigned __stdcall GameMainSled(void *p)
 			upsct->m_DrawPriority = 120;
 			TaskSystem::InsertObj(upsct);
 
-			dwbl = new ObjDownBlock();
+			dwbl = new ObjDownBlock(854.0f,245.0f);
 			dwbl->m_ActionPriority = 130;
 			dwbl->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwbl);
 
-			dwblt = new ObjDownBlock_Tank();
+			dwblt = new ObjDownBlock_Tank(676.0f,150.0f);
 			dwblt->m_ActionPriority = 130;
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
@@ -522,7 +535,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
-			spri2->m_DrawPriority = 60;
+			spri2->m_DrawPriority = 210;
 			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;
@@ -552,6 +565,11 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm3_1->m_ActionPriority = 70;
 			wtm3_1->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_1);
+
+			wtm3_2 = new CWTM3(1195, 146, 0);
+			wtm3_2->m_ActionPriority = 70;
+			wtm3_2->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm3_2);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
@@ -608,11 +626,33 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-
 			scale_t = new ObjScale_Tank(562.0f, 323.0f, 0.0f, 3.0f, 1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
+
+			scale2 = new ObjScale(1500.0f, 326.0f, 2);
+			scale2->m_ActionPriority = 90;
+			scale2->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale2);
+			scale_t2 = new ObjScale_Tank(1500.0f, 323.0f, 0.0f, 6.0f, 2);
+			scale_t2->m_ActionPriority = 90;
+			scale_t2->m_DrawPriority = 80;
+			TaskSystem::InsertObj(scale_t2);
+
+			dwbl = new ObjDownBlock(1545.0f+178, 150.0f+95);
+			dwbl->m_ActionPriority = 130;
+			dwbl->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwbl);
+			dwblt = new ObjDownBlock_Tank(1545.0f, 150.0f);
+			dwblt->m_ActionPriority = 130;
+			dwblt->m_DrawPriority = 130;
+			TaskSystem::InsertObj(dwblt);
+
+			spri3 = new CSPRI3();
+			spri3->m_ActionPriority = 150;
+			spri3->m_DrawPriority = 210;
+			TaskSystem::InsertObj(spri3);
 
 			g_SceneNumber = GAME_MAIN3;
 			break;

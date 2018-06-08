@@ -22,29 +22,29 @@ void CTitle::Action()
 {
 	Audio::StartLoopMusic(3);
 	Audio::LoopMusicVolume(3, 0.05f);
-
-	//左を押したら左に
-	if (Input::KeyPush(VK_LEFT)==true)
-	{
-		m_cursor = LEFT;
+	if (m_IsDrawOpe == false) {
+		//左を押したら左に
+		if (Input::KeyPush(VK_LEFT) == true)
+		{
+			m_cursor = LEFT;
+		}
+		//右を押したら右に
+		else if (Input::KeyPush(VK_RIGHT) == true)
+		{
+			m_cursor = RIGHT;
+		}
+		//下を押したら下に
+		else if (Input::KeyPush(VK_DOWN) == true)
+		{
+			if (m_cursor != UNDER)
+				m_BefCursor = m_cursor;
+			m_cursor = UNDER;
+		}
+		else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
+		{
+			m_cursor = m_BefCursor;
+		}
 	}
-	//右を押したら右に
-	else if (Input::KeyPush(VK_RIGHT) == true)
-	{
-		m_cursor = RIGHT;
-	}
-	//下を押したら下に
-	else if (Input::KeyPush(VK_DOWN) == true)
-	{
-		if(m_cursor!=UNDER)
-			m_BefCursor = m_cursor;
-		m_cursor = UNDER;
-	}
-	else if (Input::KeyPush(VK_UP) == true && m_cursor==UNDER)
-	{
-		m_cursor = m_BefCursor;
-	}
-
 	//カーソル位置が左なら
 	if (m_cursor==LEFT)
 	{

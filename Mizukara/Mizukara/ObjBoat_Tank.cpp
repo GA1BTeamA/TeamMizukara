@@ -221,8 +221,13 @@ void ObjBoat_Tank::Draw()
 					if (m_ani_time_x > 1 && m_ani_time_x <= 160)
 					{
 						Draw::Draw2D(0, m_gx + m_ani_time_x + ground2->GetScroll() + 50, m_gy - 30, 1, 1);
-						m_wave_y += 0.13f;
-						m_water_y += 0.03f;
+						if (m_wave_y < 248)m_wave_y += 0.26f;
+						else if (m_wave_y > 356)m_wave_y += 0;
+						else m_wave_y += 0.08f;
+
+						m_water_y += 0.015f;
+						//m_wave_y += 0.13f;
+						//m_water_y += 0.03f;
 					}
 					else if (m_ani_time_x >= 161)
 					{

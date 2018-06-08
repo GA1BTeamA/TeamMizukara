@@ -131,16 +131,16 @@ ObjGround3::ObjGround3()
 	m_p_hit_line_ground3[10]->SetPos2(m_scroll + 1982, m_gy + 227);
 	m_p_hit_line_ground3[11]->SetPos1(m_scroll + 1982, m_gy + 450);  //コンテナ山の部分右側
 	m_p_hit_line_ground3[11]->SetPos2(m_scroll + 1982, m_gy + 227);
-	m_p_hit_line_ground3[12]->SetPos1(m_scroll + 1982, m_gy + 256);  //コンテナ上の階段2段目上
+	m_p_hit_line_ground3[12]->SetPos1(m_scroll + 1900, m_gy + 256);  //コンテナ上の階段2段目上
 	m_p_hit_line_ground3[12]->SetPos2(m_scroll + 2022, m_gy + 256);
-	m_p_hit_line_ground3[13]->SetPos1(m_scroll + 2022, m_gy + 450);  //コンテナ上の階段2段目右側
+	m_p_hit_line_ground3[13]->SetPos1(m_scroll + 2022, m_gy + 500);  //コンテナ上の階段2段目右側
 	m_p_hit_line_ground3[13]->SetPos2(m_scroll + 2022, m_gy + 256);
 	m_p_hit_line_ground3[14]->SetPos1(m_scroll + 2186, m_gy + 450);  //コンテナ下部分右側
 	m_p_hit_line_ground3[14]->SetPos2(m_scroll + 2186, m_gy + 314);
-	m_p_hit_line_ground3[15]->SetPos1(m_scroll + 2022, m_gy + 285);  //コンテナ上の階段1段目上
+	m_p_hit_line_ground3[15]->SetPos1(m_scroll + 2000, m_gy + 285);  //コンテナ上の階段1段目上
 	m_p_hit_line_ground3[15]->SetPos2(m_scroll + 2062, m_gy + 285);
 	m_p_hit_line_ground3[16]->SetPos1(m_scroll + 2062, m_gy + 285);  //コンテナ上の階段1段目右側
-	m_p_hit_line_ground3[16]->SetPos2(m_scroll + 2062, m_gy + 450);
+	m_p_hit_line_ground3[16]->SetPos2(m_scroll + 2062, m_gy + 480);
 	m_p_hit_line_ground3[17]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の下部分
 	m_p_hit_line_ground3[17]->SetPos2(m_scroll + 2816, m_gy + 262);
 	m_p_hit_line_ground3[18]->SetPos1(m_scroll + 2814, m_gy + 450);  //最終ギミック黄黒の下左部分
@@ -207,16 +207,16 @@ void ObjGround3::Action()
 	m_p_hit_line_ground3[10]->SetPos2(m_scroll + 1982, m_gy + 227);
 	m_p_hit_line_ground3[11]->SetPos1(m_scroll + 1982, m_gy + 450);  //コンテナ山の部分右側
 	m_p_hit_line_ground3[11]->SetPos2(m_scroll + 1982, m_gy + 227);
-	m_p_hit_line_ground3[12]->SetPos1(m_scroll + 1982, m_gy + 256);  //コンテナ上の階段2段目上
+	m_p_hit_line_ground3[12]->SetPos1(m_scroll + 1900, m_gy + 256);  //コンテナ上の階段2段目上
 	m_p_hit_line_ground3[12]->SetPos2(m_scroll + 2022, m_gy + 256);
-	m_p_hit_line_ground3[13]->SetPos1(m_scroll + 2022, m_gy + 450);  //コンテナ上の階段2段目右側
+	m_p_hit_line_ground3[13]->SetPos1(m_scroll + 2022, m_gy + 500);  //コンテナ上の階段2段目右側
 	m_p_hit_line_ground3[13]->SetPos2(m_scroll + 2022, m_gy + 256);
 	m_p_hit_line_ground3[14]->SetPos1(m_scroll + 2186, m_gy + 450);  //コンテナ下部分右側
 	m_p_hit_line_ground3[14]->SetPos2(m_scroll + 2186, m_gy + 314);
-	m_p_hit_line_ground3[15]->SetPos1(m_scroll + 2022, m_gy + 285);  //コンテナ上の階段1段目上
+	m_p_hit_line_ground3[15]->SetPos1(m_scroll + 2000, m_gy + 285);  //コンテナ上の階段1段目上
 	m_p_hit_line_ground3[15]->SetPos2(m_scroll + 2062, m_gy + 285);
 	m_p_hit_line_ground3[16]->SetPos1(m_scroll + 2062, m_gy + 285);  //コンテナ上の階段1段目右側
-	m_p_hit_line_ground3[16]->SetPos2(m_scroll + 2062, m_gy + 450);
+	m_p_hit_line_ground3[16]->SetPos2(m_scroll + 2062, m_gy + 480);
 	m_p_hit_line_ground3[17]->SetPos1(m_scroll + 2530, m_gy + 262);  //最終ギミック黄黒の下部分
 	m_p_hit_line_ground3[17]->SetPos2(m_scroll + 2816, m_gy + 262);
 	m_p_hit_line_ground3[18]->SetPos1(m_scroll + 2814, m_gy + 450);  //最終ギミック黄黒の下左部分

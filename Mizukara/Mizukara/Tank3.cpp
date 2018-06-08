@@ -7,7 +7,7 @@
 #include "ObjGround3.h"
 #include "BucketMeter.h"
 #include "Hero.h"
-#include "Sprinkler.h"
+#include "Sprinkler3.h"
 extern int g_SceneNumber;
 extern bool g_key_flag;
 
@@ -17,7 +17,7 @@ CTank3::CTank3()
 	, m_water_x(11), m_water_y(384)
 	, m_water_remaining2(100)
 {
-	m_name = TANK;
+	m_name = TANK3;
 
 	//auto* ground = g;
 

@@ -121,7 +121,11 @@ void ObjColorDoor_Tank::Action()
 
 						//バケツメーターオブジェクト取得
 						CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-						if (bm->GetColorR() != 2.0f)
+						//赤タンク
+						if (rgba[0]!=2.0f && bm->GetColorR() == 2.0f)
+							continue;
+						//緑タンク
+						if (rgba[0] == 2.0f && bm->GetColorR() != 2.0f)
 							continue;
 
 						//バケツが空じゃなかったら
