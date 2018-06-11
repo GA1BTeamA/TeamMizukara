@@ -30,7 +30,7 @@ void CBackground::Action()
 	//}
 
 	//m_scroll -= 5.0f;//ÉXÉNÉçÅ[Éã
-	if (g_SceneNumber == GAME)
+	if (g_SceneNumber == GAME_MAIN)
 	{
 		m_x -= 0.1f;
 		if (m_x < -2400.f)
