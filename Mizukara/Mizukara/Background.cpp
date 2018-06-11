@@ -11,7 +11,7 @@ extern int g_SceneNumber;
 
 CBackground::CBackground()
 	:m_x(0), m_y(0), m_scroll(0.0f)
-	, m_x2(2400), m_y2(0)
+	, m_x2(2400), m_y2(0), m_x_scroll(0)
 {
 	
 }
@@ -26,6 +26,7 @@ void CBackground::Action()
 	if (g_SceneNumber == GAME_MAIN)
 	{
 		m_x -= 0.1f;
+		m_x_scroll -= 0.1f;
 		if (m_x < -2400.f)
 		{
 			m_x = 2390.f;
@@ -47,7 +48,8 @@ void CBackground::Draw()
 	switch (g_SceneNumber)
 	{
 	case GAME_MAIN:
-		Draw::Draw2D(24, m_x, m_y);
+		Draw::Draw2D(24, m_x+m_x_scroll, m_y);
+		Draw::Draw2D(100, m_x, m_y);
 		break;
 
 	case GAME_MAIN2:

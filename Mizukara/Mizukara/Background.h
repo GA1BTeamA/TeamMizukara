@@ -20,5 +20,7 @@ private:
 	float m_x2;
 	float m_y2;
 
+	float m_x_scroll;  //空のスクロール用
+
 	float m_scroll;//左右スクロール用
 };

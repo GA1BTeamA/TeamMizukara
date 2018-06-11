@@ -93,7 +93,6 @@ void CTank3::Action()
 							//　（バケツ満タン/75フレーム）
 							m_water_remaining2 += 0.02666;
 						}
-						bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
 					}
 				}
 				break;

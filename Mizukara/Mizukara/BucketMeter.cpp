@@ -39,7 +39,30 @@ CBucketMeter::~CBucketMeter()
 //アクション
 void CBucketMeter::Action()
 {
+	if (m_water_remaining <= 0)
+	{
+		//水の色用配列初期化
+		rgba[0] = 1.0f;
+		rgba[1] = 1.0f;
+		rgba[2] = 1.0f;
+		rgba[3] = 1.0f;
+	}
 
+	if (Input::KeyPush('C'))
+	{
+		if (rgba[0] == 2.0f)
+		{
+			SetColor(2.0f, 0.5f, 0.5f, 1.0f);
+		}
+		else if (rgba[0] == 0.0f)
+		{
+			SetColor(0.0f, 1.0f, 0.5f, 1.0f);
+		}
+		else
+		{
+			SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+		}
+	}
 }
 
 //ドロー

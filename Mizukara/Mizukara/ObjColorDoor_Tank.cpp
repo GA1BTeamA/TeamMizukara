@@ -112,6 +112,20 @@ void ObjColorDoor_Tank::Action()
 									//バケツメーターにセット
 									bm->PushX();
 								}
+
+								if (rgba[0] == 2.0f)
+								{
+									bm->SetColor(2.0f, 0.5f, 0.5f, 1.0f);
+								}
+								else if (rgba[0] == 0.0f)
+								{
+									bm->SetColor(0.0f, 1.0f, 0.5f, 1.0f);
+								}
+								else
+								{
+									bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+								}
+
 								//（バケツ満タン/75フレーム）
 								m_water_remaining -= 0.02666;
 							}
@@ -148,6 +162,7 @@ void ObjColorDoor_Tank::Action()
 									//バケツメーターにセット
 									bm->PushC();
 								}
+
 								//（バケツ満タン/75フレーム）
 								m_water_remaining += 0.02666;
 							}

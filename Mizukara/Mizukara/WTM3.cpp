@@ -110,19 +110,19 @@ void CWTM3::Action()
 							bm->PushC();
 							tank->SetWater_Remaining(0.02666);
 
-							//バケツメーターの水の色変更
-							if (rgba[0] == 2.0f)
-							{
-								bm->SetColor(2.0f, 0.5f, 0.5f, 1.0f);
-							}
-							else if (rgba[0] == 0.0f)
-							{
-								bm->SetColor(0.0f, 1.0f, 0.5f, 1.0f);
-							}
-							else
-							{
-								bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
-							}
+							////バケツメーターの水の色変更
+							//if (rgba[0] == 2.0f)
+							//{
+							//	bm->SetColor(2.0f, 0.5f, 0.5f, 1.0f);
+							//}
+							//else if (rgba[0] == 0.0f)
+							//{
+							//	bm->SetColor(0.0f, 1.0f, 0.5f, 1.0f);
+							//}
+							//else
+							//{
+							//	bm->SetColor(1.0f, 1.0f, 1.0f, 1.0f);
+							//}
 						}
 					}
 				}
@@ -186,7 +186,7 @@ void CWTM3::Draw()
 		m_ani_time2++;
 	}
 	//波アニメーション
-	Draw::Draw2D(25 + (m_ani_time1 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
 
 	if (rgba[0] == 2.0f)
 	{
