@@ -23,14 +23,7 @@ CBackground::~CBackground()
 
 void CBackground::Action()
 {
-	////リザルト画面になったら破棄
-	//if (g_SceneNumber == RESULT)
-	//{
-	//	is_delete = true;
-	//}
-
-	//m_scroll -= 5.0f;//スクロール
-	if (g_SceneNumber == GAME)
+	if (g_SceneNumber == GAME_MAIN)
 	{
 		m_x -= 0.1f;
 		if (m_x < -2400.f)
@@ -55,7 +48,6 @@ void CBackground::Draw()
 	{
 	case GAME_MAIN:
 		Draw::Draw2D(24, m_x, m_y);
-		Draw::Draw2D(24, m_x2, m_y);
 		break;
 
 	case GAME_MAIN2:

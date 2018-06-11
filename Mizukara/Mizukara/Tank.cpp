@@ -14,7 +14,7 @@ extern bool g_key_flag;
 CTank::CTank()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
 	,im_x(33), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
-	, m_water_x(11), m_water_y(384)
+	, m_water_x(11), m_water_y(387)
 	, m_water_remaining2(50)
 {
 	m_name = TANK;
