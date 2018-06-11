@@ -15,7 +15,7 @@ CTank3::CTank3()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
 	, im_x(33), im_y(130), m_ani_time1(10.0f), m_ani_time2(0.0f)
 	, m_water_x(11), m_water_y(384)
-	, m_water_remaining2(100)
+	, m_water_remaining2(50)
 {
 	m_name = TANK3;
 
@@ -102,7 +102,7 @@ void CTank3::Action()
 	}
 	//波の位置設定
 	//満タン位置+タンクの高さ*（満タン-残量）/100
-	m_wave_y = 250 + 110 * (100 - m_water_remaining2)*0.01;
+	m_wave_y = 250 + 110 * (100 - m_water_remaining2*2)*0.01;
 
 }
 
@@ -128,7 +128,7 @@ void CTank3::Draw()
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 2.95, -(3.65*m_water_remaining2 *0.01));
+	Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 2.95, -(3.65*m_water_remaining2 *0.02));
 
 	//int g = 36;
 

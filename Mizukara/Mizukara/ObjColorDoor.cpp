@@ -17,37 +17,39 @@ ObjColorDoor::ObjColorDoor(float x, float y,int color_number,unsigned int n)
 	case 1:	m_name = COLORDOOR; break;
 	case 2:	m_name = COLORDOOR2; break;
 	case 3:	m_name = COLORDOOR3; break;
+	case 4:	m_name = COLORDOOR4; break;
+	case 5:	m_name = COLORDOOR5; break;
 	}
 
-	//ヒットライン作成し、値を設定(左)
-	m_hit_line_ColorDoor[0] = Collision::HitLineInsert(this);
-	m_hit_line_ColorDoor[0]->SetPos1(m_x+2, m_y);
-	m_hit_line_ColorDoor[0]->SetPos2(m_x+2, m_y + 140);
-	m_hit_line_ColorDoor[0]->Set4direc(HIT_LEFT);
+	////ヒットライン作成し、値を設定(左)
+	//m_hit_line_ColorDoor[0] = Collision::HitLineInsert(this);
+	//m_hit_line_ColorDoor[0]->SetPos1(m_x+2, m_y);
+	//m_hit_line_ColorDoor[0]->SetPos2(m_x+2, m_y + 140);
+	//m_hit_line_ColorDoor[0]->Set4direc(HIT_LEFT);
 
-	//ヒットライン作成し、値を設定(上)
-	m_hit_line_ColorDoor[1] = Collision::HitLineInsert(this);
-	m_hit_line_ColorDoor[1]->SetPos1(m_x+2, m_y);
-	m_hit_line_ColorDoor[1]->SetPos2(m_x+2 + 26, m_y);
-	m_hit_line_ColorDoor[1]->Set4direc(HIT_TOP);
+	////ヒットライン作成し、値を設定(上)
+	//m_hit_line_ColorDoor[1] = Collision::HitLineInsert(this);
+	//m_hit_line_ColorDoor[1]->SetPos1(m_x+2, m_y);
+	//m_hit_line_ColorDoor[1]->SetPos2(m_x+2 + 26, m_y);
+	//m_hit_line_ColorDoor[1]->Set4direc(HIT_TOP);
 
-	//ヒットライン作成し、値を設定(右)
-	m_hit_line_ColorDoor[2] = Collision::HitLineInsert(this);
-	m_hit_line_ColorDoor[2]->SetPos1(m_x + 28, m_y);
-	m_hit_line_ColorDoor[2]->SetPos2(m_x + 28, m_y + 140);
-	m_hit_line_ColorDoor[2]->Set4direc(HIT_RIGHT);
+	////ヒットライン作成し、値を設定(右)
+	//m_hit_line_ColorDoor[2] = Collision::HitLineInsert(this);
+	//m_hit_line_ColorDoor[2]->SetPos1(m_x + 28, m_y);
+	//m_hit_line_ColorDoor[2]->SetPos2(m_x + 28, m_y + 140);
+	//m_hit_line_ColorDoor[2]->Set4direc(HIT_RIGHT);
 
-	//ヒットライン作成し、値を設定(下)
-	m_hit_line_ColorDoor[3] = Collision::HitLineInsert(this);
-	m_hit_line_ColorDoor[3]->SetPos1(m_x+2, m_y + 140);
-	m_hit_line_ColorDoor[3]->SetPos2(m_x + 28, m_y + 140);
-	m_hit_line_ColorDoor[3]->Set4direc(HIT_UNDER);
+	////ヒットライン作成し、値を設定(下)
+	//m_hit_line_ColorDoor[3] = Collision::HitLineInsert(this);
+	//m_hit_line_ColorDoor[3]->SetPos1(m_x+2, m_y + 140);
+	//m_hit_line_ColorDoor[3]->SetPos2(m_x + 28, m_y + 140);
+	//m_hit_line_ColorDoor[3]->Set4direc(HIT_UNDER);
 
-	for (int i = 0; i < 4; i++) {
-		m_hit_line_ColorDoor[i]->SetElement(1);		//属性を1にする
-		m_hit_line_ColorDoor[i]->SetInvisible(false);	//無敵モード無効
-		m_hit_line_ColorDoor[i]->SetAngle();
-	}
+	//for (int i = 0; i < 4; i++) {
+	//	m_hit_line_ColorDoor[i]->SetElement(1);		//属性を1にする
+	//	m_hit_line_ColorDoor[i]->SetInvisible(false);	//無敵モード無効
+	//	m_hit_line_ColorDoor[i]->SetAngle();
+	//}
 }
 
 //デストラクタ
@@ -61,15 +63,15 @@ void ObjColorDoor::Action()
 {
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
-	//位置更新
-	m_hit_line_ColorDoor[0]->SetPos1(m_x + ground3->GetScroll(), m_y);
-	m_hit_line_ColorDoor[0]->SetPos2(m_x + ground3->GetScroll(), m_y + 140);
-	m_hit_line_ColorDoor[1]->SetPos1(m_x + ground3->GetScroll(), m_y);
-	m_hit_line_ColorDoor[1]->SetPos2(m_x + ground3->GetScroll() + 26, m_y);
-	m_hit_line_ColorDoor[2]->SetPos1(m_x + ground3->GetScroll() + 26, m_y);
-	m_hit_line_ColorDoor[2]->SetPos2(m_x + ground3->GetScroll() + 26, m_y + 140);
-	m_hit_line_ColorDoor[3]->SetPos1(m_x + ground3->GetScroll(), m_y + 140);
-	m_hit_line_ColorDoor[3]->SetPos2(m_x + ground3->GetScroll() + 26, m_y + 140);
+	////位置更新
+	//m_hit_line_ColorDoor[0]->SetPos1(m_x + ground3->GetScroll(), m_y);
+	//m_hit_line_ColorDoor[0]->SetPos2(m_x + ground3->GetScroll(), m_y + 140);
+	//m_hit_line_ColorDoor[1]->SetPos1(m_x + ground3->GetScroll(), m_y);
+	//m_hit_line_ColorDoor[1]->SetPos2(m_x + ground3->GetScroll() + 26, m_y);
+	//m_hit_line_ColorDoor[2]->SetPos1(m_x + ground3->GetScroll() + 26, m_y);
+	//m_hit_line_ColorDoor[2]->SetPos2(m_x + ground3->GetScroll() + 26, m_y + 140);
+	//m_hit_line_ColorDoor[3]->SetPos1(m_x + ground3->GetScroll(), m_y + 140);
+	//m_hit_line_ColorDoor[3]->SetPos2(m_x + ground3->GetScroll() + 26, m_y + 140);
 }
 
 //ドロー

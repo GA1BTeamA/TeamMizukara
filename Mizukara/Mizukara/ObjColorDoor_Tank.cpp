@@ -72,6 +72,8 @@ void ObjColorDoor_Tank::Action()
 	case 1:	cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR);	break;
 	case 2:	cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR2); break;
 	case 3:	cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR3); break;
+	case 4:	cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR4); break;
+	case 5:	cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR5); break;
 	}
 
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
