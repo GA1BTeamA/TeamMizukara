@@ -10,12 +10,12 @@
 class ObjColorDoor :public CObj
 {
 public:
-	ObjColorDoor(float x,float y, int color_number, unsigned int n);
+	ObjColorDoor(float x,float y, int color_number,bool ud, unsigned int n);
 	~ObjColorDoor();
 	void Action();
 	void Draw();
 
-	void AddY(float y) { m_y += y; }
+	void AddY(float y);
 
 private:
 	float m_x;//位置
@@ -24,6 +24,8 @@ private:
 	float m_y2;
 
 	int m_color_number;//赤か緑のグラフィックのIDセット用
+
+	bool m_Up_or_Down;//上がるドアか下がるドアか
 
 	//float m_gx;  //グラフィック位置
 	//float m_gy;

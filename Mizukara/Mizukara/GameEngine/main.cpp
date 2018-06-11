@@ -190,9 +190,17 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(94, L"Images\\CSuzuran.png");//94”Ô–Ú‚É"CSuzuran.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(95, L"Images\\BSuzuran.png");//95”Ô–Ú‚É"BSuzuran.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(96, L"Images\\ASuzuran.png");//96”Ô–Ú‚É"ASuzuran.png"‚ð“Ç‚Ýž‚Ý
-	Draw::LoadImage(97, L"Images\\SSzuran.png");//97”Ô–Ú‚É"SSuzuran.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(97, L"Images\\SSuzuran.png");//97”Ô–Ú‚É"SSuzuran.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98”Ô–Ú‚É"AllClear.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(99, L"Images\\Box.png");//99”Ô–Ú‚É"Box.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(101, L"Images\\Stage1clear.png");//101”Ô–Ú‚É"Stage1clear.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(102, L"Images\\Stage2clear.png");//102”Ô–Ú‚É"Stage2clear.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(103, L"Images\\Stage3clear.png");//103”Ô–Ú‚É"Stage3clear.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(104, L"Images\\DRank.png");//104”Ô–Ú‚É"DRank.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(105, L"Images\\CRank.png");//105”Ô–Ú‚É"CRank.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(106, L"Images\\BRank.png");//106”Ô–Ú‚É"BRank.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(107, L"Images\\ARank.png");//107”Ô–Ú‚É"ARank.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(108, L"Images\\SRank.png");//108”Ô–Ú‚É"SRank.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(100, L"Images\\Stage1BK.png");//100”Ô–Ú‚É"Stage1BK.png"‚ð“Ç‚Ýž‚Ý
 
 
@@ -533,7 +541,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			ztank = new ObjElephant_Tank();
 			ztank->m_ActionPriority = 70;
-			ztank->m_DrawPriority = 200;
+			ztank->m_DrawPriority = 50;
 			TaskSystem::InsertObj(ztank);
 
 			bucketmeter = new CBucketMeter();
@@ -543,7 +551,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
-			spri2->m_DrawPriority = 210;
+			spri2->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;
@@ -574,8 +582,8 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm3_1->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_1);
 
-			//—ÎWTM
-			wtm3_2 = new CWTM3(2700, 234, 82);
+			//ÔWTM
+			wtm3_2 = new CWTM3(2550, 84, 74);
 			wtm3_2->m_ActionPriority = 70;
 			wtm3_2->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_2);
@@ -596,31 +604,31 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(tank3);
 
 			//Ô–å
-			colordoor = new ObjColorDoor(425,261,76,1);
+			colordoor = new ObjColorDoor(425,261,76,true,1);
 			colordoor->m_ActionPriority = 100;
 			colordoor->m_DrawPriority = 100;
 			TaskSystem::InsertObj(colordoor);
 
 			//Ô–å(2ŒÂ‚ß)
-			colordoor2 = new ObjColorDoor(916,174,76,2);
+			colordoor2 = new ObjColorDoor(916,174,76,true,2);
 			colordoor2->m_ActionPriority = 100;
 			colordoor2->m_DrawPriority = 100;
 			TaskSystem::InsertObj(colordoor2);
 
 			//—Î–å
-			colordoor3 = new ObjColorDoor(1062, 174, 84, 3);
+			colordoor3 = new ObjColorDoor(1062, 174, 84,true, 3);
 			colordoor3->m_ActionPriority = 100;
 			colordoor3->m_DrawPriority = 100;
 			TaskSystem::InsertObj(colordoor3);
 
 			//Ô–å(3ŒÂ‚ß)
-			colordoor4 = new ObjColorDoor(2618, 250, 76, 4);
+			colordoor4 = new ObjColorDoor(2618, 260, 76,true, 4);
 			colordoor4->m_ActionPriority = 100;
 			colordoor4->m_DrawPriority = 100;
 			TaskSystem::InsertObj(colordoor4);
 
 			//—Î–å(2ŒÂ‚ß)
-			colordoor5 = new ObjColorDoor(2778, 144, 84, 5);
+			colordoor5 = new ObjColorDoor(2778, 110, 84,false, 5);
 			colordoor5->m_ActionPriority = 100;
 			colordoor5->m_DrawPriority = 100;
 			TaskSystem::InsertObj(colordoor5);
@@ -650,7 +658,7 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(colordoort4);
 
 			//—Îƒ^ƒ“ƒN
-			colordoort5 = new ObjColorDoor_Tank(2550, 184, 82, 992, 292, 5);
+			colordoort5 = new ObjColorDoor_Tank(2700, 334, 82, 992, 292, 5);
 			colordoort5->m_ActionPriority = 110;
 			colordoort5->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort5);
@@ -664,7 +672,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-			scale_t = new ObjScale_Tank(562.0f, 323.0f, 6.0f, 0.0f, 1);
+			scale_t = new ObjScale_Tank(562.0f, 323.0f, 3.0f, 3.0f, 1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
@@ -682,19 +690,10 @@ unsigned __stdcall GameMainSled(void *p)
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale3);
-			scale_t3 = new ObjScale_Tank(2350.0f, 283.0f, 6.0f, 0.0f, 3);
+			scale_t3 = new ObjScale_Tank(2345.0f, 283.0f, 3.0f, 3.0f, 3);
 			scale_t3->m_ActionPriority = 90;
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);
-
-			//scale4 = new ObjScale(2380.0f, 266.0f, 4);
-			//scale4->m_ActionPriority = 90;
-			//scale4->m_DrawPriority = 80;
-			//TaskSystem::InsertObj(scale4);
-			//scale_t4 = new ObjScale_Tank(2380.0f, 263.0f, 6.0f, 0.0f, 4);
-			//scale_t4->m_ActionPriority = 90;
-			//scale_t4->m_DrawPriority = 80;
-			//TaskSystem::InsertObj(scale_t4);
 
 			dwbl = new ObjDownBlock(1545.0f+178, 150.0f+95);
 			dwbl->m_ActionPriority = 130;

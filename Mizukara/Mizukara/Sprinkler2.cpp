@@ -129,7 +129,7 @@ void CSPRI2::Draw()
 	//クリア画面表示
 	if (m_CrearCnt == true)
 	{
-		Draw::Draw2D(63, 300, 200);
+		Draw::Draw2D(63, 300, 140);
 	}
 
 	//水表示
