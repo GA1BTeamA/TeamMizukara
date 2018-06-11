@@ -193,6 +193,14 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(97, L"Images\\SSzuran.png");//97番目に"SSuzuran.png"を読み込み
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98番目に"AllClear.png"を読み込み
 	Draw::LoadImage(99, L"Images\\Box.png");//99番目に"Box.png"を読み込み
+	Draw::LoadImage(101, L"Images\\Stage1clear.png");//101番目に"Stage1clear.png"を読み込み
+	Draw::LoadImage(102, L"Images\\Stage2clear.png");//102番目に"Stage2clear.png"を読み込み
+	Draw::LoadImage(103, L"Images\\Stage3clear.png");//103番目に"Stage3clear.png"を読み込み
+	Draw::LoadImage(104, L"Images\\DRank.png");//104番目に"DRank.png"を読み込み
+	Draw::LoadImage(105, L"Images\\CRank.png");//105番目に"CRank.png"を読み込み
+	Draw::LoadImage(106, L"Images\\BRank.png");//106番目に"BRank.png"を読み込み
+	Draw::LoadImage(107, L"Images\\ARank.png");//107番目に"ARank.png"を読み込み
+	Draw::LoadImage(108, L"Images\\SRank.png");//108番目に"SRank.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -531,7 +539,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			ztank = new ObjElephant_Tank();
 			ztank->m_ActionPriority = 70;
-			ztank->m_DrawPriority = 200;
+			ztank->m_DrawPriority = 50;
 			TaskSystem::InsertObj(ztank);
 
 			bucketmeter = new CBucketMeter();
@@ -541,7 +549,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
-			spri2->m_DrawPriority = 210;
+			spri2->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;
