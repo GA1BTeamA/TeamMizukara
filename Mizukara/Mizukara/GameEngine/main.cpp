@@ -193,6 +193,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(97, L"Images\\SSuzuran.png");//97”Ô–Ú‚É"SSuzuran.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98”Ô–Ú‚É"AllClear.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(99, L"Images\\Box.png");//99”Ô–Ú‚É"Box.png"‚ð“Ç‚Ýž‚Ý
+	Draw::LoadImage(100, L"Images\\Stage1BK.png");//100”Ô–Ú‚É"Stage1BK.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(101, L"Images\\Stage1clear.png");//101”Ô–Ú‚É"Stage1clear.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(102, L"Images\\Stage2clear.png");//102”Ô–Ú‚É"Stage2clear.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(103, L"Images\\Stage3clear.png");//103”Ô–Ú‚É"Stage3clear.png"‚ð“Ç‚Ýž‚Ý
@@ -201,7 +202,6 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(106, L"Images\\BRank.png");//106”Ô–Ú‚É"BRank.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(107, L"Images\\ARank.png");//107”Ô–Ú‚É"ARank.png"‚ð“Ç‚Ýž‚Ý
 	Draw::LoadImage(108, L"Images\\SRank.png");//108”Ô–Ú‚É"SRank.png"‚ð“Ç‚Ýž‚Ý
-	Draw::LoadImage(100, L"Images\\Stage1BK.png");//100”Ô–Ú‚É"Stage1BK.png"‚ð“Ç‚Ýž‚Ý
 
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49”Ô–Ú‚Ìwater2.png‚ð“Ç‚Ýž‚Ý
@@ -672,7 +672,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-			scale_t = new ObjScale_Tank(562.0f, 323.0f, 3.0f, 3.0f, 1);
+			scale_t = new ObjScale_Tank(562.0f, 363.0f, 3.0f, 3.0f, 1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);

@@ -109,7 +109,7 @@ void CResult::Action()
 
 void CResult::Draw()
 {
-	CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
 
 	Draw::Draw2D(23, m_x, m_y);
 

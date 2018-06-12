@@ -11,7 +11,7 @@ extern int g_SceneNumber;
 
 CBackground::CBackground()
 	:m_x(0), m_y(0), m_scroll(0.0f)
-	, m_x2(2400), m_y2(0), m_x_scroll(0)
+	, m_x2(0),m_x_2(2400),m_x2_2(2400)
 {
 	
 }
@@ -23,19 +23,33 @@ CBackground::~CBackground()
 
 void CBackground::Action()
 {
+	
 	if (g_SceneNumber == GAME_MAIN)
 	{
-		m_x -= 0.1f;
-		m_x_scroll -= 0.1f;
-		if (m_x < -2400.f)
+		//ƒXƒNƒ[ƒ‹’l‰ÁŽZ
+		m_x -= 0.15f;
+		m_x2 -= 0.05f;
+		m_x_2 -= 0.15f;
+		m_x2_2 -= 0.05f;
+
+		//’[‚Á‚±‚Ü‚Å—ˆ‚½‚çˆÊ’u‚ðXV(‰_‚¾‚¯)
+		if (m_x < -2400)
 		{
 			m_x = 2390.f;
 		}
-
-		m_x2 -= 0.1f;
-		if (m_x2 < -2400.f)
+		else if (m_x2 < -2400)
 		{
 			m_x2 = 2390.f;
+		}
+
+		//2–‡–Ú’[‚Á‚±‚Ü‚Å—ˆ‚½‚çˆÊ’u‚ðXV(‹ó‚Æ‰_)
+		if (m_x_2 < -2400)
+		{
+			m_x_2 = 2390.f;
+		}
+		else if (m_x2_2 < -2400)
+		{
+			m_x2_2 = 2390.f;
 		}
 	}
 }
@@ -45,11 +59,14 @@ void CBackground::Draw()
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
+	//”wŒi•`‰æ
 	switch (g_SceneNumber)
 	{
 	case GAME_MAIN:
-		Draw::Draw2D(24, m_x+m_x_scroll, m_y);
-		Draw::Draw2D(100, m_x, m_y);
+		Draw::Draw2D(24, m_x, m_y);
+		Draw::Draw2D(24, m_x_2, m_y);
+		Draw::Draw2D(100, m_x2, m_y);
+		Draw::Draw2D(100, m_x2_2, m_y);
 		break;
 
 	case GAME_MAIN2:

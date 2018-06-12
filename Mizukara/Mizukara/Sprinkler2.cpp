@@ -343,7 +343,7 @@ void CSPRI2::Draw()
 	}
 
 	//‰Ô•\Ž¦
-	if (g_TankRemaining >= 45)
+	if (g_TankRemaining >= 40)
 	{
 		Draw::Draw2D(92, m_fx, m_fy);  //Sƒ‰ƒ“ƒN
 	}
