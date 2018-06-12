@@ -30,6 +30,7 @@ enum {
 	UNDER,
 	UNDER_LEFT,
 	UNDER_RIGHT,
+	UP,
 };
 
 enum {

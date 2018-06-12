@@ -62,6 +62,7 @@ void CBackground::Draw()
 	//”wŒi•`‰æ
 	switch (g_SceneNumber)
 	{
+	case RESULT_MAIN:
 	case GAME_MAIN:
 		Draw::Draw2D(24, m_x, m_y);
 		Draw::Draw2D(24, m_x_2, m_y);

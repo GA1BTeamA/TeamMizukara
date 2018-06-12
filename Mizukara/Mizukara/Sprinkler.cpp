@@ -61,9 +61,9 @@ void CSPRI::Action()
 			{
 				Audio::StopLoopMusic(9);
 				g_SceneNumber = RESULT;
-				g_clearlist = true;
+				//g_clearlist = true;
 				g_key_flag = false;
-				g_TankRemaining = false;
+				//g_TankRemaining = false;
 			}
 		}
 		else
@@ -136,7 +136,7 @@ void CSPRI::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
+	//Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
 
 	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
@@ -149,7 +149,7 @@ void CSPRI::Draw()
 	}
 
 	//波アニメーション
-	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+	//Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//波の表示(前)
 	if (m_ani_time2 >= 54)
@@ -196,17 +196,21 @@ void CSPRI::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground->GetScroll() - 50 + m_move1, 300, 1, 1);
-						//Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
-						
-						if (m_sy <=200)
+						if (g_SceneNumber != RESULT_MAIN)
 						{
-							//Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
+							Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
 						}
-						else
+						if (g_SceneNumber != RESULT_MAIN)
 						{
-							//Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							if (m_sy <= 200)
+							{
+								Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
+							}
+							else
+							{
+								Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							}
 						}
-
 						if (m_ani_time4 >= 460)
 						{
 							m_ani_time5++;
@@ -219,11 +223,11 @@ void CSPRI::Draw()
 
 								if (m_move2 <= 10)//スプリンクラーから水が出る
 								{
-									//Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
+									Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
 								}
 								else if (m_move2 >= 11 && m_move2 < 20)
 								{
-									//Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
+									Draw::Draw2D(51, m_wave_x + ground->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
 								}
 								else
 								{
@@ -261,23 +265,23 @@ void CSPRI::Draw()
 	//花表示
 	if (g_TankRemaining >= 40)
 	{
-		//Draw::Draw2D(68, m_fx, m_fy);  //Sランク
+		Draw::Draw2D(68, m_fx, m_fy);  //Sランク
 	}
 	else if (g_TankRemaining >= 35)
 	{
-		//Draw::Draw2D(67, m_fx, m_fy);  //Aランク
+		Draw::Draw2D(67, m_fx, m_fy);  //Aランク
 	}
 	else if (g_TankRemaining >= 25)
 	{
-		//Draw::Draw2D(66, m_fx, m_fy);  //Bランク
+		Draw::Draw2D(66, m_fx, m_fy);  //Bランク
 	}
 	else if (g_TankRemaining >= 10)
 	{
-		//Draw::Draw2D(65, m_fx, m_fy);  //Cランク
+		Draw::Draw2D(65, m_fx, m_fy);  //Cランク
 	}
 	else if (g_TankRemaining >=1)
 	{
-		//Draw::Draw2D(64, m_fx, m_fy);  //Dランク
+		Draw::Draw2D(64, m_fx, m_fy);  //Dランク
 	}
 
 	/*if (m_ani_time3 >= 29)

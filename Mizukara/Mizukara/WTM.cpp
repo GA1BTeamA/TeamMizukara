@@ -19,9 +19,9 @@ const float CWTM::m_wave_amount = 0.3f*0.04f;
 //const float CWTM::m_water_amount = 0.026f;
 //const float CWTM::m_wave_amount = 0.3f;
 
-CWTM::CWTM()
-	:m_x(1186), m_y(234), m_wave_x(1190), m_wave_y(150),m_ani_time1(0.0f),m_ani_time2(0.0f)
-	,im_x(1166), im_y(30), m_water_x(1186), m_water_y(204), m_water_remaining(1.4)
+CWTM::CWTM(float x,float y)
+	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-84),m_ani_time1(0.0f),m_ani_time2(0.0f)
+	,im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);
@@ -75,7 +75,7 @@ void CWTM::Action()
 		}
 	}
 
-	m_wave_y = 150 + 42 * (100 - tank->GetWater_Remaining()*2)*0.01;
+	m_wave_y = m_y-84 + 42 * (100 - tank->GetWater_Remaining()*2)*0.01;
 
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
