@@ -68,6 +68,7 @@ private:
 	bool m_Buttom_Frag;  //ボタンフラグ
 	bool m_CKey_Frag;  //Cキー押されたかのフラグ卍
 	bool m_XKey_Frag;  //Xキー押されたかのフラグ卍
+	bool m_HitCeiling;
 
 	bool m_IsScroll;//スクロール中か
 	bool m_IsHit2Line;//当たるべきだけど当たらないヒットラインにあたってるか

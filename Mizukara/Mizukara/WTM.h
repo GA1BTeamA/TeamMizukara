@@ -10,7 +10,7 @@
 class CWTM : public CObj
 {
 public:
-	CWTM();
+	CWTM(float x,float y);
 	~CWTM();
 	void Action();
 	void Draw();

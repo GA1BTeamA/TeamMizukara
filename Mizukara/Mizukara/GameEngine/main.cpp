@@ -272,6 +272,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CBucketMeter* bucketmeter;
 		CObjGround* ground;
 		CWTM* wtm;
+		CWTM* wtm_Clear;
 		CWTM2* wtm2_1;
 		CWTM2* wtm2_2;
 		CWTM2* wtm2_3;
@@ -372,10 +373,15 @@ unsigned __stdcall GameMainSled(void *p)
 			background->m_DrawPriority = 10;
 			TaskSystem::InsertObj(background);
 
-			wtm = new CWTM();
+			wtm = new CWTM(1186.0f, 234.0f);
 			wtm->m_ActionPriority = 70;
 			wtm->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm);
+
+			wtm_Clear = new CWTM(2147.0f,315.0f);
+			wtm_Clear->m_ActionPriority = 70;
+			wtm_Clear->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm_Clear);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;
