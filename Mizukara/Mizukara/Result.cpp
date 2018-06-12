@@ -8,12 +8,13 @@
 extern int g_SceneNumber;
 extern bool g_key_flag;
 extern float g_TankRemaining;
+extern bool g_clearlist;
 
 //コンストラクタ
 CResult::CResult()
-	:m_x(0), m_y(0), m_cursor(LEFT)
+	:m_x(0), m_y(0), m_cursor(UP)
 {
-	//m_name = RESULT;
+	m_name = RESULT;
 }
 
 CResult::~CResult()
@@ -28,15 +29,15 @@ void CResult::Action()
 	Audio::StartLoopMusic(10);
 	Audio::LoopMusicVolume(10, 0.07f);
 
-	//左を押したら左に
-	if (Input::KeyPush(VK_LEFT) == true)
+	//上を押したら左に
+	if (Input::KeyPush(VK_UP) == true)
 	{
-		m_cursor = LEFT;
+		m_cursor = UP;
 	}
-	//右を押したら右に
-	else if (Input::KeyPush(VK_RIGHT) == true)
+	//下を押したら右に
+	else if (Input::KeyPush(VK_DOWN) == true)
 	{
-		m_cursor = RIGHT;
+		m_cursor = UNDER;
 	}
 	/*//下を押したら下に
 	else if (Input::KeyPush(VK_DOWN) == true)
@@ -50,8 +51,8 @@ void CResult::Action()
 		m_cursor = m_BefCursor;
 	}*/
 
-	//カーソル位置が左ならタイトルへ
-	if (m_cursor == LEFT)
+	//カーソル位置が上ならタイトルへ
+	if (m_cursor == UP)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
@@ -60,7 +61,9 @@ void CResult::Action()
 				Audio::StartMusic(0);
 				Audio::StopLoopMusic(10);
 				g_SceneNumber = TITLE;
+				g_clearlist = true;
 				TaskSystem::TaskClear();
+				is_delete = true;
 				g_key_flag = false;
 			}
 		}
@@ -69,8 +72,8 @@ void CResult::Action()
 			g_key_flag = true;
 		}
 	}
-	//カーソル位置が右ならステージセレクトへ
-	else if (m_cursor == RIGHT)
+	//カーソル位置が下ならステージセレクトへ
+	else if (m_cursor == UNDER)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
@@ -79,7 +82,9 @@ void CResult::Action()
 				Audio::StartMusic(0);
 				Audio::StopLoopMusic(10);
 				g_SceneNumber = STAGESELECTO;
+				g_clearlist = true;
 				TaskSystem::TaskClear();
+				is_delete = true;
 				g_key_flag = false;
 			}
 		}
@@ -111,39 +116,39 @@ void CResult::Draw()
 {
 	CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
 
-	Draw::Draw2D(23, m_x, m_y);
+	Draw::Draw2D(101, m_x, m_y);
 
-	if (m_cursor == LEFT)
+	if (m_cursor == UP)
 	{
-		Draw::Draw2D(14, 100, 345);
+		Draw::Draw2D(14, 300, 100);
 	}
-	else if (m_cursor == RIGHT)
+	else if (m_cursor == UNDER)
 	{
-		Draw::Draw2D(14, 460, 345);
+		Draw::Draw2D(14, 300, 200);
 	}
 	else {
-		;
+		Draw::Draw2D(14, 300, 100);
 	}
 
 	//ランク表示
 	if (g_TankRemaining >= 80)
 	{
-		Font::StrDraw(L"S", 100, 100, 1, 1, 0, 0, 1);
+		Draw::Draw2D(108, 100, 200);
 	}
 	else if (g_TankRemaining >= 70)
 	{
-		Font::StrDraw(L"A", 100, 100, 1, 1, 0, 0, 1);
+		Draw::Draw2D(107, 100, 200);
 	}
 	else if (g_TankRemaining >= 50)
 	{
-		Font::StrDraw(L"B", 100, 100, 1, 1, 0, 0, 1);
+		Draw::Draw2D(106, 100, 200);
 	}
 	else if (g_TankRemaining >= 30)
 	{
-		Font::StrDraw(L"C", 100, 100, 1, 1, 0, 0, 1);
+		Draw::Draw2D(105, 100, 200);
 	}
 	else if (g_TankRemaining >= 10)
 	{
-		Font::StrDraw(L"D", 100, 100, 1, 1, 0, 0, 1);
+		Draw::Draw2D(104, 100, 200);
 	}
 }

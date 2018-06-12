@@ -61,9 +61,9 @@ void CSPRI::Action()
 			{
 				Audio::StopLoopMusic(9);
 				g_SceneNumber = RESULT;
-				g_clearlist = true;
+				//g_clearlist = true;
 				g_key_flag = false;
-				g_TankRemaining = false;
+				//g_TankRemaining = false;
 			}
 		}
 		else
@@ -289,17 +289,21 @@ void CSPRI::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground->GetScroll() - 50 + m_move1, 300, 1, 1);
-						Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
-						
-						if (m_sy <=200)
+						if (g_SceneNumber != RESULT_MAIN)
 						{
-							Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
+							Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
 						}
-						else
+						if (g_SceneNumber != RESULT_MAIN)
 						{
-							Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							if (m_sy <= 200)
+							{
+								Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
+							}
+							else
+							{
+								Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							}
 						}
-
 						if (m_ani_time4 >= 460)
 						{
 							m_ani_time5++;

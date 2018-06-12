@@ -328,6 +328,8 @@ unsigned __stdcall GameMainSled(void *p)
 			title->m_DrawPriority = 100;
 			TaskSystem::InsertObj(title);
 			g_SceneNumber = TITLE_MAIN;
+
+			g_TankRemaining = 0;
 			break;
 
 		case TITLE_MAIN://タイトル
@@ -357,8 +359,8 @@ unsigned __stdcall GameMainSled(void *p)
 
 		case RESULT://リザルト画面初期化
 			result = new CResult();
-			result->m_ActionPriority = 20;
-			result->m_DrawPriority = 20;
+			result->m_ActionPriority = 1;
+			result->m_DrawPriority = 200;
 			TaskSystem::InsertObj(result);
 			g_SceneNumber = RESULT_MAIN;
 			break;

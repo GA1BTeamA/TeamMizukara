@@ -23,7 +23,7 @@ CBackground::~CBackground()
 
 void CBackground::Action()
 {
-	if (g_SceneNumber == GAME_MAIN)
+	if (g_SceneNumber == GAME_MAIN||g_SceneNumber == RESULT_MAIN)
 	{
 		m_x -= 0.1f;
 		m_x_scroll -= 0.1f;
@@ -47,6 +47,7 @@ void CBackground::Draw()
 
 	switch (g_SceneNumber)
 	{
+	case RESULT_MAIN:
 	case GAME_MAIN:
 		Draw::Draw2D(24, m_x+m_x_scroll, m_y);
 		Draw::Draw2D(100, m_x, m_y);
