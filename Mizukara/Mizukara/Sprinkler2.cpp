@@ -133,7 +133,7 @@ void CSPRI2::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 1.6, 1.4);
+	//Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 1.6, 1.4);
 
 	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
@@ -145,8 +145,10 @@ void CSPRI2::Draw()
 		m_ani_time1++;
 	}
 
+	//Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+
 	//波アニメーション
-	if (m_ani_time1 < 10)
+	/*if (m_ani_time1 < 10)
 	{
 		Draw::Draw2D(36, m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 	}
@@ -189,7 +191,7 @@ void CSPRI2::Draw()
 	else if (m_ani_time1 < 110)
 	{
 		Draw::Draw2D(46, m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
+	}*/
 
 	//波の表示(前)
 	if (m_ani_time2 >= 54)
@@ -202,7 +204,7 @@ void CSPRI2::Draw()
 	}
 
 	//波アニメーション
-	if (m_ani_time2 < 5)
+	/*if (m_ani_time2 < 5)
 	{
 		Draw::Draw2D(25, m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 	}
@@ -245,7 +247,7 @@ void CSPRI2::Draw()
 	else if (m_ani_time2 < 55)
 	{
 		Draw::Draw2D(35, m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
+	}*/
 
 
 	//Sprinklerに近づいたら主人公アニメーションを出す

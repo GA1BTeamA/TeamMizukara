@@ -276,6 +276,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM2* wtm2_1;
 		CWTM2* wtm2_2;
 		CWTM2* wtm2_3;
+		CWTM2* wtm2_Clear;
 		CSPRI* spri;
 		CSPRI2* spri2;
 		CSPRI3* spri3;
@@ -556,6 +557,11 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_ActionPriority = 140;
 			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
+
+			wtm2_Clear = new CWTM2(2947.0f, 315.0f);
+			wtm2_Clear->m_ActionPriority = 70;
+			wtm2_Clear->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm2_Clear);
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
