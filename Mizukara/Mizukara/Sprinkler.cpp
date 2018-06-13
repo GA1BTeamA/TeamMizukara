@@ -162,7 +162,7 @@ void CSPRI::Draw()
 	}
 
 	//波アニメーション
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+	//Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//Sprinklerに近づいたら主人公アニメーションを出す
 	if (m_ani_time3 >= 29)
