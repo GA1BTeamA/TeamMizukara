@@ -4,6 +4,9 @@
 
 #include "Result.h"
 #include "Hero.h"
+#include "ObjGround.h"
+#include "ObjGround2.h"
+#include "ObjGround3.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
@@ -39,17 +42,6 @@ void CResult::Action()
 	{
 		m_cursor = UNDER;
 	}
-	/*//下を押したら下に
-	else if (Input::KeyPush(VK_DOWN) == true)
-	{
-		if (m_cursor != UNDER)
-			m_BefCursor = m_cursor;
-		m_cursor = UNDER;
-	}
-	else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
-	{
-		m_cursor = m_BefCursor;
-	}*/
 
 	//カーソル位置が上ならタイトルへ
 	if (m_cursor == UP)
@@ -93,30 +85,28 @@ void CResult::Action()
 			g_key_flag = true;
 		}
 	}
-	//カーソル位置が下なら(やり直し)
-	/*else if (m_cursor == UNDER)
-	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
-			{
-				g_SceneNumber = GAME;
-				TaskSystem::TaskClear();
-				g_key_flag = false;
-			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
-	}*/
+	
 }
 
 void CResult::Draw()
 {
 	//CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
-	Draw::Draw2D(101, m_x, m_y);
+	if (CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND))
+	{
+		Draw::Draw2D(101, m_x, m_y);
+	}
+	else if (ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2))
+	{
+		;
+	}
+	else if (ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3))
+	{
+		;
+	}
 
 	if (m_cursor == UP)
 	{
@@ -131,23 +121,23 @@ void CResult::Draw()
 	}
 
 	//ランク表示
-	if (g_TankRemaining >= 80)
+	if (g_TankRemaining >= 40)
 	{
 		Draw::Draw2D(108, 100, 200);
 	}
-	else if (g_TankRemaining >= 70)
+	else if (g_TankRemaining >= 35)
 	{
 		Draw::Draw2D(107, 100, 200);
 	}
-	else if (g_TankRemaining >= 50)
+	else if (g_TankRemaining >= 25)
 	{
 		Draw::Draw2D(106, 100, 200);
 	}
-	else if (g_TankRemaining >= 30)
+	else if (g_TankRemaining >= 10)
 	{
 		Draw::Draw2D(105, 100, 200);
 	}
-	else if (g_TankRemaining >= 10)
+	else if (g_TankRemaining >= 1)
 	{
 		Draw::Draw2D(104, 100, 200);
 	}
