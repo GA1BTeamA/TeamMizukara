@@ -98,7 +98,7 @@ void ObjDownBlock_Tank::Action()
 					//バケツが空じゃなかったら
 					if (bm->GetWaterRem() > 0.0f) {
 						//満タンだったら入れれない
-						if (m_water_remaining < 6.0f) {
+						if (m_water_remaining < 2.0f) {
 							//足場オブジェクト取得
 							ObjDownBlock* db = (ObjDownBlock*)TaskSystem::GetObj(DOWNBLOCK);
 							//m_moveY += 0.2f;

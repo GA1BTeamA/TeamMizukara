@@ -13,7 +13,7 @@ const float ObjElephant_Tank::m_WaveSize_y = 0.4f;
 //コンストラクタ
 ObjElephant_Tank::ObjElephant_Tank()
 	:m_x(2230), m_y(175), m_wave_x(2230), m_wave_y(200), m_water_x(2230), m_water_y(210),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_water_remaining(0.0f),m_alpha(0.0f)
+	m_ani_time1(0), m_ani_time2(0), m_ani_time_Shower(0), m_water_remaining(0.0f),m_alpha(0.0f)
 {
 	//ヒットラインの作成(左)
 	m_hit_line_ZTank = Collision::HitLineInsert(this);
@@ -42,6 +42,12 @@ ObjElephant_Tank::~ObjElephant_Tank()
 void ObjElephant_Tank::Action()
 {
 	ObjGround2* ground = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+
+	//0じゃなかったら時間加算
+	if (m_ani_time_Shower != 0 && m_ani_time_Shower < 150) {
+		m_water_remaining -= 0.02f;
+		m_ani_time_Shower++;
+	}
 
 	//タンクから水を汲む＆戻す
 	for (int i = 0; i < 10; i++)
@@ -92,8 +98,10 @@ void ObjElephant_Tank::Action()
 							m_water_remaining += 0.02666;
 						}
 						else{
-							m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
-							m_alpha += 0.01f;
+							//満タンになったらシャワーアニメーション開始
+							m_ani_time_Shower++;
+							//m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
+							//m_alpha += 0.01f;
 						}
 					}
 				}
@@ -109,6 +117,12 @@ void ObjElephant_Tank::Action()
 
 	m_hit_line_ZTankWall->SetPos1(m_x+60 + ground->GetScroll(), m_y+100);
 	m_hit_line_ZTankWall->SetPos2(m_x+60 + ground->GetScroll(), m_y-200);
+
+	//シャワーアニメーションが終わったら壁を消して虹を出す
+	if (m_ani_time_Shower == 150) {
+		m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
+		m_alpha += 0.01f;
+	}
 
 	if (m_alpha!= 0.0f && m_alpha < 1.0f)m_alpha += 0.01f;
 
@@ -250,5 +264,15 @@ void ObjElephant_Tank::Draw()
 
 	float c[4] = { 1.0f,1.0f,1.0f,m_alpha };
 
+	//虹
 	Draw::Draw2D(87, ground->GetScroll() + 2450, 200,c);
+
+	//シャワー
+	if (m_ani_time_Shower != 0 && m_ani_time_Shower != 150) {
+		//10フレームずつ切り替え
+		if((m_ani_time_Shower/10)%2)
+			Draw::Draw2D(109, ground->GetScroll() + 2400, 230);
+		else
+			Draw::Draw2D(109, ground->GetScroll() + 2430, 240);
+	}
 }

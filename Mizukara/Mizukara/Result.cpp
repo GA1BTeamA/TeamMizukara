@@ -118,14 +118,14 @@ void CResult::Draw()
 
 	if (m_cursor == UP)
 	{
-		Draw::Draw2D(14, 300, 100);
+		Draw::Draw2D(14, 295, 90);
 	}
 	else if (m_cursor == UNDER)
 	{
-		Draw::Draw2D(14, 300, 200);
+		Draw::Draw2D(14, 300, 215);
 	}
 	else {
-		Draw::Draw2D(14, 300, 100);
+		Draw::Draw2D(14,295, 90);
 	}
 
 	//ƒ‰ƒ“ƒN•\Ž¦
