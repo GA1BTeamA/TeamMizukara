@@ -329,8 +329,6 @@ unsigned __stdcall GameMainSled(void *p)
 			title->m_DrawPriority = 100;
 			TaskSystem::InsertObj(title);
 			g_SceneNumber = TITLE_MAIN;
-
-			g_TankRemaining = 0;
 			break;
 
 		case TITLE_MAIN://タイトル
@@ -353,6 +351,8 @@ unsigned __stdcall GameMainSled(void *p)
 			stageselecto->m_DrawPriority = 110;
 			TaskSystem::InsertObj(stageselecto);
 			g_SceneNumber = STAGESELECTO_MAIN;
+
+			g_TankRemaining = 0;
 			break;
 
 		case STAGESELECTO_MAIN://ステージセレクト
@@ -505,29 +505,29 @@ unsigned __stdcall GameMainSled(void *p)
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
 
-			scale3 = new ObjScale(1355.0f, 197.0f, 3);
+			scale3 = new ObjScale(/*1355.0f*/1415.0f, 270.0f, 3);
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale3);
-			scale_t3 = new ObjScale_Tank(1355.0f, 197.0f,0.0f,6.0f, 3);
+			scale_t3 = new ObjScale_Tank(1415.0f, 270.0f,0.0f,4.0f, 3);
 			scale_t3->m_ActionPriority = 90;
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);
 
-			scale4 = new ObjScale(1520.0f, 167.0f, 4);
-			scale4->m_ActionPriority = 90;
-			scale4->m_DrawPriority = 80;
-			TaskSystem::InsertObj(scale4);
-			scale_t4 = new ObjScale_Tank(1520.0f, 167.0f,0.0f,6.0f, 4);
-			scale_t4->m_ActionPriority = 90;
-			scale_t4->m_DrawPriority = 80;
-			TaskSystem::InsertObj(scale_t4);
+			//scale4 = new ObjScale(1520.0f, 167.0f, 4);
+			//scale4->m_ActionPriority = 90;
+			//scale4->m_DrawPriority = 80;
+			//TaskSystem::InsertObj(scale4);
+			//scale_t4 = new ObjScale_Tank(1520.0f, 167.0f,0.0f,6.0f, 4);
+			//scale_t4->m_ActionPriority = 90;
+			//scale_t4->m_DrawPriority = 80;
+			//TaskSystem::InsertObj(scale_t4);
 
-			scale5 = new ObjScale(1685.0f, 197.0f, 5);
+			scale5 = new ObjScale(/*1685.0f*/1625.0f, 230.0f, 5);
 			scale5->m_ActionPriority = 90;
 			scale5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale5);
-			scale_t5 = new ObjScale_Tank(1685.0f, 197.0f,6.0f,0.0f, 5);
+			scale_t5 = new ObjScale_Tank(1625.0f, 230.0f,0.0f,4.0f, 5);
 			scale_t5->m_ActionPriority = 90;
 			scale_t5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t5);
@@ -676,15 +676,17 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
 
-			scale = new ObjScale(570.0f, 326.0f, 1);
+			//天秤ギミック
+			scale = new ObjScale(570.0f, 336.0f, 1);
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-			scale_t = new ObjScale_Tank(562.0f, 363.0f, 3.0f, 3.0f, 1);
+			scale_t = new ObjScale_Tank(568.0f, 333.0f, 3.0f, 3.0f, 1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
 
+			//天秤ギミック
 			scale2 = new ObjScale(1500.0f, 326.0f, 2);
 			scale2->m_ActionPriority = 90;
 			scale2->m_DrawPriority = 80;
@@ -694,6 +696,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
 
+			//天秤ギミック
 			scale3 = new ObjScale(2350.0f, 286.0f, 3);
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;

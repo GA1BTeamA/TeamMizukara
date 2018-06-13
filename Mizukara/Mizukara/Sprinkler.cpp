@@ -86,8 +86,8 @@ void CSPRI::Action()
 				//タンクの水をスプリンクラーから出す
 				if (m_ani_time4 >= 460 && tank->GetWater_Remaining() > 0)
 				{
-					tank->SetWater_Remaining(-0.2f);
-					g_TankRemaining += 0.2f;
+					tank->SetWater_Remaining(-0.15f);
+					g_TankRemaining += 0.15f;
 				}
 				break;
 			}

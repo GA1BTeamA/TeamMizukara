@@ -267,7 +267,7 @@ void CSPRI2::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					m_ani_time5++;
+					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{

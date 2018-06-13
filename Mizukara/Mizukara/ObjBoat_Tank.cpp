@@ -10,17 +10,17 @@
 //#include "Tank.h"
 extern int g_SceneNumber;
 
-const float ObjBoat_Tank::m_WaveSize_x = 0.18f;
-const float ObjBoat_Tank::m_WaveSize_x2 = 3.22f;
+const float ObjBoat_Tank::m_WaveSize_x = 0.184f;
+const float ObjBoat_Tank::m_WaveSize_x2 = 3.23f;
 const float ObjBoat_Tank::m_WaterSize_x = 0.52f;
 //const float ObjBoat_Tank::m_WaterSize_y = 0.1f;
 const float ObjBoat_Tank::m_WaterSize_x2 = 9.50f;
 const float ObjBoat_Tank::m_WaterSize_y2 = 3.68f;
 
 ObjBoat_Tank::ObjBoat_Tank()
-	:m_x(276), m_y(400), m_gx(275), m_gy(330), m_wave_x(292), m_wave_y(356),m_wave_x2(276),m_wave_y2(400), m_ani_time_x(0.0f),m_move_x(0.0f),
+	:m_x(276), m_y(400), m_gx(275), m_gy(330), m_wave_x(291), m_wave_y(356),m_wave_x2(275),m_wave_y2(400), m_ani_time_x(0.0f),m_move_x(0.0f),
 	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_WaveSize_y(0.5f),m_WaterSize_y(0.5f)
-	, m_water_x(292),m_water_x2(275),m_water_y2(416), m_water_y(349), m_moveY(162),
+	, m_water_x(292),m_water_x2(275),m_water_y2(413), m_water_y(349), m_moveY(162),
 	m_RopeSizeBucket(0.3f), m_water_remaining(0.0f)
 	, m_bucket_remaining(0.4f), m_BoatAni(0),m_scroll(0.0f)
 {
@@ -389,6 +389,8 @@ void ObjBoat_Tank::Draw()
 	}
 
 	Draw::Draw2D(73, m_gx + m_ani_time_x + ground2->GetScroll(), m_gy, 1, 1);
+	
+	//水描画(海)
 	Draw::Draw2D(48, m_water_x2 + ground2->GetScroll(), m_water_y2, m_WaterSize_x2, m_WaterSize_y2);
 
 	//波アニメーション2
