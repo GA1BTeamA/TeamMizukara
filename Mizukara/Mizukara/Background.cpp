@@ -27,10 +27,10 @@ void CBackground::Action()
 	if (g_SceneNumber == GAME_MAIN)
 	{
 		//スクロール値加算
-		m_x -= 0.15f;
-		m_x2 -= 0.05f;
-		m_x_2 -= 0.15f;
-		m_x2_2 -= 0.05f;
+		m_x -= 0.05f;
+		m_x2 -= 0.15f;
+		m_x_2 -= 0.05f;
+		m_x2_2 -= 0.15f;
 
 		//端っこまで来たら位置を更新(雲だけ)
 		if (m_x < -2400)
