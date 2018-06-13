@@ -126,7 +126,7 @@ void CTank::Draw()
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y,2.95, -(3.65*m_water_remaining2 *0.02));
+	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y-8,/*2.95*/0.108, -(/*3.65*/0.18*m_water_remaining2 *0.02));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
