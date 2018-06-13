@@ -190,42 +190,47 @@ void CHero::Action()
 								//それが同じヒットラインじゃなくて、
 								if (m_p_hit_line_hero_copy[j]->GetHitData()[i] !=
 									m_p_hit_line_hero_copy[j]->GetHitData()[k]) {
+									//横判定のみ
+									if(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 90.0456467f ||
+										(int)m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 180 ||
+										(int)m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 0){
 									//角度が同じなら
-									if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() ==
-										m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetAngle()) {
-										//上にある方の判定のみ
-										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <=
-											m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetPoint1().y) {
-											//主人公の下判定だったら
-											if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
-												m_IsHit2Line = true;
-												IsHitGround = true;
-											}
-											//主人公の上判定だったら
-											else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_TOP) {
-												IsHitObjUnder = true;
-											}
-											else {
-												//主人公を当たった判定の近い方の点に移動（壁抜け防止）
-												if (j == 0) {//主人公の左
-															 //Point1,2の近い方をムーブに入れる
-													if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_x;
-														IsHitWall = true;
-													}
-													else {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
-														IsHitWall = true;
-													}
+										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() ==
+											m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetAngle()) {
+											//上にある方の判定のみ
+											if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <=
+												m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetPoint1().y) {
+												//主人公の下判定だったら
+												if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
+													m_IsHit2Line = true;
+													IsHitGround = true;
 												}
-												else if (j == 1) {//主人公の右
-													if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
-														IsHitWall = true;
+												//主人公の上判定だったら
+												else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_TOP) {
+													IsHitObjUnder = true;
+												}
+												else {
+													//主人公を当たった判定の近い方の点に移動（壁抜け防止）
+													if (j == 0) {//主人公の左
+																 //Point1,2の近い方をムーブに入れる
+														if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_x;
+															IsHitWall = true;
+														}
+														else {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
+															IsHitWall = true;
+														}
 													}
-													else {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_point_position[2].x - m_x;
-														IsHitWall = true;
+													else if (j == 1) {//主人公の右
+														if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
+															IsHitWall = true;
+														}
+														else {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_point_position[2].x - m_x;
+															IsHitWall = true;
+														}
 													}
 												}
 											}
@@ -243,9 +248,9 @@ void CHero::Action()
 					}
 
 					if (m_HitCeiling == false) {
-						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()!= 90.0456467f &&
-							m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_UNDER) {
-							m_vy = 0.0f;
+						if ((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()!= 90.0456467f &&
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_UNDER)) {
+ 							m_vy = 0.0f;
 							m_HitCeiling = true;
 							continue;
 						}
@@ -951,7 +956,7 @@ void CHero::Action()
 			{
 				if (Input::KeyPush(VK_SPACE) == true)
 				{
-					m_vy = -7.8f;
+					m_vy = -17.8f;
 				}
 			}
 

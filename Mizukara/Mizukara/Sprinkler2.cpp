@@ -20,7 +20,7 @@ CSPRI2::CSPRI2()
 	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_ani_time4(0.0f), m_ani_time5(0.0f)
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
 	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
-	, m_CrearCnt(false), m_Flower(false)
+	, m_CrearCnt2(false), m_Flower(false)
 	, m_fx(744), m_fy(258)
 {
 	m_name = SPRI2;
@@ -48,7 +48,7 @@ void CSPRI2::Action()
 	m_p_hit_line_spri2->SetPos2(m_x + ground2->GetScroll(), m_y + 100);
 
 	//クリア画面が表示されたら
-	if (m_CrearCnt == true)
+	if (m_CrearCnt2 == true)
 	{
 		//エンターキーが押されたら
 		if (Input::KeyPush(VK_RETURN) == true)
@@ -58,9 +58,9 @@ void CSPRI2::Action()
 			{
 				Audio::StopLoopMusic(9);
 				g_SceneNumber = RESULT;
-				g_clearlist = true;
+				//g_clearlist = true;
 				g_key_flag = false;
-				g_TankRemaining = false;
+				//g_TankRemaining = false;
 			}
 		}
 		else
@@ -103,7 +103,7 @@ void CSPRI2::Action()
 	if (m_ani_time5 > 1300 && m_ani_time5 <= 1310 && m_sy == 230)
 	{
 		m_vy = -8.0f;
-		m_CrearCnt = true;
+		m_CrearCnt2 = true;
 	}
 	else if (m_ani_time5 > 1400 && m_ani_time5 <= 1410 && m_sy == 230)
 	{
@@ -127,7 +127,7 @@ void CSPRI2::Draw()
 	CTank2* tank2 = (CTank2*)TaskSystem::GetObj(TANK2);
 
 	//クリア画面表示
-	if (m_CrearCnt == true)
+	if (m_CrearCnt2 == true)
 	{
 		Draw::Draw2D(63, 300, 140);
 	}
@@ -282,17 +282,22 @@ void CSPRI2::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground2->GetScroll() - 50 + m_move1, 300, 1, 1);
-						Draw::Draw2D(77, m_wave_x - 8 + ground2->GetScroll() + m_move1, 307, 1, 1);
-
-						if (m_sy <= 200)
+						if (g_SceneNumber != RESULT_MAIN)
 						{
-							Draw::Draw2D(9, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
-						}
-						else
-						{
-							Draw::Draw2D(72, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
-						}
+							Draw::Draw2D(77, m_wave_x - 8 + ground2->GetScroll() + m_move1, 307, 1, 1);
 
+						}
+						if (g_SceneNumber != RESULT_MAIN)
+						{
+							if (m_sy <= 200)
+							{
+								Draw::Draw2D(9, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
+							}
+							else
+							{
+								Draw::Draw2D(72, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							}
+						}
 						if (m_ani_time4 >= 460)
 						{
 							m_ani_time5++;

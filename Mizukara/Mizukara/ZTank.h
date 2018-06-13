@@ -30,6 +30,7 @@ private:
 
 	int m_ani_time1;  //波アニメーション用
 	int m_ani_time2;
+	int m_ani_time_Shower;//シャワーアニメーション用
 
 	float m_water_remaining;
 

@@ -24,7 +24,8 @@ void CStageSelecto::Action()
 	Audio::LoopMusicVolume(5, 0.05f);
 
 		//¶‚ğ‰Ÿ‚µ‚½‚ç¶‚É
-		if (Input::KeyPush(VK_LEFT) == true)
+		if (Input::KeyPush(VK_LEFT) == true ||
+			Input::KeyPush(VK_UP) == true)
 		{
 			if (key_flag)
 			{
@@ -37,7 +38,8 @@ void CStageSelecto::Action()
 			}
 		}
 		//‰E‚ğ‰Ÿ‚µ‚½‚ç‰E‚É
-		else if (Input::KeyPush(VK_RIGHT) == true)
+		else if (Input::KeyPush(VK_RIGHT) == true ||
+				Input::KeyPush(VK_DOWN) == true)
 		{
 			if (key_flag)
 			{
