@@ -951,7 +951,7 @@ void CHero::Action()
 			{
 				if (Input::KeyPush(VK_SPACE) == true)
 				{
-					m_vy = -7.8f;
+					m_vy = -17.8f;
 				}
 			}
 

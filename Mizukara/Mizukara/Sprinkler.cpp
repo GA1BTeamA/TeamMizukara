@@ -22,7 +22,7 @@ CSPRI::CSPRI()
 	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0.0f),m_ani_time5(0.0f)
 	, m_move1(0.0f),m_move2(0.0f),im_x(2150), im_y(130), 
 	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)
-	,m_CrearCnt(false), m_Flower(false)
+	,m_CrearCnt1(false), m_Flower(false)
 	, m_fx(734), m_fy(250)
 {
 	m_name = SPRI;
@@ -51,7 +51,7 @@ void CSPRI::Action()
 	m_p_hit_line_spri->SetPos2(m_x + ground->GetScroll(), m_y + 100);
 
 	//クリア画面が表示されたら
-	if (m_CrearCnt == true)
+	if (m_CrearCnt1 == true)
 	{
 		//エンターキーが押されたら
 		if (Input::KeyPush(VK_RETURN) == true)
@@ -106,7 +106,7 @@ void CSPRI::Action()
 	if (m_ani_time5 > 1300 && m_ani_time5 <=1310 && m_sy==230)
 	{
 		m_vy = -8.0f;
-		m_CrearCnt = true;
+		m_CrearCnt1 = true;
 	}
 	else if (m_ani_time5 > 1400 && m_ani_time5 <= 1410 && m_sy == 230)
 	{
@@ -130,7 +130,7 @@ void CSPRI::Draw()
 	CTank* tank = (CTank*)TaskSystem::GetObj(TANK);
 
 		//クリア画面表示
-	if (m_CrearCnt == true)
+	if (m_CrearCnt1 == true)
 	{
 		Draw::Draw2D(63, 280, 130);
 	}
