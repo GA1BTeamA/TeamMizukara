@@ -227,7 +227,7 @@ void ObjDownBlock_Tank::Draw()
 		}
 
 		//水表示
-		Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.7, m_bucket_remaining);
+		Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.025, m_bucket_remaining/18);
 
 		//波アニメーション(後ろ)
 		if (m_ani_time1 >= 109)

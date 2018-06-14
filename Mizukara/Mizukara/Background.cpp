@@ -71,7 +71,7 @@ void CBackground::Draw()
 		break;
 
 	case GAME_MAIN2:
-		//Draw::Draw2D(78, m_x+ground2->GetScroll(), m_y);
+		Draw::Draw2D(78, m_x+ground2->GetScroll(), m_y);
 		break;
 
 	case GAME_MAIN3:

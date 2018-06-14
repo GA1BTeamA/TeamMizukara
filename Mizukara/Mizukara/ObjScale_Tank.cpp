@@ -332,8 +332,8 @@ void ObjScale_Tank::Draw()
 		}
 
 		//水表示
-		Draw::Draw2D(48, m_water_x + ground3->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
-		Draw::Draw2D(48, m_water_x2 + ground3->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.74, -(0.64*m_water_remaining2 * 1 / 6));
+		Draw::Draw2D(48, m_water_x + ground3->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.025, -(0.019 * m_water_remaining * 1 / 6));
+		Draw::Draw2D(48, m_water_x2 + ground3->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.025, -(0.019*m_water_remaining2 * 1 / 6));
 
 		//波アニメーション(後ろ)
 		if (m_ani_time1 >= 109)
