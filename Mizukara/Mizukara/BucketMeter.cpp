@@ -16,7 +16,7 @@ const float CBucketMeter::m_BM_wave_amount = 1.6f;
 //コンストラクタ
 CBucketMeter::CBucketMeter()
 	:m_x(600), m_y(430)
-	, m_wave_x(605), m_wave_y(580)
+	, m_wave_x(605), m_wave_y(578)
 	, m_water_x(605), m_water_y(597)
 	, m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_remaining(0.0f)
@@ -85,50 +85,7 @@ void CBucketMeter::Draw()
 	}
 
 	//波アニメーション
-	if (m_ani_time1 < 10)
-	{
-		Draw::Draw2D(36, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 20)
-	{
-		Draw::Draw2D(37, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 30)
-	{
-		Draw::Draw2D(38, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 40)
-	{
-		Draw::Draw2D(39, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 50)
-	{
-		Draw::Draw2D(40, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 60)
-	{
-		Draw::Draw2D(41, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 70)
-	{
-		Draw::Draw2D(42, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 80)
-	{
-		Draw::Draw2D(43, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 90)
-	{
-		Draw::Draw2D(44, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 100)
-	{
-		Draw::Draw2D(45, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time1 < 110)
-	{
-		Draw::Draw2D(46, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
+	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x, m_wave_y, 2.1*0.2, 2*0.2, rgba);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -141,52 +98,7 @@ void CBucketMeter::Draw()
 	}
 
 	//波アニメーション
-	if (m_ani_time2 < 5)
-	{
-		Draw::Draw2D(25, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 10)
-	{
-		Draw::Draw2D(26, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 15)
-	{
-		Draw::Draw2D(27, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 20)
-	{
-		Draw::Draw2D(28, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 25)
-	{
-		Draw::Draw2D(29, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 30)
-	{
-		Draw::Draw2D(30, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 35)
-	{
-		Draw::Draw2D(31, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 40)
-	{
-		Draw::Draw2D(32, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 45)
-	{
-		Draw::Draw2D(33, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 50)
-	{
-		Draw::Draw2D(34, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-	else if (m_ani_time2 < 55)
-	{
-		Draw::Draw2D(35, m_wave_x, m_wave_y, 2.1, 2, rgba);
-	}
-
-
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x, m_wave_y, 2.1*0.2, 2*0.2, rgba);
 
 	Draw::Draw2D(11, m_x, m_y);
 }
