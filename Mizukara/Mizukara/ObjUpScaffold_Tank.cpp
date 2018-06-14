@@ -112,8 +112,8 @@ void ObjUpScaffold_Tank::Action()
 	if (m_wave_y < 345)m_wave_y = 345;
 	m_WaveSize_y = m_water_remaining *0.5f;
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
-	m_WaterSize_y = m_water_remaining*0.2f;
-	if (m_WaterSize_y > 1.2)m_WaterSize_y = 1.2;
+	m_WaterSize_y = m_water_remaining*0.01f;
+	if (m_WaterSize_y > 1)m_WaterSize_y = 1;
 
 	//当たり判定位置の更新
 	m_hit_line_UpScTank->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -138,7 +138,7 @@ void ObjUpScaffold_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.05, m_WaterSize_y);
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.039, m_WaterSize_y);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

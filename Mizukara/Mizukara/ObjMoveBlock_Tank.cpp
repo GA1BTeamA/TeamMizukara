@@ -208,8 +208,8 @@ void ObjMoveBlock_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.74, -(0.64 * m_water_remaining *1/6));
-	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.74, -(0.64*m_water_remaining2 *1/6));
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.025, -(0.027 * m_water_remaining *1/6));
+	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.025, -(0.027*m_water_remaining2 *1/6));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

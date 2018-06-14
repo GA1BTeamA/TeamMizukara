@@ -72,7 +72,7 @@ void CBucketMeter::Draw()
 	Draw::Draw2D(49, m_x, m_y);
 
 	//水表示
-	//Draw::Draw2D(48, m_water_x, m_water_y, 6.3, -(m_water_remaining-(3- m_water_remaining)*0.27),rgba);
+	Draw::Draw2D(48, m_water_x, m_water_y, 0.22, -(m_water_remaining-(3- m_water_remaining)*0.27)*0.0535,rgba);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

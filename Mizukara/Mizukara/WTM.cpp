@@ -102,7 +102,7 @@ void CWTM::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.7,-(2.7*tank->GetWater_Remaining()*0.01));
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.059,-(/*2.7**/tank->GetWater_Remaining()*0.00139));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
