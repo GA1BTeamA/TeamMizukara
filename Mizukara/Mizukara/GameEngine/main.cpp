@@ -736,7 +736,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri3 = new CSPRI3();
 			spri3->m_ActionPriority = 150;
-			spri3->m_DrawPriority = 210;
+			spri3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri3);
 
 			g_SceneNumber = GAME_MAIN3;

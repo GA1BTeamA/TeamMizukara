@@ -9,8 +9,8 @@
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjScale_Tank::m_WaveSize_x = 0.25f;
-const float ObjScale_Tank::m_WaveSize_y = 0.4f;
+const float ObjScale_Tank::m_WaveSize_x = 0.25f*0.2f;
+const float ObjScale_Tank::m_WaveSize_y = 0.4f*0.2f;
 
 //コンストラクタ
 ObjScale_Tank::ObjScale_Tank(float x,float y, float r1, float r2, unsigned int n)

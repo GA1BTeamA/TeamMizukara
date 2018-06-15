@@ -10,17 +10,15 @@
 extern int g_SceneNumber;
 extern bool g_key_flag;
 
+//波サイズ初期化
 const float CWTM::m_WaveSize_x = 0.5f;
 const float CWTM::m_WaveSize_y = 0.6f;
 
 const float CWTM::m_water_amount = 0.01f*0.04f;
 const float CWTM::m_wave_amount = 0.3f*0.04f;
 
-//const float CWTM::m_water_amount = 0.026f;
-//const float CWTM::m_wave_amount = 0.3f;
-
 CWTM::CWTM(float x,float y)
-	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-84),m_ani_time1(0.0f),m_ani_time2(0.0f)
+	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-85),m_ani_time1(0.0f),m_ani_time2(0.0f)
 	,im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4)
 {
 	//ヒットラインの作成(左)
@@ -75,7 +73,8 @@ void CWTM::Action()
 		}
 	}
 
-	m_wave_y = m_y-84 + 42 * (100 - tank->GetWater_Remaining()*2)*0.01;
+	//波の位置更新
+	m_wave_y = m_y-85 + 42 * (100 - tank->GetWater_Remaining()*2)*0.01;
 
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 
@@ -101,9 +100,6 @@ void CWTM::Draw()
 		}
 	}
 
-	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.059,-(/*2.7**/tank->GetWater_Remaining()*0.00139));
-
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
 	{
@@ -113,10 +109,7 @@ void CWTM::Draw()
 	{
 		m_ani_time1++;
 	}
-
-	float a = 103.65;
-
-	//波アニメーション
+	//波アニメーション描画(後ろ)
 	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x*0.2, m_WaveSize_y*0.2);
 
 	//波アニメーション(前)
@@ -128,7 +121,9 @@ void CWTM::Draw()
 	{
 		m_ani_time2++;
 	}
-
-	//波アニメーション
+	//波アニメーション描画(前)
 	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x*0.2, m_WaveSize_y*0.2);
+
+	//水表示
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.059, -(/*2.7**/tank->GetWater_Remaining()*0.00139));
 }

@@ -32,6 +32,8 @@ private:
 
 	float m_wave_x;//波の位置
 	float m_wave_y;
+	static const float m_WaveSize_x;//波のサイズ
+	static const float m_WaveSize_y;
 
 	float im_x;//アイコンの位置
 	float im_y;

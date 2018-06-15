@@ -16,7 +16,7 @@ const float CBucketMeter::m_BM_wave_amount = 1.6f;
 //コンストラクタ
 CBucketMeter::CBucketMeter()
 	:m_x(600), m_y(430)
-	, m_wave_x(605), m_wave_y(578)
+	, m_wave_x(607), m_wave_y(578)
 	, m_water_x(605), m_water_y(597)
 	, m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_remaining(0.0f)
