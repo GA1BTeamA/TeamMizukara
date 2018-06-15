@@ -65,11 +65,11 @@ void CBackground::Draw()
 	{
 	case RESULT_MAIN:
 	case GAME_MAIN:
-		Draw::Draw2D(24, m_x, m_y);
-		Draw::Draw2D(24, m_x_2, m_y);
+		//Draw::Draw2D(24, m_x, m_y-70);
+		//Draw::Draw2D(24, m_x_2, m_y-70);
 		Draw::Draw2D(100, m_x2, m_y);
 		Draw::Draw2D(100, m_x2_2, m_y);
-		Draw::Draw2D(110, ground->GetScroll()*0.2f, m_y);
+		//Draw::Draw2D(110, ground->GetScroll()*0.2f, m_y);
 		break;
 
 	case GAME_MAIN2:

@@ -15,7 +15,7 @@ const float CTank::m_WaveSize_x = 0.2f;
 const float CTank::m_WaveSize_y = 0.2f;
 
 CTank::CTank()
-	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
+	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(249.3)
 	,im_x(33), im_y(130),m_ani_time1(0.0f),m_ani_time2(0.0f)
 	, m_water_x(11), m_water_y(387)
 	, m_water_remaining2(50)
@@ -103,7 +103,7 @@ void CTank::Action()
 	}
 	//波の位置設定
 	//満タン位置+タンクの高さ*（満タン-残量）/100
-	m_wave_y = 249 + 110 * (100 - m_water_remaining2*2)*0.01;
+	m_wave_y = 249.3 + 110 * (100 - m_water_remaining2*2)*0.00981;
 
 }
 
@@ -127,9 +127,6 @@ void CTank::Draw()
 	}
 
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
-
-	//水表示
-	Draw::Draw2D(48, m_water_x +ground->GetScroll(), m_water_y-8,/*2.95*/0.108, -(/*3.65*/0.18*m_water_remaining2 *0.02));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -156,6 +153,9 @@ void CTank::Draw()
 
 	//波アニメーション
 	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+
+	//水表示
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y - 8,/*2.95*/0.108, -(/*3.65*/0.18*m_water_remaining2 *0.025));
 }
 
 //波の増減
