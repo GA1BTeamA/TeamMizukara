@@ -130,6 +130,7 @@ void CWTM3::Action()
 void CWTM3::Draw()
 {
 	ObjGround3* ground = (ObjGround3*)TaskSystem::GetObj(GROUND3);
+	CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 	CTank3* tank = (CTank3*)TaskSystem::GetObj(TANK3);
 
 	//WTMに近づいたらアイコンを出す
@@ -139,7 +140,10 @@ void CWTM3::Draw()
 		{
 			if (m_p_hit_line_wtm3->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
+				if (abs(ground->GetScroll()) + hero->GetX() < 2500)
+				{
+					Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
+				}
 			}
 		}
 	}

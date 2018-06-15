@@ -442,7 +442,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri = new CSPRI();
 			spri->m_ActionPriority = 150;
-			spri->m_DrawPriority = 60;
+			spri->m_DrawPriority = 100;
 			TaskSystem::InsertObj(spri);
 
 			g_SceneNumber = GAME_MAIN;
