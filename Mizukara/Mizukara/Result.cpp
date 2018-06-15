@@ -99,8 +99,29 @@ void CResult::Action()
 		}
 
 	}
-	//カーソル位置が下ならステージセレクトへ
+	//カーソル位置が上ならタイトルへ
 	else if (m_cursor == 1)
+	{
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			if (g_key_flag)
+			{
+				Audio::StartMusic(0);
+				Audio::StopLoopMusic(10);
+				g_SceneNumber = TITLE;
+				g_clearlist = true;
+				TaskSystem::TaskClear();
+				is_delete = true;
+				g_key_flag = false;
+			}
+		}
+		else
+		{
+			g_key_flag = true;
+		}
+	}
+	//カーソル位置が下ならステージセレクトへ
+	else if (m_cursor == 2)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
@@ -122,27 +143,6 @@ void CResult::Action()
 					is_delete = true;
 					g_key_flag = false;
 				}
-			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
-	}
-	//カーソル位置が上ならタイトルへ
-	else if (m_cursor == 2)
-	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
-			{
-				Audio::StartMusic(0);
-				Audio::StopLoopMusic(10);
-				g_SceneNumber = TITLE;
-				g_clearlist = true;
-				TaskSystem::TaskClear();
-				is_delete = true;
-				g_key_flag = false;
 			}
 		}
 		else
