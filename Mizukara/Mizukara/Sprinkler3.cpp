@@ -23,7 +23,7 @@ CSPRI3::CSPRI3()
 	, m_CrearCnt3(false), m_Flower(false)
 	, m_fx(734), m_fy(258)
 {
-	m_name = SPRI2;
+	m_name = SPRI3;
 
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
 	m_p_hit_line_spri3 = Collision::HitLineInsert(this);
