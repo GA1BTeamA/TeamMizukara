@@ -723,14 +723,14 @@ unsigned __stdcall GameMainSled(void *p)
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
 
-			wtm3_Clear = new CWTM3(2947.0f, 315.0f,0);
+			wtm3_Clear = new CWTM3(2920.0f, 170.0f,0);
 			wtm3_Clear->m_ActionPriority = 70;
 			wtm3_Clear->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_Clear);
 
 			spri3 = new CSPRI3();
 			spri3->m_ActionPriority = 150;
-			spri3->m_DrawPriority = 60;
+			spri3->m_DrawPriority = 160;
 			TaskSystem::InsertObj(spri3);
 
 			g_SceneNumber = GAME_MAIN3;

@@ -38,12 +38,19 @@ void CResult::Action()
 	Audio::StartLoopMusic(10);
 	Audio::LoopMusicVolume(10, 0.07f);
 
-	//ã‚ğ‰Ÿ‚µ‚½‚ç¶‚É
+	CSPRI* spri = (CSPRI*)TaskSystem::GetObj(SPRI);
+	CSPRI2* spri2 = (CSPRI2*)TaskSystem::GetObj(SPRI2);
+	CSPRI3* spri3 = (CSPRI3*)TaskSystem::GetObj(SPRI3);
+	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
+
+	//ã‚ğ‰Ÿ‚µ‚½‚çã‚É
 	if (Input::KeyPush(VK_UP) == true)
 	{
 		m_cursor = UP;
 	}
-	//‰º‚ğ‰Ÿ‚µ‚½‚ç‰E‚É
+	//‰º‚ğ‰Ÿ‚µ‚½‚ç‰º‚É
 	else if (Input::KeyPush(VK_DOWN) == true)
 	{
 		m_cursor = UNDER;
