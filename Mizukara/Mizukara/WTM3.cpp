@@ -21,7 +21,7 @@ const float CWTM3::m_wave_amount = 0.3f*0.04f;
 //コンストラクタ
 CWTM3::CWTM3(float x, float y,int color)
 	:m_x(x), m_y(y), m_wave_x(x+6), m_wave_y(y+36), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(x), im_y(y-70), m_water_x(x+3), m_water_y(y+135), m_water_remaining(1.4)
+	, im_x(x), im_y(y-180), m_water_x(x+3), m_water_y(y+136), m_water_remaining(1.4)
 	,m_gx(x),m_gy(y+65)
 {
 	if (color == 74)
