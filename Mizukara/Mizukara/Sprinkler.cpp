@@ -18,7 +18,7 @@ const float CSPRI::m_WaveSize_y = 0.6f;
 CHero* hero;
 
 CSPRI::CSPRI()
-	:m_x(2150), m_y(250), m_wave_x(2150), m_wave_y(230), 
+	:m_x(2100), m_y(250), m_wave_x(2150), m_wave_y(230), 
 	m_ani_time1(0.0f), m_ani_time2(0.0f),m_ani_time3(0.0f),m_ani_time4(0),m_ani_time5(-1)
 	, m_move1(0.0f),m_move2(0.0f),im_x(2150), im_y(130), 
 	m_water_x(2150), m_water_y(242), m_vy(0.0f), m_sy(230)

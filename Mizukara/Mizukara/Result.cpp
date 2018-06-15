@@ -181,7 +181,7 @@ void CResult::Draw()
 		Draw::Draw2D(14, 300, 215);
 	}
 	else {
-		Draw::Draw2D(14,295, 300);
+		Draw::Draw2D(14,295, 320);
 	}
 
 	//ƒ‰ƒ“ƒN•\Ž¦

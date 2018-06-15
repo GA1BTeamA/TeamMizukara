@@ -139,6 +139,8 @@ void CHero::Action()
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 4)
 				{
 					m_hero_delete_flag = true;
+					//m_p_hit_line_hero[j]->SetDelete(true);
+					m_p_hit_line_hero_copy[j]->SetDelete(true);
 				}
 
 				ObjBoat_Tank* boat_tank = (ObjBoat_Tank*)TaskSystem::GetObj(BOAT_TANK);
