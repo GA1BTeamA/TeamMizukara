@@ -9,7 +9,7 @@
 #include "BucketMeter.h"
 extern int g_SceneNumber;
 
-const float ObjDownBlock_Tank::m_WaveSize_x = 0.23f;
+const float ObjDownBlock_Tank::m_WaveSize_x = 0.23f*0.2f;
 
 ObjDownBlock_Tank::ObjDownBlock_Tank(float x,float y)
 	:m_x(x), m_y(y),m_gx(x+15),m_gy(y-15), m_wave_x(x+16), m_wave_y(y+103), m_save_x(x), m_save_y(y),
@@ -138,7 +138,7 @@ void ObjDownBlock_Tank::Action()
 		}
 	}
 
-	m_WaveSize_y = m_water_remaining *0.5f;
+	m_WaveSize_y = m_water_remaining *0.06f;
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	//当たり判定位置の更新
@@ -171,7 +171,7 @@ void ObjDownBlock_Tank::Draw()
 		}
 
 		//水表示
-		Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.7, m_bucket_remaining);
+		Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.025, m_bucket_remaining/18);
 
 		//波アニメーション(後ろ)
 		if (m_ani_time1 >= 109)
@@ -227,7 +227,7 @@ void ObjDownBlock_Tank::Draw()
 		}
 
 		//水表示
-		Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.7, m_bucket_remaining);
+		Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.025, m_bucket_remaining/18);
 
 		//波アニメーション(後ろ)
 		if (m_ani_time1 >= 109)

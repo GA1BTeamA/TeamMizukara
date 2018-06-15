@@ -13,7 +13,7 @@ extern bool g_key_flag;
 CTank2::CTank2()
 	:m_x(40), m_y(250), m_wave_x(11), m_wave_y(250)
 	, im_x(33), im_y(130), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, m_water_x(11), m_water_y(384)
+	, m_water_x(11), m_water_y(379)
 	, m_water_remaining2(50)
 {
 	m_name = TANK2;
@@ -125,7 +125,7 @@ void CTank2::Draw()
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 2.95, -(3.65*m_water_remaining2 *0.02));
+	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 0.108, -(0.18*m_water_remaining2 *0.02));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

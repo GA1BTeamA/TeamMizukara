@@ -184,7 +184,7 @@ void ObjColorDoor_Tank::Action()
 	//if (m_wave_y < 345)m_wave_y = 345;
 	//m_WaveSize_y = m_water_remaining * 0.5f;
 	//if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
-	m_WaterSize_y = m_water_remaining* -0.1575f;
+	m_WaterSize_y = m_water_remaining* -0.008f;
 	//if (m_WaterSize_y > 1.2)m_WaterSize_y = 1.2;
 
 	//当たり判定の位置更新
@@ -215,7 +215,7 @@ void ObjColorDoor_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.9, m_WaterSize_y, rgba);
+	Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.0349, m_WaterSize_y, rgba);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

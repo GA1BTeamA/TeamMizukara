@@ -56,6 +56,7 @@ void CBackground::Action()
 
 void CBackground::Draw()
 {
+	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
@@ -68,6 +69,7 @@ void CBackground::Draw()
 		Draw::Draw2D(24, m_x_2, m_y);
 		Draw::Draw2D(100, m_x2, m_y);
 		Draw::Draw2D(100, m_x2_2, m_y);
+		Draw::Draw2D(110, ground->GetScroll()*0.2f, m_y);
 		break;
 
 	case GAME_MAIN2:
