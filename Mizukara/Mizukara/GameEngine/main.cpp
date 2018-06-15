@@ -57,6 +57,7 @@
 #include "..\ObjScale_Tank.h"
 #include "..\WTM3.h"
 #include "..\ZTank.h"
+#include "..\AllClear.h"
 
 //íœ‚³‚ê‚Ä‚¢‚È‚¢ƒƒ‚ƒŠ‚ğo—Í‚Éƒ_ƒ“ƒv‚·‚é---
 #include <crtdbg.h>
@@ -316,6 +317,7 @@ unsigned __stdcall GameMainSled(void *p)
 		ObjScale* scale5;
 		ObjScale_Tank* scale_t5;
 		ObjElephant_Tank* ztank;
+		CAllClear* allclear;
 
 
 		CWTM3* wtm3;
@@ -450,6 +452,8 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME2:
+			g_TankRemaining = 0;
+
 			background = new CBackground();
 			background->m_ActionPriority = 10;
 			background->m_DrawPriority = 10;
@@ -576,6 +580,8 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME3:
+			g_TankRemaining = 0;
+
 			background = new CBackground();
 			background->m_ActionPriority = 10;
 			background->m_DrawPriority = 10;
@@ -737,6 +743,17 @@ unsigned __stdcall GameMainSled(void *p)
 			break;
 
 		case GAME_MAIN3:
+			break;
+
+		case ALLCLEAR:
+			allclear = new CAllClear();
+			allclear->m_ActionPriority = 10;
+			allclear->m_DrawPriority = 10;
+			TaskSystem::InsertObj(allclear);
+
+			g_SceneNumber = ALLCLEAR_MAIN;
+			break;
+		case ALLCLEAR_MAIN:
 			break;
 		}
 

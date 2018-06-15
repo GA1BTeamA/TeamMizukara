@@ -17,7 +17,7 @@ const float CSPRI3::m_WaveSize_y = 0.6f;
 
 CSPRI3::CSPRI3()
 	:m_x(2800), m_y(250), m_wave_x(2950), m_wave_y(230),
-	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_ani_time4(0.0f), m_ani_time5(0.0f),m_ani_time6(0.0f)
+	m_ani_time1(0.0f), m_ani_time2(0.0f), m_ani_time3(0.0f), m_ani_time4(0.0f), m_ani_time5(-1),m_ani_time6(0.0f)
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
 	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
 	, m_CrearCnt3(false), m_Flower(false)
@@ -40,6 +40,9 @@ CSPRI3::~CSPRI3()
 
 void CSPRI3::Action()
 {
+	if (m_ani_time5 > 51)m_ani_time5 = 0;
+	else if (m_ani_time5 >= 0)m_ani_time5++;
+
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 	CTank3* tank3 = (CTank3*)TaskSystem::GetObj(TANK3);
 
@@ -103,19 +106,15 @@ void CSPRI3::Action()
 	}
 
 	//m_ani_time5++;
-	if (m_ani_time5 > 1300 && m_ani_time5 <= 1310 && m_sy == 230)
+	if (m_ani_time5 == 50 && m_sy == 230)
 	{
 		m_vy = -8.0f;
 		m_CrearCnt3 = true;
 	}
-	else if (m_ani_time5 > 1400 && m_ani_time5 <= 1410 && m_sy == 230)
-	{
-		m_vy = -8.0f;
-	}
-	else if (m_ani_time5 >= 1411)
-	{
-		m_ani_time5 = 1200;
-	}
+	//else if (m_ani_time5 > 200 && m_ani_time5 <= 210 && m_sy == 230)
+	//{
+	//	m_vy = -8.0f;
+	//}
 	m_vy += 9.8 / (16.0f);
 
 
@@ -322,7 +321,6 @@ void CSPRI3::Draw()
 						}
 						if (m_ani_time4 >= 460)
 						{
-							m_ani_time5++;
 							m_move2++;
 							//Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank3->GetWater_Remaining() > 0)
@@ -345,6 +343,7 @@ void CSPRI3::Draw()
 							}
 							else
 							{
+								if (m_ani_time5 == -1)m_ani_time5++;
 								Audio::StopLoopMusic(13);
 							}
 						}

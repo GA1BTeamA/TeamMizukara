@@ -61,23 +61,15 @@ void CBackground::Draw()
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//”wŒi•`‰æ
-	switch (g_SceneNumber)
-	{
-	case RESULT_MAIN:
-	case GAME_MAIN:
+	if (ground != nullptr) {
 		Draw::Draw2D(24, m_x, m_y);
 		Draw::Draw2D(24, m_x_2, m_y);
 		Draw::Draw2D(100, m_x2, m_y);
 		Draw::Draw2D(100, m_x2_2, m_y);
 		Draw::Draw2D(110, ground->GetScroll()*0.2f, m_y);
-		break;
-
-	case GAME_MAIN2:
-		Draw::Draw2D(78, m_x+ground2->GetScroll(), m_y);
-		break;
-
-	case GAME_MAIN3:
-		Draw::Draw2D(79, m_x+ground3->GetScroll(), m_y);
-		break;
 	}
+	else if(ground2!=nullptr)
+		Draw::Draw2D(78, m_x+ground2->GetScroll(), m_y);
+	else if(ground3!=nullptr)
+		Draw::Draw2D(79, m_x+ground3->GetScroll(), m_y);
 }

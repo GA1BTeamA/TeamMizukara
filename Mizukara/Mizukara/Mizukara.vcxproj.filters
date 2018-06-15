@@ -55,12 +55,6 @@
     <Filter Include="ヘッダー ファイル\ギミック8（色付き門）">
       <UniqueIdentifier>{74aa48f5-a269-46c7-a614-b645f4b57fa0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ギミック7%28象ぞうさんだぞぅ%29">
-      <UniqueIdentifier>{577160a6-a875-42be-85a8-2afa147c457a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\ギミック7%28ぞうさんだぞぅ%29">
-      <UniqueIdentifier>{29153935-ec92-4158-8b6d-dd58bd9e245a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Collision.cpp">
@@ -189,14 +183,17 @@
     <ClCompile Include="WTM2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ZTank.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Sprinkler2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Sprinkler3.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ZTank.cpp">
-      <Filter>ソース ファイル\ギミック7%28象ぞうさんだぞぅ%29</Filter>
+    <ClCompile Include="AllClear.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -323,14 +320,17 @@
     <ClInclude Include="WTM2.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ZTank.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
     <ClInclude Include="Sprinkler2.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Sprinkler3.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ZTank.h">
-      <Filter>ヘッダー ファイル\ギミック7%28ぞうさんだぞぅ%29</Filter>
+    <ClInclude Include="AllClear.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

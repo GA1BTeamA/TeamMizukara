@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AllClear.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BucketMeter.cpp" />
     <ClCompile Include="GameEngine\Audio.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="ZTank.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllClear.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BucketMeter.h" />
     <ClInclude Include="GameEngine\Audio.h" />

@@ -22,15 +22,14 @@ enum Scene
 	STORY_MAIN = 120,
 	RESULT=130,
 	RESULT_MAIN=140,
+	ALLCLEAR = 150,
+	ALLCLEAR_MAIN = 160,
 };
 
 enum {
 	LEFT,
 	RIGHT,
 	UNDER,
-	UNDER_LEFT,
-	UNDER_RIGHT,
-	UP,
 };
 
 enum {
