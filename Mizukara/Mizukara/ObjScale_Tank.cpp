@@ -268,8 +268,8 @@ void ObjScale_Tank::Draw()
 		}
 
 		//水表示
-		Draw::Draw2D(48, m_water_x + ground->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
-		Draw::Draw2D(48, m_water_x2 + ground->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.74, -(0.64*m_water_remaining2 * 1 / 6));
+		Draw::Draw2D(48, m_water_x + ground->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.025, -(0.019 * m_water_remaining * 1 / 6));
+		Draw::Draw2D(48, m_water_x2 + ground->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.025, -(0.019*m_water_remaining2 * 1 / 6));
 
 		//波アニメーション(後ろ)
 		if (m_ani_time1 >= 109)
@@ -301,7 +301,7 @@ void ObjScale_Tank::Draw()
 		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll() + m_angle_x, (m_wave_y - m_water_remaining * 2) + m_angle_y, m_WaveSize_x, m_WaveSize_y);
 
 		//波アニメーション2(前)
-		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x2 + ground->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x2 + ground->GetScroll() + m_angle_x2, (m_wave_y - m_water_remaining2*2) + m_angle_y2, m_WaveSize_x, m_WaveSize_y);
 	
 		Draw::Draw2D(56, m_x + ground->GetScroll() + m_angle_x, m_y + m_angle_y, 1, 1);
 		Draw::Draw2D(56, m_x2 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2, 1, 1);
@@ -332,8 +332,8 @@ void ObjScale_Tank::Draw()
 		}
 
 		//水表示
-		Draw::Draw2D(48, m_water_x + ground3->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
-		Draw::Draw2D(48, m_water_x2 + ground3->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.74, -(0.64*m_water_remaining2 * 1 / 6));
+		Draw::Draw2D(48, m_water_x + ground3->GetScroll() + m_angle_x, m_water_y + m_angle_y, 0.025, -(0.019 * m_water_remaining * 1 / 6));
+		Draw::Draw2D(48, m_water_x2 + ground3->GetScroll() + m_angle_x2, m_water_y + m_angle_y2, 0.025, -(0.019*m_water_remaining2 * 1 / 6));
 
 		//波アニメーション(後ろ)
 		if (m_ani_time1 >= 109)

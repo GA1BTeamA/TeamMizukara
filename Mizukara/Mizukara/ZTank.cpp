@@ -12,7 +12,7 @@ const float ObjElephant_Tank::m_WaveSize_y = 0.4f;
 
 //コンストラクタ
 ObjElephant_Tank::ObjElephant_Tank()
-	:m_x(2230), m_y(175), m_wave_x(2230), m_wave_y(200), m_water_x(2230), m_water_y(210),
+	:m_x(2230), m_y(175), m_wave_x(2230), m_wave_y(200), m_water_x(2232), m_water_y(215),
 	m_ani_time1(0), m_ani_time2(0), m_ani_time_Shower(0), m_water_remaining(0.0f),m_alpha(0.0f)
 {
 	//ヒットラインの作成(左)
@@ -146,7 +146,7 @@ void ObjElephant_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.74, -(0.64 * m_water_remaining * 1 / 6));
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.03, -(0.027 * m_water_remaining * 1 / 6));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

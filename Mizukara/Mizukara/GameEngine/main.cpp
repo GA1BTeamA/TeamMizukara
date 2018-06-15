@@ -203,6 +203,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(107, L"Images\\ARank.png");//107番目に"ARank.png"を読み込み
 	Draw::LoadImage(108, L"Images\\SRank.png");//108番目に"SRank.png"を読み込み
 	Draw::LoadImage(109, L"Images\\splash.png");//109番目に"splash.png"を読み込み
+	Draw::LoadImage(110, L"Images\\Stage1BM.png");//110番目に"Stage1BM.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -729,7 +730,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri3 = new CSPRI3();
 			spri3->m_ActionPriority = 150;
-			spri3->m_DrawPriority = 210;
+			spri3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(spri3);
 
 			g_SceneNumber = GAME_MAIN3;
