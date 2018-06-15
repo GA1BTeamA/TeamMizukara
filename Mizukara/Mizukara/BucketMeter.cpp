@@ -17,7 +17,7 @@ const float CBucketMeter::m_BM_wave_amount = 1.6f;
 CBucketMeter::CBucketMeter()
 	:m_x(600), m_y(430)
 	, m_wave_x(607), m_wave_y(578)
-	, m_water_x(605), m_water_y(597)
+	, m_water_x(605), m_water_y(595)
 	, m_ani_time1(0.0f), m_ani_time2(0.0f)
 	, m_water_remaining(0.0f)
 {
@@ -71,9 +71,6 @@ void CBucketMeter::Draw()
 	//描画
 	Draw::Draw2D(49, m_x, m_y);
 
-	//水表示
-	Draw::Draw2D(48, m_water_x, m_water_y, 0.22, -(m_water_remaining-(3- m_water_remaining)*0.27)*0.0535,rgba);
-
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
 	{
@@ -83,8 +80,7 @@ void CBucketMeter::Draw()
 	{
 		m_ani_time1++;
 	}
-
-	//波アニメーション
+	//波アニメーション描画(後ろ)
 	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x, m_wave_y, 2.1*0.2, 2*0.2, rgba);
 
 	//波アニメーション(前)
@@ -96,9 +92,12 @@ void CBucketMeter::Draw()
 	{
 		m_ani_time2++;
 	}
-
-	//波アニメーション
+	//波アニメーション描画(前)
 	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x, m_wave_y, 2.1*0.2, 2*0.2, rgba);
+
+	//水表示
+	Draw::Draw2D(48, m_water_x, m_water_y, 0.22, -(m_water_remaining - (3 - m_water_remaining)*0.27)*0.052, rgba);
+
 
 	Draw::Draw2D(11, m_x, m_y);
 }

@@ -71,6 +71,7 @@ void CTank::Action()
 
 							//（バケツ満タン/75フレーム）
 							m_water_remaining2 -= 0.02666;
+							//m_water_remaining2 -= 0.01962;
 						}
 					}
 				}
@@ -91,9 +92,9 @@ void CTank::Action()
 								//バケツメーターにセット
 								bm->PushC();
 							}
-
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining2 += 0.02666;
+							//m_water_remaining2 += 0.01962;
 						}
 					}
 				}
@@ -104,7 +105,6 @@ void CTank::Action()
 	//波の位置設定
 	//満タン位置+タンクの高さ*（満タン-残量）/100
 	m_wave_y = 249.3 + 110 * (100 - m_water_remaining2*2)*0.00981;
-
 }
 
 void CTank::Draw()
@@ -155,7 +155,7 @@ void CTank::Draw()
 	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y - 8,/*2.95*/0.108, -(/*3.65*/0.18*m_water_remaining2 *0.025));
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y - 8,0.108, -(0.18*m_water_remaining2 *0.02));
 }
 
 //波の増減

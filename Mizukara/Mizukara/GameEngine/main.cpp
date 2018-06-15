@@ -97,12 +97,11 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(1, L"Images\\BoyL.png");//1番目に"BoyL..png"を読み込み
 	Draw::LoadImage(2, L"Images\\BoyRW1.png");//2番目に"BoyRW1.png"を読み込み
 	Draw::LoadImage(3, L"Images\\BoyLW1.png");//3番目に"BoyLW1.png"を読み込み
-	Draw::LoadImage(7, L"Images\\BoyRW2.png");//7番目に"BoyRW2.png"を読み込み
-	Draw::LoadImage(8, L"Images\\BoyLW2.png");//8番目に"BoyLW2.png"を読み込み
-	Draw::LoadImage(6, L"Images\\BoySquat.png");//4番目に"BoySquat.png"を読み込み
 	Draw::LoadImage(4, L"Images\\BoyUp.png");//4番目に"BoyUp.png"を読み込み
 	Draw::LoadImage(5, L"Images\\BoyDown.png");//5番目に"BoyDown.png"を読み込み
-	//Draw::LoadImage(6, L"Images\\Player8.png");//6番目に"Player8.png"を読み込み
+	Draw::LoadImage(6, L"Images\\BoySquat.png");//4番目に"BoySquat.png"を読み込み
+	Draw::LoadImage(7, L"Images\\BoyRW2.png");//7番目に"BoyRW2.png"を読み込み
+	Draw::LoadImage(8, L"Images\\BoyLW2.png");//8番目に"BoyLW2.png"を読み込み
 	Draw::LoadImage(9, L"Images\\BoyJump.png");//5番目に"Player6.png"を読み込み
 	Draw::LoadImage(10, L"Images\\Tank.png");//10番目に"Tank.png"を読み込み
 	Draw::LoadImage(11, L"Images\\BucketMeter.png");//11番目に"BucketMeter.png"を読み込み
@@ -110,9 +109,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(13, L"Images\\Title.png");//13番目に"Title.pngを読み込み
 	Draw::LoadImage(14, L"Images\\mizu.png");//14番目に"sibuki.pngを読み込み
 	Draw::LoadImage(15, L"Images\\Menu.png");//15番目に"Menu.pngを読み込み
-	//Draw::LoadImage(16, L"Images\\WTM.png");//16番目に"WTM.pngを読み込み
 	Draw::LoadImage(17, L"Images\\description.png");//17番目に"description.pngを読み込み
-	//Draw::LoadImage(18, L"Images\\jimen.png");//18番目に"jimen.pngを読み込み
 	Draw::LoadImage(19, L"Images\\StageSelecto.png");//19番目に"StageSelecto.pngを読み込み
 	Draw::LoadImage(20, L"Images\\Story.png");//20番目に"Story.pngを読み込み
 	Draw::LoadImage(21, L"Images\\icon.png");//21番目に"icon.pngを読み込み
@@ -206,8 +203,8 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(109, L"Images\\splash.png");//109番目に"splash.png"を読み込み
 	Draw::LoadImage(110, L"Images\\Stage1BM.png");//110番目に"Stage1BM.png"を読み込み
 	Draw::LoadImage(111, L"Images\\sibuki.png");//111番目に"sibuki.png"を読み込み
-//メモリ違反する	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112番目に"StageSelectoMoji.png"を読み込み
-//メモリ違反する	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113番目に"StageSelectoHaikei.png"を読み込み
+	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112番目に"StageSelectoMoji.png"を読み込み
+	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113番目に"StageSelectoHaikei.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了

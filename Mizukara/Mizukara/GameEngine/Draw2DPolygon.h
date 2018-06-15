@@ -65,8 +65,8 @@ typedef class CDraw2DPolygon
 
 		//テクスチャに必要なモノ
 		static ID3D11SamplerState*			m_pSampleLinear;	//テクスチャーサンプラー
-		static ID3D11ShaderResourceView*	m_pTexture[112];		//テクスチャリソース
-		static float						m_width[112];		//テクスチャの横幅
-		static float						m_height[112];		//テクスチャの縦幅
+		static ID3D11ShaderResourceView*	m_pTexture[160];		//テクスチャリソース
+		static float						m_width[160];		//テクスチャの横幅
+		static float						m_height[160];		//テクスチャの縦幅
 
 }Draw;
