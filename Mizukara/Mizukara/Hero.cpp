@@ -4,27 +4,32 @@
 
 #include "Hero.h"
 #include "Sprinkler.h"
+#include "Sprinkler2.h"
+#include "ObjBoat_Tank.h"
 #include "ObjGround2.h"
+#include "ObjGround3.h"
 
 extern int g_SceneNumber;
 extern bool g_key_flag;
 
 //コンストラクタ
 CHero::CHero()
-	:m_x(200),m_y(300)
-	, m_copy_x(200), m_copy_y(300)
+	:m_x(130),m_y(300)
+	, m_copy_x(130), m_copy_y(300)
 	,m_vx(0.0f),m_vy(0.0f)
 	, m_direc(RIGHT), m_down(false), m_IsMenu(false)
-	,m_ani_time (0)
+	,m_ani_time (0),m_ani_time2(0)
 	, move_x(5.0f)
 	, move_dash_x(7.5f)
 	, m_CKey_Frag(false)
 	, m_XKey_Frag(false)
 	, m_IsScroll(false)
 	,m_hero_delete_flag(false)
-	,m_IsHit2Line(false)
+	,m_IsHit2Line(false), m_HitCeiling(false)
 {
 	m_name = PLAYER;
+
+	Audio::LoopMusicVolume(1, 0.1f);
 
 	m_point_position[0].x = 0;
 	m_point_position[0].y = 0;
@@ -102,6 +107,8 @@ CHero::~CHero()
 
 void CHero::Action()
 {
+	//ObjBoat_Tank* boat_tank = (ObjBoat_Tank*)TaskSystem::GetObj(BOAT_TANK);
+
 	if (m_hero_delete_flag == false)
 	{
 		////テスト
@@ -132,9 +139,31 @@ void CHero::Action()
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 4)
 				{
 					m_hero_delete_flag = true;
-
+					//m_p_hit_line_hero[j]->SetDelete(true);
+					m_p_hit_line_hero_copy[j]->SetDelete(true);
 				}
 
+				ObjBoat_Tank* boat_tank = (ObjBoat_Tank*)TaskSystem::GetObj(BOAT_TANK);
+				if (boat_tank != nullptr)
+				{
+					m_water_remaining = boat_tank->GetBoatWaterVolume();
+					
+					if (m_ani_time2 >=161)
+					{
+						m_hero_delete_flag = false;
+					} 
+					else if (m_water_remaining >= 4.0f)
+					{
+						/*m_water_remaining--;*/
+						m_hero_delete_flag = true;
+						m_ani_time2++;
+						//if (m_ani_time2 = 160)
+						//{
+						//	m_hero_delete_flag = false;
+						//}
+					}
+					
+				}
 				//主人公の当たり判定に当たってたのが地面なら
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 1)
 				{
@@ -163,42 +192,47 @@ void CHero::Action()
 								//それが同じヒットラインじゃなくて、
 								if (m_p_hit_line_hero_copy[j]->GetHitData()[i] !=
 									m_p_hit_line_hero_copy[j]->GetHitData()[k]) {
+									//横判定のみ
+									if(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 90.0456467f ||
+										(int)m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 180 ||
+										(int)m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 0){
 									//角度が同じなら
-									if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() ==
-										m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetAngle()) {
-										//上にある方の判定のみ
-										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <=
-											m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetPoint1().y) {
-											//主人公の下判定だったら
-											if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
-												m_IsHit2Line = true;
-												IsHitGround = true;
-											}
-											//主人公の上判定だったら
-											else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_TOP) {
-												IsHitObjUnder = true;
-											}
-											else {
-												//主人公を当たった判定の近い方の点に移動（壁抜け防止）
-												if (j == 0) {//主人公の左
-															 //Point1,2の近い方をムーブに入れる
-													if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_x;
-														IsHitWall = true;
-													}
-													else {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
-														IsHitWall = true;
-													}
+										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() ==
+											m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetAngle()) {
+											//上にある方の判定のみ
+											if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <=
+												m_p_hit_line_hero_copy[j]->GetHitData()[k]->GetPoint1().y) {
+												//主人公の下判定だったら
+												if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
+													m_IsHit2Line = true;
+													IsHitGround = true;
 												}
-												else if (j == 1) {//主人公の右
-													if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
-														IsHitWall = true;
+												//主人公の上判定だったら
+												else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_TOP) {
+													IsHitObjUnder = true;
+												}
+												else {
+													//主人公を当たった判定の近い方の点に移動（壁抜け防止）
+													if (j == 0) {//主人公の左
+																 //Point1,2の近い方をムーブに入れる
+														if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_x;
+															IsHitWall = true;
+														}
+														else {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
+															IsHitWall = true;
+														}
 													}
-													else {
-														Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_point_position[2].x - m_x;
-														IsHitWall = true;
+													else if (j == 1) {//主人公の右
+														if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
+															IsHitWall = true;
+														}
+														else {
+															Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_point_position[2].x - m_x;
+															IsHitWall = true;
+														}
 													}
 												}
 											}
@@ -215,6 +249,29 @@ void CHero::Action()
 						continue;
 					}
 
+					if (m_HitCeiling == false) {
+						if ((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()!= 90.0456467f &&
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_UNDER)) {
+ 							m_vy = 0.0f;
+							m_HitCeiling = true;
+							continue;
+						}
+					}
+					else {
+						bool HitUnder=false;
+						for (int k = 0; k < 4; k++) {
+							for (int l = 0; l < 10; l++) {
+								if (m_p_hit_line_hero_copy[k]->GetHitData()[l] != nullptr) {
+									if (m_p_hit_line_hero_copy[k]->GetHitData()[l]->Get4direc() == HIT_UNDER) {
+										HitUnder = true;
+									}
+								}
+							}
+						}
+						if (!HitUnder) m_HitCeiling = false;
+					}
+
+
 					//縦の地面判定に当たったら
 					if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 0 ||
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180) {
@@ -227,7 +284,7 @@ void CHero::Action()
 					}
 					//あたったのが　オブジェクトの上判定で　水平ベクトルで　主人公の元位置より上にある場合
 					else if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP &&
-						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90 &&
+						(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90.0456467f &&
 						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y &&
 						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y) {
 						IsHitWall = true;
@@ -264,72 +321,127 @@ void CHero::Action()
 					////交点までが一番短い点
 					//float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
 
-					if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90 &&
+					if ((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90.0456467f &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
 						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
 						if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_RIGHT) {
-							//主人公の移動ベクトルと地面ベクトルの交点を求める
-							Collision::LineCrossPoint(m_copy_x + m_point_position[2].x, m_copy_y /*+ m_point_position[2].y*/,
-								m_copy_x + m_point_position[2].x, m_copy_y + m_point_position[2].y,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y,
-								&Cross_x, &Cross_y);
+							//斜め判定より主人公が下にいると処理しない
+							if (m_y + m_point_position[2].y-20 <= m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y) {
+								//主人公の移動ベクトルと地面ベクトルの交点を求める
+								Collision::LineCrossPoint(m_copy_x + m_point_position[2].x, m_copy_y /*+ m_point_position[2].y*/,
+									m_copy_x + m_point_position[2].x, m_copy_y + m_point_position[2].y,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y,
+									&Cross_x, &Cross_y);
 
-							//エラーが返されなかったら
-							if (Cross_x != -9999.0f && Cross_y != -9999.0f)
-							{
-								//主人公から交点までのベクトルを取り出す
-					//			Cross_x -= m_x + m_point_position[k].x;
-								Cross_y = -(m_y + m_point_position[2].y - Cross_y);
-
-								//主人公から交点までのベクトルの中から一番短いものを見つける
-								//水平ベクトルならｘ無視
-								if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+								//エラーが返されなかったら
+								if (Cross_x != -9999.0f && Cross_y != -9999.0f)
 								{
-									Cross_x_min = Cross_x;
+									//主人公から交点までのベクトルを取り出す
+						//			Cross_x -= m_x + m_point_position[k].x;
+									Cross_y = -(m_y + m_point_position[2].y - Cross_y);
+
+									//主人公から交点までのベクトルの中から一番短いものを見つける
+									//水平ベクトルならｘ無視
+									//if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+									//{
+									//	Cross_x_min = Cross_x;
+									//}
+									//垂直ベクトルならｙ無視
+									if (Cross_y <= 0 && Cross_y_min > abs(Cross_y) && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
+									{
+										if (m_x + m_point_position[2].x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x) {
+											Cross_y_min = Cross_y;
+										}
+										//斜め判定に横から当たったら止める
+										else {
+											IsHitWall = true;
+											Move_x = 0.0f;
+										}
+									}
 								}
-								//垂直ベクトルならｙ無視
-								if (Cross_y_min > Cross_y && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
-								{
-									Cross_y_min = Cross_y;
+							}
+							else {
+								if (m_x + m_point_position[2].x <= m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x) {
+									IsHitWall = true;
+									Move_x = 0.0f;
 								}
 							}
 						}
 						else if (m_p_hit_line_hero_copy[j]->Get4direc() == HIT_LEFT) {
-							//主人公の移動ベクトルと地面ベクトルの交点を求める
-							Collision::LineCrossPoint(m_copy_x, m_copy_y,
-								m_copy_x, m_copy_y + m_point_position[2].y,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x,
-								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y,
-								&Cross_x, &Cross_y);
+							//斜め判定より主人公が下にいると処理しない
+							if (m_y + m_point_position[2].y-20 <= m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y) {
+								//主人公の移動ベクトルと地面ベクトルの交点を求める
+								Collision::LineCrossPoint(m_copy_x, m_copy_y,
+									m_copy_x, m_copy_y + m_point_position[2].y,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x,
+									m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y,
+									&Cross_x, &Cross_y);
 
-							//エラーが返されなかったら
-							if (Cross_x != -9999.0f && Cross_y != -9999.0f)
-							{
-								//主人公から交点までのベクトルを取り出す
-								//			Cross_x -= m_x + m_point_position[k].x;
-								Cross_y = -(m_y + m_point_position[2].y - Cross_y);
-
-								//主人公から交点までのベクトルの中から一番短いものを見つける
-								//水平ベクトルならｘ無視
-								if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+								//エラーが返されなかったら
+								if (Cross_x != -9999.0f && Cross_y != -9999.0f)
 								{
-									Cross_x_min = Cross_x;
+									//主人公から交点までのベクトルを取り出す
+									//			Cross_x -= m_x + m_point_position[k].x;
+									Cross_y = -(m_y + m_point_position[2].y - Cross_y);
+
+									//主人公から交点までのベクトルの中から一番短いものを見つける
+									//水平ベクトルならｘ無視
+									//if (Cross_x_min > Cross_x /*&& (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90*/)
+									//{
+									//	Cross_x_min = Cross_x;
+									//}
+									//垂直ベクトルならｙ無視
+									if (Cross_y <= 0 && Cross_y_min > abs(Cross_y) && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
+									{
+										if (m_x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+											Cross_y_min = Cross_y;
+										}
+										//斜め判定に横から当たったら止める
+										else {
+											IsHitWall = true;
+											Move_x = 0.0f;
+										}
+									}
 								}
-								//垂直ベクトルならｙ無視
-								if (Cross_y_min > Cross_y && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0)
-								{
-									Cross_y_min = Cross_y;
+							}
+							else {
+								if (m_x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+									IsHitWall = true;
+									Move_x = 0.0f;
 								}
 							}
 						}
+						//左と右の当たり判定にあたってなくて下に当たったら端の上に立たせる
+						else if (Cross_y_min == 9999.0f &&
+							m_p_hit_line_hero_copy[j]->Get4direc() == HIT_UNDER) {
+							//if (m_x + m_point_position[2].x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x &&
+							//	m_x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+							//	if (m_y + m_point_position[2].y <= m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y &&
+							//		m_y + m_point_position[2].y <= m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y) {
+							if (m_x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x &&
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x < m_x + m_point_position[2].x) {
+									Move_y = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y - (m_copy_y + m_point_position[2].y);
+								IsHitGround = true;
+							}
+							else if (m_x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x &&
+								m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x < m_x + m_point_position[2].x) {
+								Move_y = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y - (m_copy_y + m_point_position[2].y);
+								IsHitGround = true;
+							}
 
+							//	}
+							//}
+						}
 					}
 
+					//初期化
+					Cross_x = Cross_y = -9999.0f;
+						
 					//主人公のあたり判定の頂点をループ
 					for (int k = 0; k < 4; k++)
 					{
@@ -370,30 +482,33 @@ void CHero::Action()
 								IsHitGround = true;
 							}
 							else {
-
 								//下に移動してるときにオブジェクトの下判定に当たったら
 								//上に移動してるときにオブジェクトの上判定に当たったら
 								if ((m_y > m_copy_y && m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP) ||
 									(m_y < m_copy_y && m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_UNDER)) {
-									if (j == 0) {//主人公の左
-												 //Point1,2の近い方をムーブに入れる
-										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
-											Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_x;
-											IsHitWall = true;
+
+									//水平ベクトルの場合のみ
+									if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle() == 90.0456467f) {
+										if (j == 0) {//主人公の左
+													 //Point1,2の近い方をムーブに入れる
+											if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+												Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_x;
+												IsHitWall = true;
+											}
+											else {
+												Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
+												IsHitWall = true;
+											}
 										}
-										else {
-											Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
-											IsHitWall = true;
-										}
-									}
-									else if (j == 1) {//主人公の右
-										if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
-											Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
-											IsHitWall = true;
-										}
-										else {
-											Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_point_position[2].x - m_x;
-											IsHitWall = true;
+										else if (j == 1) {//主人公の右
+											if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+												Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x - m_x;
+												IsHitWall = true;
+											}
+											else {
+												Move_x = m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x - m_point_position[2].x - m_x;
+												IsHitWall = true;
+											}
 										}
 									}
 								}
@@ -416,7 +531,8 @@ void CHero::Action()
 
 										//主人公から交点までのベクトルの中から一番短いものを見つける
 										//水平ベクトルならｘ無視
-										if (Cross_x_min > Cross_x && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 90)
+										if (Cross_x_min > Cross_x && (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 0 ||
+																	 (int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180)
 										{
 											Cross_x_min = Cross_x;
 										}
@@ -430,53 +546,54 @@ void CHero::Action()
 							}
 						}
 					}
-					//!(主人公の縦ベクトルと地面のベクトルが一点だけで接してた場合)
-					if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
-						(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
-						//主人公の左の場合
-						if (!(((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x <= m_copy_x) &&
-							(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x <= m_copy_x)) ||
-							//右の場合
-							((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x >= m_copy_x + m_point_position[2].x) &&
-							(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x >= m_copy_x + m_point_position[2].x)))) {
-							//エラーじゃなければ主人公を交点まで移動
-							if (Cross_x_min != 9999.0f) {
-								if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP) {
-									IsHitGround = true;
-								}
-								if (Move_x < Cross_x_min) Move_x = Cross_x_min;
-							}
-							if (Cross_y_min != 9999.0f) {
-								if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP) {
-									IsHitGround = true;
-								}
-								if (Move_y < abs(Cross_y_min)) Move_y = Cross_y_min;
-							}
-						}
-					}
-					else {
-						//主人公より高い場合
-						if (!(((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <= m_copy_y) &&
-							(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y <= m_copy_y)) ||
-							//低い場合
-							((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y >= m_copy_y + m_point_position[2].y) &&
-							(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y >= m_copy_y + m_point_position[2].y)))) {
-							if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90 ||
-								(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 0  ||
-								(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180) {
+					if (j!=2 && m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() != HIT_UNDER) {
+						//!(主人公の縦ベクトルと地面のベクトルが一点だけで接してた場合)
+						if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 0 &&
+							(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) != 180) {
+							//主人公の左の場合
+							if (!(((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x <= m_copy_x) &&
+								(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x <= m_copy_x)) ||
+								//右の場合
+								((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x >= m_copy_x + m_point_position[2].x) &&
+								(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x >= m_copy_x + m_point_position[2].x)))) {
 								//エラーじゃなければ主人公を交点まで移動
 								if (Cross_x_min != 9999.0f) {
-									IsHitWall = true;
+									if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP) {
+										IsHitGround = true;
+									}
 									if (Move_x < Cross_x_min) Move_x = Cross_x_min;
 								}
 								if (Cross_y_min != 9999.0f) {
-									IsHitWall = true;
-									if (Move_y < Cross_y_min) Move_y = Cross_y_min;
+									if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->Get4direc() == HIT_TOP) {
+										IsHitGround = true;
+									}
+									if (Move_y < abs(Cross_y_min)) Move_y = Cross_y_min;
+								}
+							}
+						}
+						else {
+							//主人公より高い場合
+							if (!(((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y <= m_copy_y) &&
+								(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y <= m_copy_y)) ||
+								//低い場合
+								((m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y >= m_copy_y + m_point_position[2].y) &&
+								(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y >= m_copy_y + m_point_position[2].y)))) {
+								if ((int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90 ||
+									(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 0 ||
+									(int)(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 180) {
+									//エラーじゃなければ主人公を交点まで移動
+									if (Cross_x_min != 9999.0f) {
+										IsHitWall = true;
+										if (Move_x < Cross_x_min) Move_x = Cross_x_min;
+									}
+									if (Cross_y_min != 9999.0f) {
+										IsHitWall = true;
+										if (Move_y < Cross_y_min) Move_y = Cross_y_min;
+									}
 								}
 							}
 						}
 					}
-
 				}
 			}
 			//ループの最後
@@ -489,6 +606,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
@@ -512,26 +630,47 @@ void CHero::Action()
 						}
 					}
 					//ステージ2
-					//if (ground2 != nullptr) {
-					//	if (ground2->GetScroll() != -2400.0f) {
-					//		if (Move_x != -9999.0f) {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_x + Move_x - 350.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 350.0f;
-					//		}
-					//		else {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_copy_x - 350.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 350.0f;
-					//		}
-					//		m_IsScroll = true;
-					//	}
-					//	else if (Move_x != -9999.0f) {
-					//		m_x += Move_x;
-					//	}
-					//}
+					if (ground2 != nullptr) {
+						if (ground2->GetScroll() != -2400.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground2->AddScroll(m_x + Move_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							else {
+								//スクロール値加算
+								ground2->AddScroll(m_copy_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+					//ステージ3
+					if (ground3 != nullptr) {
+						if (ground3->GetScroll() != -2400.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground3->AddScroll(m_x + Move_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							else {
+								//スクロール値加算
+								ground3->AddScroll(m_copy_x - 350.0f);
+								//主人公をスクロールラインで止める
+								m_x = 350.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
 				}
 				//後方スクロールライン
 				else if (m_copy_x < 200.0f)
@@ -539,6 +678,7 @@ void CHero::Action()
 					//地面オブジェクト取得
 					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 					//ステージ1
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
@@ -562,26 +702,48 @@ void CHero::Action()
 						}
 					}
 					//ステージ2
-					//if (ground2 != nullptr) {
-					//	if (ground2->GetScroll() != 0.0f) {
-					//		if (Move_x != -9999.0f) {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_x + Move_x - 200.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 200.0f;
-					//		}
-					//		else {
-					//			//スクロール値加算
-					//			ground2->AddScroll(m_copy_x - 200.0f);
-					//			//主人公をスクロールラインで止める
-					//			m_x = 200.0f;
-					//		}
-					//		m_IsScroll = true;
-					//	}
-					//	else if (Move_x != -9999.0f) {
-					//		m_x += Move_x;
-					//	}
-					//}
+					if (ground2 != nullptr) {
+						if (ground2->GetScroll() != 0.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground2->AddScroll(m_x + Move_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							else {
+								//スクロール値加算
+								ground2->AddScroll(m_copy_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+					//ステージ3
+					if (ground3 != nullptr) {
+						if (ground3->GetScroll() != 0.0f) {
+							if (Move_x != -9999.0f) {
+								//スクロール値加算
+								ground3->AddScroll(m_x + Move_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							else {
+								//スクロール値加算
+								ground3->AddScroll(m_copy_x - 200.0f);
+								//主人公をスクロールラインで止める
+								m_x = 200.0f;
+							}
+							m_IsScroll = true;
+						}
+						else if (Move_x != -9999.0f) {
+							m_x += Move_x;
+						}
+					}
+
 				}
 				else {
 					if (Move_x != -9999.0f) {
@@ -614,6 +776,32 @@ void CHero::Action()
 					m_y = m_copy_y;
 				}
 			}
+		}
+
+		if (g_SceneNumber == GAME_MAIN2) {
+			ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+
+			//ぞうさん
+			//横方向の有効範囲
+			if (!IsHitWall) {
+				if (m_x + abs(ground2->GetScroll()) >= 2150 && 2350 >= m_x + abs(ground2->GetScroll()))
+				{
+					//円の中心点　-（（斜辺　*　斜辺）-（底辺　*　底辺））
+					if (m_y > 225 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))))) {
+						m_y = 225 - sqrt(100 * 100 - (2250 - (m_x + abs(ground2->GetScroll())))*(2250 - (m_x + abs(ground2->GetScroll()))));
+						IsHitGround = true;
+					}
+				}
+			}
+			//虹
+			if (m_x + abs(ground2->GetScroll()) >= 2350 && 3200 >= m_x + abs(ground2->GetScroll()))
+			{
+				if (m_y > 380 - sqrt(270 * 270 - (2675 - (m_x + abs(ground2->GetScroll())))*(2675 - (m_x + abs(ground2->GetScroll()))))) {
+					m_y = 380 - sqrt(270 * 270 - (2675 - (m_x + abs(ground2->GetScroll())))*(2675 - (m_x + abs(ground2->GetScroll()))));
+					IsHitGround = true;
+				}
+			}
+
 		}
 
 		//当たり判定の位置更新
@@ -649,22 +837,41 @@ void CHero::Action()
 				//メニューオブジェクトを生成
 				if (m_IsMenu == false)
 				{
-					menu = new CMenu();
+					Audio::StopLoopMusic(6);
+					Audio::StopLoopMusic(7);
+					Audio::StopLoopMusic(8);
+					//menu = new CMenu();
+					//地面オブジェクト取得
+					CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
+					ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
+					ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
+
+					if(ground != nullptr) menu = new CMenu(1);
+					else if (ground2 != nullptr) menu = new CMenu(2);
+					else if (ground3 != nullptr) menu = new CMenu(3);
 					menu->m_ActionPriority = 100;
 					menu->m_DrawPriority = 900;
 					TaskSystem::InsertObj(menu);
 					m_IsMenu = true;
+					Audio::StartLoopMusic(2);
+					Audio::LoopMusicVolume(2, 0.05f);
 				}
 				//メニューオブジェクトを破棄
 				else
 				{
-
 					//オブジェクト取得
 					CMenu* menu = (CMenu*)TaskSystem::GetObj(MENU);
 					if (menu != nullptr)
 					{
 						menu->is_delete = true;
 						m_IsMenu = false;
+						Audio::StopLoopMusic(2);
+						switch (g_SceneNumber)
+						{
+						case GAME_MAIN:		Audio::StartLoopMusic(6);	break;
+						case GAME_MAIN2:	Audio::StartLoopMusic(7);	break;
+						case GAME_MAIN3:	Audio::StartLoopMusic(8);	break;
+						}
 					}
 				}
 				m_menu_key_flag = false;
@@ -751,7 +958,7 @@ void CHero::Action()
 			{
 				if (Input::KeyPush(VK_SPACE) == true)
 				{
-					m_vy = -7.8f;
+					m_vy = -17.8f;
 				}
 			}
 
@@ -768,14 +975,23 @@ void CHero::Action()
 
 						//主人公の当たり判定に当たってたのがタンクorWTMなら卍
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
-							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 5 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 6)
 						{
+							if (m_CKey_Frag == false)
+								Audio::StartLoopMusic(1);
+								Audio::LoopMusicVolume(1, 0.03f);
+
 							m_CKey_Frag = true;
 						}
 					}
 				}
 			}
-			else m_CKey_Frag = false;
+			else
+			{
+				m_CKey_Frag = false;
+			}
 
 			//Xキーが押されているかどうか
 			if (Input::KeyPush('X'))
@@ -792,12 +1008,23 @@ void CHero::Action()
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
 							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
 						{
+							if (m_XKey_Frag == false)
+								Audio::StartLoopMusic(1);
+
 							m_XKey_Frag = true;
 						}
 					}
 				}
 			}
-			else m_XKey_Frag = false;
+			else
+			{
+				m_XKey_Frag = false;
+			}
+
+			//CもXも押してなかったら音楽を止める
+			if (!(Input::KeyPush('C')) && !(Input::KeyPush('X')))
+				Audio::StopLoopMusic(1);
+
 
 			//自由落下運動
 			if (IsHitGround == false) {
@@ -920,13 +1147,29 @@ void CHero::Draw()
 			}
 			else if (m_XKey_Frag == true)
 			{
-				//水汲む
-				Draw::Draw2D(5, m_x, m_y);
+				if (m_direc == RIGHT)
+				{
+					//水汲む右向き
+					Draw::Draw2D(5, m_x, m_y);
+				}
+				else if (m_direc == LEFT)
+				{
+					//水汲む左向き卍
+					Draw::Draw2D(5, m_x + 60, m_y, -1, 1);
+				}
 			}
 			else if (m_CKey_Frag == true)
 			{
-				//水戻す
-				Draw::Draw2D(4, m_x, m_y);
+				if (m_direc == RIGHT)
+				{
+					//水戻す右向き
+					Draw::Draw2D(4, m_x, m_y);
+				}
+				else if (m_direc == LEFT)
+				{
+					//水戻す左向き
+					Draw::Draw2D(4, m_x + 60, m_y, -1, 1);
+				}
 			}
 			else if (m_CKey_Frag == false)
 			{

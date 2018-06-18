@@ -10,7 +10,7 @@
 class CMenu : public CObj
 {
 public:
-	CMenu();
+	CMenu(unsigned int n);
 	~CMenu();//使用するヘッダ
 	void Action();
 	void Draw();
@@ -21,6 +21,7 @@ private:
 
 	unsigned int m_cursor; //カーソル位置
 	unsigned int m_BefCursor; //前のカーソル位置
+	unsigned int m_StageNo;//ステージ番号
 
 	bool key_flag;  //キーが押されているかチェック用
 };

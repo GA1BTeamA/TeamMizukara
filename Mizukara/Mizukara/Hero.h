@@ -34,6 +34,10 @@ public:
 	void MenuDel() { m_IsMenu = false; }
 	bool GetDirec() { return m_direc; }
 
+	float m_water_remaining;//ボートのタンクに入れれる水の量
+
+	void SetHeroDeleteFlag() {  m_hero_delete_flag=false; }
+	void SetHeroPositionFlag() { Point m_point_psition[4]; }
 	//HitLine* m_p_hit_line_spri;//当たり判定
 private:
 	float m_x; //位置卍
@@ -57,12 +61,14 @@ private:
 	bool m_down;//衝突確認用
 
 	int m_ani_time;//主人公アニメーション
+	int m_ani_time2;
 
 	bool m_hero_delete_flag;  //主人公削除フラグ
 
 	bool m_Buttom_Frag;  //ボタンフラグ
 	bool m_CKey_Frag;  //Cキー押されたかのフラグ卍
 	bool m_XKey_Frag;  //Xキー押されたかのフラグ卍
+	bool m_HitCeiling;
 
 	bool m_IsScroll;//スクロール中か
 	bool m_IsHit2Line;//当たるべきだけど当たらないヒットラインにあたってるか

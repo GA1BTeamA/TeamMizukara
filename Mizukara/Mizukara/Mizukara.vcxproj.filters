@@ -31,6 +31,30 @@
     <Filter Include="ヘッダー ファイル\ギミック3（動かす足場）">
       <UniqueIdentifier>{d3a638fb-cced-4e9a-9606-5046fa663354}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ギミック4（ボート）">
+      <UniqueIdentifier>{a6110779-93ea-477c-8445-abe9a62fc19b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック4（ボート）">
+      <UniqueIdentifier>{bb98a2c3-010c-447f-a987-507342bdc07b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ギミック5（天秤）">
+      <UniqueIdentifier>{fffe33b1-5b46-4358-95b8-f5e5f385ba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック5（天秤）">
+      <UniqueIdentifier>{19c8b315-3f28-4603-a680-7b1310936d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ギミック8（色付き門）">
+      <UniqueIdentifier>{db68bfcd-9dec-421f-9c73-7c8d11ce9288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック6%28下がるブロック%29">
+      <UniqueIdentifier>{f1108e96-d34c-418c-aab1-8af0f717c861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ギミック6%28下がるブロック%29">
+      <UniqueIdentifier>{ec3eaf57-4d1f-46bf-ae71-07d6fc2403a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\ギミック8（色付き門）">
+      <UniqueIdentifier>{74aa48f5-a269-46c7-a614-b645f4b57fa0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Collision.cpp">
@@ -120,6 +144,57 @@
     <ClCompile Include="ObjGround2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ObjBoat.cpp">
+      <Filter>ソース ファイル\ギミック4（ボート）</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBoat_Tank.cpp">
+      <Filter>ソース ファイル\ギミック4（ボート）</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjGround3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjColorDoor.cpp">
+      <Filter>ソース ファイル\ギミック8（色付き門）</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjColorDoor_Tank.cpp">
+      <Filter>ソース ファイル\ギミック8（色付き門）</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank2.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Tank3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDownBlock_TankStage2.cpp">
+      <Filter>ソース ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjDownBlockStage2.cpp">
+      <Filter>ソース ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjScale.cpp">
+      <Filter>ソース ファイル\ギミック5（天秤）</Filter>
+    </ClCompile>
+    <ClCompile Include="WTM3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjScale_Tank.cpp">
+      <Filter>ソース ファイル\ギミック5（天秤）</Filter>
+    </ClCompile>
+    <ClCompile Include="WTM2.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ZTank.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprinkler2.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprinkler3.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="AllClear.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine\Collision.h">
@@ -204,6 +279,57 @@
       <Filter>ヘッダー ファイル\ギミック3（動かす足場）</Filter>
     </ClInclude>
     <ClInclude Include="ObjGround2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoat.h">
+      <Filter>ヘッダー ファイル\ギミック4（ボート）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjBoat_Tank.h">
+      <Filter>ヘッダー ファイル\ギミック4（ボート）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjGround3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjColorDoor.h">
+      <Filter>ヘッダー ファイル\ギミック8（色付き門）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjColorDoor_Tank.h">
+      <Filter>ヘッダー ファイル\ギミック8（色付き門）</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDownBlock_TankStage2.h">
+      <Filter>ヘッダー ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjDownBlockStage2.h">
+      <Filter>ヘッダー ファイル\ギミック6%28下がるブロック%29</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjScale.h">
+      <Filter>ヘッダー ファイル\ギミック5（天秤）</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjScale_Tank.h">
+      <Filter>ヘッダー ファイル\ギミック5（天秤）</Filter>
+    </ClInclude>
+    <ClInclude Include="WTM3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="WTM2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ZTank.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprinkler2.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprinkler3.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="AllClear.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

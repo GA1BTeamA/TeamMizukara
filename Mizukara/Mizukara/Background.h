@@ -18,7 +18,11 @@ private:
 	float m_x; //位置
 	float m_y;
 	float m_x2;
-	float m_y2;
+
+	float m_x_2;  //2枚目の空の位置
+	float m_x2_2;
+
+	//float m_x_scroll;  //空のスクロール用
 
 	float m_scroll;//左右スクロール用
 };

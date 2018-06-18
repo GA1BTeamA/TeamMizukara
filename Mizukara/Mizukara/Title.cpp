@@ -20,28 +20,31 @@ CTitle::~CTitle()
 
 void CTitle::Action()
 {
-	//左を押したら左に
-	if (Input::KeyPush(VK_LEFT)==true)
-	{
-		m_cursor = LEFT;
+	Audio::StartLoopMusic(3);
+	Audio::LoopMusicVolume(3, 0.05f);
+	if (m_IsDrawOpe == false) {
+		//左を押したら左に
+		if (Input::KeyPush(VK_LEFT) == true)
+		{
+			m_cursor = LEFT;
+		}
+		//右を押したら右に
+		else if (Input::KeyPush(VK_RIGHT) == true)
+		{
+			m_cursor = RIGHT;
+		}
+		//下を押したら下に
+		else if (Input::KeyPush(VK_DOWN) == true)
+		{
+			if (m_cursor != UNDER)
+				m_BefCursor = m_cursor;
+			m_cursor = UNDER;
+		}
+		else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
+		{
+			m_cursor = m_BefCursor;
+		}
 	}
-	//右を押したら右に
-	else if (Input::KeyPush(VK_RIGHT) == true)
-	{
-		m_cursor = RIGHT;
-	}
-	//下を押したら下に
-	else if (Input::KeyPush(VK_DOWN) == true)
-	{
-		if(m_cursor!=UNDER)
-			m_BefCursor = m_cursor;
-		m_cursor = UNDER;
-	}
-	else if (Input::KeyPush(VK_UP) == true && m_cursor==UNDER)
-	{
-		m_cursor = m_BefCursor;
-	}
-
 	//カーソル位置が左なら
 	if (m_cursor==LEFT)
 	{
@@ -49,6 +52,8 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(3);
+				Audio::StartMusic(0);
 				g_SceneNumber = STORY;
 				is_delete = true;
 				g_key_flag = false;
@@ -66,6 +71,8 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(3);
+				Audio::StartMusic(0);
 				g_SceneNumber = STAGESELECTO;
 				is_delete = true;
 				g_key_flag = false;
@@ -89,6 +96,7 @@ void CTitle::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				m_IsDrawOpe = !(m_IsDrawOpe);
 				g_key_flag = false;
 			}
@@ -106,15 +114,15 @@ void CTitle::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 80, 270);
+		Draw::Draw2D(14, 85, 320);
 	}
 	else if(m_cursor==RIGHT)
 	{
-		Draw::Draw2D(14,440, 270);
+		Draw::Draw2D(14,448, 320);
 	}
 	else 
 	{
-		Draw::Draw2D(14, 280, 430);
+		Draw::Draw2D(14, 275, 450);
 	}
 
 	if (m_IsDrawOpe) 

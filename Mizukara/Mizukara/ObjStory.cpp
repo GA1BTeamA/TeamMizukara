@@ -8,7 +8,7 @@ extern int g_SceneNumber;
 extern bool g_key_flag;
 
 CObjStory::CObjStory()
-	:m_x(0), m_y(0),m_time(0)
+	:m_x(0), m_y(0),m_time(0), m_StoryScene(0)
 {
 
 }
@@ -20,20 +20,40 @@ CObjStory::~CObjStory()
 
 void CObjStory::Action()
 {
+	Audio::StartLoopMusic(4);
+	Audio::LoopMusicVolume(4, 0.05f);
+
 	//アニメーション終了でステージセレクトへ
-	if (m_time++ > 300) {
-		g_SceneNumber = STAGESELECTO;
-		is_delete = true;
-	}
+	//if (m_time++ > 300) {
+	//	Audio::StopLoopMusic(4);
+	//	g_SceneNumber = STAGESELECTO;
+	//	is_delete = true;
+	//}
 
 	//エンターキーでスキップ
 	if (Input::KeyPush(VK_RETURN) == true)
 	{
 		if (g_key_flag)
 		{
-			g_SceneNumber = STAGESELECTO;
-			is_delete = true;
-			g_key_flag = false;
+			switch (m_StoryScene)
+			{
+			case 0:
+				m_StoryScene++;
+				g_key_flag = false;
+				break;
+
+			case 1:
+				m_StoryScene++;
+				g_key_flag = false;
+				break;
+
+			case 2:
+				Audio::StopLoopMusic(4);
+				g_SceneNumber = STAGESELECTO;
+				is_delete = true;
+				g_key_flag = false;
+				break;
+			}
 		}
 	}
 	else
@@ -46,5 +66,19 @@ void CObjStory::Action()
 
 void CObjStory::Draw()
 {
-	Draw::Draw2D(20, m_x, m_y);
+	switch (m_StoryScene)
+	{
+	case 0:
+		Draw::Draw2D(20, m_x, m_y);
+		break;
+
+	case 1:
+		Draw::Draw2D(85, m_x, m_y);
+		break;
+
+	case 2:
+		Draw::Draw2D(86, m_x, m_y);
+		break;
+	}
+
 }

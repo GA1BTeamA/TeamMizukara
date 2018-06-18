@@ -16,7 +16,7 @@ public:
 	void Draw();
 
 	HitLine* GetHitLineSpri() { return m_p_hit_line_spri; }
-	bool GetCrearCnt() { return m_CrearCnt; }
+	bool GetCrearCnt1() { return m_CrearCnt1; }
 	//float GetTankRemaining() { return m_TankRemaining; }
 
 private:
@@ -48,7 +48,7 @@ private:
 	int m_ani_time6;
 
 	int count;
-	bool m_CrearCnt;  //クリア出すためのカウント
+	bool m_CrearCnt1;  //クリア出すためのカウント
 	bool m_Flower;  //花咲かせるためのカウント卍
 
 	//float g_TankRemaining;  //タンクの残量

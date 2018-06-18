@@ -10,8 +10,8 @@ extern bool g_key_flag;
 extern bool g_clearlist;
 
 //コンストラクタ
-CMenu::CMenu()
-	:m_x(20), m_y(20), m_cursor(LEFT)
+CMenu::CMenu(unsigned int n)
+	:m_x(20), m_y(20), m_cursor(LEFT),m_StageNo(n)
 {
 	m_name = MENU;
 }
@@ -52,12 +52,26 @@ void CMenu::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				//ヒーローオブジェクト情報取得
 				CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 				if (hero != nullptr)
 				{
 					hero->MenuDel();
 					is_delete = true;
+					Audio::StopLoopMusic(2);
+					switch (m_StageNo)
+					{
+					case 1:
+						Audio::StartLoopMusic(6);
+						break;
+					case 2:
+						Audio::StartLoopMusic(7);
+						break;
+					case 3:
+						Audio::StartLoopMusic(8);
+						break;
+					}
 				}
 			}
 		}
@@ -73,9 +87,11 @@ void CMenu::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StartMusic(0);
 				g_SceneNumber = TITLE;
 				g_clearlist = true;
 				g_key_flag = false;
+				Audio::StopLoopMusic(2);
 			}
 		}
 		else
@@ -90,9 +106,27 @@ void CMenu::Action()
 		{
 			if (g_key_flag)
 			{
-				g_SceneNumber = GAME;
+				Audio::StartMusic(0);
+				//同じステージをやり直す
+				switch (m_StageNo)
+				{
+				case 1:
+					g_SceneNumber = GAME;
+					Audio::StartLoopMusic(6);
+					break;
+				case 2:
+					g_SceneNumber = GAME2;
+					Audio::StartLoopMusic(7);
+					break;
+				case 3:
+					g_SceneNumber = GAME3;
+					Audio::StartLoopMusic(8);
+					break;
+
+				}
 				g_clearlist = true;
 				g_key_flag = false;
+				Audio::StopLoopMusic(2);
 			}
 		}
 		else

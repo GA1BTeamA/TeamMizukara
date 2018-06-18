@@ -20,9 +20,12 @@ CStageSelecto::~CStageSelecto()
 
 void CStageSelecto::Action()
 {
+	Audio::StartLoopMusic(5);
+	Audio::LoopMusicVolume(5, 0.05f);
 
 		//左を押したら左に
-		if (Input::KeyPush(VK_LEFT) == true)
+		if (Input::KeyPush(VK_LEFT) == true ||
+			Input::KeyPush(VK_UP) == true)
 		{
 			if (key_flag)
 			{
@@ -35,11 +38,12 @@ void CStageSelecto::Action()
 			}
 		}
 		//右を押したら右に
-		else if (Input::KeyPush(VK_RIGHT) == true)
+		else if (Input::KeyPush(VK_RIGHT) == true ||
+				Input::KeyPush(VK_DOWN) == true)
 		{
 			if (key_flag)
 			{
-				if (m_cursor < 4)
+				if (m_cursor < 2)
 				{
 					m_cursor++;
 					key_flag = false;
@@ -80,7 +84,11 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
+				Audio::StartLoopMusic(6);
+				Audio::LoopMusicVolume(6, 0.05f);
 				is_delete = true;
 				g_key_flag = false;
 			}
@@ -97,7 +105,11 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME2;
+				Audio::StartLoopMusic(7);
+				Audio::LoopMusicVolume(7, 0.05f);
 				is_delete = true;
 				g_key_flag = false;
 			}
@@ -114,7 +126,11 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
-				g_SceneNumber = GAME;
+				Audio::StopLoopMusic(5);
+				Audio::StartMusic(0);
+				g_SceneNumber = GAME3;
+				Audio::StartLoopMusic(8);
+				Audio::LoopMusicVolume(8, 0.05f);
 				is_delete = true;
 				g_key_flag = false;
 			}
@@ -124,13 +140,15 @@ void CStageSelecto::Action()
 			g_key_flag = true;
 		}
 	}
-	//カーソル位置が右下なら
+	/*//カーソル位置が右下なら
 	else if (m_cursor == UNDER_RIGHT)
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
 			if (g_key_flag)
 			{
+				Audio::StopLoopMusic(5);
+				Audio::StartMusic(0);
 				g_SceneNumber = GAME;
 				is_delete = true;
 				g_key_flag = false;
@@ -148,7 +166,11 @@ void CStageSelecto::Action()
 		{
 			if (g_key_flag)
 			{
-				g_SceneNumber = GAME;
+				Audio::StopLoopMusic(5);
+				Audio::StartMusic(0);
+				g_SceneNumber = GAME3;
+				Audio::StartLoopMusic(8);
+				Audio::LoopMusicVolume(8, 0.05f);
 				is_delete = true;
 				g_key_flag = false;
 			}
@@ -157,7 +179,7 @@ void CStageSelecto::Action()
 		{
 			g_key_flag = true;
 		}
-	}
+	}*/
 }
 
 void CStageSelecto::Draw()
@@ -167,21 +189,21 @@ void CStageSelecto::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 85, 75);
+		Draw::Draw2D(14, 91, 75);
 	}
 	else if (m_cursor == RIGHT)
 	{
-		Draw::Draw2D(14, 470, 75);
-	}
-	else if (m_cursor == UNDER){
 		Draw::Draw2D(14, 280, 210);
 	}
-	else if (m_cursor == UNDER_LEFT) {
+	else if (m_cursor == UNDER){
+		Draw::Draw2D(14, 470, 335);
+	}
+	/*else if (m_cursor == UNDER_LEFT) {
 		Draw::Draw2D(14, 90, 330);
 	}
 	else if (m_cursor == UNDER_RIGHT) {
 		Draw::Draw2D(14, 470, 330);
-	}
+	}*/
 
 
 	

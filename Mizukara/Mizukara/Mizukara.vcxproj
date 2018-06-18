@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AllClear.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BucketMeter.cpp" />
     <ClCompile Include="GameEngine\Audio.cpp" />
@@ -131,17 +132,30 @@
     <ClCompile Include="GameEngine\WindowCreate.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="ObjBoat.cpp" />
+    <ClCompile Include="ObjBoat_Tank.cpp" />
+    <ClCompile Include="ObjColorDoor.cpp" />
+    <ClCompile Include="ObjColorDoor_Tank.cpp" />
     <ClCompile Include="ObjDownBlock.cpp" />
+    <ClCompile Include="ObjDownBlockStage2.cpp" />
     <ClCompile Include="ObjDownBlock_Tank.cpp" />
+    <ClCompile Include="ObjDownBlock_TankStage2.cpp" />
     <ClCompile Include="ObjGround2.cpp" />
+    <ClCompile Include="ObjGround3.cpp" />
     <ClCompile Include="ObjMoveBlock.cpp" />
     <ClCompile Include="ObjMoveBlock_Tank.cpp" />
+    <ClCompile Include="ObjScale.cpp" />
+    <ClCompile Include="ObjScale_Tank.cpp" />
     <ClCompile Include="ObjStory.cpp" />
     <ClCompile Include="ObjUpScaffold.cpp" />
     <ClCompile Include="ObjUpScaffold_Tank.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Sprinkler.cpp" />
+    <ClCompile Include="Sprinkler2.cpp" />
+    <ClCompile Include="Sprinkler3.cpp" />
     <ClCompile Include="StageSelecto.cpp" />
+    <ClCompile Include="Tank2.cpp" />
+    <ClCompile Include="Tank3.cpp" />
     <ClCompile Include="WTM.cpp" />
     <ClCompile Include="ObjGround.cpp" />
     <ClCompile Include="SceneMain.cpp">
@@ -149,8 +163,12 @@
     </ClCompile>
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="WTM2.cpp" />
+    <ClCompile Include="WTM3.cpp" />
+    <ClCompile Include="ZTank.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllClear.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BucketMeter.h" />
     <ClInclude Include="GameEngine\Audio.h" />
@@ -163,17 +181,30 @@
     <ClInclude Include="GameEngine\WindowCreate.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="ObjBoat.h" />
+    <ClInclude Include="ObjBoat_Tank.h" />
+    <ClInclude Include="ObjColorDoor.h" />
+    <ClInclude Include="ObjColorDoor_Tank.h" />
     <ClInclude Include="ObjDownBlock.h" />
+    <ClInclude Include="ObjDownBlockStage2.h" />
     <ClInclude Include="ObjDownBlock_Tank.h" />
+    <ClInclude Include="ObjDownBlock_TankStage2.h" />
     <ClInclude Include="ObjGround2.h" />
+    <ClInclude Include="ObjGround3.h" />
     <ClInclude Include="ObjMoveBlock.h" />
     <ClInclude Include="ObjMoveBlock_Tank.h" />
+    <ClInclude Include="ObjScale.h" />
+    <ClInclude Include="ObjScale_Tank.h" />
     <ClInclude Include="ObjStory.h" />
     <ClInclude Include="ObjUpScaffold.h" />
     <ClInclude Include="ObjUpScaffold_Tank.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="Sprinkler.h" />
+    <ClInclude Include="Sprinkler2.h" />
+    <ClInclude Include="Sprinkler3.h" />
     <ClInclude Include="StageSelecto.h" />
+    <ClInclude Include="Tank2.h" />
+    <ClInclude Include="Tank3.h" />
     <ClInclude Include="WTM.h" />
     <ClInclude Include="ObjGround.h" />
     <ClInclude Include="SceneMain.h">
@@ -181,6 +212,9 @@
     </ClInclude>
     <ClInclude Include="Tank.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="WTM2.h" />
+    <ClInclude Include="WTM3.h" />
+    <ClInclude Include="ZTank.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="GameEngine\libogg_static.lib" />

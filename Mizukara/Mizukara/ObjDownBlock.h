@@ -10,7 +10,7 @@
 class ObjDownBlock :public CObj
 {
 public:
-	ObjDownBlock();
+	ObjDownBlock(float x,float y);
 	~ObjDownBlock();
 
 	void Action();
@@ -27,6 +27,7 @@ private:
 	float m_gx;//グラフィックの位置
 	float m_gy;
 
+	float m_rope_y;//ロープの位置
 	float m_RopeSizeScaffold;
 
 	HitLine* m_hit_line_DwBl[4];//当たり判定
