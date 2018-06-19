@@ -574,7 +574,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
-			spri2->m_DrawPriority = 60;
+			spri2->m_DrawPriority = 100;
 			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;
@@ -677,13 +677,13 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(colordoort3);
 
 			//赤タンク
-			colordoort4 = new ObjColorDoor_Tank(2550, 334, 75, 847, 380, 4);
+			colordoort4 = new ObjColorDoor_Tank(2550, 336, 75, 847, 380, 4);
 			colordoort4->m_ActionPriority = 110;
 			colordoort4->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort4);
 
 			//緑タンク
-			colordoort5 = new ObjColorDoor_Tank(2700, 334, 82, 992, 292, 5);
+			colordoort5 = new ObjColorDoor_Tank(2700, 336, 82, 992, 292, 5);
 			colordoort5->m_ActionPriority = 110;
 			colordoort5->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort5);
@@ -732,7 +732,7 @@ unsigned __stdcall GameMainSled(void *p)
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
 
-			wtm3_Clear = new CWTM3(2920.0f, 170.0f,0);
+			wtm3_Clear = new CWTM3(2945.0f, 150.0f,0);
 			wtm3_Clear->m_ActionPriority = 70;
 			wtm3_Clear->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_Clear);

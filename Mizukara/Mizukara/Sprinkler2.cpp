@@ -21,7 +21,7 @@ CSPRI2::CSPRI2()
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
 	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
 	, m_CrearCnt2(false), m_Flower(false)
-	, m_fx(734), m_fy(258)
+	, m_fx(734), m_fy(250)
 {
 	m_name = SPRI2;
 
