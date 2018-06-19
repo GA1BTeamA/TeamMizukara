@@ -19,7 +19,6 @@ const float CWTM2::m_wave_amount = 0.3f*0.04f;
 
 CWTM2::CWTM2(float x,float y,bool im)
 	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-85), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-31), m_water_remaining(1.4)
 	, im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4),m_IsImUpDw(im)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)

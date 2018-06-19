@@ -69,12 +69,12 @@ void CAllClear::Draw()
 	if (m_sy <= 420)
 	{
 		Draw::Draw2D(9, m_x + 250, m_sy + m_y + 600);//ƒWƒƒƒ“ƒv
-		Draw::Draw2D(115, m_x + 520, 370 + m_y + 600);//‚¨‚¶‚¢‚¿‚á‚ñ
+		Draw::Draw2D(116, m_x + 520, 370 + m_y + 600);//‚¨‚¶‚¢‚¿‚á‚ñ
 	}
 	else
 	{
 		Draw::Draw2D(72, m_x + 250, m_sy + m_y + 600);
-		Draw::Draw2D(114, m_x + 520, 370 + m_y + 600);
+		Draw::Draw2D(115, m_x + 520, 370 + m_y + 600);
 	}
 
 }
