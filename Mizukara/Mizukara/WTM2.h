@@ -10,7 +10,7 @@
 class CWTM2 : public CObj
 {
 public:
-	CWTM2(float x,float y);
+	CWTM2(float x,float y,bool im);
 	~CWTM2();
 	void Action();
 	void Draw();
@@ -23,6 +23,8 @@ private:
 
 	float im_x;//アイコンの位置
 	float im_y;
+
+	bool m_IsImUpDw;//アイコンが上か下か
 
 	float m_water_x;  //水の位置
 	float m_water_y;

@@ -17,9 +17,9 @@ const float CWTM2::m_WaveSize_y = 0.6f*0.2f;
 const float CWTM2::m_water_amount = 0.01f*0.04f;
 const float CWTM2::m_wave_amount = 0.3f*0.04f;
 
-CWTM2::CWTM2(float x,float y)
+CWTM2::CWTM2(float x,float y,bool im)
 	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-85), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4)
+	, im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4),m_IsImUpDw(im)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);
@@ -95,7 +95,10 @@ void CWTM2::Draw()
 		{
 			if (m_p_hit_line_wtm->GetHitData()[i]->GetElement() == 0)
 			{
-				Draw::Draw2D(21, im_x + ground2->GetScroll(), im_y);
+				if(m_IsImUpDw)
+					Draw::Draw2D(21, im_x + ground2->GetScroll(), im_y);
+				else
+					Draw::Draw2D(21, im_x+100 + ground2->GetScroll(), im_y+100);
 			}
 		}
 	}
