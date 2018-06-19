@@ -206,6 +206,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112番目に"StageSelectoMoji.png"を読み込み
 	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113番目に"StageSelectoHaikei.png"を読み込み
 	Draw::LoadImage(114, L"Images\\Stage1BK1.png");//114番目に"Stage1BK1.png"を読み込み
+	Draw::LoadImage(115, L"Images\\ClearBrackBack.png");//115番目に"ClearBrackBack.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -438,7 +439,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;
-			bucketmeter->m_DrawPriority = 170;
+			bucketmeter->m_DrawPriority = 90;
 			TaskSystem::InsertObj(bucketmeter);
 
 			spri = new CSPRI();
@@ -562,7 +563,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;
-			bucketmeter->m_DrawPriority = 170;
+			bucketmeter->m_DrawPriority = 100;
 			TaskSystem::InsertObj(bucketmeter);
 
 			wtm2_Clear = new CWTM2(2947.0f, 315.0f);
@@ -572,7 +573,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			spri2 = new CSPRI2();
 			spri2->m_ActionPriority = 150;
-			spri2->m_DrawPriority = 60;
+			spri2->m_DrawPriority = 110;
 			TaskSystem::InsertObj(spri2);
 
 			g_SceneNumber = GAME_MAIN2;
@@ -688,7 +689,7 @@ unsigned __stdcall GameMainSled(void *p)
 
 			bucketmeter = new CBucketMeter();
 			bucketmeter->m_ActionPriority = 140;
-			bucketmeter->m_DrawPriority = 170;
+			bucketmeter->m_DrawPriority = 150;
 			TaskSystem::InsertObj(bucketmeter);
 
 			//天秤ギミック

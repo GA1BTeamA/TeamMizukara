@@ -18,7 +18,7 @@ extern bool g_clearlist;
 
 //コンストラクタ
 CResult::CResult()
-	:m_x(0), m_y(0), m_cursor(0)
+	:m_x(0), m_y(0), m_cursor(0), m_alpha_value(0)
 {
 	m_name = RESULT;
 }
@@ -151,6 +151,10 @@ void CResult::Action()
 		}
 	}
 	
+	if (m_alpha_value <= 1.0f)
+	{
+		m_alpha_value += 0.02f;
+	}
 }
 
 void CResult::Draw()
@@ -159,50 +163,52 @@ void CResult::Draw()
 	CSPRI2* spri2 = (CSPRI2*)TaskSystem::GetObj(SPRI2);
 	CSPRI3* spri3 = (CSPRI3*)TaskSystem::GetObj(SPRI3);
 
+	float rgba[4] = { 1.0f,1.0f,1.0f,m_alpha_value };
+
 	if (spri!=nullptr && spri->GetCrearCnt1())
 	{
-		Draw::Draw2D(101, m_x, m_y);
+		Draw::Draw2D(101, m_x, m_y, rgba);
 	}
 	else if (spri2 != nullptr && spri2->GetCrearCnt2())
 	{
-		Draw::Draw2D(102, m_x, m_y);
+		Draw::Draw2D(102, m_x, m_y, rgba);
 	}
 	else if (spri3 != nullptr && spri3->GetCrearCnt3())
 	{
-		Draw::Draw2D(103, m_x, m_y);
+		Draw::Draw2D(103, m_x, m_y, rgba);
 	}
 
 	if (m_cursor == 0)
 	{
-		Draw::Draw2D(14, 295, 90);
+		Draw::Draw2D(14, 295, 90, rgba);
 	}
 	else if (m_cursor == 1)
 	{
-		Draw::Draw2D(14, 300, 215);
+		Draw::Draw2D(14, 300, 215, rgba);
 	}
 	else {
-		Draw::Draw2D(14,295, 320);
+		Draw::Draw2D(14,295, 320, rgba);
 	}
 
 	//ランク表示
 	if (g_TankRemaining >= 40)
 	{
-		Draw::Draw2D(108, 83, 243);
+		Draw::Draw2D(108, 83, 243, rgba);
 	}
 	else if (g_TankRemaining >= 35)
 	{
-		Draw::Draw2D(107, 83, 243);
+		Draw::Draw2D(107, 83, 243, rgba);
 	}
 	else if (g_TankRemaining >= 25)
 	{
-		Draw::Draw2D(106, 83, 243);
+		Draw::Draw2D(106, 83, 243, rgba);
 	}
 	else if (g_TankRemaining >= 10)
 	{
-		Draw::Draw2D(105, 83, 243);
+		Draw::Draw2D(105, 83, 243, rgba);
 	}
 	else if (g_TankRemaining >= 1)
 	{
-		Draw::Draw2D(104, 83, 243);
+		Draw::Draw2D(104, 83, 243, rgba);
 	}
 }

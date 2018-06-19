@@ -21,7 +21,9 @@ CSPRI3::CSPRI3()
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
 	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
 	, m_CrearCnt3(false), m_Flower(false)
-	, m_fx(734), m_fy(258)
+	, m_fx(734), m_fy(258), m_BrackBackDraw(false), m_BrackBackDrawCnt(0)
+	, m_BrackBack_sx(6.0f), m_BrackBack_sy(6.0f)
+	, m_BrackBack_x(-3780), m_BrackBack_y(-1425)
 {
 	m_name = SPRI3;
 
@@ -56,23 +58,51 @@ void CSPRI3::Action()
 		//エンターキーが押されたら
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
-			//破棄
 			if (g_key_flag)
 			{
-				Audio::StopLoopMusic(9);
-				//if (m_ani_time6 >= 1000)
-				//{
-					g_SceneNumber = RESULT;
-					//g_clearlist = true;
-					g_key_flag = false;
-					//g_TankRemaining = false;
-				//}
+				//黒背景の表示をtrueにする
+				m_BrackBackDraw = true;
 			}
 		}
 		else
 		{
 			g_key_flag = true;
 		}
+	}
+
+	//破棄
+	if (m_BrackBackDrawCnt == 60)
+	{
+		Audio::StopLoopMusic(9);
+		//if (m_ani_time6 >= 1000)
+		//{
+		g_SceneNumber = RESULT;
+		//g_clearlist = true;
+		g_key_flag = false;
+		//g_TankRemaining = false;
+		//}
+	}
+
+	//黒背景縮小と移動
+	if (m_BrackBackDraw == true && m_BrackBack_sx > 1.1f)
+	{
+		//縮小
+		m_BrackBack_sx -= 0.1f;
+		m_BrackBack_sy -= 0.1f;
+		//花中心になるように移動
+		m_BrackBack_x += 75.6f;//元の位置の50分の1の値
+		m_BrackBack_y += 28.5f;
+	}
+	else if (m_BrackBack_sx<1.1f)
+	{
+		//縮小しきったらカウントスタート
+		m_BrackBackDrawCnt++;
+	}
+
+	//カウントが100を超えるとストップするようにしてるつもり
+	if (m_BrackBackDrawCnt > 61)
+	{
+		m_BrackBackDrawCnt = 61;
 	}
 
 	for (int i = 0; i < 10; i++)
@@ -392,5 +422,10 @@ void CSPRI3::Draw()
 		Draw::Draw2D(93, m_fx, m_fy);  //Dランク
 	}
 
+	//黒背景表示
+	if (m_BrackBackDraw == true)
+	{
+		Draw::Draw2D(115, m_BrackBack_x, m_BrackBack_y, m_BrackBack_sx, m_BrackBack_sy);  //クリア後の黒背景
+	}
 
 }

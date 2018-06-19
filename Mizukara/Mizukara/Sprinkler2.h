@@ -47,6 +47,14 @@ private:
 	int m_ani_time5;
 	int m_ani_time6;
 
+	bool m_BrackBackDraw;//クリア後の黒背景表示するしない用
+	float m_BrackBackDrawCnt;//黒背景拡縮カウント用
+
+	float m_BrackBack_x;//黒背景の位置
+	float m_BrackBack_y;
+	float m_BrackBack_sx;//黒背景拡縮
+	float m_BrackBack_sy;
+
 	int count;
 	bool m_CrearCnt2;  //クリア出すためのカウント
 	bool m_Flower;  //花咲かせるためのカウント卍
