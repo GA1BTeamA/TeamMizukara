@@ -9,11 +9,10 @@
 extern int g_SceneNumber;
 
 const float ObjMoveBlock_Tank::m_WaveSize_x = 0.25f*0.2;
-const float ObjMoveBlock_Tank::m_WaveSize_y = 0.4f*0.2;
 
 //コンストラクタ
 ObjMoveBlock_Tank::ObjMoveBlock_Tank()
-	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(380),m_water_x(1620),m_water_y(390),
+	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(384),m_water_x(1620),m_water_y(394),
 	 m_ani_time1(0.0f),m_ani_time2(0.0f) ,m_water_remaining(0.0f), m_water_remaining2(0.0f)
 {
 	//ヒットラインの作成(左)
@@ -171,6 +170,11 @@ void ObjMoveBlock_Tank::Action()
 
 	}
 
+	m_WaveSize_y = m_water_remaining *0.04f;
+	if (m_WaveSize_y > 0.08f)m_WaveSize_y = 0.08f;
+	m_WaveSize_y2 = m_water_remaining2 *0.04f;
+	if (m_WaveSize_y2 > 0.08f)m_WaveSize_y2 = 0.08f;
+
 	//当たり判定位置の更新
 	m_hit_line_MoBlTank->SetPos1(m_x + ground->GetScroll(), m_y);
 	m_hit_line_MoBlTank->SetPos2(m_x + ground->GetScroll(), m_y + 100);
@@ -223,95 +227,9 @@ void ObjMoveBlock_Tank::Draw()
 
 	//波アニメーション(後ろ)
 	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y- m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//if (m_ani_time1 < 10)
-	//{
-	//}
-	//else if (m_ani_time1 < 20)
-	//{
-	//	Draw::Draw2D(37, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 30)
-	//{
-	//	Draw::Draw2D(38, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 40)
-	//{
-	//	Draw::Draw2D(39, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 50)
-	//{
-	//	Draw::Draw2D(40, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 60)
-	//{
-	//	Draw::Draw2D(41, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 70)
-	//{
-	//	Draw::Draw2D(42, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 80)
-	//{
-	//	Draw::Draw2D(43, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 90)
-	//{
-	//	Draw::Draw2D(44, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 100)
-	//{
-	//	Draw::Draw2D(45, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 110)
-	//{
-	//	Draw::Draw2D(46, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
 
 	//波アニメーション2(後ろ)
-	Draw::Draw2D(36 + (m_ani_time2 / 5), m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//if (m_ani_time1 < 10)
-	//{
-	//}
-	//else if (m_ani_time1 < 20)
-	//{
-	//	Draw::Draw2D(37, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 30)
-	//{
-	//	Draw::Draw2D(38, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 40)
-	//{
-	//	Draw::Draw2D(39, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 50)
-	//{
-	//	Draw::Draw2D(40, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 60)
-	//{
-	//	Draw::Draw2D(41, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 70)
-	//{
-	//	Draw::Draw2D(42, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 80)
-	//{
-	//	Draw::Draw2D(43, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 90)
-	//{
-	//	Draw::Draw2D(44, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 100)
-	//{
-	//	Draw::Draw2D(45, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
-	//else if (m_ani_time1 < 110)
-	//{
-	//	Draw::Draw2D(46, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	//}
+	Draw::Draw2D(36 + (m_ani_time2 / 10), m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y2);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -324,96 +242,11 @@ void ObjMoveBlock_Tank::Draw()
 	}
 
 	//波アニメーション
-	if (m_ani_time2 < 5)
-	{
-		Draw::Draw2D(25, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 10)
-	{
-		Draw::Draw2D(26, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 15)
-	{
-		Draw::Draw2D(27, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 20)
-	{
-		Draw::Draw2D(28, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 25)
-	{
-		Draw::Draw2D(29, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 30)
-	{
-		Draw::Draw2D(30, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 35)
-	{
-		Draw::Draw2D(31, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 40)
-	{
-		Draw::Draw2D(32, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 45)
-	{
-		Draw::Draw2D(33, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 50)
-	{
-		Draw::Draw2D(34, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 55)
-	{
-		Draw::Draw2D(35, m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
-	}
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
 
 	//波アニメーション2(前)
-	if (m_ani_time2 < 5)
-	{
-		Draw::Draw2D(25, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 10)
-	{
-		Draw::Draw2D(26, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 15)
-	{
-		Draw::Draw2D(27, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 20)
-	{
-		Draw::Draw2D(28, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 25)
-	{
-		Draw::Draw2D(29, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 30)
-	{
-		Draw::Draw2D(30, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 35)
-	{
-		Draw::Draw2D(31, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 40)
-	{
-		Draw::Draw2D(32, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 45)
-	{
-		Draw::Draw2D(33, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 50)
-	{
-		Draw::Draw2D(34, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 55)
-	{
-		Draw::Draw2D(35, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
-	}
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y2);
 
-	Draw::Draw2D(60, 1620 + ground->GetScroll(), 330, 1, 1);
+
+	Draw::Draw2D(60, 1620 + ground->GetScroll(), 334, 1, 1);
 }

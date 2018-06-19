@@ -19,4 +19,8 @@ private:
 	float m_y;
 
 	float m_vy;//ベクトル
+	float m_sy;//主人公のジャンプ用
+	float m_svy;//主人公のジャンプ用ベクトル
+
+	int m_ani_time;
 };

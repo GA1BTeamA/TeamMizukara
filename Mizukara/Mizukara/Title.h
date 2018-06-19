@@ -25,4 +25,6 @@ private:
 	bool m_IsDrawStageSelecto;//ステージセレクト描画
 
 	bool key_flag;  //キーが押されているかチェック用
+
+	int m_ani_time;//アイコン変更アニメーション
 };

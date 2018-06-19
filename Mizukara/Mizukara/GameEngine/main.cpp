@@ -206,7 +206,9 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112番目に"StageSelectoMoji.png"を読み込み
 	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113番目に"StageSelectoHaikei.png"を読み込み
 	Draw::LoadImage(114, L"Images\\Stage1BK1.png");//114番目に"Stage1BK1.png"を読み込み
-	Draw::LoadImage(115, L"Images\\ClearBrackBack.png");//115番目に"ClearBrackBack.png"を読み込み
+	Draw::LoadImage(115, L"Images\\uncle1.png");//115番目に"uncle1.png"を読み込み
+	Draw::LoadImage(116, L"Images\\uncle2.png");//116番目に"uncle2.png"を読み込み
+	Draw::LoadImage(117, L"Images\\ClearBrackBack.png");//117番目に"ClearBrackBack.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -541,17 +543,17 @@ unsigned __stdcall GameMainSled(void *p)
 			scale_t5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t5);
 
-			wtm2_1 = new CWTM2(650.0f,315.0f);
+			wtm2_1 = new CWTM2(650.0f,315.0f,true);
 			wtm2_1->m_ActionPriority = 70;
 			wtm2_1->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_1);
 
-			wtm2_2 = new CWTM2(1260.0f, 188.0f);
+			wtm2_2 = new CWTM2(1260.0f, 188.0f,false);
 			wtm2_2->m_ActionPriority = 70;
 			wtm2_2->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_2);
 
-			wtm2_3 = new CWTM2(1940.0f, 145.0f);
+			wtm2_3 = new CWTM2(1940.0f, 145.0f,false);
 			wtm2_3->m_ActionPriority = 70;
 			wtm2_3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_3);
@@ -566,7 +568,7 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_DrawPriority = 100;
 			TaskSystem::InsertObj(bucketmeter);
 
-			wtm2_Clear = new CWTM2(2947.0f, 315.0f);
+			wtm2_Clear = new CWTM2(2947.0f, 315.0f,true);
 			wtm2_Clear->m_ActionPriority = 70;
 			wtm2_Clear->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_Clear);
@@ -676,13 +678,13 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(colordoort3);
 
 			//赤タンク
-			colordoort4 = new ObjColorDoor_Tank(2550, 334, 75, 847, 380, 4);
+			colordoort4 = new ObjColorDoor_Tank(2550, 336, 75, 847, 380, 4);
 			colordoort4->m_ActionPriority = 110;
 			colordoort4->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort4);
 
 			//緑タンク
-			colordoort5 = new ObjColorDoor_Tank(2700, 334, 82, 992, 292, 5);
+			colordoort5 = new ObjColorDoor_Tank(2700, 336, 82, 992, 292, 5);
 			colordoort5->m_ActionPriority = 110;
 			colordoort5->m_DrawPriority = 110;
 			TaskSystem::InsertObj(colordoort5);
@@ -731,7 +733,7 @@ unsigned __stdcall GameMainSled(void *p)
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);
 
-			wtm3_Clear = new CWTM3(2920.0f, 170.0f,0);
+			wtm3_Clear = new CWTM3(2945.0f, 150.0f,0);
 			wtm3_Clear->m_ActionPriority = 70;
 			wtm3_Clear->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_Clear);

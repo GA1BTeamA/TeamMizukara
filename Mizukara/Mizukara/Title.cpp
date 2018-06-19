@@ -8,7 +8,7 @@ extern bool g_key_flag;
 
 //コンストラクタ
 CTitle::CTitle()
-	:m_x(0), m_y(0),m_cursor(LEFT), m_IsDrawOpe(false)
+	:m_x(0), m_y(0),m_cursor(LEFT), m_IsDrawOpe(false),m_ani_time(0.0f)
 {
 
 }
@@ -20,6 +20,11 @@ CTitle::~CTitle()
 
 void CTitle::Action()
 {
+	if (m_ani_time != 0)
+	{
+		m_ani_time++;
+	}
+
 	Audio::StartLoopMusic(3);
 	Audio::LoopMusicVolume(3, 0.05f);
 	if (m_IsDrawOpe == false) {
@@ -45,12 +50,16 @@ void CTitle::Action()
 			m_cursor = m_BefCursor;
 		}
 	}
+
+	if (Input::KeyPush(VK_RETURN) == true)
+	{
+		m_ani_time++;
+	}
+
 	//カーソル位置が左なら
 	if (m_cursor==LEFT)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
+			if (m_ani_time==25)
 			{
 				Audio::StopLoopMusic(3);
 				Audio::StartMusic(0);
@@ -58,18 +67,11 @@ void CTitle::Action()
 				is_delete = true;
 				g_key_flag = false;
 			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
 	}
 	//カーソル位置が右なら
 	else if (m_cursor == RIGHT)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
+			if (m_ani_time==25)
 			{
 				Audio::StopLoopMusic(3);
 				Audio::StartMusic(0);
@@ -77,34 +79,17 @@ void CTitle::Action()
 				is_delete = true;
 				g_key_flag = false;
 			}
-			/*if (key_flag)
-			{
-				m_IsDrawStageSelecto = !(m_IsDrawStageSelecto);
-				key_flag = false;
-			}*/
-		}
-		else
-		{
-			g_key_flag = true;
-		}
-		
 	}
 	//カーソル位置が下なら
 	else 
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
+			if (m_ani_time==25)
 			{
 				Audio::StartMusic(0);
 				m_IsDrawOpe = !(m_IsDrawOpe);
 				g_key_flag = false;
+				m_ani_time = 0;
 			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
 	}
 }
 
@@ -114,15 +99,27 @@ void CTitle::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 85, 320);
+		Draw::Draw2D(14, 84, 320);
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			Draw::Draw2D(111, 84, 320);
+		}
 	}
 	else if(m_cursor==RIGHT)
 	{
-		Draw::Draw2D(14,448, 320);
+		Draw::Draw2D(14,450, 320);
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			Draw::Draw2D(111, 450, 320);
+		}
 	}
 	else 
 	{
-		Draw::Draw2D(14, 275, 450);
+		Draw::Draw2D(14, 270, 450);
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			Draw::Draw2D(111, 270, 450);
+		}
 	}
 
 	if (m_IsDrawOpe) 
