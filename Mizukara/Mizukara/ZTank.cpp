@@ -178,7 +178,7 @@ void ObjElephant_Tank::Draw()
 	float c[4] = { 1.0f,1.0f,1.0f,m_alpha };
 
 	//“ø•`‰æ
-	Draw::Draw2D(87, ground->GetScroll() + 2450, 200,c);
+	Draw::Draw2D(87, ground->GetScroll() + 2450, 202,c);
 
 	//ƒVƒƒƒ[•`‰æ
 	if (m_ani_time_Shower != 0 && m_ani_time_Shower != 150) {
