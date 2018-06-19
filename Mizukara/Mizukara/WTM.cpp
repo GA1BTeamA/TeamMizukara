@@ -19,7 +19,7 @@ const float CWTM::m_wave_amount = 0.3f*0.04f;
 
 CWTM::CWTM(float x,float y)
 	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-85),m_ani_time1(0.0f),m_ani_time2(0.0f)
-	,im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4)
+	,im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30.2), m_water_remaining(1.4)
 {
 	//ƒqƒbƒgƒ‰ƒCƒ“‚Ìì¬(¶)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);

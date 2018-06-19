@@ -37,7 +37,8 @@ private:
 	float m_water_remaining2;
 
 	static const float m_WaveSize_x;  //波のサイズ用
-	static const float m_WaveSize_y;
+	float m_WaveSize_y;
+	float m_WaveSize_y2;
 
 	HitLine* m_hit_line_MoBlTank;//当たり判定
 	HitLine* m_hit_line_MoBlTank2;//当たり判定
