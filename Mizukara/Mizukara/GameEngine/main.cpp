@@ -191,7 +191,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(97, L"Images\\SSuzuran.png");//97”Ô–Ú‚É"SSuzuran.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98”Ô–Ú‚É"AllClear.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(99, L"Images\\Box.png");//99”Ô–Ú‚É"Box.png"‚ğ“Ç‚İ‚İ
-	Draw::LoadImage(100, L"Images\\Stage1BK.png");//100”Ô–Ú‚É"Stage1BK.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(100, L"Images\\Stage1BK2.png");//100”Ô–Ú‚É"Stage1BK2.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(101, L"Images\\Stage1clear.png");//101”Ô–Ú‚É"Stage1clear.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(102, L"Images\\Stage2clear.png");//102”Ô–Ú‚É"Stage2clear.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(103, L"Images\\Stage3clear.png");//103”Ô–Ú‚É"Stage3clear.png"‚ğ“Ç‚İ‚İ
@@ -205,6 +205,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(111, L"Images\\sibuki.png");//111”Ô–Ú‚É"sibuki.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112”Ô–Ú‚É"StageSelectoMoji.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113”Ô–Ú‚É"StageSelectoHaikei.png"‚ğ“Ç‚İ‚İ
+	Draw::LoadImage(114, L"Images\\Stage1BK1.png");//114”Ô–Ú‚É"Stage1BK1.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(114, L"Images\\uncle1.png");//114”Ô–Ú‚É"uncle1.png"‚ğ“Ç‚İ‚İ
 	Draw::LoadImage(115, L"Images\\uncle2.png");//115”Ô–Ú‚É"uncle2.png"‚ğ“Ç‚İ‚İ
 
