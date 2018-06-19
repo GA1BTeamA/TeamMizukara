@@ -75,7 +75,7 @@ void CSPRI::Action()
 	}
 
 	//破棄
-	if (m_BrackBackDrawCnt == 60)
+	if (m_BrackBackDrawCnt == 40)
 	{
 		Audio::StopLoopMusic(9);
 		g_SceneNumber = RESULT;
@@ -100,10 +100,10 @@ void CSPRI::Action()
 		m_BrackBackDrawCnt++;
 	}
 
-	//カウントが100を超えるとストップするようにしてるつもり
-	if (m_BrackBackDrawCnt > 61)
+	//カウントが40を超えるとストップするようにしてるつもり
+	if (m_BrackBackDrawCnt > 41)
 	{
-		m_BrackBackDrawCnt = 61;
+		m_BrackBackDrawCnt = 41;
 	}
 
 	for (int i = 0; i < 10; i++)
@@ -317,7 +317,7 @@ void CSPRI::Draw()
 	//黒背景表示
 	if (m_BrackBackDraw == true)
 	{
-		Draw::Draw2D(115,m_BrackBack_x,m_BrackBack_y, m_BrackBack_sx, m_BrackBack_sy);  //クリア後の黒背景
+		Draw::Draw2D(117,m_BrackBack_x,m_BrackBack_y, m_BrackBack_sx, m_BrackBack_sy);  //クリア後の黒背景
 	}
 
 	/*if (m_ani_time3 >= 29)

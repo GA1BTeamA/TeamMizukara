@@ -153,7 +153,7 @@ void CResult::Action()
 	
 	if (m_alpha_value <= 1.0f)
 	{
-		m_alpha_value += 0.02f;
+		m_alpha_value += 0.04f;
 	}
 }
 
