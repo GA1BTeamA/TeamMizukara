@@ -21,7 +21,7 @@ CSPRI3::CSPRI3()
 	, m_move1(0.0f), m_move2(0.0f), im_x(2150), im_y(130),
 	m_water_x(2950), m_water_y(242), m_vy(0.0f), m_sy(230)
 	, m_CrearCnt3(false), m_Flower(false)
-	, m_fx(734), m_fy(258)
+	, m_fx(734), m_fy(250)
 {
 	m_name = SPRI3;
 
@@ -330,11 +330,11 @@ void CSPRI3::Draw()
 
 								if (m_move2 <= 10)//スプリンクラーから水が出る
 								{
-									Draw::Draw2D(51, m_wave_x + ground3->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
+									Draw::Draw2D(51, m_wave_x + ground3->GetScroll() + 60 + m_move1, m_wave_y-4, 1, 1);
 								}
 								else if (m_move2 >= 11 && m_move2 < 20)
 								{
-									Draw::Draw2D(51, m_wave_x + ground3->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
+									Draw::Draw2D(51, m_wave_x + ground3->GetScroll() + 97 + m_move1, m_wave_y - 6, -1, 1);
 								}
 								else
 								{

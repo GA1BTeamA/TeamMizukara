@@ -308,11 +308,11 @@ void CSPRI2::Draw()
 
 								if (m_move2 <= 10)//スプリンクラーから水が出る
 								{
-									Draw::Draw2D(51, m_wave_x + ground2->GetScroll() + 60 + m_move1, m_wave_y, 1, 1);
+									Draw::Draw2D(51, m_wave_x + ground2->GetScroll() + 60 + m_move1, m_wave_y-4, 1, 1);
 								}
 								else if (m_move2 >= 11 && m_move2 < 20)
 								{
-									Draw::Draw2D(51, m_wave_x + ground2->GetScroll() + 97 + m_move1, m_wave_y + 2, -1, 1);
+									Draw::Draw2D(51, m_wave_x + ground2->GetScroll() + 97 + m_move1, m_wave_y - 6, -1, 1);
 								}
 								else
 								{
