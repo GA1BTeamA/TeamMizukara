@@ -191,7 +191,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(97, L"Images\\SSuzuran.png");//97番目に"SSuzuran.png"を読み込み
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98番目に"AllClear.png"を読み込み
 	Draw::LoadImage(99, L"Images\\Box.png");//99番目に"Box.png"を読み込み
-	Draw::LoadImage(100, L"Images\\Stage1BK.png");//100番目に"Stage1BK.png"を読み込み
+	Draw::LoadImage(100, L"Images\\Stage1BK2.png");//100番目に"Stage1BK2.png"を読み込み
 	Draw::LoadImage(101, L"Images\\Stage1clear.png");//101番目に"Stage1clear.png"を読み込み
 	Draw::LoadImage(102, L"Images\\Stage2clear.png");//102番目に"Stage2clear.png"を読み込み
 	Draw::LoadImage(103, L"Images\\Stage3clear.png");//103番目に"Stage3clear.png"を読み込み
@@ -205,6 +205,9 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(111, L"Images\\sibuki.png");//111番目に"sibuki.png"を読み込み
 	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112番目に"StageSelectoMoji.png"を読み込み
 	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113番目に"StageSelectoHaikei.png"を読み込み
+	Draw::LoadImage(114, L"Images\\Stage1BK1.png");//114番目に"Stage1BK1.png"を読み込み
+	Draw::LoadImage(115, L"Images\\uncle1.png");//114番目に"uncle1.png"を読み込み
+	Draw::LoadImage(116, L"Images\\uncle2.png");//115番目に"uncle2.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
@@ -539,17 +542,17 @@ unsigned __stdcall GameMainSled(void *p)
 			scale_t5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t5);
 
-			wtm2_1 = new CWTM2(650.0f,315.0f);
+			wtm2_1 = new CWTM2(650.0f,315.0f,true);
 			wtm2_1->m_ActionPriority = 70;
 			wtm2_1->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_1);
 
-			wtm2_2 = new CWTM2(1260.0f, 188.0f);
+			wtm2_2 = new CWTM2(1260.0f, 188.0f,false);
 			wtm2_2->m_ActionPriority = 70;
 			wtm2_2->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_2);
 
-			wtm2_3 = new CWTM2(1940.0f, 145.0f);
+			wtm2_3 = new CWTM2(1940.0f, 145.0f,false);
 			wtm2_3->m_ActionPriority = 70;
 			wtm2_3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_3);
@@ -564,7 +567,7 @@ unsigned __stdcall GameMainSled(void *p)
 			bucketmeter->m_DrawPriority = 170;
 			TaskSystem::InsertObj(bucketmeter);
 
-			wtm2_Clear = new CWTM2(2947.0f, 315.0f);
+			wtm2_Clear = new CWTM2(2947.0f, 315.0f,true);
 			wtm2_Clear->m_ActionPriority = 70;
 			wtm2_Clear->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm2_Clear);

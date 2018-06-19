@@ -106,13 +106,22 @@ void CResult::Action()
 		{
 			if (g_key_flag)
 			{
-				Audio::StartMusic(0);
-				Audio::StopLoopMusic(10);
-				g_SceneNumber = TITLE;
-				g_clearlist = true;
-				TaskSystem::TaskClear();
-				is_delete = true;
-				g_key_flag = false;
+				if (ground3 != nullptr) {
+					g_SceneNumber = ALLCLEAR;
+					g_clearlist = true;
+					TaskSystem::TaskClear();
+					is_delete = true;
+					g_key_flag = false;
+				}
+				else {
+					Audio::StartMusic(0);
+					Audio::StopLoopMusic(10);
+					g_SceneNumber = TITLE;
+					g_clearlist = true;
+					TaskSystem::TaskClear();
+					is_delete = true;
+					g_key_flag = false;
+				}
 			}
 		}
 		else
@@ -127,22 +136,13 @@ void CResult::Action()
 		{
 			if (g_key_flag)
 			{
-				if (ground3 != nullptr) {
-					g_SceneNumber = ALLCLEAR;
-					g_clearlist = true;
-					TaskSystem::TaskClear();
-					is_delete = true;
-					g_key_flag = false;
-				}
-				else {
-					Audio::StartMusic(0);
-					Audio::StopLoopMusic(10);
-					g_SceneNumber = STAGESELECTO;
-					g_clearlist = true;
-					TaskSystem::TaskClear();
-					is_delete = true;
-					g_key_flag = false;
-				}
+				Audio::StartMusic(0);
+				Audio::StopLoopMusic(10);
+				g_SceneNumber = STAGESELECTO;
+				g_clearlist = true;
+				TaskSystem::TaskClear();
+				is_delete = true;
+				g_key_flag = false;
 			}
 		}
 		else
@@ -174,11 +174,11 @@ void CResult::Draw()
 
 	if (m_cursor == 0)
 	{
-		Draw::Draw2D(14, 295, 90);
+		Draw::Draw2D(14, 295, 92);
 	}
 	else if (m_cursor == 1)
 	{
-		Draw::Draw2D(14, 300, 215);
+		Draw::Draw2D(14, 296, 201);
 	}
 	else {
 		Draw::Draw2D(14,295, 320);
