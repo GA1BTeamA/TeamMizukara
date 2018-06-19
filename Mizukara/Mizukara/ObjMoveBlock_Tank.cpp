@@ -13,7 +13,7 @@ const float ObjMoveBlock_Tank::m_WaveSize_y = 0.4f*0.2;
 
 //コンストラクタ
 ObjMoveBlock_Tank::ObjMoveBlock_Tank()
-	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(380),m_water_x(1620),m_water_y(390),
+	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(384),m_water_x(1620),m_water_y(394),
 	 m_ani_time1(0.0f),m_ani_time2(0.0f) ,m_water_remaining(0.0f), m_water_remaining2(0.0f)
 {
 	//ヒットラインの作成(左)
@@ -415,5 +415,5 @@ void ObjMoveBlock_Tank::Draw()
 		Draw::Draw2D(35, m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y);
 	}
 
-	Draw::Draw2D(60, 1620 + ground->GetScroll(), 330, 1, 1);
+	Draw::Draw2D(60, 1620 + ground->GetScroll(), 334, 1, 1);
 }
