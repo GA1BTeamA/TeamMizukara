@@ -174,11 +174,11 @@ void CResult::Draw()
 
 	if (m_cursor == 0)
 	{
-		Draw::Draw2D(14, 295, 90);
+		Draw::Draw2D(14, 295, 92);
 	}
 	else if (m_cursor == 1)
 	{
-		Draw::Draw2D(14, 300, 215);
+		Draw::Draw2D(14, 296, 201);
 	}
 	else {
 		Draw::Draw2D(14,295, 320);

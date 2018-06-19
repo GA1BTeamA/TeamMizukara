@@ -114,15 +114,15 @@ void CTitle::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 85, 320);
+		Draw::Draw2D(14, 84, 320);
 	}
 	else if(m_cursor==RIGHT)
 	{
-		Draw::Draw2D(14,448, 320);
+		Draw::Draw2D(14,450, 320);
 	}
 	else 
 	{
-		Draw::Draw2D(14, 275, 450);
+		Draw::Draw2D(14, 270, 450);
 	}
 
 	if (m_IsDrawOpe) 
