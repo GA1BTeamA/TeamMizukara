@@ -191,7 +191,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(97, L"Images\\SSuzuran.png");//97番目に"SSuzuran.png"を読み込み
 	Draw::LoadImage(98, L"Images\\AllClear.png");//98番目に"AllClear.png"を読み込み
 	Draw::LoadImage(99, L"Images\\Box.png");//99番目に"Box.png"を読み込み
-	Draw::LoadImage(100, L"Images\\Stage1BK.png");//100番目に"Stage1BK.png"を読み込み
+	Draw::LoadImage(100, L"Images\\Stage1BK2.png");//100番目に"Stage1BK2.png"を読み込み
 	Draw::LoadImage(101, L"Images\\Stage1clear.png");//101番目に"Stage1clear.png"を読み込み
 	Draw::LoadImage(102, L"Images\\Stage2clear.png");//102番目に"Stage2clear.png"を読み込み
 	Draw::LoadImage(103, L"Images\\Stage3clear.png");//103番目に"Stage3clear.png"を読み込み
@@ -205,6 +205,7 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(111, L"Images\\sibuki.png");//111番目に"sibuki.png"を読み込み
 	Draw::LoadImage(112, L"Images\\StageSelectoMoji.png");//112番目に"StageSelectoMoji.png"を読み込み
 	Draw::LoadImage(113, L"Images\\StageSelectoHaikei.png");//113番目に"StageSelectoHaikei.png"を読み込み
+	Draw::LoadImage(114, L"Images\\Stage1BK1.png");//114番目に"Stage1BK1.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
