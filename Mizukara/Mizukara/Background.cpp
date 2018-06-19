@@ -27,9 +27,9 @@ void CBackground::Action()
 	if (g_SceneNumber == GAME_MAIN)
 	{
 		//ƒXƒNƒ[ƒ‹’l‰ÁŽZ
-		m_x -= 0.2f;
+		m_x -= 0.15f;
 		m_x2 -= 0.05f;
-		m_x_2 -= 0.2f;
+		m_x_2 -= 0.15f;
 		m_x2_2 -= 0.05f;
 
 		//’[‚Á‚±‚Ü‚Å—ˆ‚½‚çˆÊ’u‚ðXV(‰_‚¾‚¯)
@@ -62,10 +62,12 @@ void CBackground::Draw()
 
 	//”wŒi•`‰æ
 	if (ground != nullptr) {
-		Draw::Draw2D(24, m_x, m_y);
-		Draw::Draw2D(24, m_x_2, m_y);
+		//Draw::Draw2D(24, m_x, m_y);
+		Draw::Draw2D(24, 0, 0);
 		Draw::Draw2D(100, m_x2, m_y);
 		Draw::Draw2D(100, m_x2_2, m_y);
+		Draw::Draw2D(114, m_x, m_y);
+		Draw::Draw2D(114, m_x_2, m_y);
 		Draw::Draw2D(110, ground->GetScroll()*0.2f, m_y);
 	}
 	else if(ground2!=nullptr)
