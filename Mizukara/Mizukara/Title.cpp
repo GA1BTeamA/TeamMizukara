@@ -53,7 +53,14 @@ void CTitle::Action()
 
 	if (Input::KeyPush(VK_RETURN) == true)
 	{
-		m_ani_time++;
+		if (g_key_flag)
+		{
+			m_ani_time++;
+		}
+	}
+	else
+	{
+		g_key_flag = true;
 	}
 
 	//カーソル位置が左なら
@@ -113,8 +120,7 @@ void CTitle::Draw()
 	}
 	else 
 	{
-		Draw::Draw2D(14, 270, 450);
-		if (m_ani_time)
+		if(m_ani_time)
 			Draw::Draw2D(111, 270, 450);
 		else
 			Draw::Draw2D(14, 270, 450);

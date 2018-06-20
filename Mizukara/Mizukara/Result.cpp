@@ -30,7 +30,7 @@ CResult::~CResult()
 
 void CResult::Action()
 {
-	Audio::StopLoopMusic(6);
+	Audio::StopLoopMusic(9);
 
 	Audio::StartLoopMusic(10);
 	Audio::LoopMusicVolume(10, 0.07f);
@@ -70,8 +70,8 @@ void CResult::Action()
 			if (g_key_flag)
 			{
 				if (ground != nullptr) {
-					Audio::StopLoopMusic(5);
 					Audio::StartMusic(0);
+					Audio::StopLoopMusic(10);
 					g_SceneNumber = GAME2;
 					Audio::StartLoopMusic(7);
 					Audio::LoopMusicVolume(7, 0.05f);
@@ -80,9 +80,9 @@ void CResult::Action()
 					is_delete = true;
 					g_key_flag = false;
 				}
-				else if (ground2 != nullptr) {
-					Audio::StopLoopMusic(5);
+				else if (ground2 != nullptr) {	
 					Audio::StartMusic(0);
+					Audio::StopLoopMusic(10);
 					g_SceneNumber = GAME3;
 					Audio::StartLoopMusic(8);
 					Audio::LoopMusicVolume(8, 0.05f);
@@ -104,10 +104,15 @@ void CResult::Action()
 	{
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
+
 			if (g_key_flag)
 			{
 				if (ground3 != nullptr) {
+					Audio::StartMusic(0);
+					Audio::StopLoopMusic(10);
 					g_SceneNumber = ALLCLEAR;
+					Audio::StartLoopMusic(11);
+					Audio::LoopMusicVolume(11, 0.07f);
 					g_clearlist = true;
 					TaskSystem::TaskClear();
 					is_delete = true;
