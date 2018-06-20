@@ -60,7 +60,6 @@ void ObjMoveBlock_Tank::Action()
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
 							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
-						//	m_moveX -= 0.2f;
 							mb->AddX(-1.0f);
 
 							if (bm != nullptr) {
@@ -68,7 +67,7 @@ void ObjMoveBlock_Tank::Action()
 								bm->PushX();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
 						}
 					}
@@ -86,8 +85,8 @@ void ObjMoveBlock_Tank::Action()
 							//足場オブジェクト取得
 							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
 							//地面に当たってなかったら
-							if (mb->GetX() <= 1972 || mb->GetY() <= 283.0f ) {
-								//		m_moveY += 0.2f;
+							if (mb->GetX() <= 1972 || mb->GetY() <= 283.0f ) 
+							{
 								mb->AddX(1.0f);
 
 								if (bm != nullptr) {
@@ -121,7 +120,6 @@ void ObjMoveBlock_Tank::Action()
 						if (m_water_remaining2 > 0.0f) {
 							//足場オブジェクト取得
 							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
-							//m_moveX -= 0.2f;
 							mb->AddY(-1.0f);
 
 							if (bm != nullptr) {
@@ -129,7 +127,7 @@ void ObjMoveBlock_Tank::Action()
 								bm->PushX();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining2 -= 0.02666;
 						}
 					}
@@ -149,7 +147,6 @@ void ObjMoveBlock_Tank::Action()
 							if (mb->GetX() < 1972 || mb->GetY() <= 283.0f) {
 								if (mb->GetY() < 365.0f) {
 
-									//	m_moveY += 0.2f;
 									mb->AddY(1.0f);
 
 									if (bm != nullptr) {
@@ -222,8 +219,8 @@ void ObjMoveBlock_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.025, -(0.027 * m_water_remaining *1/6));
-	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.025, -(0.027*m_water_remaining2 *1/6));
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.025, -(0.025 * m_water_remaining *1/6));
+	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.025, -(0.025*m_water_remaining2 *1/6));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)

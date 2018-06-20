@@ -23,13 +23,6 @@ void CObjStory::Action()
 	Audio::StartLoopMusic(4);
 	Audio::LoopMusicVolume(4, 0.05f);
 
-	//アニメーション終了でステージセレクトへ
-	//if (m_time++ > 300) {
-	//	Audio::StopLoopMusic(4);
-	//	g_SceneNumber = STAGESELECTO;
-	//	is_delete = true;
-	//}
-
 	//エンターキーでスキップ
 	if (Input::KeyPush(VK_RETURN) == true)
 	{

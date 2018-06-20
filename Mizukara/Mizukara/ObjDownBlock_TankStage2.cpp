@@ -70,9 +70,6 @@ void ObjDownBlock_TankStage2::Action()
 							if (m_wave_y < 248)m_wave_y -= 0.26f;
 							else m_wave_y -= 0.3f;
 							m_water_y -= 0.325f;  //水の位置
-												  //m_WaveSize_y -= 0.01f;
-												  //m_RopeSizeBoard -= 0.0006f;
-												  //m_RopeSizeBucket += 0.0006f;
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -99,8 +96,6 @@ void ObjDownBlock_TankStage2::Action()
 						if (m_water_remaining < 2.0f) {
 							//足場オブジェクト取得
 							ObjDownBlockStage2* db = (ObjDownBlockStage2*)TaskSystem::GetObj(DOWNBLOCKSTAGE2);
-							//m_moveY += 0.2f;
-							//db->AddY(-0.2f);
 							m_gy += 0.5f;  //バケツ移動
 							m_RopeSizeBucket += 0.0015f;  //バケツ側ロープ長さ変更
 
@@ -114,10 +109,7 @@ void ObjDownBlock_TankStage2::Action()
 							if (m_wave_y < 248)m_wave_y += 0.26f;
 							else m_wave_y += 0.3f;
 							m_water_y += 0.325f;  //水の位置
-												  //m_WaveSize_y += 0.01f;
-												  ////m_RopeSizeBoard += 0.0006f;
-												  //m_RopeSizeBucket -= 0.0006f;
-
+												
 							if (bm != nullptr) {
 								//バケツメーターにセット
 								bm->PushC();

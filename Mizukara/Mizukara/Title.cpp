@@ -110,14 +110,13 @@ void CTitle::Draw()
 			Draw::Draw2D(111, 84, 320);
 		else
 			Draw::Draw2D(14, 84, 320);
-
 	}
 	else if(m_cursor==RIGHT)
 	{
-		if(m_ani_time)
+		if (m_ani_time)
 			Draw::Draw2D(111, 450, 320);
 		else
-			Draw::Draw2D(14,450, 320);
+			Draw::Draw2D(14, 450, 320);
 	}
 	else 
 	{
