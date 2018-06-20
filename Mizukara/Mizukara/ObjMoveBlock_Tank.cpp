@@ -12,7 +12,7 @@ const float ObjMoveBlock_Tank::m_WaveSize_x = 0.25f*0.2;
 
 //コンストラクタ
 ObjMoveBlock_Tank::ObjMoveBlock_Tank()
-	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(384),m_water_x(1620),m_water_y(394),
+	:m_x(1600), m_y(250),m_x2(1690),m_y2(250),m_wave_x(1620),m_wave_y(384), m_wave_y2(384),m_water_x(1620),m_water_y(394),
 	 m_ani_time1(0.0f),m_ani_time2(0.0f) ,m_water_remaining(0.0f), m_water_remaining2(0.0f)
 {
 	//ヒットラインの作成(左)
@@ -60,7 +60,6 @@ void ObjMoveBlock_Tank::Action()
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
 							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
-						//	m_moveX -= 0.2f;
 							mb->AddX(-1.0f);
 
 							if (bm != nullptr) {
@@ -68,7 +67,7 @@ void ObjMoveBlock_Tank::Action()
 								bm->PushX();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining -= 0.02666;
 						}
 					}
@@ -86,8 +85,8 @@ void ObjMoveBlock_Tank::Action()
 							//足場オブジェクト取得
 							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
 							//地面に当たってなかったら
-							if (mb->GetX() <= 1972 || mb->GetY() <= 283.0f ) {
-								//		m_moveY += 0.2f;
+							if (mb->GetX() <= 1972 || mb->GetY() <= 283.0f ) 
+							{
 								mb->AddX(1.0f);
 
 								if (bm != nullptr) {
@@ -121,7 +120,6 @@ void ObjMoveBlock_Tank::Action()
 						if (m_water_remaining2 > 0.0f) {
 							//足場オブジェクト取得
 							ObjMoveBlock* mb = (ObjMoveBlock*)TaskSystem::GetObj(MOVEBLOCK);
-							//m_moveX -= 0.2f;
 							mb->AddY(-1.0f);
 
 							if (bm != nullptr) {
@@ -129,7 +127,7 @@ void ObjMoveBlock_Tank::Action()
 								bm->PushX();
 							}
 
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining2 -= 0.02666;
 						}
 					}
@@ -149,7 +147,6 @@ void ObjMoveBlock_Tank::Action()
 							if (mb->GetX() < 1972 || mb->GetY() <= 283.0f) {
 								if (mb->GetY() < 365.0f) {
 
-									//	m_moveY += 0.2f;
 									mb->AddY(1.0f);
 
 									if (bm != nullptr) {
@@ -169,6 +166,16 @@ void ObjMoveBlock_Tank::Action()
 		}
 
 	}
+
+	if (m_water_remaining<2.0f) {
+		m_wave_y = 384 + 5.0f*(2.0f - m_water_remaining);
+	}
+	else m_wave_y = 384;
+
+	if (m_water_remaining2<2.0f) {
+		m_wave_y2 = 384 + 5.0f*(2.0f - m_water_remaining2);
+	}
+	else m_wave_y2 = 384;
 
 	m_WaveSize_y = m_water_remaining *0.04f;
 	if (m_WaveSize_y > 0.08f)m_WaveSize_y = 0.08f;
@@ -212,8 +219,8 @@ void ObjMoveBlock_Tank::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.025, -(0.027 * m_water_remaining *1/6));
-	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.025, -(0.027*m_water_remaining2 *1/6));
+	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 0.025, -(0.025 * m_water_remaining *1/6));
+	Draw::Draw2D(48, m_water_x + 48 + ground->GetScroll(), m_water_y, 0.025, -(0.025*m_water_remaining2 *1/6));
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -229,7 +236,7 @@ void ObjMoveBlock_Tank::Draw()
 	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y- m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
 
 	//波アニメーション2(後ろ)
-	Draw::Draw2D(36 + (m_ani_time2 / 10), m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y2);
+	Draw::Draw2D(36 + (m_ani_time2 / 10), m_wave_x + 48 + ground->GetScroll(), m_wave_y2 - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y2);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -245,7 +252,7 @@ void ObjMoveBlock_Tank::Draw()
 	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
 
 	//波アニメーション2(前)
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + 48 + ground->GetScroll(), m_wave_y - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y2);
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + 48 + ground->GetScroll(), m_wave_y2 - m_water_remaining2 * 2, m_WaveSize_x, m_WaveSize_y2);
 
 
 	Draw::Draw2D(60, 1620 + ground->GetScroll(), 334, 1, 1);

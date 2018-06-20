@@ -26,6 +26,7 @@ private:
 
 	float m_wave_x;  //”g‚ÌˆÊ’u
 	float m_wave_y;
+	float m_wave_y2;
 
 	float m_water_x;  //…‚ÌˆÊ’u
 	float m_water_y;

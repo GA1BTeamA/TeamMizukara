@@ -111,9 +111,9 @@ void CSPRI3::Action()
 		{
 			if (m_p_hit_line_spri3->GetHitData()[i]->GetElement() == 0)
 			{
-				Audio::StopLoopMusic(6);
+				Audio::StopLoopMusic(8);
 
-				Audio::StartLoopMusic(9);
+ 				Audio::StartLoopMusic(9);
 				Audio::LoopMusicVolume(9, 0.05f);
 
 				//タンクの水をスプリンクラーから出す

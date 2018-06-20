@@ -103,7 +103,6 @@ void ObjScale_Tank::Action()
 						//満タンだったら入れれない
 						if (m_water_remaining < 6.0f) {
 							//地面に当たってなかったら
-				//			if (sc->GetX() <= 1972 || mb->GetY() <= 283.0f) {
 							m_angle += -0.1f;
 
 								if (bm != nullptr) {
@@ -157,8 +156,6 @@ void ObjScale_Tank::Action()
 					if (bm->GetWaterRem() > 0.0f) {
 						//満タンだったら入れれない
 						if (m_water_remaining2 < 6.0f) {
-							//			if (sc->GetX() < 1972 || mb->GetY() <= 283.0f) {
-				//				if (sc->GetY() < 365.0f) {
 
 							m_angle += 0.1f;
 
@@ -169,8 +166,6 @@ void ObjScale_Tank::Action()
 
 									//（バケツ満タン/75フレーム）
 									m_water_remaining2 += 0.02666;
-				//				}
-				//			}
 						}
 					}
 				}
@@ -227,12 +222,7 @@ void ObjScale_Tank::Action()
 		m_hit_line_ScaleTank2[1]->SetPos2(m_x2 + 60 + ground3->GetScroll() + m_angle_x2, m_y2 + 30 + m_angle_y2);
 		break;
 	}
-	////当たり判定位置の更新
-	//m_hit_line_ScaleTank->SetPos1(m_x + ground->GetScroll()+ m_angle_x, m_y - 30 + m_angle_y);
-	//m_hit_line_ScaleTank->SetPos2(m_x + ground->GetScroll()+ m_angle_x, m_y + m_angle_y);
-
-	//m_hit_line_ScaleTank2->SetPos1(m_x2-50 + ground->GetScroll() + m_angle_x2, m_y2 - 30 + m_angle_y2);
-	//m_hit_line_ScaleTank2->SetPos2(m_x2-50 + ground->GetScroll() + m_angle_x2, m_y2 + m_angle_y2);
+	
 }
 
 //ドロー
