@@ -108,7 +108,7 @@ void CSPRI2::Action()
 		{
 			if (m_p_hit_line_spri2->GetHitData()[i]->GetElement() == 0)
 			{
-				Audio::StopLoopMusic(6);
+				Audio::StopLoopMusic(7);
 
 				Audio::StartLoopMusic(9);
 				Audio::LoopMusicVolume(9, 0.05f);

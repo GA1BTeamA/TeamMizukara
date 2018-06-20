@@ -20,6 +20,10 @@ CAllClear::~CAllClear()
 
 void CAllClear::Action()
 {
+	Audio::StopLoopMusic(10);
+
+	Audio::StartLoopMusic(11);
+	Audio::LoopMusicVolume(11, 0.07f);
 
 	//ŽžŠÔ‰ÁŽZ
 	if (m_ani_time < 600.0f)m_ani_time++;
@@ -46,7 +50,7 @@ void CAllClear::Action()
 		if (g_key_flag)
 		{
 			Audio::StartMusic(0);
-			Audio::StopLoopMusic(10);
+			Audio::StopLoopMusic(11);
 			g_SceneNumber = TITLE;
 			g_clearlist = true;
 			TaskSystem::TaskClear();
