@@ -12,14 +12,13 @@ extern bool g_key_flag;
 
 //波サイズ初期化
 const float CWTM::m_WaveSize_x = 0.5f;
-const float CWTM::m_WaveSize_y = 0.6f;
 
 const float CWTM::m_water_amount = 0.01f*0.04f;
 const float CWTM::m_wave_amount = 0.3f*0.04f;
 
 CWTM::CWTM(float x,float y)
 	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-85),m_ani_time1(0.0f),m_ani_time2(0.0f)
-	,im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30.2), m_water_remaining(1.4)
+	,im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30.2), m_water_remaining(1.4), m_WaveSize_y(0.6f)
 {
 	//ヒットラインの作成(左)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);
@@ -75,6 +74,12 @@ void CWTM::Action()
 
 	//波の位置更新
 	m_wave_y = m_y-85 + 42 * (100 - tank->GetWater_Remaining()*2)*0.01;
+	//水が20以下
+	if (tank->GetWater_Remaining() < 20.0f)
+		m_wave_y += 14 * (20.0f - tank->GetWater_Remaining())*0.05f;
+
+	m_WaveSize_y = tank->GetWater_Remaining()*0.6f*0.05f;
+	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 

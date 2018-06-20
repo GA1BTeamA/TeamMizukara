@@ -66,7 +66,7 @@ void CTitle::Action()
 	//カーソル位置が左なら
 	if (m_cursor==LEFT)
 	{
-			if (m_ani_time==25)
+			if (m_ani_time>=25)
 			{
 				Audio::StopLoopMusic(3);
 				Audio::StartMusic(0);
@@ -78,7 +78,7 @@ void CTitle::Action()
 	//カーソル位置が右なら
 	else if (m_cursor == RIGHT)
 	{
-			if (m_ani_time==25)
+			if (m_ani_time>=25)
 			{
 				Audio::StopLoopMusic(3);
 				Audio::StartMusic(0);
@@ -90,7 +90,7 @@ void CTitle::Action()
 	//カーソル位置が下なら
 	else 
 	{
-			if (m_ani_time==25)
+			if (m_ani_time>=25)
 			{
 				Audio::StartMusic(0);
 				m_IsDrawOpe = !(m_IsDrawOpe);

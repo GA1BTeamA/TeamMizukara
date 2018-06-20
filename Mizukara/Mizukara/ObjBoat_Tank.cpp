@@ -184,8 +184,11 @@ void ObjBoat_Tank::Action()
 	//if (m_wave_y > 356)
 		m_WaveSize_y = m_water_remaining *0.02f;
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
-	m_WaterSize_y = -(m_water_remaining *0.0045f);
-	if (m_WaterSize_y > 0.6f)m_WaterSize_y = 0.6f;
+	if (m_water_remaining < 4.0f)
+	{
+		m_WaterSize_y = -(m_water_remaining *0.0045f);
+		if (m_WaterSize_y > 0.6f)m_WaterSize_y = 0.6f;
+	}
 
 	//“–‚½‚è”»’èˆÊ’u‚ÌXV
 	m_hit_line_BoatTank[0]->SetPos1(m_x + ground2->GetScroll()+70, m_y);
@@ -224,6 +227,7 @@ void ObjBoat_Tank::Draw()
 						if (m_wave_y < 248)m_wave_y += 0.26f;
 						else if (m_wave_y > 356)m_wave_y += 0;
 						else m_wave_y += 0.08f;
+						m_WaterSize_y += 0.018f/ 160.0;
 					}
 					else if (m_ani_time_x >= 161)
 					{
