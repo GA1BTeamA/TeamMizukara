@@ -136,7 +136,7 @@ void CSPRI3::Action()
 	}
 
 	//m_ani_time5++;
-	if (m_ani_time5 == 50 && m_sy == 230)
+	if (m_ani_time5 == 50 && m_sy == 230 && g_SceneNumber != RESULT_MAIN)
 	{
 		m_vy = -8.0f;
 		m_CrearCnt3 = true;
@@ -199,52 +199,6 @@ void CSPRI3::Draw()
 		m_ani_time1++;
 	}
 
-	//波アニメーション
-	/*if (m_ani_time1 < 10)
-	{
-		Draw::Draw2D(36, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 20)
-	{
-		Draw::Draw2D(37, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 30)
-	{
-		Draw::Draw2D(38, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 40)
-	{
-		Draw::Draw2D(39, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 50)
-	{
-		Draw::Draw2D(40, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 60)
-	{
-		Draw::Draw2D(41, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 70)
-	{
-		Draw::Draw2D(42, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 80)
-	{
-		Draw::Draw2D(43, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 90)
-	{
-		Draw::Draw2D(44, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 100)
-	{
-		Draw::Draw2D(45, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time1 < 110)
-	{
-		Draw::Draw2D(46, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}*/
-
 	//波の表示(前)
 	if (m_ani_time2 >= 54)
 	{
@@ -255,53 +209,6 @@ void CSPRI3::Draw()
 		m_ani_time2++;
 	}
 
-	//波アニメーション
-	/*if (m_ani_time2 < 5)
-	{
-		Draw::Draw2D(25, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 10)
-	{
-		Draw::Draw2D(26, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 15)
-	{
-		Draw::Draw2D(27, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 20)
-	{
-		Draw::Draw2D(28, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 25)
-	{
-		Draw::Draw2D(29, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 30)
-	{
-		Draw::Draw2D(30, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 35)
-	{
-		Draw::Draw2D(31, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 40)
-	{
-		Draw::Draw2D(32, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 45)
-	{
-		Draw::Draw2D(33, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 50)
-	{
-		Draw::Draw2D(34, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}
-	else if (m_ani_time2 < 55)
-	{
-		Draw::Draw2D(35, m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-	}*/
-
-
 	//Sprinklerに近づいたら主人公アニメーションを出す
 	if (m_ani_time3 >= 29)
 	{
@@ -311,6 +218,29 @@ void CSPRI3::Draw()
 	{
 		m_ani_time3++;
 	}
+
+	//花表示
+	if (g_TankRemaining >= 40)
+	{
+		Draw::Draw2D(97, m_fx, m_fy);  //Sランク
+	}
+	else if (g_TankRemaining >= 35)
+	{
+		Draw::Draw2D(96, m_fx, m_fy);  //Aランク
+	}
+	else if (g_TankRemaining >= 25)
+	{
+		Draw::Draw2D(95, m_fx, m_fy);  //Bランク
+	}
+	else if (g_TankRemaining >= 10)
+	{
+		Draw::Draw2D(94, m_fx, m_fy);  //Cランク
+	}
+	else if (g_TankRemaining >= 1)
+	{
+		Draw::Draw2D(93, m_fx, m_fy);  //Dランク
+	}
+
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -334,21 +264,22 @@ void CSPRI3::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground3->GetScroll() - 50 + m_move1, 300, 1, 1);
-						if (g_SceneNumber != RESULT_MAIN)
+						
+						Draw::Draw2D(77, m_wave_x - 8 + ground3->GetScroll() + m_move1, 307, 1, 1);
+					
+						if (g_SceneNumber == RESULT_MAIN&&m_vy == 0.0f)
 						{
-							Draw::Draw2D(77, m_wave_x - 8 + ground3->GetScroll() + m_move1, 307, 1, 1);
+							Draw::Draw2D(0, m_wave_x + ground3->GetScroll() - 50 + m_move1, 220, 1, 1);
 						}
-						if (g_SceneNumber != RESULT_MAIN)
+						else if (m_sy <= 200)
 						{
-							if (m_sy <= 200)
-							{
-								Draw::Draw2D(9, m_wave_x + ground3->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
-							}
-							else
-							{
-								Draw::Draw2D(72, m_wave_x + ground3->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
-							}
+							Draw::Draw2D(9, m_wave_x + ground3->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
 						}
+						else
+						{
+							Draw::Draw2D(72, m_wave_x + ground3->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+						}
+						
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
@@ -398,28 +329,6 @@ void CSPRI3::Draw()
 				}
 			}
 		}
-	}
-
-	//花表示
-	if (g_TankRemaining >= 40)
-	{
-		Draw::Draw2D(97, m_fx, m_fy);  //Sランク
-	}
-	else if (g_TankRemaining >= 35)
-	{
-		Draw::Draw2D(96, m_fx, m_fy);  //Aランク
-	}
-	else if (g_TankRemaining >= 25)
-	{
-		Draw::Draw2D(95, m_fx, m_fy);  //Bランク
-	}
-	else if (g_TankRemaining >= 10)
-	{
-		Draw::Draw2D(94, m_fx, m_fy);  //Cランク
-	}
-	else if (g_TankRemaining >= 1)
-	{
-		Draw::Draw2D(93, m_fx, m_fy);  //Dランク
 	}
 
 	//黒背景表示

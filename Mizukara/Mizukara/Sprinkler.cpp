@@ -137,7 +137,7 @@ void CSPRI::Action()
 	}
 
 	//m_ani_time5++;
-	if (m_ani_time5 == 50 && m_sy==230)
+	if (m_ani_time5 == 50 && m_sy==230&& g_SceneNumber != RESULT_MAIN)
 	{
 		m_vy = -8.0f;
 		m_CrearCnt1 = true;
@@ -204,6 +204,29 @@ void CSPRI::Draw()
 		m_ani_time3++;
 	}
 
+	//花表示
+	if (g_TankRemaining >= 40)
+	{
+		Draw::Draw2D(68, m_fx, m_fy);  //Sランク
+	}
+	else if (g_TankRemaining >= 35)
+	{
+		Draw::Draw2D(67, m_fx, m_fy);  //Aランク
+	}
+	else if (g_TankRemaining >= 25)
+	{
+		Draw::Draw2D(66, m_fx, m_fy);  //Bランク
+	}
+	else if (g_TankRemaining >= 10)
+	{
+		Draw::Draw2D(65, m_fx, m_fy);  //Cランク
+	}
+	else if (g_TankRemaining >= 1)
+	{
+		Draw::Draw2D(64, m_fx, m_fy);  //Dランク
+	}
+
+
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
@@ -226,21 +249,22 @@ void CSPRI::Draw()
 					else if (m_ani_time4 > 300)//ホースを付け終わり再び主人公静止
 					{
 						Draw::Draw2D(50, m_wave_x - 36 + ground->GetScroll() - 50 + m_move1, 300, 1, 1);
-						if (g_SceneNumber != RESULT_MAIN)
+						
+						Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
+						
+						if (g_SceneNumber == RESULT_MAIN&&m_vy==0.0f)
 						{
-							Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
+							Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, 220, 1, 1);
 						}
-						if (g_SceneNumber != RESULT_MAIN)
+						else if (m_sy <= 200)
 						{
-							if (m_sy <= 200)
-							{
-								Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
-							}
-							else
-							{
-								Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
-							}
+							Draw::Draw2D(9, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);//ジャンプ
 						}
+						else
+						{
+							Draw::Draw2D(72, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+						}
+					
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
@@ -290,28 +314,6 @@ void CSPRI::Draw()
 				}
 			}
 		}
-	}
-
-	//花表示
-	if (g_TankRemaining >= 40)
-	{
-		Draw::Draw2D(68, m_fx, m_fy);  //Sランク
-	}
-	else if (g_TankRemaining >= 35)
-	{
-		Draw::Draw2D(67, m_fx, m_fy);  //Aランク
-	}
-	else if (g_TankRemaining >= 25)
-	{
-		Draw::Draw2D(66, m_fx, m_fy);  //Bランク
-	}
-	else if (g_TankRemaining >= 10)
-	{
-		Draw::Draw2D(65, m_fx, m_fy);  //Cランク
-	}
-	else if (g_TankRemaining >=1)
-	{
-		Draw::Draw2D(64, m_fx, m_fy);  //Dランク
 	}
 
 	//黒背景表示
