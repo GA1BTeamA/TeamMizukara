@@ -79,9 +79,7 @@ void CSPRI::Action()
 	{
 		Audio::StopLoopMusic(9);
 		g_SceneNumber = RESULT;
-		//g_clearlist = true;
 		g_key_flag = false;
-		//g_TankRemaining = false;
 	}
 
 	//黒背景縮小と移動
@@ -142,12 +140,7 @@ void CSPRI::Action()
 		m_vy = -8.0f;
 		m_CrearCnt1 = true;
 	}
-	//else if (m_ani_time5 > 200 && m_ani_time5 <= 210 && m_sy == 230)
-	//{
-	//	m_vy = -8.0f;
-	//}
 		m_vy += 9.8 / (16.0f);
-
 
 		m_sy += m_vy;
 	if (m_sy > 230) { m_sy = 230; m_vy = 0.0f; }
@@ -165,9 +158,6 @@ void CSPRI::Draw()
 		Draw::Draw2D(63, 280, 130);
 	}
 
-	//水表示
-	//Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y, 1.6, 1.4);
-
 	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
 	{
@@ -178,9 +168,6 @@ void CSPRI::Draw()
 		m_ani_time1++;
 	}
 
-	//波アニメーション
-	//Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-
 	//波の表示(前)
 	if (m_ani_time2 >= 54)
 	{
@@ -190,9 +177,6 @@ void CSPRI::Draw()
 	{
 		m_ani_time2++;
 	}
-
-	//波アニメーション
-	//Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//Sprinklerに近づいたら主人公アニメーションを出す
 	if (m_ani_time3 >= 29)
@@ -213,7 +197,6 @@ void CSPRI::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
@@ -244,7 +227,6 @@ void CSPRI::Draw()
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
-							//Draw::Draw2D(0, m_wave_x + ground->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank->GetWater_Remaining() > 0)
 							{
 								Audio::StartLoopMusic(13);
@@ -319,38 +301,4 @@ void CSPRI::Draw()
 	{
 		Draw::Draw2D(117,m_BrackBack_x,m_BrackBack_y, m_BrackBack_sx, m_BrackBack_sy);  //クリア後の黒背景
 	}
-
-	/*if (m_ani_time3 >= 29)
-	{
-		m_ani_time3 = 0;
-	}
-	else
-	{
-		m_ani_time3++;
-	}*/
-
-	//Sprinklerに近づいたらアイコンを出す
-	/*for (int i = 0; i < 10; i++)
-	{
-		if (m_p_hit_line_spri->GetHitData()[i] != nullptr)
-		{
-			if (m_p_hit_line_spri->GetHitData()[i]->GetElement() == 0)
-			{	
-				if (m_ani_time3 < 10)
-				{
-					Draw::Draw2D(0, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
-				}
-				else if (m_ani_time3 < 20)
-				{
-					Draw::Draw2D(2, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
-				}
-				else if (m_ani_time3 < 30)
-				{
-					Draw::Draw2D(7, m_x1 + ground->GetScroll(), m_y1-12, 1, 1);
-				}
-			}
-		}
-	}*/
-
-	//Draw::Draw2D(21, a, m_y);
 }

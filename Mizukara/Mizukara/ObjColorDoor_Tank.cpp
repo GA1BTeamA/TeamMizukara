@@ -42,19 +42,6 @@ ObjColorDoor_Tank::ObjColorDoor_Tank(float x, float y, int color, float waveX, f
 	m_hit_line_ColorDoorTank[0]->SetElement(2);		//属性を2にする
 	m_hit_line_ColorDoorTank[0]->SetInvisible(false);	//無敵モード無効
 
-	////ヒットラインの作成
-	//m_hit_line_ColorDoorTank[1] = Collision::HitLineInsert(this);
-	//m_hit_line_ColorDoorTank[1]->SetPos1(m_x2 + 615, m_y2-51);
-	//m_hit_line_ColorDoorTank[1]->SetPos2(m_x2 + 615, m_y2 + 15);
-	//m_hit_line_ColorDoorTank[1]->SetElement(2);		//属性を2にする
-	//m_hit_line_ColorDoorTank[1]->SetInvisible(false);	//無敵モード無効
-
-	////ヒットラインの作成
-	//m_hit_line_ColorDoorTank[1] = Collision::HitLineInsert(this);
-	//m_hit_line_ColorDoorTank[1]->SetPos1(m_x, m_y);
-	//m_hit_line_ColorDoorTank[1]->SetPos2(m_x, m_y+110);
-	//m_hit_line_ColorDoorTank[1]->SetElement(3);		//属性を2にする
-	//m_hit_line_ColorDoorTank[1]->SetInvisible(false);	//無敵モード無効
 }
 
 //デストラクタ
@@ -97,9 +84,7 @@ void ObjColorDoor_Tank::Action()
 						//残量がなかったら汲めない
 						if (m_water_remaining > 0.0f) {
 							//足場オブジェクト取得
-							//ObjColorDoor* cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR);
 							m_moveY -= 0.14f;
-							//us->AddY(0.14f);
 							cd->AddY(0.6f);
 
 							if (cd)
@@ -147,9 +132,7 @@ void ObjColorDoor_Tank::Action()
 						//満タンだったら入れれない
 						if (m_water_remaining < 6.0f) {
 							//足場オブジェクト取得
-							//ObjColorDoor* cd = (ObjColorDoor*)TaskSystem::GetObj(COLORDOOR);
 							m_moveY += 0.14f;
-							//us->AddY(-0.14f);
 							cd->AddY(-0.6f);
 
 							if (cd)
@@ -176,22 +159,12 @@ void ObjColorDoor_Tank::Action()
 		}
 	}
 
-	////入れ始め時の描画のための処理
-	//m_wave_y = 350 - m_water_remaining;
-	//if (m_wave_y < 345)m_wave_y = 345;
-	//m_WaveSize_y = m_water_remaining * 0.5f;
-	//if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
+	//入れ始め時の描画のための処理
 	m_WaterSize_y = m_water_remaining* -0.008f;
-	//if (m_WaterSize_y > 1.2)m_WaterSize_y = 1.2;
-
+	
 	//当たり判定の位置更新
 	m_hit_line_ColorDoorTank[0]->SetPos1(m_x + ground3->GetScroll(), m_y);
 	m_hit_line_ColorDoorTank[0]->SetPos2(m_x + ground3->GetScroll(), m_y + 100);
-	//m_hit_line_ColorDoorTank[1]->SetPos1(m_x2 + 115 + ground3->GetScroll(), m_y2);
-	//m_hit_line_ColorDoorTank[1]->SetPos2(m_x2 + 115 + ground3->GetScroll(), m_y2 + 36);
-
-	//m_hit_line_ColorDoorTank[1]->SetPos1(m_x + ground3->GetScroll(), m_y);
-	//m_hit_line_ColorDoorTank[1]->SetPos2(m_x + ground3->GetScroll(), m_y + 110);
 }
 
 //ドロー

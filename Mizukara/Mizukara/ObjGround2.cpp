@@ -256,7 +256,4 @@ void ObjGround2::Draw()
 {
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
-
-
-	//Draw::Draw2D(58, m_scroll+2045, 149);
 }

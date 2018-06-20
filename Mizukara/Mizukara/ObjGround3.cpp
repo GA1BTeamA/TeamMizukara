@@ -270,7 +270,4 @@ void ObjGround3::Draw()
 	Draw::Draw2D(71, m_scroll, 0);
 
 	Draw::Draw2D(99, m_scroll+2190, 342);
-
-
-	//Draw::Draw2D(58, m_scroll + 90, 319);
 }

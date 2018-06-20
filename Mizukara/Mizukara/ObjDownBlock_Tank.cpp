@@ -72,9 +72,6 @@ void ObjDownBlock_Tank::Action()
 							if (m_wave_y < m_save_y+98)m_wave_y -= 0.26f;
 							else m_wave_y -= 0.3f;
 							m_water_y -= 0.325f;  //水の位置
-							//m_WaveSize_y -= 0.01f;
-							//m_RopeSizeBoard -= 0.0006f;
-							//m_RopeSizeBucket += 0.0006f;
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -116,9 +113,6 @@ void ObjDownBlock_Tank::Action()
 							if (m_wave_y < m_save_y+98)m_wave_y += 0.26f;
 							else m_wave_y += 0.3f;
 							m_water_y += 0.325f;  //水の位置
-							//m_WaveSize_y += 0.01f;
-							////m_RopeSizeBoard += 0.0006f;
-							//m_RopeSizeBucket -= 0.0006f;
 
 							if (bm != nullptr) {
 								//バケツメーターにセット
@@ -257,8 +251,6 @@ void ObjDownBlock_Tank::Draw()
 
 		//波アニメーション
 		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
-
-		//Draw::Draw2D(21, a, m_y);
 
 		//ロープ表示
 		Draw::Draw2D(62, m_gx + 10 + ground3->GetScroll(), m_save_y-15, 1, m_RopeSizeBucket);

@@ -8,7 +8,7 @@ extern bool g_key_flag;
 
 //コンストラクタ
 CStageSelecto::CStageSelecto()
-	:m_x(0), m_y(0), m_cursor(STAGE1), m_IsDrawStageSelecto(false)
+	:m_x(0), m_y(0), m_cursor(STAGE1), m_IsDrawStageSelecto(false), m_ani_time(0.0f)
 {
 
 }
@@ -20,6 +20,11 @@ CStageSelecto::~CStageSelecto()
 
 void CStageSelecto::Action()
 {
+	if (m_ani_time != 0)
+	{
+		m_ani_time++;
+	}
+
 	Audio::StartLoopMusic(5);
 	Audio::LoopMusicVolume(5, 0.05f);
 
@@ -77,67 +82,52 @@ void CStageSelecto::Action()
 	    m_cursor = m_BefCursor;	
 	}*/
 
+		if (Input::KeyPush(VK_RETURN) == true)
+		{
+			m_ani_time++;
+		}
+
 	//カーソル位置が左なら
 	if (m_cursor == LEFT)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
+		if (m_ani_time == 25)
 		{
-			if (g_key_flag)
-			{
-				Audio::StopLoopMusic(5);
-				Audio::StartMusic(0);
-				g_SceneNumber = GAME;
-				Audio::StartLoopMusic(6);
-				Audio::LoopMusicVolume(6, 0.05f);
-				is_delete = true;
-				g_key_flag = false;
-			}
-		}
-		else
-		{
-			g_key_flag = true;
+			Audio::StopLoopMusic(5);
+			Audio::StartMusic(0);
+			g_SceneNumber = GAME;
+			Audio::StartLoopMusic(6);
+			Audio::LoopMusicVolume(6, 0.05f);
+			is_delete = true;
+			g_key_flag = false;
+
 		}
 	}
 	//カーソル位置が右なら
 	else if (m_cursor == RIGHT)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
+		if (m_ani_time==25)
 		{
-			if (g_key_flag)
-			{
-				Audio::StopLoopMusic(5);
-				Audio::StartMusic(0);
-				g_SceneNumber = GAME2;
-				Audio::StartLoopMusic(7);
-				Audio::LoopMusicVolume(7, 0.05f);
-				is_delete = true;
-				g_key_flag = false;
-			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
+			Audio::StopLoopMusic(5);
+			Audio::StartMusic(0);
+			g_SceneNumber = GAME2;
+			Audio::StartLoopMusic(7);
+			Audio::LoopMusicVolume(7, 0.05f);
+			is_delete = true;
+			g_key_flag = false;
+		}	
 	}
 	//カーソル位置が下なら
 	else if (m_cursor == UNDER)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
+		if (m_ani_time==25)
 		{
-			if (g_key_flag)
-			{
-				Audio::StopLoopMusic(5);
-				Audio::StartMusic(0);
-				g_SceneNumber = GAME3;
-				Audio::StartLoopMusic(8);
-				Audio::LoopMusicVolume(8, 0.05f);
-				is_delete = true;
-				g_key_flag = false;
-			}
-		}
-		else
-		{
-			g_key_flag = true;
+			Audio::StopLoopMusic(5);
+			Audio::StartMusic(0);
+			g_SceneNumber = GAME3;
+			Audio::StartLoopMusic(8);
+			Audio::LoopMusicVolume(8, 0.05f);
+			is_delete = true;
+			g_key_flag = false;
 		}
 	}
 	/*//カーソル位置が右下なら
@@ -189,14 +179,36 @@ void CStageSelecto::Draw()
 
 	if (m_cursor == LEFT)
 	{
-		Draw::Draw2D(14, 87, 68);
+		if (m_ani_time)
+		{
+			Draw::Draw2D(111, 87, 68);
+		}
+		else
+		{
+			Draw::Draw2D(14, 87, 68);
+		}
 	}
 	else if (m_cursor == RIGHT)
 	{
-		Draw::Draw2D(14, 279, 206);
+		if (m_ani_time)
+		{
+			Draw::Draw2D(111, 279, 206);
+		}
+		else
+		{
+			Draw::Draw2D(14, 279, 206);
+		}
 	}
-	else if (m_cursor == UNDER){
-		Draw::Draw2D(14, 470, 333);
+	else if (m_cursor == UNDER)
+	{
+		if (m_ani_time)
+		{
+			Draw::Draw2D(111, 470, 333);
+		}
+		else
+		{
+			Draw::Draw2D(14, 470, 333);
+		}
 	}
 	/*else if (m_cursor == UNDER_LEFT) {
 		Draw::Draw2D(14, 90, 330);
