@@ -74,13 +74,8 @@ void CSPRI3::Action()
 	if (m_BrackBackDrawCnt == 40)
 	{
 		Audio::StopLoopMusic(9);
-		//if (m_ani_time6 >= 1000)
-		//{
 		g_SceneNumber = RESULT;
-		//g_clearlist = true;
 		g_key_flag = false;
-		//g_TankRemaining = false;
-		//}
 	}
 
 	//黒背景縮小と移動
@@ -164,31 +159,6 @@ void CSPRI3::Draw()
 		Draw::Draw2D(63, 300, 200);
 	}
 
-	//if (m_CrearCnt == true)
-	//{
-	//	//エンターキーが押されたら
-	//	if (Input::KeyPush(VK_RETURN) == true)
-	//	{
-	//		//破棄
-	//		if (g_key_flag)
-	//		{
-	//			Audio::StopLoopMusic(9);
-	//			m_ani_time6++;
-	//			Draw::Draw2D(98, m_wave_x + ground3->GetScroll(), m_wave_y - 230 + m_ani_time6, 1, 1);
-	//			/*g_SceneNumber = RESULT;
-	//			g_clearlist = true;
-	//			g_key_flag = false;
-	//			g_TankRemaining = false;*/
-	//		}
-	//	}
-	//	else
-	//	{
-	//		g_key_flag = true;
-	//	}
-	//}
-	//水表示
-	//Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 1.6, 1.4);
-
 	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
 	{
@@ -222,23 +192,28 @@ void CSPRI3::Draw()
 	//花表示
 	if (g_TankRemaining >= 40)
 	{
-		Draw::Draw2D(97, m_fx, m_fy);  //Sランク
+		//Draw::Draw2D(97, m_fx-10, m_fy);  //Sランク
+		Draw::Draw2D(97, m_fx, m_fy);
 	}
 	else if (g_TankRemaining >= 35)
 	{
-		Draw::Draw2D(96, m_fx, m_fy);  //Aランク
+		Draw::Draw2D(96, m_fx-1, m_fy);  //Aランク
+		Draw::Draw2D(96, m_fx+1, m_fy);
 	}
 	else if (g_TankRemaining >= 25)
 	{
-		Draw::Draw2D(95, m_fx, m_fy);  //Bランク
+		Draw::Draw2D(95, m_fx-1, m_fy);  //Bランク
+		Draw::Draw2D(95, m_fx+1, m_fy);
 	}
 	else if (g_TankRemaining >= 10)
 	{
-		Draw::Draw2D(94, m_fx, m_fy);  //Cランク
+		Draw::Draw2D(94, m_fx-1, m_fy);  //Cランク
+		Draw::Draw2D(94, m_fx+1, m_fy);
 	}
 	else if (g_TankRemaining >= 1)
 	{
-		Draw::Draw2D(93, m_fx, m_fy);  //Dランク
+		Draw::Draw2D(93, m_fx - 1, m_fy);  //Dランク
+		Draw::Draw2D(93, m_fx + 1, m_fy);
 	}
 
 
@@ -283,7 +258,6 @@ void CSPRI3::Draw()
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
-							//Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank3->GetWater_Remaining() > 0)
 							{
 								Audio::StartLoopMusic(13);

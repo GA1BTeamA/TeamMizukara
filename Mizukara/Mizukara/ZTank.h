@@ -35,7 +35,7 @@ private:
 	float m_water_remaining;
 
 	static const float m_WaveSize_x;  //波のサイズ用
-	static const float m_WaveSize_y;
+	float m_WaveSize_y;
 
 	float m_alpha;//虹用の透明度
 
