@@ -161,9 +161,6 @@ void CSPRI2::Draw()
 		Draw::Draw2D(63, 300, 140);
 	}
 
-	//水表示
-	//Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 1.6, 1.4);
-
 	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
 	{
@@ -173,8 +170,6 @@ void CSPRI2::Draw()
 	{
 		m_ani_time1++;
 	}
-
-	//Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//波の表示(前)
 	if (m_ani_time2 >= 54)
@@ -236,7 +231,6 @@ void CSPRI2::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
@@ -268,7 +262,7 @@ void CSPRI2::Draw()
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
-							//Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							
 							if (tank2->GetWater_Remaining() > 0)
 							{
 								Audio::StartLoopMusic(13);
