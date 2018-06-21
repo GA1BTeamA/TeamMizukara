@@ -55,6 +55,8 @@ void CMenu::Action()
 		if (g_key_flag)
 		{
 			m_ani_time++;
+			Audio::StartMusic(0);
+			g_key_flag = false;
 		}
 	}
 	else
@@ -67,7 +69,6 @@ void CMenu::Action()
 	{
 		if (m_ani_time >= 25)
 		{
-			Audio::StartMusic(0);
 			//ヒーローオブジェクト情報取得
 			CHero* hero = (CHero*)TaskSystem::GetObj(PLAYER);
 			if (hero != nullptr)
@@ -95,10 +96,8 @@ void CMenu::Action()
 	{
 		if (m_ani_time >= 25)
 		{
-				Audio::StartMusic(0);
 				g_SceneNumber = TITLE;
 				g_clearlist = true;
-				g_key_flag = false;
 				Audio::StopLoopMusic(2);
 		}
 	}
@@ -107,7 +106,6 @@ void CMenu::Action()
 	{
 		if (m_ani_time >= 25)
 		{
-				Audio::StartMusic(0);
 				//同じステージをやり直す
 				switch (m_StageNo)
 				{
@@ -126,7 +124,6 @@ void CMenu::Action()
 
 				}
 				g_clearlist = true;
-				g_key_flag = false;
 				Audio::StopLoopMusic(2);
 		}
 	}

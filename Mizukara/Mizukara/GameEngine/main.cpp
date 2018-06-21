@@ -236,6 +236,7 @@ unsigned __stdcall MusicLoadSled(void *p)
 	Audio::LoadBackMusic(11, "Sounds\\Ending.ogg");
 	Audio::LoadBackMusic(12, "Sounds\\CDoor.ogg");
 	Audio::LoadBackMusic(13, "Sounds\\WSound.ogg");
+	Audio::LoadBackMusic(16, "Sounds\\Water2.ogg");
 
 	_endthreadex(0);	//スレッド終了
 	return 0;

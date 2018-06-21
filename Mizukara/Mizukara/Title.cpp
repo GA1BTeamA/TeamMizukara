@@ -64,6 +64,8 @@ void CTitle::Action()
 		if (g_key_flag)
 		{
 			m_ani_time++;
+			Audio::StartMusic(0);
+			g_key_flag = false;
 		}
 	}
 	else
@@ -74,37 +76,31 @@ void CTitle::Action()
 	//カーソル位置が左なら
 	if (m_cursor==LEFT)
 	{
-		if (m_ani_time>=25)
-		{
-			Audio::StopLoopMusic(3);
-			Audio::StartMusic(0);
-			g_SceneNumber = STORY;
-			is_delete = true;
-			g_key_flag = false;
-		}
+			if (m_ani_time>=25)
+			{
+				Audio::StopLoopMusic(3);
+				g_SceneNumber = STORY;
+				is_delete = true;
+			}
 	}
 	//カーソル位置が右なら
 	else if (m_cursor == RIGHT)
 	{
-		if (m_ani_time>=25)
-		{
-			Audio::StopLoopMusic(3);
-			Audio::StartMusic(0);
-			g_SceneNumber = STAGESELECTO;
-			is_delete = true;
-			g_key_flag = false;
-		}
+			if (m_ani_time>=25)
+			{
+				Audio::StopLoopMusic(3);
+				g_SceneNumber = STAGESELECTO;
+				is_delete = true;
+			}
 	}
 	//カーソル位置が下なら
 	else 
 	{
-		if (m_ani_time>=25)
-		{
-			Audio::StartMusic(0);
-			m_IsDrawOpe = !(m_IsDrawOpe);
-			g_key_flag = false;
-			m_ani_time = 0;
-		}
+			if (m_ani_time>=25)
+			{
+				m_IsDrawOpe = !(m_IsDrawOpe);
+				m_ani_time = 0;
+			}
 	}
 }
 

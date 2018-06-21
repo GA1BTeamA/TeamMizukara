@@ -62,6 +62,8 @@ void CStageSelecto::Action()
 			if (g_key_flag)
 			{
 				m_ani_time++;
+				Audio::StartMusic(0);
+				g_key_flag = false;
 			}
 		}
 		else
@@ -75,12 +77,10 @@ void CStageSelecto::Action()
 		if (m_ani_time == 25)
 		{
 			Audio::StopLoopMusic(5);
-			Audio::StartMusic(0);
 			g_SceneNumber = GAME;
 			Audio::StartLoopMusic(6);
 			Audio::LoopMusicVolume(6, 0.05f);
 			is_delete = true;
-			g_key_flag = false;
 
 		}
 	}
@@ -90,12 +90,10 @@ void CStageSelecto::Action()
 		if (m_ani_time==25)
 		{
 			Audio::StopLoopMusic(5);
-			Audio::StartMusic(0);
 			g_SceneNumber = GAME2;
 			Audio::StartLoopMusic(7);
 			Audio::LoopMusicVolume(7, 0.05f);
 			is_delete = true;
-			g_key_flag = false;
 		}	
 	}
 	//カーソル位置が下なら
@@ -104,12 +102,10 @@ void CStageSelecto::Action()
 		if (m_ani_time==25)
 		{
 			Audio::StopLoopMusic(5);
-			Audio::StartMusic(0);
 			g_SceneNumber = GAME3;
 			Audio::StartLoopMusic(8);
 			Audio::LoopMusicVolume(8, 0.05f);
 			is_delete = true;
-			g_key_flag = false;
 		}
 	}
 }
