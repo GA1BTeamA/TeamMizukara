@@ -143,7 +143,7 @@ void ObjDownBlock_TankStage2::Draw()
 	//ロープ表示
 	Draw::Draw2D(62, m_gx + 206 + ground2->GetScroll(), 100, 1, m_RopeSizeBucket);
 	//横ロープ表示
-	Draw::Draw2D(59, m_gx + 205 + ground2->GetScroll(), 85, 0.9, 1);
+	Draw::Draw2D(59, m_gx + 206 + ground2->GetScroll(), 85, 0.9, 1);
 	//滑車表示
 	if (m_PulleyAni <= 4)
 		Draw::Draw2D(80, m_gx + 200 + ground2->GetScroll(), 80, 1, 1);

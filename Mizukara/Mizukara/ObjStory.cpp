@@ -54,8 +54,6 @@ void CObjStory::Action()
 	{
 		g_key_flag = true;
 	}
-
-
 }
 
 void CObjStory::Draw()

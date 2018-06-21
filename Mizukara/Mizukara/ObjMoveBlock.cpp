@@ -7,7 +7,7 @@
 
 //コンストラクタ
 ObjMoveBlock::ObjMoveBlock()
-	:m_x(1794), m_y(234)
+	:m_x(1794), m_y(235)
 {
 	m_name = MOVEBLOCK;
 
@@ -72,5 +72,5 @@ void ObjMoveBlock::Draw()
 
 	Draw::Draw2D(62, m_x + 23 + ground->GetScroll(), m_y-364, 1, 1);
 
-	Draw::Draw2D(61, m_x + ground->GetScroll(), m_y-26);
+	Draw::Draw2D(61, m_x-1 + ground->GetScroll(), m_y-24);
 }
