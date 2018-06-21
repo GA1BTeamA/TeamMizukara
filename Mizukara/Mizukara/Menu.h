@@ -24,4 +24,6 @@ private:
 	unsigned int m_StageNo;//ステージ番号
 
 	bool key_flag;  //キーが押されているかチェック用
+
+	int m_ani_time;//アイコン変更アニメーション
 };
