@@ -56,36 +56,11 @@ void CStageSelecto::Action()
 			}
 		}
 		else key_flag = true;
-	
-	//下を押したら下に
-	/*else if (Input::KeyPush(VK_DOWN) == true)
+
+	if (Input::KeyPush(VK_RETURN) == true)
 	{
-		if (m_cursor != UNDER)
-			m_BefCursor = m_cursor;
-		m_cursor = UNDER;
+		m_ani_time++;
 	}
-
-	else if (Input::KeyPush(VK_DOWN) == true)
-	{
-		m_BefCursor = m_cursor;
-		m_cursor = UNDER_LEFT;
-	}
-
-	else if(Input::KeyPush(VK_DOWN) == true)
-	{
-		m_BefCursor = m_cursor;
-		m_cursor = UNDER_RIGHT;
-	}*/
-
-	/*else if(Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
-	{
-	    m_cursor = m_BefCursor;	
-	}*/
-
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			m_ani_time++;
-		}
 
 	//カーソル位置が左なら
 	if (m_cursor == LEFT)
@@ -130,46 +105,6 @@ void CStageSelecto::Action()
 			g_key_flag = false;
 		}
 	}
-	/*//カーソル位置が右下なら
-	else if (m_cursor == UNDER_RIGHT)
-	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
-			{
-				Audio::StopLoopMusic(5);
-				Audio::StartMusic(0);
-				g_SceneNumber = GAME;
-				is_delete = true;
-				g_key_flag = false;
-			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
-	}
-	//カーソル位置が左下なら
-	else if(m_cursor == UNDER_LEFT)
-	{
-		if (Input::KeyPush(VK_RETURN) == true)
-		{
-			if (g_key_flag)
-			{
-				Audio::StopLoopMusic(5);
-				Audio::StartMusic(0);
-				g_SceneNumber = GAME3;
-				Audio::StartLoopMusic(8);
-				Audio::LoopMusicVolume(8, 0.05f);
-				is_delete = true;
-				g_key_flag = false;
-			}
-		}
-		else
-		{
-			g_key_flag = true;
-		}
-	}*/
 }
 
 void CStageSelecto::Draw()
@@ -210,13 +145,4 @@ void CStageSelecto::Draw()
 			Draw::Draw2D(14, 470, 333);
 		}
 	}
-	/*else if (m_cursor == UNDER_LEFT) {
-		Draw::Draw2D(14, 90, 330);
-	}
-	else if (m_cursor == UNDER_RIGHT) {
-		Draw::Draw2D(14, 470, 330);
-	}*/
-
-
-	
 }

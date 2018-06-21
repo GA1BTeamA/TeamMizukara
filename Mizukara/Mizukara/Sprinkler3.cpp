@@ -74,13 +74,8 @@ void CSPRI3::Action()
 	if (m_BrackBackDrawCnt == 40)
 	{
 		Audio::StopLoopMusic(9);
-		//if (m_ani_time6 >= 1000)
-		//{
 		g_SceneNumber = RESULT;
-		//g_clearlist = true;
 		g_key_flag = false;
-		//g_TankRemaining = false;
-		//}
 	}
 
 	//•”wŒik¬‚ÆˆÚ“®
@@ -163,31 +158,6 @@ void CSPRI3::Draw()
 	{
 		Draw::Draw2D(63, 300, 200);
 	}
-
-	//if (m_CrearCnt == true)
-	//{
-	//	//ƒGƒ“ƒ^[ƒL[‚ª‰Ÿ‚³‚ê‚½‚ç
-	//	if (Input::KeyPush(VK_RETURN) == true)
-	//	{
-	//		//”jŠü
-	//		if (g_key_flag)
-	//		{
-	//			Audio::StopLoopMusic(9);
-	//			m_ani_time6++;
-	//			Draw::Draw2D(98, m_wave_x + ground3->GetScroll(), m_wave_y - 230 + m_ani_time6, 1, 1);
-	//			/*g_SceneNumber = RESULT;
-	//			g_clearlist = true;
-	//			g_key_flag = false;
-	//			g_TankRemaining = false;*/
-	//		}
-	//	}
-	//	else
-	//	{
-	//		g_key_flag = true;
-	//	}
-	//}
-	//…•\Ž¦
-	//Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 1.6, 1.4);
 
 	//”g‚Ì•\Ž¦(Œã‚ë)
 	if (m_ani_time1 >= 109)
@@ -288,7 +258,6 @@ void CSPRI3::Draw()
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
-							//Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
 							if (tank3->GetWater_Remaining() > 0)
 							{
 								Audio::StartLoopMusic(13);
