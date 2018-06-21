@@ -46,7 +46,9 @@ void ObjElephant_Tank::Action()
 	if (m_ani_time_Shower != 0 && m_ani_time_Shower < 150) {
 		m_water_remaining -= 0.04f;
 		m_ani_time_Shower++;
+		if(m_ani_time_Shower==149) Audio::StopLoopMusic(13);
 	}
+
 
 	if (m_ani_time_Shower ==0 ) {
 		//タンクから水を汲む＆戻す
@@ -100,6 +102,8 @@ void ObjElephant_Tank::Action()
 							else {
 								//満タンになったらシャワーアニメーション開始
 								m_ani_time_Shower++;
+								Audio::StartLoopMusic(13);
+								Audio::LoopMusicVolume(13, 0.1f);
 								//m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
 								//m_alpha += 0.01f;
 							}
