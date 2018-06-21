@@ -224,6 +224,7 @@ void ObjDownBlock_Tank::Draw()
 		}
 
 		//水表示
+		if (m_bucket_remaining >= 0.0f)
 		Draw::Draw2D(48, m_water_x + ground3->GetScroll(), m_water_y, 0.025, m_bucket_remaining/18);
 
 		//波アニメーション(後ろ)
@@ -237,6 +238,7 @@ void ObjDownBlock_Tank::Draw()
 		}
 
 		//波アニメーション
+		if (m_bucket_remaining >= 0.0f)
 		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 		//波アニメーション(前)
@@ -250,6 +252,7 @@ void ObjDownBlock_Tank::Draw()
 		}
 
 		//波アニメーション
+		if (m_bucket_remaining >= 0.0f)
 		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground3->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 		//ロープ表示

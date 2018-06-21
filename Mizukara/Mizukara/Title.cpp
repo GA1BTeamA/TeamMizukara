@@ -130,9 +130,4 @@ void CTitle::Draw()
 	{
 		Draw::Draw2D(17, 0, 0);
 	}
-
-	/*if (m_IsDrawStageSelecto)
-	{
-		Draw::Draw2D(19, 0, 0);
-	}*/
 }

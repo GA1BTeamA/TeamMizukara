@@ -8,7 +8,6 @@
 extern int g_SceneNumber;
 
 const float ObjElephant_Tank::m_WaveSize_x = 0.3f*0.2f;
-const float ObjElephant_Tank::m_WaveSize_y = 0.4f*0.2f;
 
 //コンストラクタ
 ObjElephant_Tank::ObjElephant_Tank()
@@ -45,71 +44,77 @@ void ObjElephant_Tank::Action()
 
 	//0じゃなかったら時間加算
 	if (m_ani_time_Shower != 0 && m_ani_time_Shower < 150) {
-		m_water_remaining -= 0.02f;
+		m_water_remaining -= 0.04f;
 		m_ani_time_Shower++;
 	}
 
-	//タンクから水を汲む＆戻す
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_hit_line_ZTank->GetHitData()[i] != nullptr)
+	if (m_ani_time_Shower ==0 ) {
+		//タンクから水を汲む＆戻す
+		for (int i = 0; i < 10; i++)
 		{
-			//自分の当たり判定の中に主人公の当たり判定があったら
-			if (m_hit_line_ZTank->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_ZTank->GetHitData()[i] != nullptr)
 			{
-				//タンクから水を汲む
-				if (Input::KeyPush('X'))
+				//自分の当たり判定の中に主人公の当たり判定があったら
+				if (m_hit_line_ZTank->GetHitData()[i]->GetElement() == 0)
 				{
+					//タンクから水を汲む
+					if (Input::KeyPush('X'))
+					{
 
-					//バケツメーターオブジェクト取得
-					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-					//バケツが満タンじゃなかったら
-					if (bm->GetWaterRem() < 3.0f) {
-						//残量がなかったら汲めない
-						if (m_water_remaining > 0.0f) {
+						//バケツメーターオブジェクト取得
+						CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+						//バケツが満タンじゃなかったら
+						if (bm->GetWaterRem() < 3.0f) {
+							//残量がなかったら汲めない
+							if (m_water_remaining > 0.0f) {
 
-							if (bm != nullptr) {
-								//バケツメーターにセット
-								bm->PushX();
+								if (bm != nullptr) {
+									//バケツメーターにセット
+									bm->PushX();
+								}
+
+								//　　　　　　　　　（バケツ満タン/75フレーム）
+								m_water_remaining -= 0.02666;
 							}
-
-							//　　　　　　　　　（バケツ満タン/75フレーム）
-							m_water_remaining -= 0.02666;
 						}
 					}
-				}
-				//水をタンクに戻す
-				if (Input::KeyPush('C'))
-				{
+					//水をタンクに戻す
+					if (Input::KeyPush('C'))
+					{
 
-					//バケツメーターオブジェクト取得
-					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-					//バケツが空じゃなかったら
-					if (bm->GetWaterRem() > 0.0f) {
-						//満タンだったら入れれない
-						if (m_water_remaining < 6.0f) {
+						//バケツメーターオブジェクト取得
+						CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+						//バケツが空じゃなかったら
+						if (bm->GetWaterRem() > 0.0f) {
+							//満タンだったら入れれない
+							if (m_water_remaining < 6.0f) {
 
-							if (bm != nullptr) {
-								//バケツメーターにセット
-								bm->PushC();
+								if (bm != nullptr) {
+									//バケツメーターにセット
+									bm->PushC();
+								}
+
+								//（バケツ満タン/75フレーム）
+								m_water_remaining += 0.02666;
 							}
-
-							//（バケツ満タン/75フレーム）
-							m_water_remaining += 0.02666;
-						}
-						else{
-							//満タンになったらシャワーアニメーション開始
-							m_ani_time_Shower++;
-							//m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
-							//m_alpha += 0.01f;
+							else {
+								//満タンになったらシャワーアニメーション開始
+								m_ani_time_Shower++;
+								//m_hit_line_ZTankWall->SetInvisible(true);	//無敵モード無効
+								//m_alpha += 0.01f;
+							}
 						}
 					}
+					break;
 				}
-				break;
 			}
-		}
 
+		}
 	}
+
+	//波サイズ
+	m_WaveSize_y = m_water_remaining *0.04f;
+	if (m_WaveSize_y > 0.08f)m_WaveSize_y = 0.08f;
 
 	//当たり判定位置の更新
 	m_hit_line_ZTank->SetPos1(m_x + ground->GetScroll(), m_y);
@@ -158,7 +163,10 @@ void ObjElephant_Tank::Draw()
 		m_ani_time1++;
 	}
 	//波アニメーション描画(後ろ)
-	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
+	if (m_water_remaining>2.0f)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
+	else
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2 + 9 * (2.0f - m_water_remaining)*0.5f, m_WaveSize_x, m_WaveSize_y);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -169,8 +177,12 @@ void ObjElephant_Tank::Draw()
 	{
 		m_ani_time2++;
 	}
+
 	//波アニメーション描画(前)
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
+	if (m_water_remaining>2.0f)
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2, m_WaveSize_x, m_WaveSize_y);
+	else
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y - m_water_remaining * 2 + 9 * (2.0f - m_water_remaining)*0.5f, m_WaveSize_x, m_WaveSize_y);
 
 	//象タンク描画
 	Draw::Draw2D(88, m_x + ground->GetScroll(), m_y, 1, 1);

@@ -13,7 +13,6 @@ extern bool g_key_flag;
 
 //波サイズ初期化
 const float CWTM3::m_WaveSize_x = 0.5f*0.2f;
-const float CWTM3::m_WaveSize_y = 0.6f*0.2f;
 
 const float CWTM3::m_water_amount = 0.01f*0.04f;
 const float CWTM3::m_wave_amount = 0.3f*0.04f;
@@ -52,7 +51,7 @@ CWTM3::CWTM3(float x, float y,int color)
 	//ヒットラインの作成(左)
 	m_p_hit_line_wtm3 = Collision::HitLineInsert(this);
 	m_p_hit_line_wtm3->SetPos1(m_x, m_y);
-	m_p_hit_line_wtm3->SetPos2(m_x, m_y + 100);
+	m_p_hit_line_wtm3->SetPos2(m_x, m_y + 80);
 	m_p_hit_line_wtm3->SetElement(2);		//属性を2にする
 	m_p_hit_line_wtm3->SetInvisible(false);	//無敵モード無効
 }
@@ -120,11 +119,18 @@ void CWTM3::Action()
 	//波の位置更新
 	m_wave_y = m_y+81+42 * (100 - tank->GetWater_Remaining()*2)*0.01;
 
+	//水が20以下
+	if (tank->GetWater_Remaining() < 20.0f)
+		m_wave_y += 14 * (20.0f - tank->GetWater_Remaining())*0.05f;
+
+	m_WaveSize_y = tank->GetWater_Remaining()*0.6f*0.05f;
+	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
+
 	ObjGround3* ground = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//当たり判定位置の更新
 	m_p_hit_line_wtm3->SetPos1(m_x + ground->GetScroll(), m_y);
-	m_p_hit_line_wtm3->SetPos2(m_x + ground->GetScroll(), m_y + 100);
+	m_p_hit_line_wtm3->SetPos2(m_x + ground->GetScroll(), m_y + 80);
 }
 
 void CWTM3::Draw()
@@ -140,7 +146,7 @@ void CWTM3::Draw()
 		{
 			if (m_p_hit_line_wtm3->GetHitData()[i]->GetElement() == 0)
 			{
-				if (abs(ground->GetScroll()) + hero->GetX() < 2500)
+				if (abs(ground->GetScroll()) + hero->GetX() < 2550)
 				{
 					Draw::Draw2D(21, im_x + ground->GetScroll(), im_y);
 				}
@@ -161,7 +167,7 @@ void CWTM3::Draw()
 		m_ani_time1++;
 	}
 	//波アニメーション描画(後ろ)
-	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
+	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y*0.2, rgba);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -173,7 +179,7 @@ void CWTM3::Draw()
 		m_ani_time2++;
 	}
 	//波アニメーション描画(前)
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y, rgba);
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y*0.2, rgba);
 
 	//色ごとのWTM描画
 	if (rgba[0] == 2.0f)

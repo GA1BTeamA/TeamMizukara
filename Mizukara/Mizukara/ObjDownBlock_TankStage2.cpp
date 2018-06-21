@@ -11,9 +11,9 @@ extern int g_SceneNumber;
 const float ObjDownBlock_TankStage2::m_WaveSize_x = 0.23f*0.2f;
 
 ObjDownBlock_TankStage2::ObjDownBlock_TankStage2()
-	:m_x(889), m_y(210), m_gx(691), m_gy(135), m_wave_x(889), m_wave_y(210),
+	:m_x(889), m_y(210), m_gx(691), m_gy(135), m_wave_x(889), m_wave_y(218),
 	m_ani_time1(0.0f), m_ani_time2(0.0f), m_WaveSize_y(0.3f*0.2f)
-	, m_water_x(889), m_water_y(220), m_moveY(162),
+	, m_water_x(889), m_water_y(223), m_moveY(162),
 	m_RopeSizeBucket(0.3f), m_water_remaining(2.0f)
 	, m_bucket_remaining(0.4f), m_PulleyAni(0)
 {
@@ -128,7 +128,7 @@ void ObjDownBlock_TankStage2::Action()
 		}
 	}
 
-	m_WaveSize_y = m_water_remaining *0.5f*0.2f;
+	m_WaveSize_y = m_water_remaining *0.06f;
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	//当たり判定位置の更新
@@ -142,8 +142,6 @@ void ObjDownBlock_TankStage2::Draw()
 
 	//ロープ表示
 	Draw::Draw2D(62, m_gx + 206 + ground2->GetScroll(), 100, 1, m_RopeSizeBucket);
-	//バケツ表示
-	Draw::Draw2D(56, m_gx + 197 + ground2->GetScroll(), m_gy + 64, 1, 1);
 	//横ロープ表示
 	Draw::Draw2D(59, m_gx + 205 + ground2->GetScroll(), 85, 0.9, 1);
 	//滑車表示
@@ -165,7 +163,8 @@ void ObjDownBlock_TankStage2::Draw()
 	}
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 0.025, m_bucket_remaining/18);
+	if (m_bucket_remaining >= 0.0f)
+		Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 0.025, m_bucket_remaining/18);
 
 	//波アニメーション(後ろ)
 	if (m_ani_time1 >= 109)
@@ -177,7 +176,8 @@ void ObjDownBlock_TankStage2::Draw()
 		m_ani_time1++;
 	}
 	//波アニメーション描画(後ろ)
-	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+	if (m_bucket_remaining >= 0.0f)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -189,5 +189,8 @@ void ObjDownBlock_TankStage2::Draw()
 		m_ani_time2++;
 	}
 	//波アニメーション描画(前)
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);	
+	if (m_bucket_remaining >= 0.0f)
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);	
+	//バケツ表示
+	Draw::Draw2D(56, m_gx + 197 + ground2->GetScroll(), m_gy + 64, 1, 1);
 }
