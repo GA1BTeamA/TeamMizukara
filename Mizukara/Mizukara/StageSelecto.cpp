@@ -84,7 +84,14 @@ void CStageSelecto::Action()
 
 		if (Input::KeyPush(VK_RETURN) == true)
 		{
-			m_ani_time++;
+			if (g_key_flag)
+			{
+				m_ani_time++;
+			}
+		}
+		else
+		{
+			g_key_flag = true;
 		}
 
 	//カーソル位置が左なら

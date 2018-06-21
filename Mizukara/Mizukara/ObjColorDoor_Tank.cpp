@@ -160,8 +160,11 @@ void ObjColorDoor_Tank::Action()
 	}
 
 	//入れ始め時の描画のための処理
-	m_WaterSize_y = m_water_remaining* -0.008f;
+	m_WaterSize_y = m_water_remaining* -0.0082f;
 	
+	m_WaveSize_y = m_water_remaining*0.08f*0.5f;
+	if (m_WaveSize_y > 0.08f)m_WaveSize_y = 0.08f;
+
 	//当たり判定の位置更新
 	m_hit_line_ColorDoorTank[0]->SetPos1(m_x + ground3->GetScroll(), m_y);
 	m_hit_line_ColorDoorTank[0]->SetPos2(m_x + ground3->GetScroll(), m_y + 100);
@@ -197,8 +200,14 @@ void ObjColorDoor_Tank::Draw()
 		m_ani_time1++;
 	}
 	int p_waveY = 5;
-	//波アニメーション描画(後ろ)
-	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground3->GetScroll(), m_wave_y - m_water_remaining * p_waveY, m_WaveSize_x, m_WaveSize_y, rgba);
+
+	if (m_water_remaining>2.0f) {
+		//波アニメーション(後ろ)
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground3->GetScroll(), (m_wave_y - m_water_remaining * p_waveY), m_WaveSize_x, m_WaveSize_y, rgba);
+	}
+	else {
+		Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground3->GetScroll(), (m_wave_y - m_water_remaining * p_waveY) + 9 * (2.0f - m_water_remaining)*0.5f, m_WaveSize_x, m_WaveSize_y, rgba);
+	}
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -209,8 +218,14 @@ void ObjColorDoor_Tank::Draw()
 	{
 		m_ani_time2++;
 	}
-	//波アニメーション描画(前)
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground3->GetScroll(), m_wave_y - m_water_remaining * p_waveY, m_WaveSize_x, m_WaveSize_y, rgba);
+
+	if (m_water_remaining>2.0f) {
+		//波アニメーション(前)
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground3->GetScroll(), (m_wave_y - m_water_remaining * p_waveY), m_WaveSize_x, m_WaveSize_y, rgba);
+	}
+	else {
+		Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground3->GetScroll(), (m_wave_y - m_water_remaining * p_waveY) + 9 * (2.0f - m_water_remaining)*0.5f, m_WaveSize_x, m_WaveSize_y, rgba);
+	}
 
 	//色ごとのギミックタンク描画
 	if (rgba[0] == 2.0f)
