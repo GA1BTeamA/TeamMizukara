@@ -12,14 +12,13 @@ extern bool g_key_flag;
 
 //波サイズ初期化
 const float CWTM2::m_WaveSize_x = 0.5f*0.2f;
-const float CWTM2::m_WaveSize_y = 0.6f*0.2f;
 
 const float CWTM2::m_water_amount = 0.01f*0.04f;
 const float CWTM2::m_wave_amount = 0.3f*0.04f;
 
 CWTM2::CWTM2(float x,float y,bool im)
 	:m_x(x), m_y(y), m_wave_x(x+4), m_wave_y(y-85), m_ani_time1(0.0f), m_ani_time2(0.0f)
-	, im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30), m_water_remaining(1.4),m_IsImUpDw(im)
+	, im_x(x-20), im_y(y-204), m_water_x(x), m_water_y(y-30.4), m_water_remaining(1.4),m_IsImUpDw(im)
 {
 	//ヒットラインの作成(左)
 	m_p_hit_line_wtm = Collision::HitLineInsert(this);
@@ -74,7 +73,14 @@ void CWTM2::Action()
 	}
 
 	//波の位置更新
-	m_wave_y = m_y - 85 + 42 * (100 - tank2->GetWater_Remaining()*2)*0.0099;
+	m_wave_y = m_y - 85 + 42 * (100 - tank2->GetWater_Remaining()*2)*0.01;
+
+	//水が20以下
+	if (tank2->GetWater_Remaining() < 20.0f)
+		m_wave_y += 14 * (20.0f - tank2->GetWater_Remaining())*0.05f;
+
+	m_WaveSize_y = tank2->GetWater_Remaining()*0.6f*0.05f;
+	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
@@ -113,7 +119,7 @@ void CWTM2::Draw()
 		m_ani_time1++;
 	}
 	//波アニメーション(後ろ)
-	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+	Draw::Draw2D(36 + (m_ani_time1 / 10), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y*0.2);
 
 	//波アニメーション(前)
 	if (m_ani_time2 >= 54)
@@ -125,8 +131,8 @@ void CWTM2::Draw()
 		m_ani_time2++;
 	}
 	//波アニメーション描画(前)
-	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
+	Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y*0.2);
 
 	//水表示
-	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 0.057, -(/*2.7**/tank2->GetWater_Remaining()*0.00139));
+	Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 0.059, -(/*2.7**/tank2->GetWater_Remaining()*0.00139));
 }

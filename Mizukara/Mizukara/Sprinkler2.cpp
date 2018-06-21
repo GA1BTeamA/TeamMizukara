@@ -161,9 +161,6 @@ void CSPRI2::Draw()
 		Draw::Draw2D(63, 300, 140);
 	}
 
-	//水表示
-	//Draw::Draw2D(48, m_water_x + ground2->GetScroll(), m_water_y, 1.6, 1.4);
-
 	//波の表示(後ろ)
 	if (m_ani_time1 >= 109)
 	{
@@ -173,8 +170,6 @@ void CSPRI2::Draw()
 	{
 		m_ani_time1++;
 	}
-
-	//Draw::Draw2D(25 + (m_ani_time2 / 5), m_wave_x + ground2->GetScroll(), m_wave_y, m_WaveSize_x, m_WaveSize_y);
 
 	//波の表示(前)
 	if (m_ani_time2 >= 54)
@@ -199,19 +194,27 @@ void CSPRI2::Draw()
 	//花表示
 	if (g_TankRemaining >= 50)
 	{
-		Draw::Draw2D(92, m_fx, m_fy);  //Sランク
+		Draw::Draw2D(92, m_fx, m_fy - 10);
+		Draw::Draw2D(92, m_fx-10, m_fy);
+		Draw::Draw2D(92, m_fx+10, m_fy+4); //Sランク
 	}
 	else if (g_TankRemaining >= 42)
 	{
-		Draw::Draw2D(91, m_fx, m_fy);  //Aランク
+		Draw::Draw2D(91, m_fx, m_fy-10);
+		Draw::Draw2D(91, m_fx-10, m_fy);
+		Draw::Draw2D(91, m_fx+10, m_fy+4); //Aランク
 	}
 	else if (g_TankRemaining >= 34)
 	{
-		Draw::Draw2D(90, m_fx, m_fy);  //Bランク
+		Draw::Draw2D(90, m_fx, m_fy-10);
+		Draw::Draw2D(89, m_fx-10, m_fy);
+		Draw::Draw2D(89, m_fx+10, m_fy+2); //Bランク
 	}
 	else if (g_TankRemaining >= 26)
 	{
-		Draw::Draw2D(89, m_fx, m_fy);  //Cランク
+		Draw::Draw2D(89, m_fx, m_fy);
+		Draw::Draw2D(64, m_fx-10, m_fy);
+		Draw::Draw2D(64, m_fx+10, m_fy);//Cランク
 	}
 	else if (g_TankRemaining >= 10)
 	{
@@ -228,7 +231,6 @@ void CSPRI2::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
@@ -260,7 +262,7 @@ void CSPRI2::Draw()
 						if (m_ani_time4 >= 460)
 						{
 							m_move2++;
-							//Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, m_sy - 10, 1, 1);
+							
 							if (tank2->GetWater_Remaining() > 0)
 							{
 								Audio::StartLoopMusic(13);

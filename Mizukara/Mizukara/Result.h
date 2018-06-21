@@ -27,5 +27,7 @@ private:
 
 	bool key_flag;  //キーが押されているかチェック用
 
+	int m_ani_time;//アイコン変更アニメーション
+
 	int m_stage_num;//ステージを番号にするやつ
 };
