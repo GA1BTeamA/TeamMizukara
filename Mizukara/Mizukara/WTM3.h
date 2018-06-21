@@ -37,7 +37,7 @@ private:
 	int m_ani_time2;
 
 	static const float m_WaveSize_x;  //波のサイズ用
-	static const float m_WaveSize_y;
+	float m_WaveSize_y;
 
 	static const float m_water_amount;  //水の量変更用卍
 	static const float m_wave_amount;  //波の高さ変更用卍
