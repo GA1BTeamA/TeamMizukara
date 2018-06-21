@@ -248,7 +248,7 @@ void CSPRI2::Draw()
 
 						if (g_SceneNumber == RESULT_MAIN&&m_vy == 0.0f)
 						{
-							Draw::Draw2D(0, m_wave_x + ground2->GetScroll() - 50 + m_move1, 220, 1, 1);
+							Draw::Draw2D(119, m_wave_x + ground2->GetScroll() - 50 + m_move1, 220, 1, 1);
 						}
 						else if (m_sy <= 200)
 						{
