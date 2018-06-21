@@ -18,7 +18,7 @@ extern bool g_clearlist;
 
 //コンストラクタ
 CResult::CResult()
-	:m_x(0), m_y(0), m_cursor(0), m_alpha_value(0)
+	:m_x(0), m_y(0), m_cursor(0), m_alpha_value(0), m_ani_time(0.0f)
 {
 	m_name = RESULT;
 }
@@ -30,6 +30,11 @@ CResult::~CResult()
 
 void CResult::Action()
 {
+	if (m_ani_time != 0)
+	{
+		m_ani_time++;
+	}
+
 	Audio::StopLoopMusic(9);
 
 	Audio::StartLoopMusic(10);
@@ -55,6 +60,18 @@ void CResult::Action()
 	}
 	else key_flag = true;
 
+	if (Input::KeyPush(VK_RETURN) == true)
+	{
+		if (g_key_flag)
+		{
+			m_ani_time++;
+		}
+	}
+	else
+	{
+		g_key_flag = true;
+	}
+
 	ObjGround3* ground3 = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 	if (ground3 != nullptr) {
 		m_cursor = 1;
@@ -62,7 +79,7 @@ void CResult::Action()
 
 	if (m_cursor == 0)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
+		if (m_ani_time >= 25)
 		{
 			CObjGround* ground = (CObjGround*)TaskSystem::GetObj(GROUND);
 			ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
@@ -102,7 +119,7 @@ void CResult::Action()
 	//カーソル位置が上ならタイトルへ
 	else if (m_cursor == 1)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
+		if (m_ani_time >= 25)
 		{
 
 			if (g_key_flag)
@@ -137,7 +154,7 @@ void CResult::Action()
 	//カーソル位置が下ならステージセレクトへ
 	else if (m_cursor == 2)
 	{
-		if (Input::KeyPush(VK_RETURN) == true)
+		if (m_ani_time >= 25)
 		{
 			if (g_key_flag)
 			{
@@ -185,14 +202,23 @@ void CResult::Draw()
 
 	if (m_cursor == 0)
 	{
-		Draw::Draw2D(14, 295, 90, rgba);
+		if (m_ani_time)
+			Draw::Draw2D(111, 295, 90, rgba);
+		else
+			Draw::Draw2D(14, 295, 90, rgba);
 	}
 	else if (m_cursor == 1)
 	{
-		Draw::Draw2D(14, 296, 201,rgba);
+		if (m_ani_time)
+			Draw::Draw2D(111, 296, 201, rgba);
+		else
+			Draw::Draw2D(14, 296, 201, rgba);
 	}
 	else {
-		Draw::Draw2D(14,295, 320, rgba);
+		if (m_ani_time)
+			Draw::Draw2D(111, 295, 320, rgba);
+		else
+			Draw::Draw2D(14, 295, 320, rgba);
 	}
 
 	//ランク表示
