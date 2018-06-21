@@ -895,8 +895,8 @@ void CHero::Action()
 							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 6)
 						{
 							if (m_CKey_Frag == false)
-								Audio::StartLoopMusic(1);
-								Audio::LoopMusicVolume(1, 0.03f);
+								Audio::StartLoopMusic(16);
+								Audio::LoopMusicVolume(16, 0.05f);
 
 							m_CKey_Frag = true;
 						}
@@ -906,6 +906,7 @@ void CHero::Action()
 			else
 			{
 				m_CKey_Frag = false;
+				Audio::StopLoopMusic(16);
 			}
 
 			//Xキーが押されているかどうか
@@ -927,7 +928,7 @@ void CHero::Action()
 						{
 							if (m_XKey_Frag == false)
 								Audio::StartLoopMusic(1);
-							Audio::LoopMusicVolume(1, 0.03f);
+							Audio::LoopMusicVolume(1, 0.05f);
 
 							m_XKey_Frag = true;
 						}
@@ -937,12 +938,8 @@ void CHero::Action()
 			else
 			{
 				m_XKey_Frag = false;
-			}
-
-			//CもXも押してなかったら音楽を止める
-			if (!(Input::KeyPush('C')) && !(Input::KeyPush('X')))
 				Audio::StopLoopMusic(1);
-
+			}
 
 			//自由落下運動
 			if (IsHitGround == false) {

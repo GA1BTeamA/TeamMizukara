@@ -62,6 +62,7 @@ void CSPRI2::Action()
 			{
 				//•”wŒi‚Ì•\¦‚ğtrue‚É‚·‚é
 				m_BrackBackDraw = true;
+				g_key_flag = false;
 			}
 		}
 		else
@@ -76,7 +77,6 @@ void CSPRI2::Action()
 		Audio::StopLoopMusic(9);
 		g_SceneNumber = RESULT;
 		//g_clearlist = true;
-		g_key_flag = false;
 		//g_TankRemaining = false;
 	}
 

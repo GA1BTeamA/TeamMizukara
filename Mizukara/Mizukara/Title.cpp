@@ -56,6 +56,8 @@ void CTitle::Action()
 		if (g_key_flag)
 		{
 			m_ani_time++;
+			Audio::StartMusic(0);
+			g_key_flag = false;
 		}
 	}
 	else
@@ -69,10 +71,8 @@ void CTitle::Action()
 			if (m_ani_time>=25)
 			{
 				Audio::StopLoopMusic(3);
-				Audio::StartMusic(0);
 				g_SceneNumber = STORY;
 				is_delete = true;
-				g_key_flag = false;
 			}
 	}
 	//カーソル位置が右なら
@@ -81,10 +81,8 @@ void CTitle::Action()
 			if (m_ani_time>=25)
 			{
 				Audio::StopLoopMusic(3);
-				Audio::StartMusic(0);
 				g_SceneNumber = STAGESELECTO;
 				is_delete = true;
-				g_key_flag = false;
 			}
 	}
 	//カーソル位置が下なら
@@ -92,9 +90,7 @@ void CTitle::Action()
 	{
 			if (m_ani_time>=25)
 			{
-				Audio::StartMusic(0);
 				m_IsDrawOpe = !(m_IsDrawOpe);
-				g_key_flag = false;
 				m_ani_time = 0;
 			}
 	}
