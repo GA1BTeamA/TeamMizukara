@@ -221,6 +221,8 @@ unsigned __stdcall MusicLoadSled(void *p)
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
 	Audio::LoadSEMusic(0, "Sounds\\Splash.ogg");
+	Audio::LoadSEMusic(14, "Sounds\\Jump.ogg");
+	Audio::LoadSEMusic(15, "Sounds\\Serect.ogg");
 	Audio::LoadBackMusic(1, "Sounds\\Water.ogg");
 	Audio::LoadBackMusic(2, "Sounds\\Menu.ogg");
 	Audio::LoadBackMusic(3, "Sounds\\Title.ogg");
@@ -234,6 +236,7 @@ unsigned __stdcall MusicLoadSled(void *p)
 	Audio::LoadBackMusic(11, "Sounds\\Ending.ogg");
 	Audio::LoadBackMusic(12, "Sounds\\CDoor.ogg");
 	Audio::LoadBackMusic(13, "Sounds\\WSound.ogg");
+	Audio::LoadBackMusic(16, "Sounds\\Water2.ogg");
 
 	_endthreadex(0);	//スレッド終了
 	return 0;
@@ -502,7 +505,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-			scale_t = new ObjScale_Tank(725.0f, 347.0f,1.0f,6.0f,1);
+			scale_t = new ObjScale_Tank(725.0f, 337.0f,1.0f,6.0f,1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
@@ -511,7 +514,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale2->m_ActionPriority = 90;
 			scale2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale2);
-			scale_t2 = new ObjScale_Tank(1075.0f, 190.0f,0.0f,6.0f,2);
+			scale_t2 = new ObjScale_Tank(1075.0f, 180.0f,0.0f,6.0f,2);
 			scale_t2->m_ActionPriority = 90;
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
@@ -520,7 +523,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale3);
-			scale_t3 = new ObjScale_Tank(1415.0f, 270.0f,0.0f,4.0f, 3);
+			scale_t3 = new ObjScale_Tank(1415.0f, 260.0f,0.0f,4.0f, 3);
 			scale_t3->m_ActionPriority = 90;
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);
@@ -538,7 +541,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale5->m_ActionPriority = 90;
 			scale5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale5);
-			scale_t5 = new ObjScale_Tank(1625.0f, 230.0f,0.0f,4.0f, 5);
+			scale_t5 = new ObjScale_Tank(1625.0f, 220.0f,0.0f,4.0f, 5);
 			scale_t5->m_ActionPriority = 90;
 			scale_t5->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t5);
@@ -699,7 +702,7 @@ unsigned __stdcall GameMainSled(void *p)
 			scale->m_ActionPriority = 90;
 			scale->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale);
-			scale_t = new ObjScale_Tank(568.0f, 333.0f, 3.0f, 3.0f, 1);
+			scale_t = new ObjScale_Tank(568.0f, 323.0f, 3.0f, 3.0f, 1);
 			scale_t->m_ActionPriority = 90;
 			scale_t->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t);
@@ -709,26 +712,26 @@ unsigned __stdcall GameMainSled(void *p)
 			scale2->m_ActionPriority = 90;
 			scale2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale2);
-			scale_t2 = new ObjScale_Tank(1500.0f, 323.0f, 0.0f, 6.0f, 2);
+			scale_t2 = new ObjScale_Tank(1500.0f, 313.0f, 0.0f, 6.0f, 2);
 			scale_t2->m_ActionPriority = 90;
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
 
 			//天秤ギミック
-			scale3 = new ObjScale(2350.0f, 286.0f, 3);
+			scale3 = new ObjScale(2340.0f, 281.0f, 3);
 			scale3->m_ActionPriority = 90;
 			scale3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale3);
-			scale_t3 = new ObjScale_Tank(2345.0f, 277.0f, 3.0f, 3.0f, 3);
+			scale_t3 = new ObjScale_Tank(2340.0f, 262.0f, 3.0f, 3.0f, 3);
 			scale_t3->m_ActionPriority = 90;
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);
 
-			dwbl = new ObjDownBlock(1545.0f+178, 150.0f+95);
+			dwbl = new ObjDownBlock(1545.0f+178, 150.0f+91);
 			dwbl->m_ActionPriority = 130;
 			dwbl->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwbl);
-			dwblt = new ObjDownBlock_Tank(1545.0f, 150.0f);
+			dwblt = new ObjDownBlock_Tank(1545.0f, 146.0f);
 			dwblt->m_ActionPriority = 130;
 			dwblt->m_DrawPriority = 130;
 			TaskSystem::InsertObj(dwblt);

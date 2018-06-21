@@ -32,11 +32,15 @@ void CTitle::Action()
 		if (Input::KeyPush(VK_LEFT) == true)
 		{
 			m_cursor = LEFT;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 		//右を押したら右に
 		else if (Input::KeyPush(VK_RIGHT) == true)
 		{
 			m_cursor = RIGHT;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 		//下を押したら下に
 		else if (Input::KeyPush(VK_DOWN) == true)
@@ -44,10 +48,14 @@ void CTitle::Action()
 			if (m_cursor != UNDER)
 				m_BefCursor = m_cursor;
 			m_cursor = UNDER;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 		else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
 		{
 			m_cursor = m_BefCursor;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 	}
 
@@ -56,6 +64,8 @@ void CTitle::Action()
 		if (g_key_flag)
 		{
 			m_ani_time++;
+			Audio::StartMusic(0);
+			g_key_flag = false;
 		}
 	}
 	else
@@ -69,10 +79,8 @@ void CTitle::Action()
 			if (m_ani_time>=25)
 			{
 				Audio::StopLoopMusic(3);
-				Audio::StartMusic(0);
 				g_SceneNumber = STORY;
 				is_delete = true;
-				g_key_flag = false;
 			}
 	}
 	//カーソル位置が右なら
@@ -81,10 +89,8 @@ void CTitle::Action()
 			if (m_ani_time>=25)
 			{
 				Audio::StopLoopMusic(3);
-				Audio::StartMusic(0);
 				g_SceneNumber = STAGESELECTO;
 				is_delete = true;
-				g_key_flag = false;
 			}
 	}
 	//カーソル位置が下なら
@@ -92,9 +98,7 @@ void CTitle::Action()
 	{
 			if (m_ani_time>=25)
 			{
-				Audio::StartMusic(0);
 				m_IsDrawOpe = !(m_IsDrawOpe);
-				g_key_flag = false;
 				m_ani_time = 0;
 			}
 	}

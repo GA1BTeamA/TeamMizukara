@@ -528,6 +528,9 @@ void CHero::Action()
 							}
 						}
 					}
+					else if (j == 2) {
+						if (Cross_x_min == 0.0f)IsHitWall = true;
+					}
 				}
 			}
 			//ループの最後
@@ -545,17 +548,19 @@ void CHero::Action()
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
 						if (ground->GetScroll() != -1600.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground->AddScroll(m_x + Move_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
-							}
-							else {
-								//スクロール値加算
-								ground->AddScroll(m_copy_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
+							if (IsHitWall == false) {
+								if (Move_x != -9999.0f) {
+									//スクロール値加算
+									ground->AddScroll(m_x + Move_x - 350.0f);
+									//主人公をスクロールラインで止める
+									m_x = 350.0f;
+								}
+								else {
+									//スクロール値加算
+									ground->AddScroll(m_copy_x - 350.0f);
+									//主人公をスクロールラインで止める
+									m_x = 350.0f;
+								}
 							}
 							m_IsScroll = true;
 						}
@@ -566,17 +571,19 @@ void CHero::Action()
 					//ステージ2
 					if (ground2 != nullptr) {
 						if (ground2->GetScroll() != -2400.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground2->AddScroll(m_x + Move_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
-							}
-							else {
-								//スクロール値加算
-								ground2->AddScroll(m_copy_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
+							if (IsHitWall == false) {
+								if (Move_x != -9999.0f) {
+									//スクロール値加算
+									ground2->AddScroll(m_x + Move_x - 350.0f);
+									//主人公をスクロールラインで止める
+									m_x = 350.0f;
+								}
+								else {
+									//スクロール値加算
+									ground2->AddScroll(m_copy_x - 350.0f);
+									//主人公をスクロールラインで止める
+									m_x = 350.0f;
+								}
 							}
 							m_IsScroll = true;
 						}
@@ -587,17 +594,19 @@ void CHero::Action()
 					//ステージ3
 					if (ground3 != nullptr) {
 						if (ground3->GetScroll() != -2400.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground3->AddScroll(m_x + Move_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
-							}
-							else {
-								//スクロール値加算
-								ground3->AddScroll(m_copy_x - 350.0f);
-								//主人公をスクロールラインで止める
-								m_x = 350.0f;
+							if (IsHitWall == false) {
+								if (Move_x != -9999.0f) {
+									//スクロール値加算
+									ground3->AddScroll(m_x + Move_x - 350.0f);
+									//主人公をスクロールラインで止める
+									m_x = 350.0f;
+								}
+								else {
+									//スクロール値加算
+									ground3->AddScroll(m_copy_x - 350.0f);
+									//主人公をスクロールラインで止める
+									m_x = 350.0f;
+								}
 							}
 							m_IsScroll = true;
 						}
@@ -617,17 +626,19 @@ void CHero::Action()
 					//地面オブジェクトがヌルポインターじゃなかったら
 					if (ground != nullptr) {
 						if (ground->GetScroll() != 0.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground->AddScroll(m_x + Move_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
-							}
-							else {
-								//スクロール値加算
-								ground->AddScroll(m_copy_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
+							if (IsHitWall == false) {
+								if (Move_x != -9999.0f) {
+									//スクロール値加算
+									ground->AddScroll(m_x + Move_x - 200.0f);
+									//主人公をスクロールラインで止める
+									m_x = 200.0f;
+								}
+								else {
+									//スクロール値加算
+									ground->AddScroll(m_copy_x - 200.0f);
+									//主人公をスクロールラインで止める
+									m_x = 200.0f;
+								}
 							}
 							m_IsScroll = true;
 						}
@@ -638,17 +649,19 @@ void CHero::Action()
 					//ステージ2
 					if (ground2 != nullptr) {
 						if (ground2->GetScroll() != 0.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground2->AddScroll(m_x + Move_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
-							}
-							else {
-								//スクロール値加算
-								ground2->AddScroll(m_copy_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
+							if (IsHitWall == false) {
+								if (Move_x != -9999.0f) {
+									//スクロール値加算
+									ground2->AddScroll(m_x + Move_x - 200.0f);
+									//主人公をスクロールラインで止める
+									m_x = 200.0f;
+								}
+								else {
+									//スクロール値加算
+									ground2->AddScroll(m_copy_x - 200.0f);
+									//主人公をスクロールラインで止める
+									m_x = 200.0f;
+								}
 							}
 							m_IsScroll = true;
 						}
@@ -659,17 +672,19 @@ void CHero::Action()
 					//ステージ3
 					if (ground3 != nullptr) {
 						if (ground3->GetScroll() != 0.0f) {
-							if (Move_x != -9999.0f) {
-								//スクロール値加算
-								ground3->AddScroll(m_x + Move_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
-							}
-							else {
-								//スクロール値加算
-								ground3->AddScroll(m_copy_x - 200.0f);
-								//主人公をスクロールラインで止める
-								m_x = 200.0f;
+							if (IsHitWall == false) {
+								if (Move_x != -9999.0f) {
+									//スクロール値加算
+									ground3->AddScroll(m_x + Move_x - 200.0f);
+									//主人公をスクロールラインで止める
+									m_x = 200.0f;
+								}
+								else {
+									//スクロール値加算
+									ground3->AddScroll(m_copy_x - 200.0f);
+									//主人公をスクロールラインで止める
+									m_x = 200.0f;
+								}
 							}
 							m_IsScroll = true;
 						}
@@ -858,7 +873,9 @@ void CHero::Action()
 			{
 				if (Input::KeyPush(VK_SPACE) == true)
 				{
-					m_vy = -17.8f;
+					Audio::StartMusic(14);
+					Audio::SEMusicVolume(14, 0.15f);
+					m_vy = -7.8f;
 				}
 			}
 
@@ -880,8 +897,8 @@ void CHero::Action()
 							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 6)
 						{
 							if (m_CKey_Frag == false)
-								Audio::StartLoopMusic(1);
-								Audio::LoopMusicVolume(1, 0.03f);
+								Audio::StartLoopMusic(16);
+								Audio::LoopMusicVolume(16, 0.05f);
 
 							m_CKey_Frag = true;
 						}
@@ -891,6 +908,7 @@ void CHero::Action()
 			else
 			{
 				m_CKey_Frag = false;
+				Audio::StopLoopMusic(16);
 			}
 
 			//Xキーが押されているかどうか
@@ -906,10 +924,13 @@ void CHero::Action()
 
 						//主人公の当たり判定に当たってたのがタンクorWTMなら卍
 						if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 3 ||
-							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2)
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 2 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 5 ||
+							m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 6)
 						{
 							if (m_XKey_Frag == false)
 								Audio::StartLoopMusic(1);
+							Audio::LoopMusicVolume(1, 0.05f);
 
 							m_XKey_Frag = true;
 						}
@@ -919,12 +940,8 @@ void CHero::Action()
 			else
 			{
 				m_XKey_Frag = false;
-			}
-
-			//CもXも押してなかったら音楽を止める
-			if (!(Input::KeyPush('C')) && !(Input::KeyPush('X')))
 				Audio::StopLoopMusic(1);
-
+			}
 
 			//自由落下運動
 			if (IsHitGround == false) {
