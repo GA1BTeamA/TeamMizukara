@@ -241,8 +241,8 @@ void CResult::Draw()
 	}
 	else if (m_stage_num == 3)
 	{
-		ranknum = 40;
-		rank_value = 2;
+		ranknum = 45;
+		rank_value = 10;
 	}
 
 	//ƒ‰ƒ“ƒN•\¦
