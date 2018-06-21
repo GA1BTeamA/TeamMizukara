@@ -26,4 +26,6 @@ private:
 	unsigned int m_BefCursor; //前のカーソル位置
 
 	bool key_flag;  //キーが押されているかチェック用
+
+	int m_stage_num;//ステージを番号にするやつ
 };

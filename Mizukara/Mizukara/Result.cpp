@@ -19,6 +19,7 @@ extern bool g_clearlist;
 //コンストラクタ
 CResult::CResult()
 	:m_x(0), m_y(0), m_cursor(0), m_alpha_value(0)
+	,m_stage_num(0)
 {
 	m_name = RESULT;
 }
@@ -173,14 +174,17 @@ void CResult::Draw()
 	if (spri!=nullptr && spri->GetCrearCnt1())
 	{
 		Draw::Draw2D(101, m_x, m_y, rgba);
+		m_stage_num = 1;
 	}
 	else if (spri2 != nullptr && spri2->GetCrearCnt2())
 	{
 		Draw::Draw2D(102, m_x, m_y, rgba);
+		m_stage_num = 2;
 	}
 	else if (spri3 != nullptr && spri3->GetCrearCnt3())
 	{
 		Draw::Draw2D(103, m_x, m_y, rgba);
+		m_stage_num = 3;
 	}
 
 	if (m_cursor == 0)
@@ -195,20 +199,40 @@ void CResult::Draw()
 		Draw::Draw2D(14,295, 320, rgba);
 	}
 
+	int ranknum = 0;//ランク
+	int rank_value = 0;//ランクの増減の値のやつ
+
+	//ステージ毎にランクの基準を設定
+	if (m_stage_num == 1)
+	{
+		ranknum = 41;
+		rank_value = 2;
+	}
+	else if (m_stage_num == 2)
+	{
+		ranknum = 50;
+		rank_value = 8;
+	}
+	else if (m_stage_num == 3)
+	{
+		ranknum = 40;
+		rank_value = 2;
+	}
+
 	//ランク表示
-	if (g_TankRemaining >= 40)
+	if (g_TankRemaining >= ranknum)
 	{
 		Draw::Draw2D(108, 83, 243, rgba);
 	}
-	else if (g_TankRemaining >= 35)
+	else if (g_TankRemaining >= ranknum - rank_value * 1)
 	{
 		Draw::Draw2D(107, 83, 243, rgba);
 	}
-	else if (g_TankRemaining >= 25)
+	else if (g_TankRemaining >= ranknum - rank_value * 2)
 	{
 		Draw::Draw2D(106, 83, 243, rgba);
 	}
-	else if (g_TankRemaining >= 10)
+	else if (g_TankRemaining >= ranknum - rank_value * 3)
 	{
 		Draw::Draw2D(105, 83, 243, rgba);
 	}
