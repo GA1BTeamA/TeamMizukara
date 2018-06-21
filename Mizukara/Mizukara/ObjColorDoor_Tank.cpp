@@ -117,7 +117,6 @@ void ObjColorDoor_Tank::Action()
 				//水をタンクに戻す
 				else if (Input::KeyPush('C'))
 				{
-
 					//バケツメーターオブジェクト取得
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 					//赤タンク
