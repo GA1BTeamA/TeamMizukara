@@ -50,8 +50,8 @@ CWTM3::CWTM3(float x, float y,int color)
 
 	//ヒットラインの作成(左)
 	m_p_hit_line_wtm3 = Collision::HitLineInsert(this);
-	m_p_hit_line_wtm3->SetPos1(m_x, m_y);
-	m_p_hit_line_wtm3->SetPos2(m_x, m_y + 80);
+	m_p_hit_line_wtm3->SetPos1(m_x+20, m_y);
+	m_p_hit_line_wtm3->SetPos2(m_x+20, m_y + 80);
 	m_p_hit_line_wtm3->SetElement(2);		//属性を2にする
 	m_p_hit_line_wtm3->SetInvisible(false);	//無敵モード無効
 }
@@ -129,8 +129,8 @@ void CWTM3::Action()
 	ObjGround3* ground = (ObjGround3*)TaskSystem::GetObj(GROUND3);
 
 	//当たり判定位置の更新
-	m_p_hit_line_wtm3->SetPos1(m_x + ground->GetScroll(), m_y);
-	m_p_hit_line_wtm3->SetPos2(m_x + ground->GetScroll(), m_y + 80);
+	m_p_hit_line_wtm3->SetPos1(m_x+20 + ground->GetScroll(), m_y);
+	m_p_hit_line_wtm3->SetPos2(m_x+20 + ground->GetScroll(), m_y + 80);
 }
 
 void CWTM3::Draw()

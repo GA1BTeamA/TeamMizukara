@@ -130,16 +130,12 @@ void CSPRI3::Action()
 		tank3->ResetWater_Remaining(0);
 	}
 
-	//m_ani_time5++;
 	if (m_ani_time5 == 50 && m_sy == 230 && g_SceneNumber != RESULT_MAIN)
 	{
 		m_vy = -8.0f;
 		m_CrearCnt3 = true;
 	}
-	//else if (m_ani_time5 > 200 && m_ani_time5 <= 210 && m_sy == 230)
-	//{
-	//	m_vy = -8.0f;
-	//}
+	
 	m_vy += 9.8 / (16.0f);
 
 
@@ -190,7 +186,7 @@ void CSPRI3::Draw()
 	}
 
 	//花表示
-	if (g_TankRemaining >= 40)
+	if (g_TankRemaining >= 45)
 	{
 		//Draw::Draw2D(97, m_fx-10, m_fy);  //Sランク
 		Draw::Draw2D(97, m_fx, m_fy);
@@ -205,7 +201,7 @@ void CSPRI3::Draw()
 		Draw::Draw2D(95, m_fx-1, m_fy);  //Bランク
 		Draw::Draw2D(95, m_fx+1, m_fy);
 	}
-	else if (g_TankRemaining >= 10)
+	else if (g_TankRemaining >= 15)
 	{
 		Draw::Draw2D(94, m_fx-1, m_fy);  //Cランク
 		Draw::Draw2D(94, m_fx+1, m_fy);
@@ -226,7 +222,6 @@ void CSPRI3::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//スプリンクラー前で主人公が立ち止まる
 					{
@@ -310,5 +305,4 @@ void CSPRI3::Draw()
 	{
 		Draw::Draw2D(117, m_BrackBack_x, m_BrackBack_y, m_BrackBack_sx, m_BrackBack_sy);  //クリア後の黒背景
 	}
-
 }

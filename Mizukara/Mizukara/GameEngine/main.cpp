@@ -221,6 +221,8 @@ unsigned __stdcall MusicLoadSled(void *p)
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
 	Audio::LoadSEMusic(0, "Sounds\\Splash.ogg");
+	Audio::LoadSEMusic(14, "Sounds\\Jump.ogg");
+	Audio::LoadSEMusic(15, "Sounds\\Serect.ogg");
 	Audio::LoadBackMusic(1, "Sounds\\Water.ogg");
 	Audio::LoadBackMusic(2, "Sounds\\Menu.ogg");
 	Audio::LoadBackMusic(3, "Sounds\\Title.ogg");
@@ -329,6 +331,7 @@ unsigned __stdcall GameMainSled(void *p)
 		CWTM3* wtm3_1;
 		CWTM3* wtm3_2;
 		CWTM3* wtm3_3;
+		CWTM3* wtm3_4;
 		CWTM3* wtm3_Clear;
 
 		switch (g_SceneNumber)
@@ -619,6 +622,12 @@ unsigned __stdcall GameMainSled(void *p)
 			wtm3_3->m_ActionPriority = 70;
 			wtm3_3->m_DrawPriority = 60;
 			TaskSystem::InsertObj(wtm3_3);
+
+			//緑WTM
+			wtm3_4 = new CWTM3(2100, 146, 82);
+			wtm3_4->m_ActionPriority = 70;
+			wtm3_4->m_DrawPriority = 60;
+			TaskSystem::InsertObj(wtm3_4);
 
 			hero = new CHero();
 			hero->m_ActionPriority = 60;

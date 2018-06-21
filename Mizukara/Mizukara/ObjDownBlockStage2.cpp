@@ -71,7 +71,7 @@ void ObjDownBlockStage2::Draw()
 	ObjGround2* ground2 = (ObjGround2*)TaskSystem::GetObj(GROUND2);
 
 	//ロープ表示
-	Draw::Draw2D(62, m_x + 24 + ground2->GetScroll(), 100, 1, m_RopeSizeScaffold);
+	Draw::Draw2D(62, m_x + 20 + ground2->GetScroll(), 100, 1, m_RopeSizeScaffold);
 	//足場のブロック表示
-	Draw::Draw2D(58, m_x + ground2->GetScroll(), m_y);
+	Draw::Draw2D(58, m_x-4 + ground2->GetScroll(), m_y);
 }

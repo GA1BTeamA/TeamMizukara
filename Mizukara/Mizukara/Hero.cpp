@@ -873,6 +873,8 @@ void CHero::Action()
 			{
 				if (Input::KeyPush(VK_SPACE) == true)
 				{
+					Audio::StartMusic(14);
+					Audio::SEMusicVolume(14, 0.15f);
 					m_vy = -7.8f;
 				}
 			}

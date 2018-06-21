@@ -83,15 +83,12 @@ void CTank2::Action()
 						//主人公の向きが左のときだけ汲める
 						if (hero->GetDirec() == LEFT)
 						{
-							//		m_water_remaining += m_water_amount;
-							//		m_wave_y -= m_wave_amount;
-
-							if (bm != nullptr) {
+							if (bm != nullptr) 
+							{
 								//バケツメーターにセット
 								bm->PushC();
 							}
-
-							//　　　　　　　　　（バケツ満タン/75フレーム）
+							//（バケツ満タン/75フレーム）
 							m_water_remaining2 += 0.02666;
 						}
 					}
@@ -101,7 +98,7 @@ void CTank2::Action()
 		}
 	}
 	//波の位置設定
-	//　　　　満タン位置+タンクの高さ*（満タン-残量）/100
+	//満タン位置+タンクの高さ*（満タン-残量）/100
 	m_wave_y = 249.3 + 110 * (100 - m_water_remaining2*2)*0.00981;
 
 }

@@ -32,11 +32,15 @@ void CTitle::Action()
 		if (Input::KeyPush(VK_LEFT) == true)
 		{
 			m_cursor = LEFT;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 		//‰E‚ð‰Ÿ‚µ‚½‚ç‰E‚É
 		else if (Input::KeyPush(VK_RIGHT) == true)
 		{
 			m_cursor = RIGHT;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 		//‰º‚ð‰Ÿ‚µ‚½‚ç‰º‚É
 		else if (Input::KeyPush(VK_DOWN) == true)
@@ -44,10 +48,14 @@ void CTitle::Action()
 			if (m_cursor != UNDER)
 				m_BefCursor = m_cursor;
 			m_cursor = UNDER;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 		else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
 		{
 			m_cursor = m_BefCursor;
+			Audio::StartMusic(15);
+			Audio::SEMusicVolume(15, 0.15f);
 		}
 	}
 
