@@ -66,6 +66,8 @@ void CResult::Action()
 		if (g_key_flag)
 		{
 			m_ani_time++;
+			Audio::StartMusic(0);
+			g_key_flag = false;
 		}
 	}
 	else
@@ -88,7 +90,6 @@ void CResult::Action()
 			if (g_key_flag)
 			{
 				if (ground != nullptr) {
-					Audio::StartMusic(0);
 					Audio::StopLoopMusic(10);
 					g_SceneNumber = GAME2;
 					Audio::StartLoopMusic(7);
@@ -96,10 +97,8 @@ void CResult::Action()
 					g_clearlist = true;
 					TaskSystem::TaskClear();
 					is_delete = true;
-					g_key_flag = false;
 				}
 				else if (ground2 != nullptr) {	
-					Audio::StartMusic(0);
 					Audio::StopLoopMusic(10);
 					g_SceneNumber = GAME3;
 					Audio::StartLoopMusic(8);
@@ -107,7 +106,6 @@ void CResult::Action()
 					g_clearlist = true;
 					TaskSystem::TaskClear();
 					is_delete = true;
-					g_key_flag = false;
 				}
 			}
 		}
@@ -126,7 +124,6 @@ void CResult::Action()
 			if (g_key_flag)
 			{
 				if (ground3 != nullptr) {
-					Audio::StartMusic(0);
 					Audio::StopLoopMusic(10);
 					g_SceneNumber = ALLCLEAR;
 					Audio::StartLoopMusic(11);
@@ -134,16 +131,13 @@ void CResult::Action()
 					g_clearlist = true;
 					TaskSystem::TaskClear();
 					is_delete = true;
-					g_key_flag = false;
 				}
 				else {
-					Audio::StartMusic(0);
 					Audio::StopLoopMusic(10);
 					g_SceneNumber = TITLE;
 					g_clearlist = true;
 					TaskSystem::TaskClear();
 					is_delete = true;
-					g_key_flag = false;
 				}
 			}
 		}
@@ -159,13 +153,11 @@ void CResult::Action()
 		{
 			if (g_key_flag)
 			{
-				Audio::StartMusic(0);
 				Audio::StopLoopMusic(10);
 				g_SceneNumber = STAGESELECTO;
 				g_clearlist = true;
 				TaskSystem::TaskClear();
 				is_delete = true;
-				g_key_flag = false;
 			}
 		}
 		else

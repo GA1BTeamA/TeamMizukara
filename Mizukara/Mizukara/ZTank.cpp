@@ -48,7 +48,7 @@ void ObjElephant_Tank::Action()
 		m_ani_time_Shower++;
 	}
 
-	if (m_alpha==0 ) {
+	if (m_ani_time_Shower ==0 ) {
 		//ƒ^ƒ“ƒN‚©‚ç…‚ğ‹‚‚Ş•–ß‚·
 		for (int i = 0; i < 10; i++)
 		{

@@ -37,7 +37,7 @@ ObjColorDoor_Tank::ObjColorDoor_Tank(float x, float y, int color, float waveX, f
 
 	//ヒットラインの作成
 	m_hit_line_ColorDoorTank[0] = Collision::HitLineInsert(this);
-	m_hit_line_ColorDoorTank[0]->SetPos1(m_x, m_y);
+	m_hit_line_ColorDoorTank[0]->SetPos1(m_x, m_y+50);
 	m_hit_line_ColorDoorTank[0]->SetPos2(m_x, m_y + 100);
 	m_hit_line_ColorDoorTank[0]->SetElement(2);		//属性を2にする
 	m_hit_line_ColorDoorTank[0]->SetInvisible(false);	//無敵モード無効
@@ -117,7 +117,6 @@ void ObjColorDoor_Tank::Action()
 				//水をタンクに戻す
 				else if (Input::KeyPush('C'))
 				{
-
 					//バケツメーターオブジェクト取得
 					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
 					//赤タンク
@@ -166,7 +165,7 @@ void ObjColorDoor_Tank::Action()
 	if (m_WaveSize_y > 0.08f)m_WaveSize_y = 0.08f;
 
 	//当たり判定の位置更新
-	m_hit_line_ColorDoorTank[0]->SetPos1(m_x + ground3->GetScroll(), m_y);
+	m_hit_line_ColorDoorTank[0]->SetPos1(m_x + ground3->GetScroll(), m_y+50);
 	m_hit_line_ColorDoorTank[0]->SetPos2(m_x + ground3->GetScroll(), m_y + 100);
 }
 

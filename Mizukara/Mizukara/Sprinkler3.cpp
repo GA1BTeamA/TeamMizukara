@@ -62,6 +62,7 @@ void CSPRI3::Action()
 			{
 				//•”wŒi‚Ì•\Ž¦‚ðtrue‚É‚·‚é
 				m_BrackBackDraw = true;
+				g_key_flag = false;
 			}
 		}
 		else
@@ -75,7 +76,6 @@ void CSPRI3::Action()
 	{
 		Audio::StopLoopMusic(9);
 		g_SceneNumber = RESULT;
-		g_key_flag = false;
 	}
 
 	//•”wŒik¬‚ÆˆÚ“®
@@ -130,16 +130,12 @@ void CSPRI3::Action()
 		tank3->ResetWater_Remaining(0);
 	}
 
-	//m_ani_time5++;
 	if (m_ani_time5 == 50 && m_sy == 230 && g_SceneNumber != RESULT_MAIN)
 	{
 		m_vy = -8.0f;
 		m_CrearCnt3 = true;
 	}
-	//else if (m_ani_time5 > 200 && m_ani_time5 <= 210 && m_sy == 230)
-	//{
-	//	m_vy = -8.0f;
-	//}
+	
 	m_vy += 9.8 / (16.0f);
 
 
@@ -226,7 +222,6 @@ void CSPRI3::Draw()
 				if (m_move1 >= 120)
 				{
 					m_ani_time4++;
-					//m_ani_time5++;
 
 					if (m_ani_time4 < 200)//ƒXƒvƒŠƒ“ƒNƒ‰[‘O‚ÅŽålŒö‚ª—§‚¿Ž~‚Ü‚é
 					{
@@ -310,5 +305,4 @@ void CSPRI3::Draw()
 	{
 		Draw::Draw2D(117, m_BrackBack_x, m_BrackBack_y, m_BrackBack_sx, m_BrackBack_sy);  //ƒNƒŠƒAŒã‚Ì•”wŒi
 	}
-
 }
