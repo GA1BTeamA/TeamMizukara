@@ -221,6 +221,8 @@ unsigned __stdcall MusicLoadSled(void *p)
 	//ミュージック情報取得
 	//Audio::LoadBackMusic("Sounds\\Test.ogg");
 	Audio::LoadSEMusic(0, "Sounds\\Splash.ogg");
+	Audio::LoadSEMusic(14, "Sounds\\Jump.ogg");
+	Audio::LoadSEMusic(15, "Sounds\\Serect.ogg");
 	Audio::LoadBackMusic(1, "Sounds\\Water.ogg");
 	Audio::LoadBackMusic(2, "Sounds\\Menu.ogg");
 	Audio::LoadBackMusic(3, "Sounds\\Title.ogg");
