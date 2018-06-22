@@ -3,7 +3,7 @@
 #define _HAS_ITERATOR_DEBUGGING (0)
 
 #include "ObjGround3.h"
-
+#include "Tank3.h"
 
 //コンストラクタ
 ObjGround3::ObjGround3()
@@ -266,8 +266,15 @@ void ObjGround3::Action()
 //ドロー
 void ObjGround3::Draw()
 {
+	CTank3* tank = (CTank3*)TaskSystem::GetObj(TANK3);
+
 	//ステージ3地面描画
 	Draw::Draw2D(71, m_scroll, 0);
 
 	Draw::Draw2D(99, m_scroll+2190, 342);
+
+	wchar_t str[256];
+	swprintf_s(str, L"%.0f", tank->GetWater_Remaining());
+	Font::StrDraw(str, 50, 505, 1, 1, 1, 1, 1);
+
 }

@@ -4,6 +4,7 @@
 #include "GameEngine\\Audio.h"
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
+#include "GameEngine\\FontTex.h"
 
 //ステージ3地面クラス
 class ObjGround3 : public CObj

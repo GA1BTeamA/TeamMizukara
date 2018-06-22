@@ -531,15 +531,6 @@ unsigned __stdcall GameMainSled(void *p)
 			scale_t3->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t3);
 
-			//scale4 = new ObjScale(1520.0f, 167.0f, 4);
-			//scale4->m_ActionPriority = 90;
-			//scale4->m_DrawPriority = 80;
-			//TaskSystem::InsertObj(scale4);
-			//scale_t4 = new ObjScale_Tank(1520.0f, 167.0f,0.0f,6.0f, 4);
-			//scale_t4->m_ActionPriority = 90;
-			//scale_t4->m_DrawPriority = 80;
-			//TaskSystem::InsertObj(scale_t4);
-
 			scale5 = new ObjScale(/*1685.0f*/1625.0f, 230.0f, 5);
 			scale5->m_ActionPriority = 90;
 			scale5->m_DrawPriority = 80;
@@ -717,11 +708,11 @@ unsigned __stdcall GameMainSled(void *p)
 			TaskSystem::InsertObj(scale_t);
 
 			//天秤ギミック
-			scale2 = new ObjScale(1500.0f, 326.0f, 2);
+			scale2 = new ObjScale(1500.0f, 305.0f, 2);
 			scale2->m_ActionPriority = 90;
 			scale2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale2);
-			scale_t2 = new ObjScale_Tank(1500.0f, 313.0f, 0.0f, 6.0f, 2);
+			scale_t2 = new ObjScale_Tank(1500.0f, 300.0f, 0.0f, 6.0f, 2);
 			scale_t2->m_ActionPriority = 90;
 			scale_t2->m_DrawPriority = 80;
 			TaskSystem::InsertObj(scale_t2);
