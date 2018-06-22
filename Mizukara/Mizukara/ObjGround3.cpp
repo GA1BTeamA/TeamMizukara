@@ -273,4 +273,6 @@ void ObjGround3::Draw()
 
 	Draw::Draw2D(99, m_scroll+2190, 342);
 
+	//ƒƒjƒ…[‚Ö‚Ì‘€ì•\¦
+	Draw::Draw2D(120, 30, 530, 0.9f, 0.9f);
 }

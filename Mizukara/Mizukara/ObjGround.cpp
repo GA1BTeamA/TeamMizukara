@@ -219,9 +219,9 @@ void CObjGround::Action()
 //ドロー
 void CObjGround::Draw()
 {
-	CTank* tank = (CTank*)TaskSystem::GetObj(TANK);
-
 	//ステージ1地面描画
 	Draw::Draw2D(22, m_scroll, 0);
 
+	//メニューへの操作表示
+	Draw::Draw2D(120, 30, 530, 0.9f, 0.9f);
 }

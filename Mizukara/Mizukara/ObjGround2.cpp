@@ -260,4 +260,6 @@ void ObjGround2::Draw()
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
 
+	//メニューへの操作表示
+	Draw::Draw2D(120, 30, 530, 0.9f, 0.9f);
 }
