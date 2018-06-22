@@ -46,7 +46,9 @@ void CResult::Action()
 	{
 		if (key_flag)
 		{
-			if (m_cursor != 0)m_cursor--;
+			if (m_cursor != 0)
+				m_cursor--;
+			Audio::StartMusic(15);
 			key_flag = false;
 		}
 	}
@@ -55,7 +57,9 @@ void CResult::Action()
 	{
 		if (key_flag)
 		{
-			if (m_cursor != 2)m_cursor++;
+			if (m_cursor != 2)
+				m_cursor++;
+			Audio::StartMusic(15);
 			key_flag = false;
 		}
 	}

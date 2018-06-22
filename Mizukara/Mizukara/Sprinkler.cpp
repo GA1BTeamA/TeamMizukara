@@ -241,7 +241,11 @@ void CSPRI::Draw()
 						
 						Draw::Draw2D(77, m_wave_x - 8 + ground->GetScroll() + m_move1, 307, 1, 1);
 						
-						if (g_SceneNumber == RESULT_MAIN&&m_vy==0.0f)
+						if (g_SceneNumber == RESULT_MAIN&&m_vy == 0.0f&&g_TankRemaining < 37)
+						{
+							Draw::Draw2D(118, m_wave_x + ground->GetScroll() - 50 + m_move1, 220, 1, 1);
+						}
+						else if (g_SceneNumber == RESULT_MAIN&&m_vy==0.0f)
 						{
 							Draw::Draw2D(119, m_wave_x + ground->GetScroll() - 50 + m_move1, 220, 1, 1);
 						}
