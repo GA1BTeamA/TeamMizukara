@@ -26,6 +26,7 @@ CHero::CHero()
 	, m_IsScroll(false)
 	,m_hero_delete_flag(false)
 	,m_IsHit2Line(false), m_HitCeiling(false)
+	,m_OldIsHitGround(false),m_OldIsHitWall(false)
 {
 	m_name = PLAYER;
 
@@ -115,6 +116,11 @@ void CHero::Action()
 		bool IsHitGround = false;//地面に当たっているか
 		bool IsHitWall = false;//壁に当たっているか
 
+		if (m_x == m_copy_x && m_y == m_copy_y) {
+			IsHitGround = m_OldIsHitGround;
+			IsHitWall = m_OldIsHitWall;
+		}
+
 							   //交点までが一番短い点
 		float Cross_x_min = 9999.0f, Cross_y_min = 9999.0f;
 
@@ -126,6 +132,10 @@ void CHero::Action()
 				//主人公の当たり判定が他の当たり判定にあたってなかったらスキップ
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i] == nullptr)
 					continue;
+
+				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetObj()->GetName() == DOWNBLOCK &&
+					!Input::KeyPush(VK_RIGHT))
+					int a = 0;
 
 				//主人公がスプリンクラーに当たったら主人公削除
 				if (m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetElement() == 4)
@@ -270,7 +280,15 @@ void CHero::Action()
 						(m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetAngle()) == 90.0456467f &&
 						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().y &&
 						m_y + m_point_position[2].y > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().y) {
-						IsHitWall = true;
+
+						if (m_x + m_point_position[2].x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x &&
+							m_x + m_point_position[2].x < m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+
+							if (m_x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint1().x &&
+								m_x > m_p_hit_line_hero_copy[j]->GetHitData()[i]->GetPoint2().x) {
+								IsHitWall = true;
+							}
+						}
 					}
 					else {
 						//初期化
@@ -777,6 +795,8 @@ void CHero::Action()
 		m_p_hit_line_hero_copy[3]->SetPoint1(m_p_hit_line_hero[3]->GetPoint1());
 		m_p_hit_line_hero_copy[3]->SetPoint2(m_p_hit_line_hero[3]->GetPoint2());
 
+		m_OldIsHitGround = IsHitGround;
+		m_OldIsHitWall = IsHitWall;
 
 		//メニュー
 		if (Input::KeyPush('Q'))
@@ -1075,4 +1095,6 @@ void CHero::Draw()
 			}
 		}
 	}
+	//メニューへの操作表示
+	Draw::Draw2D(120, 30, 530, 0.9f, 0.9f);
 }
