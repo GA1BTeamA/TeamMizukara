@@ -11,7 +11,7 @@ extern bool g_clearlist;
 
 //コンストラクタ
 CMenu::CMenu(unsigned int n)
-	:m_x(20), m_y(20), m_cursor(LEFT),m_StageNo(n), m_ani_time(0.0f)
+	:m_x(20), m_y(20), m_cursor(LEFT),m_StageNo(n), m_ani_time(0.0f), key_flag(true)
 {
 	m_name = MENU;
 }
@@ -31,23 +31,47 @@ void CMenu::Action()
 	//左を押したら左に
 	if (Input::KeyPush(VK_LEFT) == true)
 	{
-		m_cursor = LEFT;
+		if (key_flag)
+		{
+			m_cursor = LEFT;
+			Audio::StartMusic(15);
+			key_flag = false;
+		}
 	}
 	//右を押したら右に
 	else if (Input::KeyPush(VK_RIGHT) == true)
 	{
-		m_cursor = RIGHT;
+		if (key_flag)
+		{
+			m_cursor = RIGHT;
+			Audio::StartMusic(15);
+			key_flag = false;
+		}
 	}
 	//下を押したら下に
 	else if (Input::KeyPush(VK_DOWN) == true)
 	{
-		if (m_cursor != UNDER)
-			m_BefCursor = m_cursor;
-		m_cursor = UNDER;
+		if (key_flag)
+		{
+			if (m_cursor != UNDER)
+				m_BefCursor = m_cursor;
+			m_cursor = UNDER;
+			Audio::StartMusic(15);
+			key_flag = false;
+		}
 	}
 	else if (Input::KeyPush(VK_UP) == true && m_cursor == UNDER)
 	{
-		m_cursor = m_BefCursor;
+		if (key_flag)
+		{
+			m_cursor = m_BefCursor;
+			Audio::StartMusic(15);
+			key_flag = false;
+		}
+	}
+	else
+	{
+		key_flag = true;
 	}
 
 	if (Input::KeyPush(VK_RETURN) == true)

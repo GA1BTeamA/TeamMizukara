@@ -72,6 +72,8 @@ private:
 
 	bool m_IsScroll;//スクロール中か
 	bool m_IsHit2Line;//当たるべきだけど当たらないヒットラインにあたってるか
+	bool m_OldIsHitGround;//地面に当たっているか一個前情報
+	bool m_OldIsHitWall;//壁に当たっているか一個前情報
 
 	HitLine* m_p_hit_line_hero[4];//当たり判定
 	HitLine* m_p_hit_line_hero_copy[4];//当たり判定(コピー)
