@@ -244,22 +244,22 @@ void CResult::Draw()
 	//ƒ‰ƒ“ƒN•\Ž¦
 	if (g_TankRemaining >= ranknum)
 	{
-		Draw::Draw2D(108, 83, 243, rgba);
+		Draw::Draw2D(108, 85, 247, rgba);
 	}
 	else if (g_TankRemaining >= ranknum - rank_value * 1)
 	{
-		Draw::Draw2D(107, 83, 243, rgba);
+		Draw::Draw2D(107, 85, 247, rgba);
 	}
 	else if (g_TankRemaining >= ranknum - rank_value * 2)
 	{
-		Draw::Draw2D(106, 83, 243, rgba);
+		Draw::Draw2D(106, 85, 247, rgba);
 	}
 	else if (g_TankRemaining >= ranknum - rank_value * 3)
 	{
-		Draw::Draw2D(105, 83, 243, rgba);
+		Draw::Draw2D(105, 85, 247, rgba);
 	}
 	else if (g_TankRemaining >= 1)
 	{
-		Draw::Draw2D(104, 83, 243, rgba);
+		Draw::Draw2D(104, 85, 247, rgba);
 	}
 }
