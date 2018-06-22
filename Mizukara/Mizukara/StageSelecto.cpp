@@ -8,7 +8,7 @@ extern bool g_key_flag;
 
 //コンストラクタ
 CStageSelecto::CStageSelecto()
-	:m_x(0), m_y(0), m_cursor(STAGE1), m_IsDrawStageSelecto(false), m_ani_time(0.0f)
+	:m_x(0), m_y(0), m_cursor(STAGE1), m_IsDrawStageSelecto(false), m_ani_time(0.0f), key_flag(true)
 {
 
 }
@@ -38,6 +38,7 @@ void CStageSelecto::Action()
 				if (m_cursor > 0)
 				{
 					m_cursor--;
+					Audio::StartMusic(15);
 					key_flag = false;
 				}
 			}
@@ -51,6 +52,7 @@ void CStageSelecto::Action()
 				if (m_cursor < 2)
 				{
 					m_cursor++;
+					Audio::StartMusic(15);
 					key_flag = false;
 				}
 			}

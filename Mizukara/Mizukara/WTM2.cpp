@@ -104,7 +104,7 @@ void CWTM2::Draw()
 				if(m_IsImUpDw)
 					Draw::Draw2D(21, im_x + ground2->GetScroll(), im_y);
 				else
-					Draw::Draw2D(21, im_x+100 + ground2->GetScroll(), im_y+100);
+					Draw::Draw2D(21, im_x+70 + ground2->GetScroll(), im_y+60);
 			}
 		}
 	}
