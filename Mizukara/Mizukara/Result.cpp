@@ -262,4 +262,9 @@ void CResult::Draw()
 	{
 		Draw::Draw2D(104, 85, 247, rgba);
 	}
+
+	Draw::Draw2D(131, 23, 388, rgba);
+	Draw::Draw2D(121 + g_TankRemaining/10, 63, 393, rgba);
+	Draw::Draw2D(121 + (int)(g_TankRemaining)%10, 93, 393, rgba);
+
 }

@@ -260,7 +260,4 @@ void ObjGround2::Draw()
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
 
-	wchar_t str[256];
-	swprintf_s(str, L"%.0f", tank->GetWater_Remaining());
-	Font::StrDraw(str, 50, 505, 1, 1, 1, 1, 1);
 }

@@ -5,7 +5,6 @@
 #include "GameEngine\\Audio.h"
 #include "GameEngine\\TaskSystem.h"
 #include "GameEngine\\Collision.h"
-#include "GameEngine\\FontTex.h"
 
 //’n–ÊƒNƒ‰ƒX
 class CObjGround : public CObj

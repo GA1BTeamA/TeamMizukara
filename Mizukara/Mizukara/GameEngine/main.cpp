@@ -212,7 +212,18 @@ unsigned __stdcall TextureLoadSled(void *p)
 	Draw::LoadImage(118, L"Images\\BoyLaugh.png");//118番目に"BoyLaugh.png"を読み込み
 	Draw::LoadImage(119, L"Images\\BoyPiece.png");//119番目に"BoyPiece.png"を読み込み
 	Draw::LoadImage(120, L"Images\\menuboard.png");//120番目に"menuboard.png"を読み込み
-	
+
+	Draw::LoadImage(121, L"Images\\0.png");//121番目に"0.png"を読み込み
+	Draw::LoadImage(122, L"Images\\1.png");//122番目に"1.png"を読み込み
+	Draw::LoadImage(123, L"Images\\2.png");//123番目に"2.png"を読み込み
+	Draw::LoadImage(124, L"Images\\3.png");//124番目に"3.png"を読み込み
+	Draw::LoadImage(125, L"Images\\4.png");//125番目に"4.png"を読み込み
+	Draw::LoadImage(126, L"Images\\5.png");//126番目に"5.png"を読み込み
+	Draw::LoadImage(127, L"Images\\6.png");//127番目に"6.png"を読み込み
+	Draw::LoadImage(128, L"Images\\7.png");//128番目に"7.png"を読み込み
+	Draw::LoadImage(129, L"Images\\8.png");//129番目に"8.png"を読み込み
+	Draw::LoadImage(130, L"Images\\9.png");//130番目に"9.png"を読み込み
+	Draw::LoadImage(131, L"Images\\L.png");//131番目に"L.png"を読み込み
 
 	//Draw::LoadImage(49, L"Images\\water2.png");//49番目のwater2.pngを読み込み
 	_endthreadex(0);	//スレッド終了
