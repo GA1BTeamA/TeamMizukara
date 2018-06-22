@@ -273,8 +273,4 @@ void ObjGround3::Draw()
 
 	Draw::Draw2D(99, m_scroll+2190, 342);
 
-	wchar_t str[256];
-	swprintf_s(str, L"%.0f", tank->GetWater_Remaining());
-	Font::StrDraw(str, 50, 505, 1, 1, 1, 1, 1);
-
 }
