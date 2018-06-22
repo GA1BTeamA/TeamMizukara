@@ -22,9 +22,6 @@ CTank::CTank()
 {
 	m_name = TANK;
 
-	//auto* ground = g;
-
-
 	//ヒットラインの作成
 	m_p_hit_line_tank = Collision::HitLineInsert(this);
 	m_p_hit_line_tank->SetPos1(m_x + 110, m_y);
@@ -156,6 +153,10 @@ void CTank::Draw()
 
 	//水表示
 	Draw::Draw2D(48, m_water_x + ground->GetScroll(), m_water_y - 8,0.108, -(0.18*m_water_remaining2 *0.02));
+
+	//wchar_t str[256];
+	//swprintf_s(str, L"%.0f", m_water_remaining2);
+	//Font::StrDraw(str, 50, 505, 1, 1, 1, 1, 1);
 }
 
 //波の増減

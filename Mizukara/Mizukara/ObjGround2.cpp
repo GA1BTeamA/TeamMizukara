@@ -4,6 +4,7 @@
 
 #include "ObjGround2.h"
 #include "ObjGround.h"
+#include "Tank2.h"
 
 //コンストラクタ
 ObjGround2::ObjGround2()
@@ -254,6 +255,12 @@ void ObjGround2::Action()
 //ドロー
 void ObjGround2::Draw()
 {
+	CTank2* tank = (CTank2*)TaskSystem::GetObj(TANK2);
+
 	//ステージ2地面描画
 	Draw::Draw2D(69, m_scroll, 0);
+
+	wchar_t str[256];
+	swprintf_s(str, L"%.0f", tank->GetWater_Remaining());
+	Font::StrDraw(str, 50, 505, 1, 1, 1, 1, 1);
 }

@@ -9,6 +9,7 @@
 #include "WTM3.h"
 extern int g_SceneNumber;
 extern bool g_key_flag;
+extern float g_TankRemaining;
 
 const float CBucketMeter::m_BM_water_amount = 0.04f;
 const float CBucketMeter::m_BM_wave_amount = 1.6f;
@@ -99,7 +100,7 @@ void CBucketMeter::Draw()
 	Draw::Draw2D(48, m_water_x, m_water_y, 0.22, -(m_water_remaining - (3 - m_water_remaining)*0.27)*0.052, rgba);
 
 
-	Draw::Draw2D(11, m_x, m_y);
+	Draw::Draw2D(11, m_x-8, m_y-12);
 }
 
 void CBucketMeter::PushX()
