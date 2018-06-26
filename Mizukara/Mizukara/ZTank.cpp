@@ -132,7 +132,10 @@ void ObjElephant_Tank::Action()
 		m_hit_line_ZTankWall->SetInvisible(true);	//ñ≥ìGÉÇÅ[Éhñ≥å¯
 		m_alpha += 0.01f;
 	}
-
+	if (m_alpha == 0.01f) {
+		Audio::StartMusic(17);
+		Audio::SEMusicVolume(17, 0.1f);
+	}
 	if (m_alpha!= 0.0f && m_alpha < 1.0f)m_alpha += 0.01f;
 
 }
