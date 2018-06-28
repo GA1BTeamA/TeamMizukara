@@ -135,7 +135,7 @@ CObjGround::CObjGround()
 	m_p_hit_line_ground[17]->SetPos2(m_scroll + 1437 - 10, m_gy + 400);
 	m_p_hit_line_ground[18]->SetPos1(m_scroll + 1337 - 10, m_gy + 400);
 	m_p_hit_line_ground[18]->SetPos2(m_scroll + 2022, m_gy + 400);
-	m_p_hit_line_ground[19]->SetPos1(m_scroll + 2022, m_gy + 400);
+	m_p_hit_line_ground[19]->SetPos1(m_scroll + 2022, m_gy + 500);
 	m_p_hit_line_ground[19]->SetPos2(m_scroll + 2022, m_gy + 320);
 	m_p_hit_line_ground[20]->SetPos1(m_scroll + 2022, m_gy + 320);
 	m_p_hit_line_ground[20]->SetPos2(m_scroll + 2400, m_gy + 320);
@@ -209,7 +209,7 @@ void CObjGround::Action()
 	m_p_hit_line_ground[17]->SetPos2(m_scroll + 1437 - 10, m_gy + 400);
 	m_p_hit_line_ground[18]->SetPos1(m_scroll + 1337 - 10, m_gy + 400);
 	m_p_hit_line_ground[18]->SetPos2(m_scroll + 2022, m_gy + 400);
-	m_p_hit_line_ground[19]->SetPos1(m_scroll + 2022, m_gy + 400);
+	m_p_hit_line_ground[19]->SetPos1(m_scroll + 2022, m_gy + 500);
 	m_p_hit_line_ground[19]->SetPos2(m_scroll + 2022, m_gy + 320);
 	m_p_hit_line_ground[20]->SetPos1(m_scroll + 2022, m_gy + 320);
 	m_p_hit_line_ground[20]->SetPos2(m_scroll + 2400, m_gy + 320);
