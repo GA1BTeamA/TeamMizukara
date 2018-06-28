@@ -801,14 +801,16 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 
 	CoInitializeEx(NULL,COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE);
 
-	wchar_t name[] = { L"GameEngine" };	//ウィンドウ&タイトルネーム
+	HICON hicon = ::LoadIcon(hInstance, MAKEINTRESOURCE(900));
+
+	wchar_t name[] = { L"みずから始める花興し" };	//ウィンドウ&タイトルネーム
 	MSG msg;							//メッセージハンドル
 
 	//ウィンドウステータス
 	WNDCLASSEX wcex = {
 		sizeof(WNDCLASSEX),CS_HREDRAW | CS_VREDRAW,
-		WndProc,0,0,hInstance,NULL,NULL,
-		(HBRUSH)(COLOR_WINDOW + 1),NULL,name,NULL
+		WndProc,0,0,hInstance,hicon,NULL,
+		(HBRUSH)(COLOR_WINDOW + 1),NULL,name,hicon
 	};
 
 	//ウィンドウクラス作成
@@ -817,6 +819,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR szCmd
 	//ゲーム各システム初期化----
 	CWindowCreate::NewWindow(800, 600, name, hInstance);//ウィンドウ作成
 	CDeviceCreate::InitDevice(CWindowCreate::GethWnd(), 800, 600);//DirectX Deviceの初期化
+	//SetWindowIconID(963);
 	//CDeviceCreate::Init3DEnviroment();//3D環境構築
 	Audio::InitAudio();//オーディオ作成
 	Input::InitInput();//入力用のクラス初期化

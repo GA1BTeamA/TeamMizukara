@@ -81,6 +81,7 @@ class CObj
 public:
 	CObj() 
 	{
+		m_name = 9999;
 		is_delete = false;
 		m_ActionPriority = m_DrawPriority = 0;
 	};

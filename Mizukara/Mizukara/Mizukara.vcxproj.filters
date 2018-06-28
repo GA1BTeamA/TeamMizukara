@@ -344,4 +344,9 @@
       <Filter>リソース ファイル</Filter>
     </Library>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameIcon.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
 </Project>

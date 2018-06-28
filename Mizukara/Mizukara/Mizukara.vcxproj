@@ -225,6 +225,9 @@
     <Library Include="GameEngine\libvorbisfile_static.lib" />
     <Library Include="GameEngine\libvorbis_static.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameIcon.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
