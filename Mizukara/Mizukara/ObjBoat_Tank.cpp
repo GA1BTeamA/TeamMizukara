@@ -62,86 +62,87 @@ void ObjBoat_Tank::Action()
 
 	if (m_BoatAni > 8) m_BoatAni = 0;
 
-	//タンクから水を汲む＆戻す
-	for (int i = 0; i < 10; i++)
-	{
-		if (m_hit_line_BoatTank[0]->GetHitData()[i] != nullptr)
+	if (m_ani_time_x == 0) {
+		//タンクから水を汲む＆戻す
+		for (int i = 0; i < 10; i++)
 		{
-			//ボートの当たり判定の中に主人公の当たり判定があったら
-			if (m_hit_line_BoatTank[0]->GetHitData()[i]->GetElement() == 0)
+			if (m_hit_line_BoatTank[0]->GetHitData()[i] != nullptr)
 			{
-				//タンクから水を汲む
-				if (Input::KeyPush('X'))
+				//ボートの当たり判定の中に主人公の当たり判定があったら
+				if (m_hit_line_BoatTank[0]->GetHitData()[i]->GetElement() == 0)
 				{
+					//タンクから水を汲む
+					if (Input::KeyPush('X'))
+					{
 
-					//バケツメーターオブジェクト取得
-					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-					//バケツが満タンじゃなかったら
-					if (bm->GetWaterRem() < 3.0f) {
-						//残量がなかったら汲めない
-						if (m_water_remaining > 0.0f) {
-							//足場オブジェクト取得
-							ObjBoat* bt = (ObjBoat*)TaskSystem::GetObj(BOAT);
+						//バケツメーターオブジェクト取得
+						CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+						//バケツが満タンじゃなかったら
+						if (bm->GetWaterRem() < 3.0f) {
+							//残量がなかったら汲めない
+							if (m_water_remaining > 0.0f) {
+								//足場オブジェクト取得
+								ObjBoat* bt = (ObjBoat*)TaskSystem::GetObj(BOAT);
 
-							m_RopeSizeBucket -= 0.0015f;  //バケツ側ロープ長さ変更
+								m_RopeSizeBucket -= 0.0015f;  //バケツ側ロープ長さ変更
 
-							bt->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
+								bt->SetRopeSizeScaffold(0.002f);  //足場ロープ長さ変更
 
-							m_bucket_remaining -= 0.006f;  //水減らす
-							//波の位置
-							if (m_wave_y < 248)m_wave_y += 0.26f;
-							else if(m_wave_y > 356)m_wave_y += 0;
-							else m_wave_y += 0.13f;
+								m_bucket_remaining -= 0.006f;  //水減らす
+								//波の位置
+								if (m_wave_y < 248)m_wave_y += 0.26f;
+								else if (m_wave_y > 356)m_wave_y += 0;
+								else m_wave_y += 0.13f;
 
-							if (bm != nullptr) {
-								//バケツメーターにセット
-								bm->PushX();
+								if (bm != nullptr) {
+									//バケツメーターにセット
+									bm->PushX();
+								}
+
+								//（バケツ満タン/75フレーム）
+								m_water_remaining -= 0.02666;
+
+								m_BoatAni++;
+
 							}
-
-							//（バケツ満タン/75フレーム）
-							m_water_remaining -= 0.02666;
-
-							m_BoatAni++;
-
 						}
 					}
-				}
-				//水をタンクに戻す
-				if (Input::KeyPush('C'))
-				{
+					//水をタンクに戻す
+					if (Input::KeyPush('C'))
+					{
 
-					//バケツメーターオブジェクト取得
-					CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
-					//バケツが空じゃなかったら
-					if (bm->GetWaterRem() > 0.0f) {
-						//満タンだったら入れれない
-						if (m_water_remaining < 4.0f) {
-							//足場オブジェクト取得
-							ObjBoat* bt = (ObjBoat*)TaskSystem::GetObj(BOAT);
+						//バケツメーターオブジェクト取得
+						CBucketMeter* bm = (CBucketMeter*)TaskSystem::GetObj(BUCKETMETER);
+						//バケツが空じゃなかったら
+						if (bm->GetWaterRem() > 0.0f) {
+							//満タンだったら入れれない
+							if (m_water_remaining < 4.0f) {
+								//足場オブジェクト取得
+								ObjBoat* bt = (ObjBoat*)TaskSystem::GetObj(BOAT);
 
-							m_bucket_remaining += 0.006f;  //水減らす
-						    //波の位置
-							if (m_wave_y < 248)m_wave_y -= 0.26f;
-							else m_wave_y -= 0.13f;
+								m_bucket_remaining += 0.006f;  //水減らす
+								//波の位置
+								if (m_wave_y < 248)m_wave_y -= 0.26f;
+								else m_wave_y -= 0.13f;
 
-							if (bm != nullptr) {
-								//バケツメーターにセット
-								bm->PushC();
+								if (bm != nullptr) {
+									//バケツメーターにセット
+									bm->PushC();
+								}
+
+								//（バケツ満タン/75フレーム）
+								m_water_remaining += 0.02666;
+
+								m_BoatAni++;
+
 							}
-
-							//（バケツ満タン/75フレーム）
-							m_water_remaining += 0.02666;
-
-							m_BoatAni++;
-
 						}
 					}
+					break;
 				}
-				break;
 			}
 		}
 	}
-
 		m_WaveSize_y = m_water_remaining *0.02f;
 	if (m_WaveSize_y > 0.6f)m_WaveSize_y = 0.6f;
 	if (m_water_remaining < 4.0f)
@@ -192,7 +193,7 @@ void ObjBoat_Tank::Draw()
 						m_water_remaining = 0.0f;
 						hero->SetHeroDeleteFlag();
 						hero->SetHeroPositionFlag();
-						hero->SetX(455);
+						hero->SetX(470);
 						m_hit_line_Boat[1]->SetInvisible(true);//ボート右の当たり判定
 					}
 				}
